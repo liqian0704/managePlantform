@@ -59,9 +59,6 @@
     .submenu.collapsed{display:none}
     .menu-item.sub{height:46px;margin-left:0;padding-left:56px;color:#d7dbe5;font-size:15px;font-weight:600;justify-content:flex-start}
     .menu-item.sub.active{background:#302bd2;color:#fff;box-shadow:inset 4px 0 0 #6c7cff}
-    .sidebar-footer{position:sticky;left:0;right:0;bottom:0;margin-top:18px;padding:14px 18px 18px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:var(--nav)}
-    .admin{display:flex;align-items:center;gap:10px;font-weight:700}
-    .avatar{width:34px;height:34px;border-radius:50%;background:#e5e7eb;color:#111827;display:grid;place-items:center;font-size:12px}
     .main{min-width:0}
     .topbar{
       height:66px;background:#fff;border-bottom:1px solid var(--line);
@@ -348,10 +345,6 @@
         </div>
       </div>
 
-      <div class="sidebar-footer">
-        <div class="admin"><div class="avatar">A</div><span>Admin</span></div>
-        <span>☰</span>
-      </div>
     </aside>
 
     <main class="main">
@@ -587,6 +580,146 @@
             <div class="panel-body">
               <div class="search cols-4"><input placeholder="方案名称 / 门店" /><select><option>页面类型</option><option>C端门店页</option><option>点单屏</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
               <table><thead><tr><th>装修方案</th><th>适用门店</th><th>页面类型</th><th>更新时间</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>默认咖啡亭模板</td><td>全部自营门店</td><td>C端门店页</td><td>2026-08-04 18:30</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="materials">
+          <div class="panel">
+            <div class="panel-head"><h2>原料管理</h2><div class="actions"><button class="btn primary">+ 新增原料</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="原料名称 / 编码" /><select><option>原料类型</option><option>咖啡豆</option><option>牛奶</option><option>糖浆</option><option>耗材</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>原料名称</th><th>原料类型</th><th>规格</th><th>计量单位</th><th>安全库存</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>阿拉比卡咖啡豆</td><td>咖啡豆</td><td>1kg/袋</td><td>g</td><td>20袋</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr><tr><td>燕麦奶</td><td>牛奶</td><td>1L/盒</td><td>ml</td><td>50盒</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="standard-sop">
+          <div class="panel">
+            <div class="panel-head"><h2>标品及SOP</h2><div class="actions"><button class="btn primary">+ 新增标品</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="标品名称 / 编码" /><select><option>品类</option><option>咖啡</option><option>茶饮</option><option>轻食</option></select><select><option>状态</option><option>上架</option><option>下架</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>标品名称</th><th>品类</th><th>SOP版本</th><th>制作时长</th><th>适用设备</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td><span class="link">美式咖啡</span></td><td>咖啡</td><td>V2.1</td><td>68秒</td><td>咖啡亭 / 太空舱</td><td><span class="tag green">上架</span></td><td><span class="link">编辑</span></td></tr><tr><td><span class="link">拿铁</span></td><td>咖啡</td><td>V2.0</td><td>82秒</td><td>咖啡亭 / 太空舱</td><td><span class="tag green">上架</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="software">
+          <div class="panel">
+            <div class="panel-head"><h2>软件管理</h2><div class="actions"><button class="btn primary">+ 新增版本</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="软件名称 / 版本号" /><select><option>软件类型</option><option>ROS端</option><option>点单屏</option><option>设备网关</option></select><select><option>发布状态</option><option>已发布</option><option>灰度中</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>软件名称</th><th>版本号</th><th>软件类型</th><th>适用设备</th><th>发布状态</th><th>操作</th></tr></thead><tbody><tr><td>ROS咖啡制作端</td><td>V3.8.2</td><td>ROS端</td><td>太空舱</td><td><span class="tag green">已发布</span></td><td><span class="link">查看</span></td></tr><tr><td>点单屏应用</td><td>V2.6.1</td><td>点单屏</td><td>咖啡亭</td><td><span class="tag warn">灰度中</span></td><td><span class="link">查看</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="device-models">
+          <div class="panel">
+            <div class="panel-head"><h2>设备型号</h2><div class="actions"><button class="btn primary">+ 新增型号</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="型号名称 / 编码" /><select><option>设备类型</option><option>咖啡亭</option><option>太空舱</option><option>机械臂</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>型号名称</th><th>设备类型</th><th>通信方式</th><th>组件数量</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>HK-Cabin-A1</td><td>太空舱</td><td>MQTT / 4G</td><td>18</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr><tr><td>CF-Kiosk-B2</td><td>咖啡亭</td><td>MQTT / Ethernet</td><td>15</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="devices">
+          <div class="panel">
+            <div class="panel-head"><h2>设备列表</h2><div class="actions"><button class="btn primary">+ 绑定设备</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="设备编号 / SN" /><select><option>全部型号</option><option>HK-Cabin-A1</option><option>CF-Kiosk-B2</option></select><select><option>所属门店</option><option>香港中环太空舱</option><option>苏州昆山6s咖啡亭</option></select><select><option>在线状态</option><option>在线</option><option>离线</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>设备编号</th><th>设备型号</th><th>所属门店</th><th>网络</th><th>软件版本</th><th>在线状态</th><th>操作</th></tr></thead><tbody><tr><td><span class="link">DEV-HK-0001</span></td><td>HK-Cabin-A1</td><td>香港中环太空舱</td><td>4G</td><td>V3.8.2</td><td><span class="tag green">在线</span></td><td><span class="link">查看</span></td></tr><tr><td><span class="link">DEV-SZ-0038</span></td><td>CF-Kiosk-B2</td><td>苏州昆山6s咖啡亭</td><td>Ethernet</td><td>V2.6.1</td><td><span class="tag red">离线</span></td><td><span class="link">查看</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="components">
+          <div class="panel">
+            <div class="panel-head"><h2>组件管理</h2><div class="actions"><button class="btn primary">+ 新增组件</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="组件名称 / 编码" /><select><option>组件类型</option><option>咖啡机</option><option>机械臂</option><option>制冰机</option><option>传感器</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>组件名称</th><th>组件类型</th><th>供应商</th><th>适用型号</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>机械臂控制器</td><td>机械臂</td><td>ABB</td><td>HK-Cabin-A1</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr><tr><td>杯量传感器</td><td>传感器</td><td>Haoin</td><td>CF-Kiosk-B2</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="merchant-management">
+          <div class="panel">
+            <div class="panel-head"><h2>商户管理</h2><div class="actions"><button class="btn primary">+ 新增商户</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="商户名称 / 编号" /><select><option>收单方案</option><option>微信支付</option><option>Stripe UK</option><option>HK Acquirer</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>商户名称</th><th>所属租户</th><th>收单方案</th><th>结算币种</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>好饮自营商户</td><td>平台自营租户</td><td>微信支付</td><td>CNY</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr><tr><td>香港渠道商户</td><td>香港渠道加盟商 A</td><td>HK Acquirer</td><td>HKD</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="split-management">
+          <div class="panel">
+            <div class="panel-head"><h2>分账管理</h2><div class="actions"><button class="btn primary">+ 新增分账规则</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-4"><input placeholder="规则名称 / 租户" /><select><option>规则类型</option><option>自营</option><option>联营</option><option>渠道加盟</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>规则名称</th><th>适用租户</th><th>平台比例</th><th>客户比例</th><th>生效时间</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>渠道加盟标准分账</td><td>香港渠道加盟商 A</td><td>20%</td><td>80%</td><td>2026-08-01</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="haoin-income">
+          <div class="panel">
+            <div class="panel-head"><h2>好饮入账明细</h2><div class="actions"><button class="btn soft">导出</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="订单编号 / 入账单号" /><select><option>全部租户</option><option>平台自营租户</option><option>香港渠道加盟商 A</option></select><select><option>币种</option><option>CNY</option><option>HKD</option><option>GBP</option></select><input placeholder="入账时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>入账单号</th><th>订单编号</th><th>所属租户</th><th>入账金额</th><th>币种</th><th>入账时间</th><th>状态</th></tr></thead><tbody><tr><td>IN202608040001</td><td>N26080419M513947</td><td>平台自营租户</td><td>11.00</td><td>CNY</td><td>2026-08-04 19:34:00</td><td><span class="tag green">已入账</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="customer-split">
+          <div class="panel">
+            <div class="panel-head"><h2>客户分账明细</h2><div class="actions"><button class="btn soft">导出</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="订单编号 / 分账单号" /><select><option>全部客户</option><option>香港渠道加盟商 A</option><option>天齐企业租户</option></select><select><option>分账状态</option><option>成功</option><option>处理中</option><option>失败</option></select><input placeholder="分账时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>分账单号</th><th>订单编号</th><th>客户</th><th>分账金额</th><th>币种</th><th>分账时间</th><th>状态</th></tr></thead><tbody><tr><td>SP202608040001</td><td>N26080419M514240</td><td>香港渠道加盟商 A</td><td>5.20</td><td>HKD</td><td>2026-08-04 19:35:00</td><td><span class="tag green">成功</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="unsettled-split">
+          <div class="panel">
+            <div class="panel-head"><h2>未分账明细</h2><div class="actions"><button class="btn soft">导出</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="订单编号" /><select><option>全部租户</option><option>平台自营租户</option><option>香港渠道加盟商 A</option></select><select><option>原因</option><option>待结算</option><option>规则缺失</option><option>退款处理中</option></select><input placeholder="创建时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>订单编号</th><th>所属租户</th><th>订单金额</th><th>待分账金额</th><th>未分账原因</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td>N26080419M514050</td><td>香港渠道加盟商 A</td><td>35.00</td><td>28.00</td><td>待结算</td><td>2026-08-04 19:33:05</td><td><span class="link">处理</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="split-refunds">
+          <div class="panel">
+            <div class="panel-head"><h2>分账退款明细</h2><div class="actions"><button class="btn soft">导出</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="退款编号 / 分账单号" /><select><option>全部客户</option><option>香港渠道加盟商 A</option></select><select><option>退款状态</option><option>成功</option><option>处理中</option></select><input placeholder="退款时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>退款编号</th><th>原分账单号</th><th>客户</th><th>退款金额</th><th>币种</th><th>退款时间</th><th>状态</th></tr></thead><tbody><tr><td>R000024584</td><td>SP202608040003</td><td>香港渠道加盟商 A</td><td>8.90</td><td>HKD</td><td>2026-08-04 19:26:31</td><td><span class="tag green">成功</span></td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="fee-details">
+          <div class="panel">
+            <div class="panel-head"><h2>手续费明细</h2><div class="actions"><button class="btn soft">导出</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="订单编号 / 支付流水号" /><select><option>支付渠道</option><option>微信支付</option><option>支付宝</option><option>Stripe</option></select><select><option>币种</option><option>CNY</option><option>HKD</option><option>GBP</option></select><input placeholder="发生时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>支付流水号</th><th>订单编号</th><th>支付渠道</th><th>交易金额</th><th>手续费</th><th>币种</th><th>发生时间</th></tr></thead><tbody><tr><td>PAY202608040001</td><td>N26080419B513515</td><td>微信支付</td><td>16.00</td><td>0.10</td><td>CNY</td><td>2026-08-04 19:32:30</td></tr></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="invoices">
+          <div class="panel">
+            <div class="panel-head"><h2>发票管理</h2><div class="actions"><button class="btn primary">+ 新增发票</button></div></div>
+            <div class="panel-body">
+              <div class="search cols-5"><input placeholder="发票抬头 / 发票号" /><select><option>开票状态</option><option>待开票</option><option>已开票</option><option>已红冲</option></select><select><option>发票类型</option><option>普票</option><option>专票</option></select><input placeholder="申请时间" /><button class="btn primary">搜索</button></div>
+              <table><thead><tr><th>发票号</th><th>发票抬头</th><th>金额</th><th>币种</th><th>发票类型</th><th>申请时间</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>INV202608040001</td><td>天齐企业租户</td><td>1280.00</td><td>CNY</td><td>普票</td><td>2026-08-04 12:10</td><td><span class="tag warn">待开票</span></td><td><span class="link">开票</span></td></tr></tbody></table>
             </div>
           </div>
         </section>
@@ -907,6 +1040,13 @@
     }
 
     menuItems.forEach(item => item.addEventListener('click', () => activate(item.dataset.page)));
+    document.querySelectorAll('.menu-parent[data-toggle]').forEach(parent => {
+      parent.addEventListener('click', () => {
+        const submenu = document.getElementById(parent.dataset.toggle);
+        parent.classList.toggle('collapsed');
+        submenu?.classList.toggle('collapsed');
+      });
+    });
     permissionToggle.addEventListener('click', () => {
       permissionToggle.classList.toggle('collapsed');
       permissionSubmenu.classList.toggle('collapsed');
