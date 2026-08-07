@@ -167,11 +167,11 @@
       border:0;background:transparent;padding:0;color:#1a7cff;font:inherit;font-weight:700;cursor:pointer
     }
     .tenant-store-toggle:hover{text-decoration:underline}
-    .tenant-actions{display:flex;align-items:center;gap:12px;white-space:nowrap}
+    .tenant-actions{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap}
     .tenant-actions .link{font-weight:700}
     .tenant-actions button.link{border:0;background:transparent;padding:0;font:inherit;cursor:pointer}
     .row-actions{
-      display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:nowrap;
+      width:100%;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:nowrap;
       white-space:nowrap;min-height:24px
     }
     .row-actions .link,.row-actions .menu-status-action{
@@ -748,6 +748,8 @@
     #menus table th:first-child{text-align:left;padding-left:38px}
     #menus table td:first-child{text-align:left;padding-left:8px}
     #menus .tree-toggle{margin-right:2px}
+    #tenant-menu-page table th,#tenant-menu-page table td{text-align:center}
+    #tenant-menu-page .tree-name{justify-content:center}
     #roles table th:first-child,#roles table td:first-child{padding-left:8px}
     #personnel table th:nth-child(1),#personnel table td:nth-child(1){
       width:26%;white-space:nowrap
@@ -1391,10 +1393,9 @@
         <section class="page" id="tenant-account">
           <div class="panel">
             <div class="panel-body">
-              <div class="search cols-5">
+              <div class="search cols-4">
                 <input id="tenantAccountQuery" data-query-label="账号" placeholder="请输入账号" />
                 <select id="tenantAccountTenantFilter"><option>全部租户</option><option>深圳好饮科技有限公司</option><option>银河太空舱运营有限公司</option><option>深圳大铲湾商业运营有限公司</option><option>上海城市空间运营有限公司</option></select>
-                <select id="tenantAccountRoleFilter"><option>全部角色</option><option>租户管理员</option><option>企业财务</option><option>区域运营</option><option>门店运营</option><option>财务查看</option></select>
                 <select id="tenantAccountStatusFilter"><option>全部状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary" id="tenantAccountSearch">搜索</button>
               </div>
@@ -1810,7 +1811,7 @@
           <div class="panel">
             <div class="panel-body">
               <div class="search cols-4">
-                <input placeholder="角色名称" />
+                <input data-query-label="租户名称" placeholder="请输入租户名称" />
                 <select><option>全部适用租户类型</option><option>自营</option><option>渠道商</option></select>
                 <select><option>全部状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary">搜索</button>
@@ -3042,7 +3043,6 @@
     const tenantAccountAdd = document.getElementById('tenantAccountAdd');
     const tenantAccountQuery = document.getElementById('tenantAccountQuery');
     const tenantAccountTenantFilter = document.getElementById('tenantAccountTenantFilter');
-    const tenantAccountRoleFilter = document.getElementById('tenantAccountRoleFilter');
     const tenantAccountStatusFilter = document.getElementById('tenantAccountStatusFilter');
     const tenantAccountSearch = document.getElementById('tenantAccountSearch');
     const platformRoleOptions = ['平台管理员', '平台运营', '平台财务', '平台运维'];
@@ -4190,16 +4190,13 @@
     function applyTenantAccountFilters(){
       const accountKeyword = tenantAccountQuery?.value.trim().toLowerCase() || '';
       const tenantName = filterText(tenantAccountTenantFilter);
-      const role = filterText(tenantAccountRoleFilter);
       const status = filterText(tenantAccountStatusFilter);
       document.querySelectorAll('#tenant-account table tbody tr').forEach(row => {
         const rowAccount = row.cells[0]?.textContent.trim().toLowerCase() || '';
         const rowTenant = row.cells[1]?.textContent.trim() || '';
-        const rowRole = row.cells[3]?.textContent.trim() || '';
         const rowStatus = row.cells[5]?.textContent.trim() || '';
         const matched = (!accountKeyword || rowAccount.includes(accountKeyword))
           && (isAllFilter(tenantName) || rowTenant.includes(tenantName))
-          && (isAllFilter(role) || rowRole.includes(role))
           && (isAllFilter(status) || rowStatus.includes(status));
         row.style.display = matched ? '' : 'none';
       });
@@ -4209,7 +4206,6 @@
       [
         tenantAccountQuery,
         tenantAccountTenantFilter,
-        tenantAccountRoleFilter,
         tenantAccountStatusFilter
       ].forEach(control => {
         if (!control) return;
@@ -4773,15 +4769,10 @@
       if (!isTenantRole) roleTarget.value = 'platform';
       if (roleTargetField) roleTargetField.style.display = 'none';
       document.querySelectorAll('.permission-picker .permission-group').forEach(group => {
-        const scope = group.dataset.roleScope;
-        const shouldShow = !roleTarget.value
-          || (roleTarget.value === 'platform' && scope === 'platform')
-          || (roleTarget.value === 'tenant' && scope === 'tenant');
-        group.style.display = shouldShow ? '' : 'none';
-        group.classList.toggle('permission-disabled', !roleTarget.value);
+        group.style.display = '';
+        group.classList.remove('permission-disabled');
         group.querySelectorAll('input[type="checkbox"]').forEach(input => {
-          input.disabled = !roleTarget.value;
-          if (!shouldShow) input.checked = false;
+          input.disabled = false;
         });
       });
       if (roleTenantTypeField) roleTenantTypeField.style.display = roleTarget.value === 'tenant' ? '' : 'none';
