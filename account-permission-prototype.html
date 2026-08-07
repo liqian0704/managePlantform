@@ -129,9 +129,31 @@
     .tenant-toolbar{
       display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px
     }
-    #personnel .panel-body,#roles .panel-body,#menus .panel-body,#tenant-list .panel-body,#tenant-role .panel-body,#tenant-permission .panel-body,#tenant-menu-page .panel-body{padding-left:8px}
+    #personnel .panel-body,#roles .panel-body,#menus .panel-body,#tenant-list .panel-body,#tenant-role .panel-body,#tenant-menu-page .panel-body{padding-left:8px}
     .list-region{margin-left:-8px;width:calc(100% + 8px)}
     .tenant-toolbar .actions{margin-left:auto}
+    .tenant-role-tags{
+      display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap
+    }
+    .tenant-role-tag{
+      display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border-radius:999px;
+      background:#eef2ff;color:#3730a3;font-size:12px;font-weight:700
+    }
+    .tenant-role-tag.removable{
+      gap:6px;border:0;cursor:pointer;font:inherit
+    }
+    .tenant-role-tag.removable:hover{background:#dfe5ff}
+    .tenant-role-tag.removable .remove-mark{
+      color:#7c88bd;font-size:14px;line-height:1
+    }
+    .tenant-role-empty{color:#98a2b3}
+    .tenant-role-action{
+      border:0;background:transparent;padding:0;color:var(--primary);font:inherit;font-weight:700;cursor:pointer
+    }
+    .tenant-role-action:hover{text-decoration:underline}
+    .tenant-role-systems{
+      color:#475467;line-height:1.6;white-space:normal
+    }
     #tenant-list table th:nth-child(3),#tenant-list table td:nth-child(3){
       width:42%;white-space:normal;text-align:center
     }
@@ -148,6 +170,15 @@
     .tenant-actions{display:flex;align-items:center;gap:12px;white-space:nowrap}
     .tenant-actions .link{font-weight:700}
     .tenant-actions button.link{border:0;background:transparent;padding:0;font:inherit;cursor:pointer}
+    .row-actions{
+      display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:nowrap;
+      white-space:nowrap;min-height:24px
+    }
+    .row-actions .link,.row-actions .menu-status-action{
+      border:0;background:transparent;padding:0;font:inherit;cursor:pointer;
+      display:inline-flex;align-items:center;line-height:1
+    }
+    .tenant-account-actions{white-space:nowrap}
     .tenant-form-page{display:grid;gap:18px}
     .tenant-form-section{
       border:1px solid var(--line);background:#fff;padding:22px 20px 18px
@@ -169,10 +200,13 @@
     .tenant-template-link:hover{text-decoration:underline}
     .tenant-form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 12px}
     .tenant-form-field{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:8px}
+    .tenant-form-field[hidden]{display:none!important}
+    .tenant-form-field[data-compliance-types]{display:none}
+    .tenant-form-field[data-compliance-types].compliance-visible{display:grid}
     .tenant-form-field label{
       display:block;margin:0;color:#344054;font-size:14px;font-weight:500;line-height:20px;text-align:right;white-space:nowrap
     }
-    .tenant-form-field input,.tenant-form-field select{max-width:320px}
+    .tenant-form-field input,.tenant-form-field select,.tenant-form-field .custom-select{max-width:320px}
     .required-star{color:#e5484d;margin-left:2px}
     .tenant-form-field input:disabled,.tenant-form-field select:disabled{
       background:#f3f4f6;color:#667085
@@ -202,11 +236,37 @@
     .tenant-detail-text{
       align-items:flex-start;min-height:74px;line-height:1.6
     }
-    .tenant-upload{position:relative}
-    .tenant-upload input{padding-right:38px}
-    .tenant-upload:after{
-      content:"⇧";position:absolute;right:12px;bottom:8px;color:#98a2b3;font-size:18px;line-height:1
+    .tenant-upload{align-items:start}
+    .tenant-upload-control{width:100%;max-width:320px;display:grid;gap:8px}
+    .tenant-upload-trigger{
+      position:relative;min-height:104px;border:1px dashed #b9c6ff;border-radius:8px;background:#f8faff;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;color:#344054;
+      font-size:14px;font-weight:700;cursor:pointer;transition:border-color .18s ease,background-color .18s ease
     }
+    .tenant-upload-trigger:hover{border-color:var(--primary);background:#f3f6ff;color:var(--primary)}
+    .tenant-upload-icon{
+      width:24px;height:24px;border-radius:50%;background:#eef2ff;color:var(--primary);
+      display:inline-flex;align-items:center;justify-content:center;font-size:18px;line-height:1
+    }
+    .tenant-upload-preview{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#f8fafc
+    }
+    .tenant-upload.has-file .tenant-upload-preview{display:block}
+    .tenant-upload.has-file .tenant-upload-icon,.tenant-upload.has-file .tenant-upload-placeholder{display:none}
+    .tenant-upload-input{display:none}
+    .tenant-upload-file{
+      position:absolute;left:0;right:0;bottom:0;z-index:1;
+      display:none;align-items:center;justify-content:space-between;gap:10px;
+      min-height:34px;background:rgba(255,255,255,.94);padding:0 10px;border-top:1px solid rgba(223,227,234,.9)
+    }
+    .tenant-upload.has-file .tenant-upload-file{display:flex}
+    .tenant-upload-file-name{
+      min-width:0;color:#344054;font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+    }
+    .tenant-upload-delete{
+      border:0;background:transparent;color:#dc2626;font-size:13px;font-weight:700;cursor:pointer;padding:4px 0;white-space:nowrap
+    }
+    .tenant-upload-help{color:#98a2b3;font-size:12px;line-height:1.4}
     .tenant-create-actions{
       display:flex;justify-content:flex-end;gap:12px;padding:0 0 8px
     }
@@ -459,6 +519,60 @@
       justify-self:start;
       max-width:420px;
     }
+    .modal.assign-role-mode .modal-panel{width:min(620px,calc(100vw - 48px))}
+    .modal.assign-role-mode .modal-body{padding:22px 24px 20px}
+    .modal-seg[data-seg="assign-role"] .modal-grid{
+      grid-template-columns:1fr;
+      max-width:560px;
+      margin:0 auto;
+      gap:16px;
+    }
+    .assign-summary{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      border:1px solid var(--line);
+      border-radius:8px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .assign-summary-item{
+      min-height:58px;
+      padding:10px 12px;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fbfcff;
+    }
+    .assign-summary-item:nth-child(2n){border-right:0}
+    .assign-summary-item:nth-last-child(-n+2){border-bottom:0}
+    .assign-summary-item label{
+      display:block;
+      margin:0 0 6px;
+      color:#667085;
+      font-size:12px;
+      font-weight:600;
+      line-height:18px;
+    }
+    .assign-summary-item strong{
+      display:block;
+      color:#111827;
+      font-size:14px;
+      font-weight:700;
+      line-height:20px;
+      word-break:break-all;
+      white-space:normal;
+    }
+    .assign-system-preview{
+      min-height:38px;
+      display:flex;
+      align-items:center;
+      border:1px solid #dfe3ea;
+      border-radius:6px;
+      padding:0 12px;
+      color:#344054;
+      background:#f8fafc;
+      font-size:14px;
+    }
     .hidden-control{display:none}
     .choice-grid{display:flex;align-items:center;gap:30px;flex-wrap:wrap;min-height:32px;padding-top:0}
     .choice-grid.cols-4{gap:30px}
@@ -486,6 +600,12 @@
       padding:0!important;margin:0 8px 0 0!important;flex:0 0 14px;border:0;border-radius:50%;accent-color:var(--primary);cursor:pointer
     }
     .choice-option input[type="radio"]:after{display:none}
+    .modal-seg[data-seg="role"] #roleTenantTypeField > .choice-grid{margin-left:16px}
+    .modal-seg[data-seg="role"] #roleTenantTypeField .choice-option input[type="checkbox"]{
+      width:14px!important;height:14px!important;min-width:14px!important;max-width:14px!important;
+      min-height:14px!important;max-height:14px!important;margin:0 8px 0 0!important;
+      flex:0 0 14px;accent-color:var(--primary);cursor:pointer
+    }
     .modal.menu-mode .choice-grid[data-choice-for="menuFormType"]{gap:28px}
     .modal.menu-mode .choice-grid[data-choice-for="menuFormStatus"]{gap:24px}
     .modal.menu-mode .choice-option input{transform:none}
@@ -629,18 +749,22 @@
     #menus table td:first-child{text-align:left;padding-left:8px}
     #menus .tree-toggle{margin-right:2px}
     #roles table th:first-child,#roles table td:first-child{padding-left:8px}
-    #personnel table th:nth-child(1),#personnel table td:nth-child(1),
-    #personnel table th:nth-child(3),#personnel table td:nth-child(3),
-    #personnel table th:nth-child(5),#personnel table td:nth-child(5),
-    #personnel table th:nth-child(6),#personnel table td:nth-child(6){
-      text-align:left;padding-left:18px
+    #personnel table th:nth-child(1),#personnel table td:nth-child(1){
+      width:26%;white-space:nowrap
     }
-    #personnel table th:nth-child(2),#personnel table td:nth-child(2),
-    #personnel table th:nth-child(4),#personnel table td:nth-child(4),
-    #personnel table th:nth-child(7),#personnel table td:nth-child(7),
-    #personnel table th:nth-child(8),#personnel table td:nth-child(8){
-      text-align:center
+    #personnel table th:nth-child(2),#personnel table td:nth-child(2){
+      width:16%;white-space:nowrap
     }
+    #personnel table th:nth-child(3),#personnel table td:nth-child(3){
+      width:32%;white-space:normal;text-align:center
+    }
+    #personnel table th:nth-child(4),#personnel table td:nth-child(4){
+      width:10%;white-space:nowrap
+    }
+    #personnel table th:nth-child(5),#personnel table td:nth-child(5){
+      width:16%;white-space:nowrap
+    }
+    #personnel .row-actions{justify-content:center}
     .modal-seg{display:none}
     .modal-seg.active{display:block}
     .modal-foot{padding:0 20px 20px;display:flex;justify-content:flex-end;gap:10px}
@@ -652,6 +776,103 @@
     .confirm-title{font-size:17px;font-weight:800;color:#111827;margin-bottom:10px}
     .confirm-text{font-size:14px;color:#5f6b7a;line-height:1.7;margin-bottom:22px}
     .confirm-actions{display:flex;justify-content:flex-end;gap:10px}
+    .image-preview-modal{
+      position:fixed;inset:0;background:rgba(15,23,42,.62);display:none;align-items:center;justify-content:center;z-index:95;padding:24px
+    }
+    .image-preview-modal.show{display:flex}
+    .image-preview-panel{
+      width:min(920px,calc(100vw - 48px));max-height:calc(100vh - 48px);background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.32);overflow:hidden;display:flex;flex-direction:column
+    }
+    .image-preview-head{
+      padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px
+    }
+    .image-preview-title{
+      min-width:0;color:#111827;font-size:15px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+    }
+    .image-preview-close{
+      width:30px;height:30px;border:0;border-radius:6px;background:transparent;color:#667085;font-size:22px;line-height:1;cursor:pointer;flex:0 0 30px
+    }
+    .image-preview-close:hover{background:#f2f4f7;color:#1d2736}
+    .image-preview-body{
+      min-height:0;padding:18px;background:#0b1220;display:grid;place-items:center;overflow:auto
+    }
+    .image-preview-body img{
+      max-width:100%;max-height:calc(100vh - 160px);object-fit:contain;border-radius:8px;background:#fff
+    }
+    .drawer-mask{
+      position:fixed;inset:0;background:rgba(15,23,42,.32);display:none;z-index:80
+    }
+    .drawer-mask.show{display:block}
+    .tenant-role-drawer{
+      position:fixed;top:0;right:0;width:520px;max-width:calc(100vw - 32px);height:100vh;background:#fff;
+      box-shadow:-18px 0 48px rgba(15,23,42,.18);transform:translateX(100%);transition:transform .22s ease;z-index:81;
+      display:flex;flex-direction:column
+    }
+    .tenant-role-drawer.show{transform:translateX(0)}
+    .tenant-role-drawer-head{
+      padding:18px 20px 16px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:12px
+    }
+    .tenant-role-drawer-title{margin:0;font-size:18px;font-weight:800;color:#111827}
+    .tenant-role-drawer-subtitle{margin:6px 0 0;color:#667085;font-size:13px;line-height:1.6}
+    .tenant-role-drawer-close{
+      width:32px;height:32px;border:0;border-radius:6px;background:transparent;color:#667085;font-size:22px;line-height:1;cursor:pointer
+    }
+    .tenant-role-drawer-close:hover{background:#f2f4f7;color:#1d2736}
+    .tenant-role-drawer-body{flex:1;overflow:auto;padding:18px 20px 20px}
+    .tenant-role-current{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px
+    }
+    .tenant-role-current-item{
+      border:1px solid var(--line);border-radius:10px;background:#f8fafc;padding:12px 14px
+    }
+    .tenant-role-current-item label{
+      display:block;margin:0 0 6px;color:#667085;font-size:12px;font-weight:600
+    }
+    .tenant-role-current-item strong{
+      display:block;color:#111827;font-size:15px;font-weight:700;line-height:1.5
+    }
+    .tenant-role-selected{
+      border:1px solid #dbe4ff;border-radius:10px;background:#f7f9ff;padding:14px;margin-bottom:16px
+    }
+    .tenant-role-selected h4,.tenant-role-candidate h4{
+      margin:0 0 12px;font-size:14px;font-weight:700;color:#111827
+    }
+    .tenant-role-selected .tenant-role-tags{justify-content:flex-start}
+    .tenant-role-candidate{
+      border:1px solid var(--line);border-radius:10px;background:#fff;padding:14px
+    }
+    .tenant-role-card-list{display:grid;gap:10px}
+    .tenant-role-card{
+      border:1px solid #e6ebf2;border-radius:10px;padding:12px 14px;background:#fff;transition:border-color .18s ease, box-shadow .18s ease, background-color .18s ease
+    }
+    .tenant-role-card.active{
+      border-color:#b9c6ff;background:#f8faff;box-shadow:0 0 0 3px rgba(47,54,212,.08)
+    }
+    .tenant-role-card.disabled{
+      background:#f8fafc;opacity:.56
+    }
+    .tenant-role-card-top{
+      display:flex;align-items:flex-start;gap:10px
+    }
+    .tenant-role-card-check{
+      width:18px;height:18px;margin-top:2px;accent-color:var(--primary);cursor:pointer
+    }
+    .tenant-role-card-main{min-width:0;flex:1}
+    .tenant-role-card-name{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#111827;font-size:14px;font-weight:700;line-height:1.5
+    }
+    .tenant-role-card-meta{
+      margin-top:6px;color:#667085;font-size:13px;line-height:1.7
+    }
+    .tenant-role-card-meta span + span:before{
+      content:" | ";color:#c2c8d3;margin:0 6px
+    }
+    .tenant-role-card-empty{
+      padding:24px 12px;color:#98a2b3;font-size:13px;text-align:center
+    }
+    .tenant-role-drawer-foot{
+      padding:14px 20px 18px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px;background:#fff
+    }
     @media (max-width:1180px){
       .shell{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -675,12 +896,14 @@
       .check-grid{grid-template-columns:1fr}
       .tenant-form-grid{grid-template-columns:1fr}
       .tenant-form-field{grid-template-columns:92px minmax(0,1fr)}
-      .tenant-form-field input,.tenant-form-field select{max-width:none}
+      .tenant-form-field input,.tenant-form-field select,.tenant-form-field .custom-select{max-width:none}
       .tenant-detail-grid{grid-template-columns:1fr}
       .tenant-detail-field{grid-template-columns:minmax(84px,104px) minmax(0,1fr)}
       .tenant-toolbar{flex-direction:column;align-items:stretch}
       .tenant-create-actions{position:static;flex-direction:column}
       .tenant-section-heading{align-items:flex-start}
+      .tenant-role-drawer{width:100%;max-width:100%}
+      .tenant-role-current{grid-template-columns:1fr}
       .modal.qualification-mode{padding:12px}
       .modal.qualification-mode .modal-panel{width:100%;max-height:calc(100vh - 24px)}
       .qualification-layout{grid-template-columns:1fr;min-height:0}
@@ -744,9 +967,9 @@
         </div>
         <div class="submenu" id="tenantSubmenu">
           <div class="menu-item sub" data-page="tenant-list">租户列表</div>
+          <div class="menu-item sub" data-page="tenant-account">租户账号</div>
           <div class="menu-item sub" data-page="tenant-role">租户角色</div>
           <div class="menu-item sub" data-page="tenant-menu-page">租户菜单</div>
-          <div class="menu-item sub" data-page="tenant-permission">租户权限</div>
         </div>
       </div>
 
@@ -871,93 +1094,59 @@
           <div class="summary">
             <div class="stat"><label>账号</label><strong id="summaryAccountCount">0</strong></div>
             <div class="stat"><label>启用账号</label><strong id="summaryEnabledCount">0</strong></div>
-            <div class="stat"><label>授权租户</label><strong id="summaryTenantCount">0</strong></div>
-            <div class="stat"><label>待分配</label><strong id="summaryPendingCount">0</strong></div>
+            <div class="stat"><label>平台角色</label><strong id="summaryTenantCount">0</strong></div>
+            <div class="stat"><label>停用账号</label><strong id="summaryPendingCount">0</strong></div>
           </div>
 
           <div class="grid-2">
             <div class="panel">
               <div class="panel-body">
-                <div class="search cols-6">
+                <div class="search cols-4">
                   <input id="personnelAccountQuery" data-query-label="账号" placeholder="请输入账号" />
-                  <select id="personnelAccountTypeFilter"><option>全部账号类型</option><option>平台账号</option><option>租户账号</option></select>
-                  <input id="personnelTenantQuery" data-query-label="租户" placeholder="请输入租户名称" />
-                  <select id="personnelTenantTypeFilter"><option>全部租户类型</option><option value="0">自营租户</option><option value="1">企业租户</option><option value="2">个人租户</option><option value="3">渠道加盟商</option><option value="4">门店子租户</option></select>
+                  <select id="personnelRoleFilter"><option>全部角色</option><option>平台管理员</option><option>平台运营</option><option>平台财务</option><option>平台运维</option></select>
                   <select id="personnelStatusFilter"><option>全部状态</option><option>启用</option><option>停用</option></select>
                   <button class="btn primary" id="personnelSearch">搜索</button>
                 </div>
                 <div class="panel-head no-title">
                   <div></div>
                   <div class="actions">
-                    <button class="btn primary" data-open="personnel">+ 新增账号</button>
+                    <button class="btn primary" data-open="personnel">+ 新增平台账号</button>
                   </div>
                 </div>
                 <table>
                   <thead>
                     <tr>
-                      <th>账号</th><th>账号类型</th><th>所属租户</th><th>租户类型</th><th>角色</th><th>系统</th><th>状态</th><th>操作</th>
+                      <th>账号</th><th>角色</th><th>授权系统</th><th>状态</th><th>操作</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-tenant-id="TEN-ENT-001">
-                      <td><span class="link">admin@tianqi.com</span></td>
-                      <td><span class="tag gray">租户账号</span></td>
-                      <td>天齐企业租户</td>
-                      <td><span class="tag green">企业租户</span></td>
-                      <td>租户管理员</td>
-                      <td>管理后台、商户后台</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
-                    </tr>
                     <tr>
                       <td><span class="link">chenjing@platform.com</span></td>
-                      <td><span class="tag">平台账号</span></td>
-                      <td>平台内部</td>
-                      <td><span class="tag">平台角色</span></td>
                       <td>平台运营</td>
                       <td>管理后台、运营中心</td>
                       <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
                     </tr>
                     <tr>
                       <td><span class="link">alex.wang@platform.com</span></td>
-                      <td><span class="tag">平台账号</span></td>
-                      <td>平台内部</td>
-                      <td><span class="tag">平台角色</span></td>
                       <td>平台管理员</td>
                       <td>运营管理平台</td>
                       <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
                     </tr>
-                    <tr data-tenant-id="TEN-PRS-001">
-                      <td><span class="link">wangming@tianqi.com</span></td>
-                      <td><span class="tag gray">租户账号</span></td>
-                      <td>张三个人租户</td>
-                      <td><span class="tag gray">个人租户</span></td>
-                      <td>租户管理员</td>
-                      <td>商户后台</td>
+                    <tr>
+                      <td><span class="link">finance@platform.com</span></td>
+                      <td>平台财务</td>
+                      <td>运营管理平台、财务中心</td>
                       <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
                     </tr>
-                    <tr data-tenant-id="TEN-CHN-001">
-                      <td><span class="link">mia.chan@hkpartner.com</span></td>
-                      <td><span class="tag gray">租户账号</span></td>
-                      <td>香港渠道加盟商 A</td>
-                      <td><span class="tag gray">渠道加盟商</span></td>
-                      <td>门店运营</td>
-                      <td>商户后台、运营助手</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
-                    </tr>
-                    <tr data-tenant-id="TEN-STR-001">
-                      <td><span class="link">tony.xu@ukstore.com</span></td>
-                      <td><span class="tag gray">租户账号</span></td>
-                      <td>英国门店子租户</td>
-                      <td><span class="tag warn">门店子租户</span></td>
-                      <td>门店财务</td>
-                      <td>商户后台</td>
+                    <tr>
+                      <td><span class="link">ops@platform.com</span></td>
+                      <td>平台运维</td>
+                      <td>运营管理平台、设备运维中心</td>
                       <td><span class="tag red">停用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">启用</span></td>
+                      <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">启用</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -973,7 +1162,7 @@
               <div class="panel-body">
                 <div class="search cols-3">
                   <input data-query-label="角色名称" placeholder="请输入角色名称" />
-                  <select><option>全部适用对象</option><option>平台用户</option><option>租户用户</option></select>
+                  <select><option>全部状态</option><option>启用</option><option>停用</option></select>
                   <button class="btn primary">搜索</button>
                 </div>
                 <div class="list-region">
@@ -985,33 +1174,28 @@
                   </div>
                   <table>
                   <thead>
-                    <tr><th>角色</th><th>适用对象</th><th>授权系统</th><th>账号数</th><th>权限数</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>角色</th><th>授权系统</th><th>账号数</th><th>权限数</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
                     <tr data-role-tenant-type="">
-                      <td>平台管理员</td><td>平台用户</td><td>运营管理平台</td>
+                      <td>平台管理员</td><td>运营管理平台</td>
                       <td>16</td>
                       <td>48</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
                     </tr>
                     <tr data-role-tenant-type="">
-                      <td>平台运营</td><td>平台用户</td><td>运营管理平台</td>
+                      <td>平台运营</td><td>运营管理平台</td>
                       <td>6</td>
                       <td>22</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
                     </tr>
-                    <tr data-role-tenant-type="自营租户">
-                      <td>租户管理员</td><td>租户用户</td><td>商户运营后台</td>
-                      <td>23</td>
-                      <td>31</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
+                    <tr data-role-tenant-type="">
+                      <td>平台财务</td><td>运营管理平台、财务中心</td>
+                      <td>2</td>
+                      <td>18</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
                     </tr>
-                    <tr data-role-tenant-type="企业租户">
-                      <td>区域运营</td><td>租户用户</td><td>运营中心、运营助手</td>
-                      <td>6</td>
-                      <td>22</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
-                    </tr>
-                    <tr data-role-tenant-type="渠道加盟商">
-                      <td>门店运营</td><td>租户用户</td><td>商户运营后台、运营助手</td>
-                      <td>8</td>
-                      <td>19</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
+                    <tr data-role-tenant-type="">
+                      <td>平台运维</td><td>运营管理平台、设备运维中心</td>
+                      <td>1</td>
+                      <td>16</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span>　<span class="link">启用</span></td>
                     </tr>
                   </tbody>
                   </table>
@@ -1029,6 +1213,7 @@
                 <div class="filter-bar" id="menuFilters">
                   <div class="filter-field"><label>菜单名称：</label><input id="menuKeyword" placeholder="请输入菜单名称" /></div>
                   <div class="filter-field"><label>所属系统：</label><select id="menuSystem"><option value="">请选择</option><option>运营管理平台</option><option>商户运营后台</option><option>运营助手</option><option>运营中心</option></select></div>
+                  <select id="menuType" class="hidden-control"><option value="">请选择菜单类型</option><option>目录</option><option>菜单</option><option>按钮</option></select>
                   <div class="filter-field"><label>状态：</label><select id="menuStatus"><option value="">请选择</option><option>正常</option><option>停用</option></select></div>
                   <div class="filter-actions">
                     <button class="btn primary" id="menuSearch">搜索</button>
@@ -1051,7 +1236,7 @@
                     <tr class="tree-row hidden" data-node="person" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="person">⌄</button>账号管理</div></td><td>运营管理平台</td><td>system:person:list</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="person-list" data-parent="person"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="person-list">⌄</button>账号列表</div></td><td>运营管理平台</td><td>system:person:list:view</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">新增账号</td><td>运营管理平台</td><td>system:person:add</td><td>system/person/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">编辑账号</td><td>运营管理平台</td><td>system:person:edit</td><td>system/person/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">分配账号角色</td><td>运营管理平台</td><td>system:person:assign-role</td><td>system/person/assign-role</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">停用账号</td><td>运营管理平台</td><td>system:person:disable</td><td>system/person/disable</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="role-menu" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-menu">⌄</button>角色管理</div></td><td>运营管理平台</td><td>system:role:list</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="role-list" data-parent="role-menu"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-list">⌄</button>角色列表</div></td><td>运营管理平台</td><td>system:role:list:view</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
@@ -1064,15 +1249,16 @@
                     <tr class="tree-row hidden" data-node="tenant-list-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-list-page">⌄</button>租户列表</div></td><td>运营管理平台</td><td>tenant:list</td><td>tenant/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">新增租户</td><td>运营管理平台</td><td>tenant:add</td><td>tenant/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">停用租户</td><td>运营管理平台</td><td>tenant:disable</td><td>tenant/disable</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="tenant-account-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-account-page">⌄</button>租户账号</div></td><td>运营管理平台</td><td>tenant:account</td><td>tenant/account</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-account-page"><td class="tree-indent-2">新增租户账号</td><td>运营管理平台</td><td>tenant:account:add</td><td>tenant/account/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-account-page"><td class="tree-indent-2">分配租户账号角色</td><td>运营管理平台</td><td>tenant:account:assign-role</td><td>tenant/account/assign-role</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-account-page"><td class="tree-indent-2">修改租户账号密码</td><td>运营管理平台</td><td>tenant:account:password</td><td>tenant/account/password</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="tenant-role-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-role-page">⌄</button>租户角色</div></td><td>运营管理平台</td><td>tenant:role</td><td>tenant/role</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">新增租户角色</td><td>运营管理平台</td><td>tenant:role:add</td><td>tenant/role/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">编辑租户角色</td><td>运营管理平台</td><td>tenant:role:edit</td><td>tenant/role/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="tenant-menu-config-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-menu-config-page">⌄</button>租户菜单</div></td><td>运营管理平台</td><td>tenant:menu</td><td>tenant/menu</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">新增租户菜单</td><td>运营管理平台</td><td>tenant:menu:add</td><td>tenant/menu/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">编辑租户菜单</td><td>运营管理平台</td><td>tenant:menu:edit</td><td>tenant/menu/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="tenant-permission-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-permission-page">⌄</button>租户权限</div></td><td>运营管理平台</td><td>tenant:permission</td><td>tenant/permission</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-permission-page"><td class="tree-indent-2">新增权限</td><td>运营管理平台</td><td>tenant:permission:add</td><td>tenant/permission/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-permission-page"><td class="tree-indent-2">编辑权限</td><td>运营管理平台</td><td>tenant:permission:edit</td><td>tenant/permission/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row" data-node="store-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="store-menu">⌄</button>门店管理</div></td><td>运营管理平台</td><td>store:manage</td><td>store/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="store-list-page" data-parent="store-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="store-list-page">⌄</button>门店列表</div></td><td>运营管理平台</td><td>store:list</td><td>store/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="store-list-page"><td class="tree-indent-2">新增门店</td><td>运营管理平台</td><td>store:add</td><td>store/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
@@ -1091,9 +1277,9 @@
                     <tr class="tree-row" data-node="finance-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="finance-menu">⌄</button>财务管理</div></td><td>运营管理平台</td><td>finance:manage</td><td>finance/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-node="split-page" data-parent="finance-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="split-page">⌄</button>分账管理</div></td><td>运营管理平台</td><td>finance:split:list</td><td>finance/split</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="split-page"><td class="tree-indent-2">新增分账规则</td><td>运营管理平台</td><td>finance:split:add</td><td>finance/split/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="merchant-order"><td><div class="tree-name">订单列表</div></td><td>商户运营后台</td><td>merchant:order:list</td><td>order/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="assistant-device"><td><div class="tree-name">设备巡检</div></td><td>运营助手</td><td>assistant:device:check</td><td>device/check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="center-dashboard"><td><div class="tree-name">运营看板</div></td><td>运营中心</td><td>center:dashboard</td><td>dashboard/index</td><td>菜单</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="merchant-order" data-shared-menu-key="merchant-order"><td><div class="tree-name">订单列表</div></td><td>商户运营后台</td><td>merchant:order:list</td><td>order/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="assistant-device" data-shared-menu-key="assistant-device"><td><div class="tree-name">设备巡检</div></td><td>运营助手</td><td>assistant:device:check</td><td>device/check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="center-dashboard" data-shared-menu-key="center-dashboard"><td><div class="tree-name">运营看板</div></td><td>运营中心</td><td>center:dashboard</td><td>dashboard/index</td><td>菜单</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
                   </tbody>
                   </table>
                 </div>
@@ -1112,11 +1298,8 @@
                   <label>租户类型：</label>
                   <select>
                     <option>请选择</option>
-                    <option>自营租户</option>
-                    <option>企业租户</option>
-                    <option>个人租户</option>
-                    <option>渠道加盟商</option>
-                    <option>门店子租户</option>
+                    <option>自营</option>
+                    <option>渠道商</option>
                   </select>
                 </div>
                 <div class="filter-field">
@@ -1124,7 +1307,6 @@
                   <select>
                     <option>请选择</option>
                     <option>已生效</option>
-                    <option>待激活</option>
                     <option>停用</option>
                   </select>
                 </div>
@@ -1144,7 +1326,7 @@
                   <tr><th>租户ID</th><th>租户名称</th><th>关联商户</th><th>租户类型</th><th>租户状态</th><th>创建时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr data-tenant-short-name="银河星维">
+                  <tr data-tenant-short-name="银河星维" data-tenant-type="自营" data-tenant-enterprise-type="企业">
                     <td><span class="link">1001</span></td>
                     <td>深圳好饮科技有限公司</td>
                     <td>
@@ -1153,12 +1335,12 @@
                         <span class="tenant-store-full">内测店铺-参考AI原点社区2.0太空舱、北京国家卫星气象、北京国贸CBD太空舱、北京望京SOHO咖啡亭、北京中关村软件园太空舱、北京三里屯太空咖啡亭、北京西单大悦城太空舱、北京五道口购物中心咖啡亭、北京朝阳大悦城太空舱、北京海淀黄庄咖啡亭、北京丰台科技园太空舱、北京通州万达广场咖啡亭、北京大兴机场太空舱、北京石景山万达咖啡亭、北京昌平回龙观太空舱、北京顺义祥云小镇咖啡亭、北京亦庄经济开发区太空舱、北京房山长阳半岛咖啡亭、北京门头沟永定楼太空舱、北京延庆冬奥村咖啡亭 <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span>
                       </div>
                     </td>
-                    <td>企业租户</td>
+                    <td>自营</td>
                     <td><span class="tag green">已生效</span></td>
                     <td>2026-04-22 10:20:01</td>
-                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">禁用</button></div></td>
+                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
-                  <tr data-tenant-short-name="银河太空舱">
+                  <tr data-tenant-short-name="银河太空舱" data-tenant-type="渠道商" data-tenant-enterprise-type="个人">
                     <td><span class="link">1002</span></td>
                     <td>银河太空舱运营有限公司</td>
                     <td>
@@ -1167,12 +1349,12 @@
                         <span class="tenant-store-full">观音山国际写字楼、厦门软件园生活广场、厦门集美万达太空舱、厦门湖里万象城咖啡亭、厦门SM城市广场太空舱、厦门高崎机场咖啡亭、厦门中山路太空舱、厦门海沧阿罗海咖啡亭、厦门翔安创新园太空舱、厦门同安宝龙广场咖啡亭、厦门杏林湾商务区太空舱、厦门五缘湾咖啡亭、厦门火炬园太空舱、厦门软件园三期咖啡亭、厦门大学访客中心太空舱、厦门轮渡码头咖啡亭、厦门北站太空舱、厦门环岛路咖啡亭、厦门会展中心太空舱、厦门观音山沙滩咖啡亭 <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span>
                       </div>
                     </td>
-                    <td>个人租户</td>
+                    <td>渠道商</td>
                     <td><span class="tag green">已生效</span></td>
                     <td>2026-04-22 10:20:01</td>
-                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">禁用</button></div></td>
+                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
-                  <tr data-tenant-short-name="A租户">
+                  <tr data-tenant-short-name="A租户" data-tenant-type="渠道商" data-tenant-enterprise-type="企业">
                     <td><span class="link">1003</span></td>
                     <td>深圳大铲湾商业运营有限公司</td>
                     <td>
@@ -1181,12 +1363,12 @@
                         <span class="tenant-store-full">深圳大铲湾太空舱、深圳宝安体育馆太空舱、深圳前海卓越咖啡亭、深圳南山科技园太空舱、深圳湾万象城咖啡亭、深圳福田中心太空舱、深圳皇岗口岸咖啡亭、深圳北站太空舱、深圳龙华壹方天地咖啡亭、深圳龙岗万科广场太空舱、深圳蛇口海上世界咖啡亭、深圳机场T3太空舱、深圳光明科学城咖啡亭、深圳坪山创新广场太空舱、深圳布吉万象汇咖啡亭、深圳罗湖京基太空舱、深圳欢乐海岸咖啡亭、深圳大学城太空舱、深圳华强北咖啡亭、深圳盐田壹海城太空舱 <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span>
                       </div>
                     </td>
-                    <td>企业租户</td>
+                    <td>渠道商</td>
                     <td><span class="tag green">已生效</span></td>
                     <td>2026-05-22 10:20:01</td>
-                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">禁用</button></div></td>
+                    <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
-                  <tr data-tenant-short-name="B租户">
+                  <tr data-tenant-short-name="B租户" data-tenant-type="自营" data-tenant-enterprise-type="个体工商户">
                     <td><span class="link">1004</span></td>
                     <td>上海城市空间运营有限公司</td>
                     <td>
@@ -1195,10 +1377,73 @@
                         <span class="tenant-store-full">上海陆家嘴金融中心太空舱、上海南京路步行街咖啡亭、上海虹桥枢纽太空舱、上海静安寺咖啡亭、上海徐家汇太空舱、上海张江高科咖啡亭、上海五角场太空舱、上海人民广场咖啡亭、上海世博园太空舱、上海漕河泾咖啡亭、上海长宁来福士太空舱、上海浦东机场咖啡亭、上海迪士尼小镇太空舱、上海杨浦滨江咖啡亭、上海前滩太空舱、上海大宁国际咖啡亭、上海松江大学城太空舱、上海闵行万象城咖啡亭、上海嘉定新城太空舱、上海宝山日月光咖啡亭 <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span>
                       </div>
                     </td>
-                    <td>企业租户</td>
-                    <td><span class="tag warn">待激活</span></td>
+                    <td>自营</td>
+                    <td><span class="tag red">停用</span></td>
                     <td>2026-06-22 10:20:01</td>
                     <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">启用</button><button class="link" type="button" data-tenant-action="delete">删除</button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="tenant-account">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="search cols-5">
+                <input id="tenantAccountQuery" data-query-label="账号" placeholder="请输入账号" />
+                <select id="tenantAccountTenantFilter"><option>全部租户</option><option>深圳好饮科技有限公司</option><option>银河太空舱运营有限公司</option><option>深圳大铲湾商业运营有限公司</option><option>上海城市空间运营有限公司</option></select>
+                <select id="tenantAccountRoleFilter"><option>全部角色</option><option>租户管理员</option><option>企业财务</option><option>区域运营</option><option>门店运营</option><option>财务查看</option></select>
+                <select id="tenantAccountStatusFilter"><option>全部状态</option><option>启用</option><option>停用</option></select>
+                <button class="btn primary" id="tenantAccountSearch">搜索</button>
+              </div>
+              <div class="tenant-toolbar">
+                <div></div>
+                <div class="actions">
+                  <button class="btn primary" id="tenantAccountAdd">+ 新增租户账号</button>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>账号</th><th>所属租户</th><th>租户类型</th><th>角色</th><th>授权系统</th><th>状态</th><th>操作</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="link">admin@tianqi.com</span></td>
+                    <td>深圳好饮科技有限公司</td>
+                    <td><span class="tag green">自营</span></td>
+                    <td>租户管理员</td>
+                    <td>商户运营后台、运营中心</td>
+                    <td><span class="tag green">启用</span></td>
+                    <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span>　<span class="link">删除</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="link">finance@tianqi.com</span></td>
+                    <td>深圳好饮科技有限公司</td>
+                    <td><span class="tag green">自营</span></td>
+                    <td>企业财务</td>
+                    <td>商户运营后台、运营中心</td>
+                    <td><span class="tag green">启用</span></td>
+                    <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span>　<span class="link">删除</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="link">ops@hkpartner.com</span></td>
+                    <td>深圳大铲湾商业运营有限公司</td>
+                    <td><span class="tag gray">渠道商</span></td>
+                    <td>区域运营</td>
+                    <td>运营中心、运营助手</td>
+                    <td><span class="tag green">启用</span></td>
+                    <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">停用</span>　<span class="link">删除</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="link">store@spacecabin.com</span></td>
+                    <td>银河太空舱运营有限公司</td>
+                    <td><span class="tag green">自营</span></td>
+                    <td>财务查看</td>
+                    <td>商户运营后台</td>
+                    <td><span class="tag red">停用</span></td>
+                    <td><span class="link">分配角色</span>　<span class="link">修改密码</span>　<span class="link">启用</span>　<span class="link">删除</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -1213,19 +1458,23 @@
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>租户类型</label>
-                  <select><option>自营租户</option><option>企业租户</option><option>个人租户</option><option>渠道加盟商</option><option>门店子租户</option></select>
+                  <select><option value="">请选择租户类型</option><option>自营</option><option>渠道商</option></select>
+                </div>
+                <div class="tenant-form-field">
+                  <label><span class="required-star">*</span>企业类型</label>
+                  <select id="tenantCreateEnterpriseType"><option value="">请选择企业类型</option><option>企业</option><option>个体工商户</option><option>个人</option></select>
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>所在地区</label>
-                  <select id="tenantRegion"><option>中国（CN）</option><option>中国香港（HK）</option><option>英国（UK）</option><option>新加坡（SG）</option></select>
+                  <select id="tenantRegion"><option value="">请选择所在地区</option><option>中国（CN）</option><option>中国香港（HK）</option><option>英国（UK）</option><option>新加坡（SG）</option></select>
                 </div>
                 <div class="tenant-form-field">
                   <label>时区</label>
-                  <input id="tenantTimezone" value="北京时间（UTC+08:00）（Asia/Shanghai）" disabled />
+                  <input id="tenantTimezone" placeholder="选择所在地区后自动带出" disabled />
                 </div>
                 <div class="tenant-form-field">
                   <label>语言</label>
-                  <input id="tenantLanguage" value="简体中文（zh-CN）" disabled />
+                  <input id="tenantLanguage" placeholder="选择所在地区后自动带出" disabled />
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>租户名称</label>
@@ -1233,23 +1482,19 @@
                 </div>
                 <div class="tenant-form-field">
                   <label>租户简称</label>
-                  <input placeholder="输入租户简称" />
-                </div>
-                <div class="tenant-form-field">
-                  <label><span class="required-star">*</span>租户状态</label>
-                  <select><option>正常</option><option>待激活</option><option>停用</option></select>
+                  <input placeholder="请输入租户简称" />
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>租户等级</label>
-                  <select><option>普通</option><option>重点</option><option>战略</option></select>
+                  <select><option value="">请选择租户等级</option><option>普通</option><option>重点</option><option>战略</option></select>
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>入驻渠道</label>
-                  <select><option>内部开通</option><option>平台招商</option><option>渠道推荐</option></select>
+                  <select><option value="">请选择入驻渠道</option><option>内部开通</option><option>平台招商</option><option>渠道推荐</option></select>
                 </div>
                 <div class="tenant-form-field">
                   <label>内部负责人</label>
-                  <input placeholder="输入内部负责人名字" />
+                  <input placeholder="请输入内部负责人名字" />
                 </div>
               </div>
             </section>
@@ -1257,49 +1502,173 @@
             <section class="tenant-form-section">
               <h2 class="tenant-section-title">企业财务合规</h2>
               <div class="tenant-form-grid">
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>统一社会信用代码</label>
-                  <input placeholder="输入统一社会信用代码" />
+                  <input placeholder="请输入统一社会信用代码" />
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>法人姓名</label>
-                  <input placeholder="输入法人姓名" />
+                  <input placeholder="请输入法人姓名" />
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label>法人证件类型</label>
-                  <select><option>选择法人证件类型</option><option>居民身份证</option><option>护照</option><option>港澳居民来往内地通行证</option></select>
+                  <select><option>请选择法人证件类型</option><option>居民身份证</option><option>护照</option><option>港澳居民来往内地通行证</option></select>
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label>对应证件号</label>
-                  <input placeholder="输入对应证件号码" />
+                  <input placeholder="请输入对应证件号码" />
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label>法人手机号</label>
-                  <input placeholder="输入法人手机号" />
+                  <input placeholder="请输入法人手机号" />
                 </div>
-                <div class="tenant-form-field tenant-upload">
-                  <label><span class="required-star">*</span>营业执照图片</label>
-                  <input placeholder="上传营业执照图片" />
-                </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>注册地址</label>
-                  <input placeholder="输入注册地址" />
+                  <input placeholder="请输入注册地址" />
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>实际经营地址</label>
-                  <input placeholder="输入实际经营地址" />
+                  <input placeholder="请输入实际经营地址" />
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>所属行业</label>
-                  <select><option>选择所属行业</option><option>餐饮服务</option><option>零售</option><option>商业运营</option></select>
+                  <select><option>请选择所属行业</option><option>餐饮服务</option><option>零售</option><option>商业运营</option></select>
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label>经营范围</label>
-                  <select><option>选择经营范围</option><option>咖啡饮品销售</option><option>食品销售</option><option>设备运营服务</option></select>
+                  <select><option>请选择经营范围</option><option>咖啡饮品销售</option><option>食品销售</option><option>设备运营服务</option></select>
                 </div>
-                <div class="tenant-form-field">
+                <div class="tenant-form-field" data-compliance-types="企业">
                   <label><span class="required-star">*</span>成立日期</label>
-                  <input placeholder="选择成立日期" />
+                  <input placeholder="请选择成立日期" />
+                </div>
+                <div class="tenant-form-field tenant-upload" data-compliance-types="企业">
+                  <label><span class="required-star">*</span>营业执照图片</label>
+                  <div class="tenant-upload-control">
+                    <label class="tenant-upload-trigger">
+                      <span class="tenant-upload-icon">+</span>
+                      <span class="tenant-upload-placeholder">上传营业执照图片</span>
+                      <img class="tenant-upload-preview" alt="" />
+                      <input class="tenant-upload-input" type="file" accept="image/*" />
+                      <div class="tenant-upload-file">
+                        <span class="tenant-upload-file-name">-</span>
+                        <button class="tenant-upload-delete" type="button">删除</button>
+                      </div>
+                    </label>
+                    <div class="tenant-upload-help">支持 JPG、PNG，建议图片清晰完整</div>
+                  </div>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>个体户名称</label>
+                  <input placeholder="请输入个体工商户名称" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>统一社会信用代码</label>
+                  <input placeholder="请输入统一社会信用代码或注册号" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>经营者姓名</label>
+                  <input placeholder="请输入经营者姓名" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label>经营者证件类型</label>
+                  <select><option>请选择经营者证件类型</option><option>居民身份证</option><option>护照</option><option>港澳居民来往内地通行证</option></select>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label>经营者证件号</label>
+                  <input placeholder="请输入经营者证件号码" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label>经营者手机号</label>
+                  <input placeholder="请输入经营者手机号" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>经营场所</label>
+                  <input placeholder="请输入经营场所地址" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>所属行业</label>
+                  <select><option>请选择所属行业</option><option>餐饮服务</option><option>零售</option><option>商业运营</option></select>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label>经营范围</label>
+                  <select><option>请选择经营范围</option><option>咖啡饮品销售</option><option>食品销售</option><option>设备运营服务</option></select>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>成立日期</label>
+                  <input placeholder="请选择成立日期" />
+                </div>
+                <div class="tenant-form-field tenant-upload" data-compliance-types="个体工商户">
+                  <label><span class="required-star">*</span>营业执照图片</label>
+                  <div class="tenant-upload-control">
+                    <label class="tenant-upload-trigger">
+                      <span class="tenant-upload-icon">+</span>
+                      <span class="tenant-upload-placeholder">上传营业执照图片</span>
+                      <img class="tenant-upload-preview" alt="" />
+                      <input class="tenant-upload-input" type="file" accept="image/*" />
+                      <div class="tenant-upload-file">
+                        <span class="tenant-upload-file-name">-</span>
+                        <button class="tenant-upload-delete" type="button">删除</button>
+                      </div>
+                    </label>
+                    <div class="tenant-upload-help">支持 JPG、PNG，建议图片清晰完整</div>
+                  </div>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>个人姓名</label>
+                  <input placeholder="请输入个人姓名" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>证件类型</label>
+                  <select><option>请选择证件类型</option><option>居民身份证</option><option>护照</option><option>港澳居民来往内地通行证</option></select>
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>证件号码</label>
+                  <input placeholder="请输入证件号码" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>手机号</label>
+                  <input placeholder="请输入手机号" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>联系地址</label>
+                  <input placeholder="请输入联系地址" />
+                </div>
+                <div class="tenant-form-field" data-compliance-types="个人">
+                  <label>经营说明</label>
+                  <input placeholder="请输入经营说明" />
+                </div>
+                <div class="tenant-form-field tenant-upload" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>证件正面</label>
+                  <div class="tenant-upload-control">
+                    <label class="tenant-upload-trigger">
+                      <span class="tenant-upload-icon">+</span>
+                      <span class="tenant-upload-placeholder">上传证件正面图片</span>
+                      <img class="tenant-upload-preview" alt="" />
+                      <input class="tenant-upload-input" type="file" accept="image/*" />
+                      <div class="tenant-upload-file">
+                        <span class="tenant-upload-file-name">-</span>
+                        <button class="tenant-upload-delete" type="button">删除</button>
+                      </div>
+                    </label>
+                    <div class="tenant-upload-help">支持 JPG、PNG，证件信息需清晰可见</div>
+                  </div>
+                </div>
+                <div class="tenant-form-field tenant-upload" data-compliance-types="个人">
+                  <label><span class="required-star">*</span>证件反面</label>
+                  <div class="tenant-upload-control">
+                    <label class="tenant-upload-trigger">
+                      <span class="tenant-upload-icon">+</span>
+                      <span class="tenant-upload-placeholder">上传证件反面图片</span>
+                      <img class="tenant-upload-preview" alt="" />
+                      <input class="tenant-upload-input" type="file" accept="image/*" />
+                      <div class="tenant-upload-file">
+                        <span class="tenant-upload-file-name">-</span>
+                        <button class="tenant-upload-delete" type="button">删除</button>
+                      </div>
+                    </label>
+                    <div class="tenant-upload-help">支持 JPG、PNG，证件信息需清晰可见</div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -1312,27 +1681,27 @@
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
                   <label>默认币种</label>
-                  <input id="tenantCurrency" value="CNY（¥）" disabled />
+                  <input id="tenantCurrency" placeholder="选择所在地区后自动带出" disabled />
                 </div>
                 <div class="tenant-form-field">
                   <label>发票抬头</label>
-                  <input placeholder="输入发票抬头" />
+                  <input placeholder="请输入发票抬头" />
                 </div>
                 <div class="tenant-form-field">
                   <label>纳税识别号</label>
-                  <input placeholder="输入纳税识别号" />
+                  <input placeholder="请输入纳税识别号" />
                 </div>
                 <div class="tenant-form-field">
                   <label>开票地址</label>
-                  <input placeholder="输入开票地址" />
+                  <input placeholder="请输入开票地址" />
                 </div>
                 <div class="tenant-form-field">
                   <label>开票电话</label>
-                  <input placeholder="输入开票电话" />
+                  <input placeholder="请输入开票电话" />
                 </div>
                 <div class="tenant-form-field">
                   <label>开票邮箱</label>
-                  <input placeholder="输入开票邮箱" />
+                  <input placeholder="请输入开票邮箱" />
                 </div>
               </div>
             </section>
@@ -1342,19 +1711,19 @@
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>联系人姓名</label>
-                  <input placeholder="输入联系人姓名" />
+                  <input placeholder="请输入联系人姓名" />
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>联系人手机号</label>
-                  <input placeholder="输入联系人手机号" />
+                  <input placeholder="请输入联系人手机号" />
                 </div>
                 <div class="tenant-form-field">
                   <label><span class="required-star">*</span>联系人邮箱</label>
-                  <input placeholder="输入联系人邮箱" />
+                  <input placeholder="请输入联系人邮箱" />
                 </div>
                 <div class="tenant-form-field">
                   <label>备用电话</label>
-                  <input placeholder="输入备用电话" />
+                  <input placeholder="请输入备用电话" />
                 </div>
               </div>
             </section>
@@ -1373,6 +1742,7 @@
               <div class="tenant-detail-grid">
                 <div class="tenant-detail-field"><label>租户ID</label><div class="tenant-detail-value" id="tenantDetailIdPage">-</div></div>
                 <div class="tenant-detail-field"><label>租户类型</label><div class="tenant-detail-value" id="tenantDetailTypePage">-</div></div>
+                <div class="tenant-detail-field"><label>企业类型</label><div class="tenant-detail-value" id="tenantDetailEnterpriseTypePage">-</div></div>
                 <div class="tenant-detail-field"><label>所在地区</label><div class="tenant-detail-value" id="tenantDetailRegionPage">-</div></div>
                 <div class="tenant-detail-field"><label>时区</label><div class="tenant-detail-value" id="tenantDetailTimezonePage">-</div></div>
                 <div class="tenant-detail-field"><label>语言</label><div class="tenant-detail-value" id="tenantDetailLanguagePage">-</div></div>
@@ -1436,37 +1806,12 @@
           </div>
         </section>
 
-        <section class="page" id="tenant-permission">
-          <div class="panel">
-            <div class="panel-body">
-              <div class="search cols-4">
-                <input placeholder="权限名称" />
-                <select><option>全部适用租户类型</option><option>自营租户</option><option>企业租户</option><option>个人租户</option><option>渠道加盟商</option><option>门店子租户</option></select>
-                <select><option>全部状态</option><option>启用</option><option>停用</option></select>
-                <button class="btn primary">搜索</button>
-              </div>
-              <div class="tenant-toolbar">
-                <div></div>
-                <div class="actions">
-                  <button class="btn primary" id="tenantPermissionAdd">+ 新增权限</button>
-                </div>
-              </div>
-              <table><thead><tr><th>权限名称</th><th>适用租户类型</th><th>授权系统</th><th>权限范围说明</th><th>已绑定租户</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead><tbody>
-                <tr><td>企业租户标准权限</td><td><span class="tag green">企业租户</span></td><td>商户运营后台、运营中心</td><td>门店、订单、财务看板</td><td>18</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:30</td><td><span class="link">编辑</span>　<span class="link">复制权限</span>　<span class="link">停用</span></td></tr>
-                <tr><td>渠道加盟商运营权限</td><td><span class="tag gray">渠道加盟商</span></td><td>商户运营后台、运营助手</td><td>门店、订单、设备巡检</td><td>9</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:10</td><td><span class="link">编辑</span>　<span class="link">复制权限</span>　<span class="link">停用</span></td></tr>
-                <tr><td>门店子租户精简权限</td><td><span class="tag warn">门店子租户</span></td><td>商户运营后台</td><td>订单、门店基础运营</td><td>24</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20</td><td><span class="link">编辑</span>　<span class="link">复制权限</span>　<span class="link">停用</span></td></tr>
-                <tr><td>个人租户轻量权限</td><td><span class="tag gray">个人租户</span></td><td>商户运营后台</td><td>订单查询、门店概览</td><td>6</td><td><span class="tag red">停用</span></td><td>2026-08-05 16:45</td><td><span class="link">编辑</span>　<span class="link">复制权限</span>　<span class="link">启用</span></td></tr>
-              </tbody></table>
-            </div>
-          </div>
-        </section>
-
         <section class="page" id="tenant-role">
           <div class="panel">
             <div class="panel-body">
               <div class="search cols-4">
                 <input placeholder="角色名称" />
-                <select><option>全部适用租户类型</option><option>自营租户</option><option>企业租户</option><option>个人租户</option><option>渠道加盟商</option><option>门店子租户</option></select>
+                <select><option>全部适用租户类型</option><option>自营</option><option>渠道商</option></select>
                 <select><option>全部状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary">搜索</button>
               </div>
@@ -1477,10 +1822,11 @@
                 </div>
               </div>
               <table><thead><tr><th>角色名称</th><th>适用租户类型</th><th>授权系统</th><th>关联权限</th><th>账号数</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead><tbody>
-                <tr><td>租户管理员</td><td><span class="tag green">企业租户</span></td><td>商户运营后台、运营中心</td><td>企业租户标准权限</td><td>18</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:20</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
-                <tr><td>区域运营</td><td><span class="tag gray">渠道加盟商</span></td><td>运营中心、运营助手</td><td>渠道加盟商运营权限</td><td>9</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:05</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
-                <tr><td>门店运营</td><td><span class="tag warn">门店子租户</span></td><td>商户运营后台</td><td>门店子租户精简权限</td><td>24</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:15</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
-                <tr><td>财务查看</td><td><span class="tag gray">个人租户</span></td><td>商户运营后台</td><td>个人租户轻量权限</td><td>6</td><td><span class="tag red">停用</span></td><td>2026-08-05 16:30</td><td><span class="link">编辑</span>　<span class="link">启用</span></td></tr>
+                <tr><td>自营管理员</td><td><span class="tag green">自营</span></td><td>商户运营后台、运营中心</td><td>自营租户标准权限</td><td>18</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:20</td><td><span class="link">编辑</span>　<span class="link">停用</span>　<span class="link">删除</span></td></tr>
+                <tr><td>自营财务</td><td><span class="tag green">自营</span></td><td>商户运营后台、运营中心</td><td>自营财务看板权限</td><td>5</td><td><span class="tag green">启用</span></td><td>2026-08-07 08:50</td><td><span class="link">编辑</span>　<span class="link">停用</span>　<span class="link">删除</span></td></tr>
+                <tr><td>渠道运营</td><td><span class="tag gray">渠道商</span></td><td>运营中心、运营助手</td><td>渠道商运营权限</td><td>9</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:05</td><td><span class="link">编辑</span>　<span class="link">停用</span>　<span class="link">删除</span></td></tr>
+                <tr><td>渠道门店</td><td><span class="tag gray">渠道商</span></td><td>商户运营后台</td><td>渠道商门店精简权限</td><td>24</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:15</td><td><span class="link">编辑</span>　<span class="link">停用</span>　<span class="link">删除</span></td></tr>
+                <tr><td>自营查看</td><td><span class="tag green">自营</span></td><td>商户运营后台</td><td>自营轻量权限</td><td>6</td><td><span class="tag red">停用</span></td><td>2026-08-05 16:30</td><td><span class="link">编辑</span>　<span class="link">启用</span>　<span class="link">删除</span></td></tr>
               </tbody></table>
             </div>
           </div>
@@ -1513,12 +1859,12 @@
                     <tr class="tree-row" data-node="merchant-workbench"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-workbench">⌄</button>工作台</div></td><td>商户运营后台</td><td>merchant/dashboard</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="merchant-workbench"><td class="tree-indent-1">经营概览</td><td>商户运营后台</td><td>merchant/dashboard/overview</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row" data-node="merchant-order"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-order">⌄</button>订单管理</div></td><td>商户运营后台</td><td>merchant/order</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="merchant-order"><td class="tree-indent-1">订单列表</td><td>商户运营后台</td><td>merchant/order/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="merchant-order" data-shared-menu-key="merchant-order"><td class="tree-indent-1">订单列表</td><td>商户运营后台</td><td>merchant/order/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row hidden" data-parent="merchant-order"><td class="tree-indent-1">退款列表</td><td>商户运营后台</td><td>merchant/order/refund</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row" data-node="assistant-check"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="assistant-check">⌄</button>巡检任务</div></td><td>运营助手</td><td>assistant/task</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="assistant-check"><td class="tree-indent-1">设备巡检</td><td>运营助手</td><td>assistant/task/device-check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="assistant-check" data-shared-menu-key="assistant-device"><td class="tree-indent-1">设备巡检</td><td>运营助手</td><td>assistant/task/device-check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row" data-node="center-board"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="center-board">⌄</button>运营中心</div></td><td>运营中心</td><td>center/dashboard</td><td>目录</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="center-board"><td class="tree-indent-1">经营看板</td><td>运营中心</td><td>center/dashboard/index</td><td>菜单</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="center-board" data-shared-menu-key="center-dashboard"><td class="tree-indent-1">经营看板</td><td>运营中心</td><td>center/dashboard/index</td><td>菜单</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -1910,7 +2256,7 @@
   <div class="modal" id="modal">
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-head">
-        <h3 id="modalTitle">新增人员</h3>
+        <h3 id="modalTitle">新增平台账号</h3>
         <button class="modal-close" id="closeModal" aria-label="关闭">×</button>
       </div>
       <div class="modal-body">
@@ -1948,28 +2294,22 @@
               </div>
               <div class="field-help" id="personContactHelp">请输入邮箱前缀并选择后缀</div>
             </div>
-            <div class="field full"><label><span class="required-mark">*</span>账号类型</label>
-              <select id="personType" class="hidden-control"><option value="">请选择</option><option value="tenant">租户账号</option><option value="platform">平台账号</option></select>
-              <div class="choice-grid" data-choice-for="personType">
-                <label class="choice-option" data-value="tenant"><input type="radio" name="personTypeRadio" />租户账号</label>
-                <label class="choice-option" data-value="platform"><input type="radio" name="personTypeRadio" />平台账号</label>
-              </div>
+            <div class="field full" style="display:none"><label><span class="required-mark">*</span>账号类型</label>
+              <select id="personType" class="hidden-control"><option value="platform" selected>平台账号</option><option value="tenant">租户账号</option></select>
             </div>
-            <div class="field full" id="personTenantIdField"><label><span class="required-mark">*</span>租户ID</label>
+            <div class="field full" id="personTenantIdField" style="display:none"><label><span class="required-mark">*</span>所属租户</label>
               <select id="personTenantId">
                 <option value="">请选择租户ID</option>
               </select>
               <div class="field-help" id="personTenantHelp">每个租户仅可创建一个管理员账号，已被占用的租户ID不可再次选择</div>
             </div>
-            <div class="field full"><label>角色</label>
-              <select id="personRole" class="hidden-control"><option value="">请选择</option><option>租户管理员</option><option>门店运营</option><option>门店财务</option><option>运维人员</option><option>平台管理员</option><option>平台运营</option></select>
+            <div class="field full"><label id="personRoleLabel"><span class="required-mark">*</span>平台角色</label>
+              <select id="personRole" class="hidden-control"><option value="">请选择</option><option>平台管理员</option><option>平台运营</option><option>平台财务</option><option>平台运维</option></select>
               <div class="choice-grid cols-4" data-choice-for="personRole">
-                <label class="choice-option" data-value="租户管理员"><input type="radio" name="personRoleRadio" />租户管理员</label>
-                <label class="choice-option" data-value="门店运营"><input type="radio" name="personRoleRadio" />门店运营</label>
-                <label class="choice-option" data-value="门店财务"><input type="radio" name="personRoleRadio" />门店财务</label>
-                <label class="choice-option" data-value="运维人员"><input type="radio" name="personRoleRadio" />运维人员</label>
                 <label class="choice-option" data-value="平台管理员"><input type="radio" name="personRoleRadio" />平台管理员</label>
                 <label class="choice-option" data-value="平台运营"><input type="radio" name="personRoleRadio" />平台运营</label>
+                <label class="choice-option" data-value="平台财务"><input type="radio" name="personRoleRadio" />平台财务</label>
+                <label class="choice-option" data-value="平台运维"><input type="radio" name="personRoleRadio" />平台运维</label>
               </div>
             </div>
             <div class="field" id="personInitialPasswordField"><label><span class="required-mark">*</span>初始密码</label><input id="personInitialPassword" type="password" placeholder="请输入初始密码" autocomplete="new-password" /><div class="password-help" id="personInitialPasswordHelp">8-20位，至少包含字母和数字</div></div>
@@ -1977,19 +2317,41 @@
           </div>
         </section>
 
+        <section class="modal-seg" data-seg="assign-role">
+          <div class="modal-grid">
+            <div class="assign-summary">
+              <div class="assign-summary-item">
+                <label>账号</label>
+                <strong id="assignRoleAccount">-</strong>
+              </div>
+              <div class="assign-summary-item">
+                <label>账号类型</label>
+                <strong id="assignRoleAccountType">-</strong>
+              </div>
+              <div class="assign-summary-item">
+                <label>所属租户</label>
+                <strong id="assignRoleTenant">-</strong>
+              </div>
+              <div class="assign-summary-item">
+                <label>当前状态</label>
+                <strong id="assignRoleStatus">-</strong>
+              </div>
+            </div>
+            <div class="field full"><label id="assignRoleLabel"><span class="required-mark">*</span>角色</label>
+              <select id="assignRoleSelect" class="hidden-control"><option value="">请选择</option></select>
+              <div class="choice-grid cols-4" id="assignRoleChoices" data-choice-for="assignRoleSelect"></div>
+            </div>
+            <div class="field full"><label>授权系统</label><div class="assign-system-preview" id="assignRoleSystems">-</div></div>
+          </div>
+        </section>
+
         <section class="modal-seg" data-seg="menu">
           <div class="modal-grid">
             <div class="field"><label>菜单名称</label><input id="menuFormName" placeholder="请输入菜单名称" /></div>
-            <div class="field menu-parent-field"><label>上级菜单</label>
-              <select id="menuParentSelect" class="hidden-control"></select>
-              <div class="tree-select" id="menuParentTree">
-                <div class="tree-select-trigger placeholder" id="menuParentTrigger">请选择</div>
-                <div class="tree-select-panel" id="menuParentPanel"></div>
-              </div>
-            </div>
             <div class="field full"><label>所属系统</label>
               <select id="menuFormSystem" class="hidden-control">
-                <option>运营管理平台</option>
+                <option value="">请选择所属系统</option>
+                <option value="运营管理平台">运营管理平台</option>
                 <option>商户运营后台</option>
                 <option>运营助手</option>
                 <option>运营中心</option>
@@ -1999,6 +2361,13 @@
                 <label class="choice-option" data-value="商户运营后台"><input type="radio" name="menuSystemRadio" />商户运营后台</label>
                 <label class="choice-option" data-value="运营助手"><input type="radio" name="menuSystemRadio" />运营助手</label>
                 <label class="choice-option" data-value="运营中心"><input type="radio" name="menuSystemRadio" />运营中心</label>
+              </div>
+            </div>
+            <div class="field menu-parent-field"><label>上级菜单</label>
+              <select id="menuParentSelect" class="hidden-control"></select>
+              <div class="tree-select" id="menuParentTree">
+                <div class="tree-select-trigger placeholder" id="menuParentTrigger">请选择</div>
+                <div class="tree-select-panel" id="menuParentPanel"></div>
               </div>
             </div>
             <div class="field full"><label>菜单类型</label>
@@ -2027,22 +2396,16 @@
 
         <section class="modal-seg" data-seg="role">
           <div class="modal-grid">
-            <div class="field"><label><span class="required-mark">*</span>角色名称</label><input id="roleName" placeholder="输入角色名称" /></div>
-            <div class="field"><label><span class="required-mark">*</span>适用对象</label>
-              <select id="roleTarget" class="hidden-control"><option value="">请选择</option><option value="platform">平台用户</option><option value="tenant">租户用户</option></select>
-              <div class="choice-grid" data-choice-for="roleTarget">
-                <label class="choice-option" data-value="platform"><input type="radio" name="roleTargetRadio" checked />平台用户</label>
-                <label class="choice-option" data-value="tenant"><input type="radio" name="roleTargetRadio" />租户用户</label>
-              </div>
-            </div>
+            <div class="field"><label><span class="required-mark">*</span>角色名称</label><input id="roleName" placeholder="请输入角色名称" /></div>
+            <select id="roleTarget" class="hidden-control"><option value="platform">平台用户</option><option value="tenant">租户用户</option></select>
             <div class="field full" id="roleTenantTypeField"><label><span class="required-mark">*</span>适用租户类型</label>
-              <select id="roleTenantType" class="hidden-control"><option value="">请选择</option><option value="0">自营租户</option><option value="1">企业租户</option><option value="2">个人租户</option><option value="3">渠道加盟商</option><option value="4">门店子租户</option></select>
-              <div class="choice-grid cols-4" data-choice-for="roleTenantType">
-                <label class="choice-option" data-value="0"><input type="radio" name="roleTenantTypeRadio" />自营租户</label>
-                <label class="choice-option" data-value="1"><input type="radio" name="roleTenantTypeRadio" />企业租户</label>
-                <label class="choice-option" data-value="2"><input type="radio" name="roleTenantTypeRadio" />个人租户</label>
-                <label class="choice-option" data-value="3"><input type="radio" name="roleTenantTypeRadio" />渠道加盟商</label>
-                <label class="choice-option" data-value="4"><input type="radio" name="roleTenantTypeRadio" />门店子租户</label>
+              <select id="roleTenantType" class="hidden-control" multiple>
+                <option value="0">自营</option>
+                <option value="1">渠道商</option>
+              </select>
+              <div class="choice-grid cols-4" data-choice-for="roleTenantType" data-choice-mode="multiple">
+                <label class="choice-option" data-value="0"><input type="checkbox" name="roleTenantTypeCheckbox" />自营</label>
+                <label class="choice-option" data-value="1"><input type="checkbox" name="roleTenantTypeCheckbox" />渠道商</label>
               </div>
             </div>
             <div class="field full"><label><span class="required-mark">*</span>状态</label>
@@ -2060,7 +2423,7 @@
                     <label class="permission-option dir level-1" data-permission-level="1"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />角色与权限</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />账号管理</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增账号</label>
-                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />编辑账号</label>
+                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />分配账号角色</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />停用账号</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />角色管理</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增角色</label>
@@ -2071,12 +2434,15 @@
                     <label class="permission-option dir level-1" data-permission-level="1"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户管理</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户列表</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增租户</label>
+                    <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户账号</label>
+                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增租户账号</label>
+                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />分配租户账号角色</label>
+                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />修改租户账号密码</label>
+                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />删除租户账号</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户角色</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增租户角色</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户菜单</label>
                     <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增租户菜单</label>
-                    <label class="permission-option menu level-2" data-permission-level="2"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />租户权限</label>
-                    <label class="permission-option button level-3" data-permission-level="3"><input type="checkbox" />新增权限</label>
                     <label class="permission-option dir level-1" data-permission-level="1"><button type="button" class="permission-toggle" data-permission-toggle>⌄</button><input type="checkbox" />订单管理</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><input type="checkbox" />订单列表</label>
                     <label class="permission-option menu level-2" data-permission-level="2"><input type="checkbox" />退款列表</label>
@@ -2140,18 +2506,22 @@
             <div class="field"><label><span class="required-mark">*</span>租户类型</label>
               <select id="tenantTypeSelect">
                 <option>请选择租户类型</option>
-                <option>自营租户</option>
-                <option>企业租户</option>
-                <option>个人租户</option>
-                <option>渠道加盟商</option>
-                <option>门店子租户</option>
+                <option>自营</option>
+                <option>渠道商</option>
               </select>
             </div>
-            <div class="field"><label><span class="required-mark">*</span>租户状态</label>
+            <div class="field"><label><span class="required-mark">*</span>企业类型</label>
+              <select id="tenantEnterpriseTypeSelect">
+                <option>请选择企业类型</option>
+                <option>企业</option>
+                <option>个体工商户</option>
+                <option>个人</option>
+              </select>
+            </div>
+            <div class="field" id="tenantStatusField"><label><span class="required-mark">*</span>租户状态</label>
               <select id="tenantStatusSelect">
                 <option>请选择租户状态</option>
                 <option>已生效</option>
-                <option>待激活</option>
                 <option>停用</option>
               </select>
             </div>
@@ -2388,6 +2758,18 @@
     </div>
   </div>
 
+  <div class="image-preview-modal" id="imagePreviewModal">
+    <div class="image-preview-panel" role="dialog" aria-modal="true" aria-labelledby="imagePreviewTitle">
+      <div class="image-preview-head">
+        <div class="image-preview-title" id="imagePreviewTitle">图片预览</div>
+        <button class="image-preview-close" id="imagePreviewClose" aria-label="关闭">×</button>
+      </div>
+      <div class="image-preview-body">
+        <img id="imagePreviewImg" alt="图片预览" />
+      </div>
+    </div>
+  </div>
+
   <script>
     const menuItems = Array.from(document.querySelectorAll('.menu-item[data-page]'));
     const pages = Array.from(document.querySelectorAll('.page'));
@@ -2413,12 +2795,20 @@
     const confirmText = document.getElementById('confirmText');
     const confirmCancel = document.getElementById('confirmCancel');
     const confirmOk = document.getElementById('confirmOk');
+    const imagePreviewModal = document.getElementById('imagePreviewModal');
+    const imagePreviewClose = document.getElementById('imagePreviewClose');
+    const imagePreviewImg = document.getElementById('imagePreviewImg');
+    const imagePreviewTitle = document.getElementById('imagePreviewTitle');
     const modalSave = document.getElementById('modalSave');
     const tenantId = document.getElementById('tenantId');
     const tenantName = document.getElementById('tenantName');
     const tenantShortName = document.getElementById('tenantShortName');
     const tenantTypeSelect = document.getElementById('tenantTypeSelect');
+    const tenantEnterpriseTypeSelect = document.getElementById('tenantEnterpriseTypeSelect');
+    const tenantStatusField = document.getElementById('tenantStatusField');
     const tenantStatusSelect = document.getElementById('tenantStatusSelect');
+    const tenantCreateEnterpriseType = document.getElementById('tenantCreateEnterpriseType');
+    const tenantComplianceFields = Array.from(document.querySelectorAll('[data-compliance-types]'));
     const tenantContact = document.getElementById('tenantContact');
     const tenantPhone = document.getElementById('tenantPhone');
     const tenantStoreNote = document.getElementById('tenantStoreNote');
@@ -2493,12 +2883,12 @@
         level: '普通',
         channel: '渠道推荐',
         owner: '林岚',
-        creditCode: '个人租户不适用',
+        creditCode: '渠道商不适用',
         legalName: '王明',
         certType: '居民身份证',
         certNo: '1101********5678',
         legalPhone: '139****2211',
-        license: '个人租户不适用',
+        license: '渠道商不适用',
         registeredAddress: '北京市朝阳区建国路88号',
         businessAddress: '北京市朝阳区望京街9号',
         industry: '餐饮服务',
@@ -2506,7 +2896,7 @@
         establishedAt: '2023-03-12',
         currency: 'CNY（¥）',
         invoiceTitle: '银河太空舱运营有限公司',
-        taxNo: '个人租户不适用',
+        taxNo: '渠道商不适用',
         invoiceAddress: '北京市朝阳区建国路88号',
         invoicePhone: '010-67892345',
         invoiceEmail: 'billing@yinhe.example.com',
@@ -2575,11 +2965,14 @@
       }
     };
     const roleTenantTypeField = document.getElementById('roleTenantTypeField');
+    const roleTargetField = document.getElementById('roleTargetField');
     const roleTenantType = document.getElementById('roleTenantType');
     const roleTarget = document.getElementById('roleTarget');
     const roleStatus = document.getElementById('roleStatus');
     const roleName = document.getElementById('roleName');
     let roleContext = { mode: 'create', row: null };
+    const tenantRoleAdd = document.getElementById('tenantRoleAdd');
+    const tenantMenuAdd = document.getElementById('tenantMenuAdd');
     const menuKeyword = document.getElementById('menuKeyword');
     const menuSystem = document.getElementById('menuSystem');
     const menuType = document.getElementById('menuType');
@@ -2587,6 +2980,7 @@
     const menuSearch = document.getElementById('menuSearch');
     const menuReset = document.getElementById('menuReset');
     let menuRows = Array.from(document.querySelectorAll('#menus tbody .tree-row'));
+    let tenantMenuRows = Array.from(document.querySelectorAll('#tenant-menu-page tbody .tree-row'));
     const rootMenuAdd = document.getElementById('rootMenuAdd');
     const menuFormSystem = document.getElementById('menuFormSystem');
     const menuFormType = document.getElementById('menuFormType');
@@ -2600,7 +2994,7 @@
     const menuFormPermission = document.getElementById('menuFormPermission');
     const menuFormStatus = document.getElementById('menuFormStatus');
     const menuRouteField = document.getElementById('menuRouteField');
-    let menuContext = { mode: 'create', parentId: '', parentName: '根目录', system: '运营管理平台', row: null };
+    let menuContext = { mode: 'create', parentId: '', parentName: '根目录', system: '运营管理平台', row: null, scope: 'platformMenu' };
     let confirmHandler = null;
     const personCreateMethod = document.getElementById('personCreateMethod');
     const personContact = document.getElementById('personContact');
@@ -2615,6 +3009,7 @@
     const personTenantIdField = document.getElementById('personTenantIdField');
     const personTenantId = document.getElementById('personTenantId');
     const personTenantHelp = document.getElementById('personTenantHelp');
+    const personRoleLabel = document.getElementById('personRoleLabel');
     const personRole = document.getElementById('personRole');
     const personInitialPasswordField = document.getElementById('personInitialPasswordField');
     const personConfirmPasswordField = document.getElementById('personConfirmPasswordField');
@@ -2626,9 +3021,7 @@
     const accountConfirmPassword = document.getElementById('accountConfirmPassword');
     const accountPasswordHelp = document.getElementById('accountPasswordHelp');
     const personnelAccountQuery = document.getElementById('personnelAccountQuery');
-    const personnelAccountTypeFilter = document.getElementById('personnelAccountTypeFilter');
-    const personnelTenantQuery = document.getElementById('personnelTenantQuery');
-    const personnelTenantTypeFilter = document.getElementById('personnelTenantTypeFilter');
+    const personnelRoleFilter = document.getElementById('personnelRoleFilter');
     const personnelStatusFilter = document.getElementById('personnelStatusFilter');
     const personnelSearch = document.getElementById('personnelSearch');
     const summaryAccountCount = document.getElementById('summaryAccountCount');
@@ -2637,14 +3030,23 @@
     const summaryPendingCount = document.getElementById('summaryPendingCount');
     let personContext = { mode: 'create', row: null };
     let passwordContext = { row: null };
-    const tenantAccountOptions = [
-      { id: 'TEN-OWN-001', name: '平台自营租户', type: '自营租户', tagClass: 'green' },
-      { id: 'TEN-ENT-001', name: '天齐企业租户', type: '企业租户', tagClass: 'green' },
-      { id: 'TEN-PRS-001', name: '张三个人租户', type: '个人租户', tagClass: 'gray' },
-      { id: 'TEN-CHN-001', name: '香港渠道加盟商 A', type: '渠道加盟商', tagClass: 'gray' },
-      { id: 'TEN-STR-001', name: '英国门店子租户', type: '门店子租户', tagClass: 'warn' },
-      { id: 'TEN-ENT-002', name: '英国企业租户 B', type: '企业租户', tagClass: 'green' }
-    ];
+    const assignRoleAccount = document.getElementById('assignRoleAccount');
+    const assignRoleAccountType = document.getElementById('assignRoleAccountType');
+    const assignRoleTenant = document.getElementById('assignRoleTenant');
+    const assignRoleStatus = document.getElementById('assignRoleStatus');
+    const assignRoleLabel = document.getElementById('assignRoleLabel');
+    const assignRoleSelect = document.getElementById('assignRoleSelect');
+    const assignRoleChoices = document.getElementById('assignRoleChoices');
+    const assignRoleSystems = document.getElementById('assignRoleSystems');
+    let assignRoleContext = { row: null, scope: 'platform' };
+    const tenantAccountAdd = document.getElementById('tenantAccountAdd');
+    const tenantAccountQuery = document.getElementById('tenantAccountQuery');
+    const tenantAccountTenantFilter = document.getElementById('tenantAccountTenantFilter');
+    const tenantAccountRoleFilter = document.getElementById('tenantAccountRoleFilter');
+    const tenantAccountStatusFilter = document.getElementById('tenantAccountStatusFilter');
+    const tenantAccountSearch = document.getElementById('tenantAccountSearch');
+    const platformRoleOptions = ['平台管理员', '平台运营', '平台财务', '平台运维'];
+    const tenantRoleOptions = ['租户管理员', '企业财务', '区域运营', '门店运营', '财务查看'];
 
     function pageMeta(pageId){
       const item = document.querySelector(`.menu-item[data-page="${pageId}"]`);
@@ -2704,8 +3106,33 @@
       renderPageNavigation(pageId);
       location.hash = pageId;
       window.scrollTo({ top: 0, behavior: 'auto' });
-      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-permission') {
+      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-account' || pageId === 'tenant-role' || pageId === 'tenant-menu-page') {
         refreshCustomSelects(page);
+      }
+      if (pageId === 'tenant-create') updateTenantComplianceFields();
+    }
+
+    function roleScopeConfig(scope = 'platformRole'){
+      return scope === 'tenantRole'
+        ? { table: '#tenant-role table', statusCell: 5, actionCell: 7, defaultTarget: 'tenant' }
+        : { table: '#roles table', statusCell: 4, actionCell: 5, defaultTarget: 'platform' };
+    }
+
+    function menuScopeConfig(scope = 'platformMenu'){
+      return scope === 'tenantMenu'
+        ? { page: '#tenant-menu-page', table: '#tenant-menu-page table', defaultSystem: '商户运营后台' }
+        : { page: '#menus', table: '#menus table', defaultSystem: '运营管理平台' };
+    }
+
+    function menuRowsForScope(scope = 'platformMenu'){
+      return scope === 'tenantMenu' ? tenantMenuRows : menuRows;
+    }
+
+    function setMenuRowsForScope(scope, rows){
+      if (scope === 'tenantMenu') {
+        tenantMenuRows = rows;
+      } else {
+        menuRows = rows;
       }
     }
 
@@ -2734,50 +3161,55 @@
       });
     }
 
+    function tenantOptionsFromList(){
+      return Array.from(document.querySelectorAll('#tenant-list table tbody tr')).map(row => ({
+        id: row.cells[0]?.textContent.trim() || '',
+        name: row.cells[1]?.textContent.trim() || '',
+        type: row.cells[3]?.textContent.trim() || '',
+        status: row.cells[4]?.textContent.trim() || ''
+      })).filter(option => option.id && option.name);
+    }
+
     function findTenantOptionById(id){
-      return tenantAccountOptions.find(option => option.id === id) || null;
+      return tenantOptionsFromList().find(option => option.id === id) || null;
     }
 
-    function usedTenantIds(excludeRow = null){
-      return new Set(
-        Array.from(document.querySelectorAll('#personnel table tbody tr[data-tenant-id]'))
-          .filter(row => row !== excludeRow)
-          .map(row => row.dataset.tenantId)
-          .filter(Boolean)
-      );
+    function findTenantOptionByName(name){
+      return tenantOptionsFromList().find(option => option.name === name) || null;
     }
 
-    function renderTenantIdOptions(selectedId = '', excludeRow = null){
-      const usedIds = usedTenantIds(excludeRow);
+    function renderTenantIdOptions(selectedId = ''){
       personTenantId.innerHTML = '';
       const placeholder = document.createElement('option');
       placeholder.value = '';
-      placeholder.textContent = '请选择租户ID';
+      placeholder.textContent = '请选择所属租户';
       personTenantId.appendChild(placeholder);
 
-      tenantAccountOptions.forEach(option => {
+      tenantOptionsFromList().forEach(option => {
         const el = document.createElement('option');
         el.value = option.id;
-        el.textContent = `${option.id} / ${option.name}`;
-        el.disabled = usedIds.has(option.id) && option.id !== selectedId;
+        el.textContent = `${option.name}（${option.id}）`;
+        el.dataset.name = option.name;
+        el.dataset.type = option.type;
+        el.disabled = option.status.includes('停用') && option.id !== selectedId;
         personTenantId.appendChild(el);
       });
 
       personTenantId.value = selectedId;
       personTenantHelp.textContent = personTenantId.value
         ? `当前租户：${findTenantOptionById(personTenantId.value)?.name || '-'}`
-        : '每个租户仅可创建一个管理员账号，已被占用的租户ID不可再次选择';
+        : '租户账号必须绑定一个已生效租户';
     }
 
     function updatePersonnelSummary(){
       const rows = Array.from(document.querySelectorAll('#personnel table tbody tr'));
-      const enabled = rows.filter(row => row.cells[6]?.textContent.includes('启用')).length;
-      const tenantRows = rows.filter(row => row.dataset.tenantId);
-      const usedTenantIdsCount = new Set(tenantRows.map(row => row.dataset.tenantId)).size;
+      const enabled = rows.filter(row => row.cells[3]?.textContent.includes('启用')).length;
+      const disabled = rows.filter(row => row.cells[3]?.textContent.includes('停用')).length;
+      const roleCount = new Set(rows.map(row => row.cells[1]?.textContent.trim()).filter(Boolean)).size;
       summaryAccountCount.textContent = String(rows.length);
       summaryEnabledCount.textContent = String(enabled);
-      summaryTenantCount.textContent = String(usedTenantIdsCount);
-      summaryPendingCount.textContent = String(Math.max(tenantAccountOptions.length - usedTenantIdsCount, 0));
+      summaryTenantCount.textContent = String(roleCount);
+      summaryPendingCount.textContent = String(disabled);
     }
 
     function filterText(select){
@@ -2790,20 +3222,14 @@
 
     function applyPersonnelFilters(){
       const accountKeyword = personnelAccountQuery?.value.trim().toLowerCase() || '';
-      const tenantKeyword = personnelTenantQuery?.value.trim().toLowerCase() || '';
-      const accountType = filterText(personnelAccountTypeFilter);
-      const tenantType = filterText(personnelTenantTypeFilter);
+      const role = filterText(personnelRoleFilter);
       const status = filterText(personnelStatusFilter);
       document.querySelectorAll('#personnel table tbody tr').forEach(row => {
         const account = row.cells[0]?.textContent.trim().toLowerCase() || '';
-        const rowAccountType = row.cells[1]?.textContent.trim() || '';
-        const tenant = row.cells[2]?.textContent.trim().toLowerCase() || '';
-        const rowTenantType = row.cells[3]?.textContent.trim() || '';
-        const rowStatus = row.cells[6]?.textContent.trim() || '';
+        const rowRole = row.cells[1]?.textContent.trim() || '';
+        const rowStatus = row.cells[3]?.textContent.trim() || '';
         const matched = (!accountKeyword || account.includes(accountKeyword))
-          && (!tenantKeyword || tenant.includes(tenantKeyword))
-          && (isAllFilter(accountType) || rowAccountType.includes(accountType))
-          && (isAllFilter(tenantType) || rowTenantType.includes(tenantType))
+          && (isAllFilter(role) || rowRole.includes(role))
           && (isAllFilter(status) || rowStatus.includes(status));
         row.style.display = matched ? '' : 'none';
       });
@@ -2812,9 +3238,7 @@
     function bindPersonnelFilters(){
       [
         personnelAccountQuery,
-        personnelAccountTypeFilter,
-        personnelTenantQuery,
-        personnelTenantTypeFilter,
+        personnelRoleFilter,
         personnelStatusFilter
       ].forEach(control => {
         if (!control) return;
@@ -2830,13 +3254,122 @@
       personnelSearch?.addEventListener('click', applyPersonnelFilters);
     }
 
+    function setPersonRoleOptions(scope = 'platform', selectedValue = ''){
+      const roles = scope === 'tenantAccount' ? tenantRoleOptions : platformRoleOptions;
+      const roleLabel = scope === 'tenantAccount' ? '租户角色' : '平台角色';
+      personRoleLabel.innerHTML = `<span class="required-mark">*</span>${roleLabel}`;
+      personRole.innerHTML = '<option value="">请选择</option>';
+      roles.forEach(role => {
+        const option = document.createElement('option');
+        option.value = role;
+        option.textContent = role;
+        personRole.appendChild(option);
+      });
+      const choiceGrid = document.querySelector('[data-choice-for="personRole"]');
+      if (choiceGrid) {
+        choiceGrid.innerHTML = roles.map(role => `
+          <label class="choice-option" data-value="${escapeHtml(role)}"><input type="radio" name="personRoleRadio" />${escapeHtml(role)}</label>
+        `).join('');
+        choiceGrid.querySelectorAll('.choice-option').forEach(option => {
+          option.addEventListener('click', event => {
+            if (personRole.disabled) return;
+            event.preventDefault();
+            personRole.value = option.dataset.value;
+            syncChoiceGroup(personRole);
+            personRole.dispatchEvent(new Event('change'));
+          });
+        });
+      }
+      personRole.value = roles.includes(selectedValue) ? selectedValue : '';
+      syncChoiceGroup(personRole);
+    }
+
+    function currentPersonScope(){
+      return personContext.scope === 'tenantAccount' ? 'tenantAccount' : 'platform';
+    }
+
+    function systemsForAssignRole(scope, role){
+      return scope === 'tenantAccount' ? tenantAccountSystemsForRole(role) : platformSystemsForRole(role);
+    }
+
+    function setAssignRoleOptions(scope = 'platform', selectedValue = ''){
+      const roles = scope === 'tenantAccount' ? tenantRoleOptions : platformRoleOptions;
+      const roleLabel = scope === 'tenantAccount' ? '租户角色' : '平台角色';
+      assignRoleLabel.innerHTML = `<span class="required-mark">*</span>${roleLabel}`;
+      assignRoleSelect.innerHTML = '<option value="">请选择</option>';
+      roles.forEach(role => {
+        const option = document.createElement('option');
+        option.value = role;
+        option.textContent = role;
+        assignRoleSelect.appendChild(option);
+      });
+      assignRoleChoices.innerHTML = roles.map(role => `
+        <label class="choice-option" data-value="${escapeHtml(role)}"><input type="radio" name="assignRoleRadio" />${escapeHtml(role)}</label>
+      `).join('');
+      assignRoleChoices.querySelectorAll('.choice-option').forEach(option => {
+        option.addEventListener('click', event => {
+          event.preventDefault();
+          assignRoleSelect.value = option.dataset.value;
+          syncChoiceGroup(assignRoleSelect);
+          assignRoleSystems.textContent = systemsForAssignRole(scope, assignRoleSelect.value);
+        });
+      });
+      assignRoleSelect.value = roles.includes(selectedValue) ? selectedValue : '';
+      syncChoiceGroup(assignRoleSelect);
+      assignRoleSystems.textContent = assignRoleSelect.value ? systemsForAssignRole(scope, assignRoleSelect.value) : '-';
+    }
+
+    function openAssignRoleModal(row, scope = 'platform'){
+      if (!row) return;
+      modal.classList.remove('menu-mode');
+      modal.classList.remove('role-mode');
+      modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
+      modal.classList.remove('qualification-mode');
+      modal.classList.add('assign-role-mode');
+      assignRoleContext = { row, scope };
+      modalTitle.textContent = scope === 'tenantAccount' ? '分配租户账号角色' : '分配平台账号角色';
+      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'assign-role'));
+      const isTenantAccount = scope === 'tenantAccount';
+      assignRoleAccount.textContent = row.cells[0]?.textContent.trim() || '-';
+      assignRoleAccountType.textContent = isTenantAccount ? '租户账号' : '平台账号';
+      assignRoleTenant.textContent = isTenantAccount ? row.cells[1]?.textContent.trim() || '-' : '-';
+      assignRoleStatus.textContent = row.cells[isTenantAccount ? 5 : 3]?.textContent.trim() || '-';
+      setAssignRoleOptions(scope, row.cells[isTenantAccount ? 3 : 1]?.textContent.trim() || '');
+      modal.classList.add('show');
+    }
+
+    function saveAssignRole(){
+      const { row, scope } = assignRoleContext;
+      if (!row || !assignRoleSelect.value) {
+        assignRoleSelect.focus();
+        return false;
+      }
+      const systemText = systemsForAssignRole(scope, assignRoleSelect.value);
+      if (scope === 'tenantAccount') {
+        row.cells[3].textContent = assignRoleSelect.value;
+        row.cells[4].textContent = systemText;
+        renderTenantAccountActions(row);
+        applyTenantAccountFilters();
+      } else {
+        row.cells[1].textContent = assignRoleSelect.value;
+        row.cells[2].textContent = systemText;
+        updatePersonnelSummary();
+      }
+      return true;
+    }
+
     function openPersonnelModal(context = { mode: 'create', row: null }){
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       personContext = context;
-      modalTitle.textContent = context.mode === 'edit' ? '编辑账号' : '新增账号';
+      const scope = currentPersonScope();
+      modalTitle.textContent = context.mode === 'edit'
+        ? (scope === 'tenantAccount' ? '分配租户账号角色' : '分配平台账号角色')
+        : (scope === 'tenantAccount' ? '新增租户账号' : '新增平台账号');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'personnel'));
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
@@ -2860,9 +3393,12 @@
           personCustomEmailSuffix.value = personEmailSuffix.value === '@custom' ? suffix : '';
           personPhoneRegion.value = 'CN';
         }
-        personType.value = row.cells[1]?.textContent.includes('平台') ? 'platform' : 'tenant';
-        renderTenantIdOptions(row.dataset.tenantId || '', row);
-        personRole.value = row.cells[4]?.textContent.trim() || '';
+        personType.value = scope === 'tenantAccount' ? 'tenant' : 'platform';
+        const selectedTenant = scope === 'tenantAccount'
+          ? findTenantOptionByName(row.cells[1]?.textContent.trim() || '')?.id || ''
+          : '';
+        renderTenantIdOptions(selectedTenant);
+        setPersonRoleOptions(scope, scope === 'tenantAccount' ? row.cells[3]?.textContent.trim() : row.cells[1]?.textContent.trim());
         personInitialPassword.value = '';
         personConfirmPassword.value = '';
       } else {
@@ -2871,14 +3407,15 @@
         personEmailSuffix.value = '@gmail.com';
         personCustomEmailSuffix.value = '';
         personPhoneRegion.value = 'CN';
-        personType.value = '';
+        personType.value = scope === 'tenantAccount' ? 'tenant' : 'platform';
         renderTenantIdOptions();
-        personRole.value = '';
+        setPersonRoleOptions(scope);
         personInitialPassword.value = '';
         personConfirmPassword.value = '';
       }
       updatePersonnelFields();
       setPasswordError(false, personInitialPassword, personConfirmPassword, personInitialPasswordHelp, '8-20位，至少包含字母和数字');
+      refreshCustomSelects(modal);
       modal.classList.add('show');
     }
 
@@ -2886,6 +3423,7 @@
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       passwordContext = { row };
       modalTitle.textContent = '修改密码';
@@ -2900,24 +3438,31 @@
     function openRoleModal(context = { mode: 'create', row: null }){
       modal.classList.remove('menu-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       modal.classList.add('role-mode');
       roleContext = context;
-      modalTitle.textContent = context.mode === 'edit' ? '编辑角色' : '新增角色';
+      const scope = context.scope || 'platformRole';
+      const roleMeta = roleScopeConfig(scope);
+      const isTenantRole = scope === 'tenantRole';
+      modalTitle.textContent = context.mode === 'edit'
+        ? (isTenantRole ? '编辑租户角色' : '编辑角色')
+        : (isTenantRole ? '新增租户角色' : '新增角色');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'role'));
       resetRolePermissionChecks();
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         roleName.value = row.cells[0]?.textContent.trim() || '';
-        roleTarget.value = row.cells[1]?.textContent.includes('平台') ? 'platform' : 'tenant';
-        roleTenantType.value = row.dataset.roleTenantType || '';
-        roleStatus.value = row.cells[5]?.textContent.includes('停用') ? '停用' : '启用';
+        roleTarget.value = isTenantRole ? 'tenant' : 'platform';
+        setRoleTenantTypeValues(roleTenantTypeTextValues(row.dataset.roleTenantType || (isTenantRole ? row.cells[1]?.textContent.trim() : '')));
+        roleStatus.value = row.cells[roleMeta.statusCell]?.textContent.includes('停用') ? '停用' : '启用';
       } else {
         roleName.value = '';
-        roleTarget.value = 'platform';
-        roleTenantType.value = '';
-        roleStatus.value = '';
+        roleTarget.value = roleMeta.defaultTarget;
+        setRoleTenantTypeValues([]);
+        roleStatus.value = '启用';
       }
+      roleTarget.disabled = isTenantRole;
       updateRoleFields();
       modal.classList.add('show');
     }
@@ -2927,10 +3472,11 @@
         id: row.cells[0]?.textContent.trim() || '',
         name: row.cells[1]?.textContent.trim() || '',
         shortName: row.dataset.tenantShortName || '',
+        enterpriseType: row.dataset.tenantEnterpriseType || '',
         stores: row.querySelector('.tenant-store-full')?.textContent.replace('▲ 收起', '').trim()
           || row.querySelector('.tenant-store-summary')?.textContent.replace(/等\d+个▼/, '').trim()
           || '',
-        type: row.cells[3]?.textContent.trim() || '',
+        type: row.dataset.tenantType || row.cells[3]?.textContent.trim() || '',
         status: row.cells[4]?.textContent.trim() || '',
         createdAt: row.cells[5]?.textContent.trim() || ''
       };
@@ -2941,12 +3487,14 @@
       const profile = tenantDetailProfiles[data.id] || {};
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       const detailValues = {
         tenantDetailIdPage: data.id || '-',
         tenantDetailNamePage: data.name || '-',
         tenantDetailShortNamePage: data.shortName || '-',
         tenantDetailTypePage: data.type || '-',
+        tenantDetailEnterpriseTypePage: data.enterpriseType || profile.enterpriseType || '企业',
         tenantDetailCreatedAtPage: data.createdAt || '-',
         tenantDetailStatusPage: row.cells[4]?.innerHTML || '-',
         tenantDetailStoresPage: data.stores || '-',
@@ -2988,6 +3536,7 @@
     function openTenantModal(context = { mode: 'create', row: null }){
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       modal.classList.add('tenant-mode');
       tenantContext = context;
@@ -2999,6 +3548,8 @@
         tenantName.value = data.name;
         tenantShortName.value = data.shortName;
         tenantTypeSelect.value = data.type || '请选择租户类型';
+        tenantEnterpriseTypeSelect.value = data.enterpriseType || '请选择企业类型';
+        tenantStatusField.style.display = '';
         tenantStatusSelect.value = data.status || '请选择租户状态';
         tenantStoreNote.value = data.stores;
       } else {
@@ -3006,7 +3557,9 @@
         tenantName.value = '';
         tenantShortName.value = '';
         tenantTypeSelect.value = '请选择租户类型';
-        tenantStatusSelect.value = '请选择租户状态';
+        tenantEnterpriseTypeSelect.value = '请选择企业类型';
+        tenantStatusSelect.value = '已生效';
+        tenantStatusField.style.display = 'none';
         tenantStoreNote.value = '';
       }
       tenantContact.value = '';
@@ -3018,6 +3571,7 @@
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.add('qualification-mode');
       modalTitle.textContent = '主体资质模版';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'tenant-qualification'));
@@ -3045,8 +3599,9 @@
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
-      const map = { personnel: '新增账号', role: '新增角色', 'tenant-form': '新增租户', 'tenant-qualification': '主体资质模版' };
+      const map = { personnel: '新增平台账号', role: '新增角色', 'tenant-form': '新增租户', 'tenant-qualification': '主体资质模版' };
       modalTitle.textContent = map[type] || '新增';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === type));
       if (type !== 'password') passwordContext = { row: null };
@@ -3056,13 +3611,21 @@
     function openMenuModal(context){
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
       modal.classList.add('menu-mode');
       menuContext = context;
       const isEdit = context.mode === 'edit';
-      modalTitle.textContent = isEdit ? '编辑菜单' : '新增菜单';
+      const isTenantMenu = context.scope === 'tenantMenu';
+      modalTitle.textContent = isEdit ? (context.scope === 'tenantMenu' ? '编辑租户菜单' : '编辑菜单') : (context.scope === 'tenantMenu' ? '新增租户菜单' : '新增菜单');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'menu'));
-      menuFormSystem.value = context.system || '运营管理平台';
+      Array.from(menuFormSystem.options).forEach(option => {
+        option.hidden = isTenantMenu && option.value === '运营管理平台';
+      });
+      document.querySelectorAll('[data-choice-for="menuFormSystem"] .choice-option').forEach(option => {
+        option.style.display = isTenantMenu && option.dataset.value === '运营管理平台' ? 'none' : '';
+      });
+      menuFormSystem.value = context.system || (isTenantMenu ? '' : menuScopeConfig(context.scope).defaultSystem);
       menuFormType.value = context.type === '页面' ? '菜单' : (context.type || '目录');
       menuFormType.disabled = isEdit || context.lockType === true;
       menuFormSystem.disabled = Boolean(context.parentId) || isEdit;
@@ -3080,7 +3643,7 @@
         option.textContent = context.parentName;
         menuParentSelect.value = context.parentId || '';
       }
-      menuParentSelect.disabled = Boolean(context.parentId) || isEdit;
+      menuParentSelect.disabled = Boolean(context.parentId) || isEdit || !menuFormSystem.value;
       menuParentTree.classList.toggle('disabled', menuParentSelect.disabled);
       setParentTriggerText();
       renderParentTree();
@@ -3098,17 +3661,24 @@
       menuRouteField.style.display = type === '按钮' ? 'none' : '';
       menuPermissionField.style.display = type === '按钮' ? '' : 'none';
       updateMenuParentOptions(menuContext.parentId || '');
+      menuParentSelect.disabled = Boolean(menuContext.parentId) || menuContext.mode === 'edit' || !menuFormSystem.value;
+      menuParentTree.classList.toggle('disabled', menuParentSelect.disabled);
     }
 
     function syncChoiceGroup(select){
       const group = document.querySelector(`[data-choice-for="${select.id}"]`);
       if (!group) return;
+      const isMultiple = select.multiple || group.dataset.choiceMode === 'multiple';
+      const selectedValues = isMultiple
+        ? new Set(Array.from(select.selectedOptions || []).map(option => option.value))
+        : new Set([select.value]);
       Array.from(group.querySelectorAll('.choice-option')).forEach(option => {
-        option.classList.toggle('active', option.dataset.value === select.value);
+        const active = selectedValues.has(option.dataset.value);
+        option.classList.toggle('active', active);
         option.classList.toggle('disabled', select.disabled);
         const input = option.querySelector('input');
         if (input) {
-          input.checked = option.dataset.value === select.value;
+          input.checked = active;
           input.disabled = select.disabled || option.classList.contains('disabled');
         }
       });
@@ -3130,8 +3700,20 @@
       return `${systemCode}:${typeCode}:${nameCode}`;
     }
 
-    function normalizedMenuType(row){
-      const type = row.cells[4].textContent.trim();
+    function menuRowScope(row){
+      return row?.closest('#tenant-menu-page') ? 'tenantMenu' : 'platformMenu';
+    }
+
+    function menuColumnIndex(scope, field){
+      const map = {
+        platformMenu: { permission: 2, route: 3, type: 4, status: 5, action: 6 },
+        tenantMenu: { permission: -1, route: 2, type: 3, status: 4, action: 5 }
+      };
+      return map[scope || 'platformMenu'][field];
+    }
+
+    function normalizedMenuType(row, scope = menuRowScope(row)){
+      const type = row.cells[menuColumnIndex(scope, 'type')]?.textContent.trim() || '';
       return type === '页面' ? '菜单' : type;
     }
 
@@ -3142,10 +3724,11 @@
       return 0;
     }
 
-    function descendantCount(nodeId){
-      if (!nodeId) return menuRows.filter(row => !row.dataset.parent).length;
-      const children = menuRows.filter(row => row.dataset.parent === nodeId);
-      return children.reduce((sum, child) => sum + 1 + descendantCount(child.dataset.node || ''), 0);
+    function descendantCount(nodeId, scope = menuContext.scope || 'platformMenu'){
+      const rows = menuRowsForScope(scope);
+      if (!nodeId) return rows.filter(row => !row.dataset.parent).length;
+      const children = rows.filter(row => row.dataset.parent === nodeId);
+      return children.reduce((sum, child) => sum + 1 + descendantCount(child.dataset.node || '', scope), 0);
     }
 
     function setParentTriggerText(){
@@ -3159,7 +3742,7 @@
       const system = menuFormSystem.value;
       const parentType = parentTypeFor(menuFormType.value);
       const selectableTypes = parentType === '菜单' ? ['菜单', '页面'] : parentType ? [parentType] : [];
-      const rows = menuRows.filter(row => row.cells[1].textContent.trim() === system && row.dataset.node);
+      const rows = menuRowsForScope(menuContext.scope).filter(row => row.cells[1].textContent.trim() === system && row.dataset.node);
       menuParentPanel.innerHTML = '';
 
       const placeholder = document.createElement('div');
@@ -3176,14 +3759,14 @@
           const level = Math.min(rowLevel(row), 3);
           const value = row.dataset.node || '';
           const disabled = selectableTypes.length > 0 && !selectableTypes.includes(type);
-          const hasChildren = menuRows.some(item => item.dataset.parent === value && normalizedMenuType(item) !== '按钮');
+          const hasChildren = menuRowsForScope(menuContext.scope).some(item => item.dataset.parent === value && normalizedMenuType(item) !== '按钮');
           option.className = `tree-choice level-${level}${menuParentSelect.value === value ? ' active' : ''}`;
           option.dataset.value = value;
           option.dataset.level = String(level);
           option.dataset.parent = row.dataset.parent || '';
           option.dataset.hasChildren = hasChildren ? 'true' : 'false';
           option.dataset.disabled = disabled ? 'true' : 'false';
-          option.innerHTML = `<span class="arrow">${hasChildren ? '›' : ''}</span><span>${menuName(row)}</span><span class="count">(${descendantCount(value)})</span>`;
+          option.innerHTML = `<span class="arrow">${hasChildren ? '›' : ''}</span><span>${menuName(row)}</span><span class="count">(${descendantCount(value, menuContext.scope)})</span>`;
           if (disabled) option.style.color = '#98a2b3';
           menuParentPanel.appendChild(option);
         });
@@ -3194,6 +3777,7 @@
       const selected = preferredValue || menuParentSelect.value;
       const system = menuFormSystem.value;
       const parentType = parentTypeFor(menuFormType.value);
+      const rows = menuRowsForScope(menuContext.scope);
       menuParentSelect.innerHTML = '';
 
       const root = document.createElement('option');
@@ -3202,7 +3786,7 @@
       menuParentSelect.appendChild(root);
 
       if (parentType) {
-        menuRows
+        rows
           .filter(row => {
             const type = normalizedMenuType(row);
             return row.cells[1].textContent.trim() === system
@@ -3229,10 +3813,78 @@
 
     function updateTenantRegionFields(){
       if (!tenantRegion || !tenantTimezone || !tenantLanguage || !tenantCurrency) return;
-      const meta = tenantRegionMeta[tenantRegion.value] || tenantRegionMeta['中国（CN）'];
+      const meta = tenantRegionMeta[tenantRegion.value];
+      if (!meta) {
+        tenantTimezone.value = '';
+        tenantLanguage.value = '';
+        tenantCurrency.value = '';
+        return;
+      }
       tenantTimezone.value = meta.timezone;
       tenantLanguage.value = meta.language;
       tenantCurrency.value = meta.currency;
+    }
+
+    function updateTenantComplianceFields(){
+      const enterpriseType = tenantCreateEnterpriseType?.value || '';
+      tenantComplianceFields.forEach(field => {
+        const types = (field.dataset.complianceTypes || '').split(',').map(item => item.trim());
+        const shouldShow = !!enterpriseType && types.includes(enterpriseType);
+        field.hidden = !shouldShow;
+        field.classList.toggle('compliance-visible', shouldShow);
+      });
+    }
+
+    function bindTenantUploadControls(){
+      document.querySelectorAll('.tenant-upload').forEach(upload => {
+        if (upload.dataset.uploadBound === 'true') return;
+        upload.dataset.uploadBound = 'true';
+        const input = upload.querySelector('.tenant-upload-input');
+        const fileName = upload.querySelector('.tenant-upload-file-name');
+        const preview = upload.querySelector('.tenant-upload-preview');
+        const deleteButton = upload.querySelector('.tenant-upload-delete');
+        preview?.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          const src = preview.dataset.previewUrl || preview.getAttribute('src');
+          if (!src) return;
+          if (imagePreviewImg) imagePreviewImg.src = src;
+          if (imagePreviewTitle) imagePreviewTitle.textContent = fileName?.textContent && fileName.textContent !== '-' ? fileName.textContent : '图片预览';
+          imagePreviewModal?.classList.add('show');
+        });
+        input?.addEventListener('change', () => {
+          const file = input.files?.[0];
+          if (!file) return;
+          if (preview) {
+            if (preview.dataset.previewUrl) URL.revokeObjectURL(preview.dataset.previewUrl);
+            const previewUrl = URL.createObjectURL(file);
+            preview.src = previewUrl;
+            preview.dataset.previewUrl = previewUrl;
+            preview.alt = file.name;
+          }
+          fileName.textContent = file.name;
+          upload.classList.add('has-file');
+        });
+        deleteButton?.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          if (input) input.value = '';
+          if (fileName) fileName.textContent = '-';
+          if (preview) {
+            if (preview.dataset.previewUrl) URL.revokeObjectURL(preview.dataset.previewUrl);
+            preview.removeAttribute('src');
+            preview.alt = '';
+            delete preview.dataset.previewUrl;
+          }
+          upload.classList.remove('has-file');
+        });
+      });
+    }
+
+    function hideImagePreview(){
+      imagePreviewModal?.classList.remove('show');
+      if (imagePreviewImg) imagePreviewImg.removeAttribute('src');
+      if (imagePreviewTitle) imagePreviewTitle.textContent = '图片预览';
     }
 
     function contactHelpText(){
@@ -3365,7 +4017,9 @@
       modal.classList.remove('menu-mode');
       modal.classList.remove('role-mode');
       modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
       modal.classList.remove('qualification-mode');
+      modal.classList.remove('assign-role-mode');
     }
 
     function openConfirm(title, text, handler){
@@ -3380,11 +4034,19 @@
       confirmHandler = null;
     }
 
+    function platformSystemsForRole(role){
+      const map = {
+        平台管理员: '运营管理平台',
+        平台运营: '管理后台、运营中心',
+        平台财务: '运营管理平台、财务中心',
+        平台运维: '运营管理平台、设备运维中心'
+      };
+      return map[role] || '运营管理平台';
+    }
+
     function savePersonnel(){
-      if (!personType.value) {
-        personCreateMethod.focus();
-        return false;
-      }
+      const scope = currentPersonScope();
+      personType.value = scope === 'tenantAccount' ? 'tenant' : 'platform';
       if (!personCreateMethod.value || !personContact.value.trim() || !validateContact()) {
         const needsCustomSuffix = personCreateMethod.value === '邮箱'
           && personEmailSuffix.value === '@custom'
@@ -3394,45 +4056,73 @@
         return false;
       }
       setContactError(false);
-      if (personType.value === 'tenant' && !personTenantId.value) {
-        personTenantIdField.scrollIntoView?.({ block: 'center' });
+      if (scope === 'tenantAccount' && !personTenantId.value) {
+        personTenantId.focus();
+        return false;
+      }
+      if (!personRole.value) {
+        personRole.focus();
         return false;
       }
       if (personContext.mode !== 'edit' && !validatePasswordPair(personInitialPassword, personConfirmPassword, personInitialPasswordHelp)) {
         return false;
       }
-      const isPlatform = personType.value === 'platform';
-      const tenantInfo = isPlatform ? null : findTenantOptionById(personTenantId.value);
       const accountValue = currentAccountValue();
+      if (scope === 'tenantAccount') {
+        const tenant = findTenantOptionById(personTenantId.value);
+        if (!tenant) {
+          personTenantId.focus();
+          return false;
+        }
+        const systemText = tenantAccountSystemsForRole(personRole.value);
+        const table = document.querySelector('#tenant-account table');
+        const tbody = table?.querySelector('tbody');
+        if (!tbody) return false;
+        if (personContext.mode === 'edit' && personContext.row) {
+          const row = personContext.row;
+          row.cells[3].textContent = personRole.value;
+          row.cells[4].textContent = systemText;
+          renderTenantAccountActions(row);
+        } else {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><span class="link">${escapeHtml(accountValue)}</span></td>
+            <td>${escapeHtml(tenant.name)}</td>
+            <td>${tenantAccountTypeTag(tenant.type)}</td>
+            <td>${escapeHtml(personRole.value)}</td>
+            <td>${escapeHtml(systemText)}</td>
+            <td><span class="tag green">启用</span></td>
+            <td></td>
+          `;
+          renderTenantAccountActions(row);
+          tbody.prepend(row);
+          updatePaginationTotal(table);
+        }
+        applyTenantAccountFilters();
+        return true;
+      }
+      const systemText = platformSystemsForRole(personRole.value);
       if (personContext.mode === 'edit' && personContext.row) {
         const row = personContext.row;
-        row.cells[0].innerHTML = `<span class="link">${accountValue}</span>`;
-        row.cells[1].innerHTML = `<span class="tag ${isPlatform ? '' : 'gray'}">${isPlatform ? '平台账号' : '租户账号'}</span>`;
-        row.cells[2].textContent = isPlatform ? '平台内部' : tenantInfo?.name || '-';
-        row.cells[3].innerHTML = isPlatform
-          ? '<span class="tag">平台角色</span>'
-          : `<span class="tag ${tenantInfo?.tagClass || 'gray'}">${tenantInfo?.type || ''}</span>`;
-        row.cells[4].textContent = personRole.value;
-        row.dataset.tenantId = isPlatform ? '' : personTenantId.value;
+        row.cells[1].textContent = personRole.value;
+        row.cells[2].textContent = systemText;
+        row.dataset.tenantId = '';
+        renderPersonnelActions(row);
       } else {
         const table = document.querySelector('#personnel table');
         const tbody = table?.querySelector('tbody');
         if (!tbody) return false;
         const row = document.createElement('tr');
-        if (!isPlatform && personTenantId.value) row.dataset.tenantId = personTenantId.value;
         row.innerHTML = `
-          <td><span class="link">${accountValue}</span></td>
-          <td><span class="tag ${isPlatform ? '' : 'gray'}">${isPlatform ? '平台账号' : '租户账号'}</span></td>
-          <td>${isPlatform ? '平台内部' : (tenantInfo?.name || '-')}</td>
-          <td>${isPlatform ? '<span class="tag">平台角色</span>' : `<span class="tag ${tenantInfo?.tagClass || 'gray'}">${tenantInfo?.type || ''}</span>`}</td>
-          <td>${personRole.value}</td>
-          <td>${isPlatform ? '运营管理平台' : '商户后台'}</td>
+          <td><span class="link">${escapeHtml(accountValue)}</span></td>
+          <td>${escapeHtml(personRole.value)}</td>
+          <td>${escapeHtml(systemText)}</td>
           <td><span class="tag green">启用</span></td>
-          <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+          <td></td>
         `;
         tbody.prepend(row);
+        renderPersonnelActions(row);
         bindAccountActions();
-        bindListDeleteActions('#personnel table', '账号');
         updatePaginationTotal(table);
         updatePersonnelSummary();
       }
@@ -3442,6 +4132,164 @@
     function savePassword(){
       if (!passwordContext.row) return false;
       return validatePasswordPair(accountNewPassword, accountConfirmPassword, accountPasswordHelp);
+    }
+
+    function tenantAccountTypeTag(type){
+      const tagClass = {
+        自营: 'green',
+        渠道商: 'gray'
+      }[type] || 'gray';
+      return `<span class="tag ${tagClass}">${escapeHtml(type || '-')}</span>`;
+    }
+
+    function tenantAccountSystemsForRole(role){
+      const map = {
+        租户管理员: '商户运营后台、运营中心',
+        企业财务: '商户运营后台、运营中心',
+        区域运营: '运营中心、运营助手',
+        门店运营: '商户运营后台',
+        财务查看: '商户运营后台'
+      };
+      return map[role] || '商户运营后台';
+    }
+
+    function tenantAccountStatusHtml(status){
+      return status === '停用'
+        ? '<span class="tag red">停用</span>'
+        : '<span class="tag green">启用</span>';
+    }
+
+    function renderTenantAccountActions(row){
+      const actionCell = row.cells[row.cells.length - 1];
+      if (!actionCell) return;
+      const isDisabled = row.cells[5]?.textContent.includes('停用');
+      actionCell.innerHTML = `
+        <div class="row-actions">
+          <span class="link" data-tenant-account-action="edit">分配角色</span>
+          <span class="link" data-tenant-account-action="password">修改密码</span>
+          <span class="link" data-tenant-account-action="status">${isDisabled ? '启用' : '停用'}</span>
+          ${isDisabled ? '<span class="link" data-tenant-account-action="delete">删除</span>' : ''}
+        </div>
+      `;
+    }
+
+    function renderPersonnelActions(row){
+      const actionCell = row.cells[4];
+      if (!actionCell) return;
+      const isDisabled = row.cells[3]?.textContent.includes('停用');
+      actionCell.innerHTML = `
+        <div class="row-actions">
+          <button class="link" type="button" data-account-action="role">分配角色</button>
+          <button class="link" type="button" data-account-action="password">修改密码</button>
+          <button class="link" type="button" data-account-action="status">${isDisabled ? '启用' : '停用'}</button>
+          ${isDisabled ? '<button class="link" type="button" data-account-action="delete">删除</button>' : ''}
+        </div>
+      `;
+    }
+
+    function applyTenantAccountFilters(){
+      const accountKeyword = tenantAccountQuery?.value.trim().toLowerCase() || '';
+      const tenantName = filterText(tenantAccountTenantFilter);
+      const role = filterText(tenantAccountRoleFilter);
+      const status = filterText(tenantAccountStatusFilter);
+      document.querySelectorAll('#tenant-account table tbody tr').forEach(row => {
+        const rowAccount = row.cells[0]?.textContent.trim().toLowerCase() || '';
+        const rowTenant = row.cells[1]?.textContent.trim() || '';
+        const rowRole = row.cells[3]?.textContent.trim() || '';
+        const rowStatus = row.cells[5]?.textContent.trim() || '';
+        const matched = (!accountKeyword || rowAccount.includes(accountKeyword))
+          && (isAllFilter(tenantName) || rowTenant.includes(tenantName))
+          && (isAllFilter(role) || rowRole.includes(role))
+          && (isAllFilter(status) || rowStatus.includes(status));
+        row.style.display = matched ? '' : 'none';
+      });
+    }
+
+    function bindTenantAccountFilters(){
+      [
+        tenantAccountQuery,
+        tenantAccountTenantFilter,
+        tenantAccountRoleFilter,
+        tenantAccountStatusFilter
+      ].forEach(control => {
+        if (!control) return;
+        const eventName = control.tagName === 'SELECT' ? 'change' : 'input';
+        control.addEventListener(eventName, applyTenantAccountFilters);
+        control.addEventListener('keydown', event => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            applyTenantAccountFilters();
+          }
+        });
+      });
+      tenantAccountSearch?.addEventListener('click', applyTenantAccountFilters);
+    }
+
+    function openTenantAccountPasswordModal(row){
+      modal.classList.remove('menu-mode');
+      modal.classList.remove('role-mode');
+      modal.classList.remove('tenant-mode');
+      modal.classList.remove('permission-mode');
+      modal.classList.remove('qualification-mode');
+      passwordContext = { row, scope: 'tenantAccount' };
+      modalTitle.textContent = '修改租户账号密码';
+      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'password'));
+      passwordAccountName.value = row.cells[0]?.textContent.trim() || '';
+      accountNewPassword.value = '';
+      accountConfirmPassword.value = '';
+      setPasswordError(false, accountNewPassword, accountConfirmPassword, accountPasswordHelp, '8-20位，至少包含字母和数字');
+      modal.classList.add('show');
+    }
+
+    function toggleTenantAccountStatus(row){
+      const statusCell = row.cells[5];
+      const isDisabled = statusCell.textContent.includes('停用');
+      statusCell.innerHTML = tenantAccountStatusHtml(isDisabled ? '启用' : '停用');
+      renderTenantAccountActions(row);
+      applyTenantAccountFilters();
+    }
+
+    function bindTenantAccountActions(){
+      const table = document.querySelector('#tenant-account table');
+      if (!table || table.dataset.tenantAccountActionsBound === 'true') return;
+      table.dataset.tenantAccountActionsBound = 'true';
+      table.querySelectorAll('tbody tr').forEach(renderTenantAccountActions);
+      table.addEventListener('click', event => {
+        const action = event.target.closest('[data-tenant-account-action]');
+        if (!action) return;
+        const row = action.closest('tr');
+        if (!row) return;
+        const account = row.cells[0]?.textContent.trim() || '';
+        if (action.dataset.tenantAccountAction === 'edit') {
+          openAssignRoleModal(row, 'tenantAccount');
+          return;
+        }
+        if (action.dataset.tenantAccountAction === 'password') {
+          openTenantAccountPasswordModal(row);
+          return;
+        }
+        if (action.dataset.tenantAccountAction === 'status') {
+          const isDisabled = row.cells[5]?.textContent.includes('停用');
+          openConfirm(
+            isDisabled ? '确认启用租户账号' : '确认停用租户账号',
+            `是否确认${isDisabled ? '启用' : '停用'}「${account}」？`,
+            () => toggleTenantAccountStatus(row)
+          );
+          return;
+        }
+        if (action.dataset.tenantAccountAction === 'delete') {
+          openConfirm(
+            '确认删除租户账号',
+            `是否确认删除「${account}」？删除后该账号将从列表移除。`,
+            () => {
+              const table = row.closest('table');
+              row.remove();
+              updatePaginationTotal(table);
+              applyTenantAccountFilters();
+            }
+          );
+        }
+      });
     }
 
     function escapeHtml(value){
@@ -3455,7 +4303,6 @@
 
     function tenantStatusHtml(status){
       if (status === '停用') return '<span class="tag red">停用</span>';
-      if (status === '待激活') return '<span class="tag warn">待激活</span>';
       return '<span class="tag green">已生效</span>';
     }
 
@@ -3488,7 +4335,7 @@
       const status = row.cells[4]?.textContent.trim() || '';
       const actionCell = row.cells[row.cells.length - 1];
       if (!actionCell) return;
-      const statusActionText = status === '已生效' ? '禁用' : '启用';
+      const statusActionText = status === '已生效' ? '停用' : '启用';
       const allowDelete = status !== '已生效';
       actionCell.innerHTML = `
         <div class="tenant-actions">
@@ -3505,7 +4352,8 @@
       const name = tenantName.value.trim();
       const shortName = tenantShortName.value.trim();
       const type = tenantTypeSelect.value;
-      const status = tenantStatusSelect.value;
+      const enterpriseType = tenantEnterpriseTypeSelect.value;
+      const status = tenantContext.mode === 'edit' ? tenantStatusSelect.value : '已生效';
       if (!id) {
         tenantId.focus();
         return false;
@@ -3526,7 +4374,11 @@
         tenantTypeSelect.focus();
         return false;
       }
-      if (!status || status === '请选择租户状态') {
+      if (!enterpriseType || enterpriseType === '请选择企业类型') {
+        tenantEnterpriseTypeSelect.focus();
+        return false;
+      }
+      if (tenantContext.mode === 'edit' && (!status || status === '请选择租户状态')) {
         tenantStatusSelect.focus();
         return false;
       }
@@ -3538,10 +4390,11 @@
       const storeHtml = tenantStoreCellHtml(tenantStoreNote.value.trim());
       if (tenantContext.mode === 'edit' && tenantContext.row) {
         const row = tenantContext.row;
-        const data = tenantRowData(row);
         row.cells[0].innerHTML = `<span class="link">${escapeHtml(id)}</span>`;
         row.cells[1].textContent = name;
         row.dataset.tenantShortName = shortName;
+        row.dataset.tenantType = type;
+        row.dataset.tenantEnterpriseType = enterpriseType;
         row.cells[2].innerHTML = storeHtml;
         row.cells[3].textContent = type;
         row.cells[4].innerHTML = tenantStatusHtml(status);
@@ -3551,6 +4404,8 @@
 
       const row = document.createElement('tr');
       row.dataset.tenantShortName = shortName;
+      row.dataset.tenantType = type;
+      row.dataset.tenantEnterpriseType = enterpriseType;
       const createdAt = new Date().toLocaleString('zh-CN', {
         year: 'numeric',
         month: '2-digit',
@@ -3603,8 +4458,8 @@
         if (action.dataset.tenantAction === 'status') {
           const isEnabled = row.cells[4].textContent.includes('已生效');
           openConfirm(
-            isEnabled ? '确认禁用租户' : '确认启用租户',
-            `是否确认${isEnabled ? '禁用' : '启用'}「${data.shortName || data.id}」？`,
+            isEnabled ? '确认停用租户' : '确认启用租户',
+            `是否确认${isEnabled ? '停用' : '启用'}「${data.shortName || data.id}」？`,
             () => setTenantStatus(row, !isEnabled)
           );
           return;
@@ -3632,13 +4487,49 @@
       return systems.length ? systems.join('、') : fallback;
     }
 
-    function formatRoleTenantType(){
-      return roleTenantType.value ? (roleTenantType.selectedOptions[0]?.textContent || '-') : '-';
+    function roleTenantTypeValues(){
+      return Array.from(roleTenantType.selectedOptions || []).map(option => option.value);
     }
 
-    function roleTenantTypeValue(value = ''){
-      const map = { 自营租户: '0', 企业租户: '1', 个人租户: '2', 渠道加盟商: '3', 门店子租户: '4' };
-      return map[value] || value || '';
+    function roleTenantTypeTextValues(value = ''){
+      const map = { 自营: '0', 渠道商: '1' };
+      return String(value)
+        .split(/[、,，]/)
+        .map(item => item.trim())
+        .filter(Boolean)
+        .map(item => map[item] || item)
+        .filter(item => ['0', '1'].includes(item));
+    }
+
+    function setRoleTenantTypeValues(values = []){
+      const selected = new Set(values);
+      Array.from(roleTenantType.options).forEach(option => {
+        option.selected = selected.has(option.value);
+      });
+      syncChoiceGroup(roleTenantType);
+    }
+
+    function tenantTypeTagClass(value){
+      return value === '1' ? 'gray' : 'green';
+    }
+
+    function formatRoleTenantType(){
+      const values = roleTenantTypeValues();
+      if (!values.length) return '-';
+      return values.map(value => roleTenantType.options[value]?.textContent || '').filter(Boolean).join('、');
+    }
+
+    function renderRoleTenantTypeTags(values = roleTenantTypeValues()){
+      return values.map(value => {
+        const text = roleTenantType.options[value]?.textContent || '';
+        return `<span class="tag ${tenantTypeTagClass(value)}">${escapeHtml(text)}</span>`;
+      }).join(' ');
+    }
+
+    function roleSupportsTenantType(roleTypeText, tenantTypeText){
+      if (!tenantTypeText) return true;
+      const tenantType = roleTenantTypeTextValues(tenantTypeText)[0];
+      return roleTenantTypeTextValues(roleTypeText).includes(tenantType);
     }
 
     function roleStatusHtml(status){
@@ -3657,53 +4548,79 @@
     }
 
     function renderRoleActions(row){
-      const actionCell = row.cells[6];
+      const scope = row.closest('#tenant-role') ? 'tenantRole' : 'platformRole';
+      const actionCell = row.cells[roleScopeConfig(scope).actionCell];
       if (!actionCell) return;
-      const isDisabled = row.cells[5]?.textContent.includes('停用');
+      const isDisabled = row.cells[roleScopeConfig(scope).statusCell]?.textContent.includes('停用');
       actionCell.innerHTML = `
-        <button class="link menu-status-action" type="button" data-role-action="edit">编辑</button>
-        　
-        <button class="link menu-status-action" type="button" data-role-action="status">${isDisabled ? '启用' : '停用'}</button>
-        　
-        <button class="link menu-status-action" type="button" data-role-action="delete">删除</button>
+        <div class="row-actions">
+          <button class="link menu-status-action" type="button" data-role-action="edit">编辑</button>
+          <button class="link menu-status-action" type="button" data-role-action="status">${isDisabled ? '启用' : '停用'}</button>
+          ${isDisabled ? '<button class="link menu-status-action" type="button" data-role-action="delete">删除</button>' : ''}
+        </div>
       `;
     }
 
     function saveRole(){
-      if (!roleName.value.trim() || !roleTarget.value || !roleStatus.value) {
+      roleTarget.value = (roleContext.scope || 'platformRole') === 'tenantRole' ? 'tenant' : 'platform';
+      if (!roleName.value.trim() || !roleStatus.value) {
         roleName.focus();
         return false;
       }
-      if (roleTarget.value === 'tenant' && !roleTenantType.value) {
-        roleTenantTypeField.scrollIntoView?.({ block: 'center' });
+      if (roleTarget.value === 'tenant' && !roleTenantTypeValues().length) {
+        roleTenantTypeField?.scrollIntoView?.({ block: 'center' });
         return false;
       }
+      const scope = roleContext.scope || 'platformRole';
+      const roleMeta = roleScopeConfig(scope);
+      const table = document.querySelector(roleMeta.table);
+      const tbody = table?.querySelector('tbody');
+      if (!tbody) return false;
+
       if (roleContext.mode === 'edit' && roleContext.row) {
         const row = roleContext.row;
         row.cells[0].textContent = roleName.value.trim();
-        row.cells[1].textContent = roleTarget.value === 'platform' ? '平台用户' : '租户用户';
-        row.cells[2].textContent = selectedRoleSystems(row.cells[2].textContent.trim());
-        row.dataset.roleTenantType = roleTarget.value === 'tenant' ? roleTenantType.value : '';
-        row.cells[4].textContent = String(selectedPermissionCount());
-        row.cells[5].innerHTML = roleStatusHtml(roleStatus.value);
+        if (scope === 'tenantRole') {
+          row.cells[1].innerHTML = renderRoleTenantTypeTags();
+          row.cells[2].textContent = selectedRoleSystems(row.cells[2].textContent.trim() || '商户运营后台');
+          row.cells[3].textContent = row.cells[3].textContent.trim() || `${formatRoleTenantType()}权限`;
+          row.dataset.roleTenantType = formatRoleTenantType();
+          row.cells[5].innerHTML = roleStatusHtml(roleStatus.value);
+        } else {
+          row.cells[1].textContent = selectedRoleSystems(row.cells[1].textContent.trim() || '运营管理平台');
+          row.dataset.roleTenantType = '';
+          const permissionCount = selectedPermissionCount();
+          if (permissionCount > 0) row.cells[3].textContent = String(permissionCount);
+          row.cells[4].innerHTML = roleStatusHtml(roleStatus.value);
+        }
         renderRoleActions(row);
       } else {
-        const table = document.querySelector('#roles table');
-        const tbody = table?.querySelector('tbody');
-        if (!tbody) return false;
         const row = document.createElement('tr');
-        const targetText = roleTarget.value === 'platform' ? '平台用户' : '租户用户';
-        const systemText = selectedRoleSystems(roleTarget.value === 'platform' ? '运营管理平台' : '商户运营后台');
-        row.dataset.roleTenantType = roleTarget.value === 'tenant' ? roleTenantType.value : '';
-        row.innerHTML = `
-          <td>${escapeHtml(roleName.value.trim())}</td>
-          <td>${targetText}</td>
-          <td>${escapeHtml(systemText)}</td>
-          <td>0</td>
-          <td>${selectedPermissionCount()}</td>
-          <td>${roleStatusHtml(roleStatus.value)}</td>
-          <td></td>
-        `;
+        if (scope === 'tenantRole') {
+          const tenantTypeText = formatRoleTenantType();
+          row.dataset.roleTenantType = tenantTypeText;
+          row.innerHTML = `
+            <td>${escapeHtml(roleName.value.trim())}</td>
+            <td>${renderRoleTenantTypeTags()}</td>
+            <td>${escapeHtml(selectedRoleSystems('商户运营后台'))}</td>
+            <td>${escapeHtml(`${tenantTypeText}权限`)}</td>
+            <td>0</td>
+            <td>${roleStatusHtml(roleStatus.value)}</td>
+            <td>${new Date().toISOString().slice(0, 16).replace('T', ' ')}</td>
+            <td></td>
+          `;
+        } else {
+          const systemText = selectedRoleSystems('运营管理平台');
+          row.dataset.roleTenantType = '';
+          row.innerHTML = `
+            <td>${escapeHtml(roleName.value.trim())}</td>
+            <td>${escapeHtml(systemText)}</td>
+            <td>0</td>
+            <td>${selectedPermissionCount()}</td>
+            <td>${roleStatusHtml(roleStatus.value)}</td>
+            <td></td>
+          `;
+        }
         renderRoleActions(row);
         tbody.appendChild(row);
         updatePaginationTotal(table);
@@ -3711,47 +4628,75 @@
       return true;
     }
 
-    function toggleAccountStatus(row, action){
-      const statusCell = row.cells[6];
+    function toggleAccountStatus(row){
+      const statusCell = row.cells[3];
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
         ? '<span class="tag green">启用</span>'
         : '<span class="tag red">停用</span>';
-      action.textContent = isDisabled ? '停用' : '启用';
+      renderPersonnelActions(row);
       updatePersonnelSummary();
     }
 
     function bindAccountActions(){
-      document.querySelectorAll('#personnel table tbody tr').forEach(row => {
-        if (row.dataset.accountBound === 'true') return;
-        row.dataset.accountBound = 'true';
-        const actions = row.cells[row.cells.length - 1]?.querySelectorAll('.link');
-        if (!actions?.length) return;
-        actions[0].addEventListener('click', () => openPersonnelModal({ mode: 'edit', row }));
-        actions[1]?.addEventListener('click', () => openPasswordModal(row));
-        const statusAction = actions[2];
-        if (statusAction) {
-          statusAction.addEventListener('click', () => {
-            const isDisabled = row.cells[6].textContent.includes('停用');
-            openConfirm(
-              isDisabled ? '确认启用账号' : '确认停用账号',
-              `是否确认${isDisabled ? '启用' : '停用'}「${row.cells[0].textContent.trim()}」？`,
-              () => toggleAccountStatus(row, statusAction)
-            );
-          });
+      const table = document.querySelector('#personnel table');
+      if (!table || table.dataset.accountActionsBound === 'true') return;
+      table.dataset.accountActionsBound = 'true';
+      table.querySelectorAll('tbody tr').forEach(renderPersonnelActions);
+      table.addEventListener('click', event => {
+        const action = event.target.closest('[data-account-action]');
+        if (!action) return;
+        const row = action.closest('tr');
+        if (!row) return;
+        const account = row.cells[0]?.textContent.trim() || '';
+        if (action.dataset.accountAction === 'role') {
+          openAssignRoleModal(row, 'platform');
+          return;
+        }
+        if (action.dataset.accountAction === 'password') {
+          openPasswordModal(row);
+          return;
+        }
+        if (action.dataset.accountAction === 'status') {
+          const isDisabled = row.cells[3].textContent.includes('停用');
+          openConfirm(
+            isDisabled ? '确认启用账号' : '确认停用账号',
+            `是否确认${isDisabled ? '启用' : '停用'}「${account}」？`,
+            () => toggleAccountStatus(row)
+          );
+          return;
+        }
+        if (action.dataset.accountAction === 'delete') {
+          openConfirm(
+            '确认删除账号',
+            `是否确认删除「${account}」？删除后该账号将从列表移除。`,
+            () => {
+              const tableEl = row.closest('table');
+              row.remove();
+              updatePaginationTotal(tableEl);
+              updatePersonnelSummary();
+            }
+          );
         }
       });
     }
 
-    function toggleRoleStatus(row, action){
-      const statusCell = row.cells[5];
+    function toggleRoleStatus(row){
+      const scope = row.closest('#tenant-role') ? 'tenantRole' : 'platformRole';
+      const statusCell = row.cells[roleScopeConfig(scope).statusCell];
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = roleStatusHtml(isDisabled ? '启用' : '停用');
       renderRoleActions(row);
     }
 
-    function bindRoleEditActions(){
-      const table = document.querySelector('#roles table');
+    function tenantAccountsUsingRole(roleName){
+      return Array.from(document.querySelectorAll('#tenant-account table tbody tr'))
+        .filter(row => row.cells[3]?.textContent.trim() === roleName)
+        .map(row => `${row.cells[0]?.textContent.trim() || '-'}（${row.cells[1]?.textContent.trim() || '-'}）`);
+    }
+
+    function bindRoleEditActions(scope = 'platformRole'){
+      const table = document.querySelector(roleScopeConfig(scope).table);
       if (!table || table.dataset.roleActionsBound === 'true') return;
       table.dataset.roleActionsBound = 'true';
       table.querySelectorAll('tbody tr').forEach(renderRoleActions);
@@ -3761,15 +4706,25 @@
         const row = action.closest('tr');
         if (!row) return;
         if (action.dataset.roleAction === 'edit') {
-          openRoleModal({ mode: 'edit', row });
+          openRoleModal({ mode: 'edit', row, scope });
           return;
         }
         if (action.dataset.roleAction === 'status') {
-          const isDisabled = row.cells[5].textContent.includes('停用');
+          const isDisabled = row.cells[roleScopeConfig(scope).statusCell].textContent.includes('停用');
+          const roleName = row.cells[0].textContent.trim();
+          const assignedAccounts = scope === 'tenantRole' && !isDisabled ? tenantAccountsUsingRole(roleName) : [];
+          if (assignedAccounts.length) {
+            openConfirm(
+              '确认停用角色',
+              `角色「${roleName}」已分配给${assignedAccounts.join('、')}。停用后这些租户账号将无法继续使用该角色权限，是否继续？`,
+              () => toggleRoleStatus(row)
+            );
+            return;
+          }
           openConfirm(
             isDisabled ? '确认启用角色' : '确认停用角色',
-            `是否确认${isDisabled ? '启用' : '停用'}「${row.cells[0].textContent.trim()}」？`,
-            () => toggleRoleStatus(row, action)
+            `是否确认${isDisabled ? '启用' : '停用'}「${roleName}」？`,
+            () => toggleRoleStatus(row)
           );
           return;
         }
@@ -3788,23 +4743,35 @@
 
     function updatePersonnelFields(){
       const isPlatform = personType.value === 'platform';
+      const isEdit = personContext.mode === 'edit';
       personTenantIdField.style.display = isPlatform ? 'none' : '';
       if (isPlatform) personTenantId.value = '';
-      const isEdit = personContext.mode === 'edit';
       personInitialPasswordField.style.display = isEdit ? 'none' : '';
       personConfirmPasswordField.style.display = isEdit ? 'none' : '';
       updateContactField();
+      personCreateMethod.disabled = isEdit;
+      personContact.disabled = isEdit;
+      personEmailSuffix.disabled = isEdit;
+      personCustomEmailSuffix.disabled = isEdit;
+      personPhoneRegion.disabled = isEdit;
+      personTenantId.disabled = isEdit;
       if (!isPlatform) {
-        renderTenantIdOptions(personTenantId.value, personContext.mode === 'edit' ? personContext.row : null);
+        renderTenantIdOptions(personTenantId.value);
+        personTenantId.disabled = isEdit;
       } else {
         personTenantHelp.textContent = '平台账号无需绑定租户';
       }
+      setPersonRoleOptions(currentPersonScope(), personRole.value);
       syncChoiceGroup(personCreateMethod);
       syncChoiceGroup(personType);
       syncChoiceGroup(personRole);
     }
 
     function updateRoleFields(){
+      const isTenantRole = roleContext.scope === 'tenantRole';
+      if (isTenantRole) roleTarget.value = 'tenant';
+      if (!isTenantRole) roleTarget.value = 'platform';
+      if (roleTargetField) roleTargetField.style.display = 'none';
       document.querySelectorAll('.permission-picker .permission-group').forEach(group => {
         const scope = group.dataset.roleScope;
         const shouldShow = !roleTarget.value
@@ -3817,8 +4784,8 @@
           if (!shouldShow) input.checked = false;
         });
       });
-      roleTenantTypeField.style.display = roleTarget.value === 'tenant' ? '' : 'none';
-      if (roleTarget.value !== 'tenant') roleTenantType.value = '';
+      if (roleTenantTypeField) roleTenantTypeField.style.display = roleTarget.value === 'tenant' ? '' : 'none';
+      if (roleTarget.value !== 'tenant') setRoleTenantTypeValues([]);
       syncChoiceGroup(roleTarget);
       syncChoiceGroup(roleTenantType);
       syncChoiceGroup(roleStatus);
@@ -3962,6 +4929,7 @@
           select.selectedIndex = index;
           select.dispatchEvent(new Event('change', { bubbles: true }));
           syncCustomSelect(select);
+          if (select.id === 'tenantCreateEnterpriseType') updateTenantComplianceFields();
           wrapper.classList.remove('open');
         });
         panel.appendChild(optionEl);
@@ -4235,12 +5203,12 @@
       });
     }
 
-    function setTreeBranchVisible(nodeId, visible){
-      const children = Array.from(document.querySelectorAll(`[data-parent="${nodeId}"]`));
+    function setTreeBranchVisible(nodeId, visible, scope = 'platformMenu'){
+      const children = Array.from(document.querySelectorAll(`${menuScopeConfig(scope).table} [data-parent="${nodeId}"]`));
       children.forEach(child => {
         child.classList.toggle('hidden', !visible);
         if (!visible && child.dataset.node) {
-          setTreeBranchVisible(child.dataset.node, false);
+          setTreeBranchVisible(child.dataset.node, false, scope);
           const toggle = child.querySelector('.tree-toggle');
           toggle?.classList.remove('collapsed');
         }
@@ -4289,39 +5257,43 @@
     }
 
     function toggleMenuStatus(row, action){
-      const statusCell = row.cells[5];
+      const scope = menuRowScope(row);
+      const statusCell = row.cells[menuColumnIndex(scope, 'status')];
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
         ? '<span class="tag green">正常</span>'
         : '<span class="tag red">停用</span>';
-      action.textContent = isDisabled ? '停用' : '启用';
-      applyMenuFilters();
+      renderMenuActions(row);
+      if (scope === 'platformMenu') applyMenuFilters();
     }
 
     function collectMenuBranch(row){
       const branch = [row];
       const nodeId = row.dataset.node;
       if (!nodeId) return branch;
-      menuRows
+      menuRowsForScope(menuRowScope(row))
         .filter(item => item.dataset.parent === nodeId)
         .forEach(child => branch.push(...collectMenuBranch(child)));
       return branch;
     }
 
     function deleteMenuRow(row){
+      const scope = menuRowScope(row);
       const branch = collectMenuBranch(row);
       branch.forEach(item => item.remove());
-      menuRows = menuRows.filter(item => !branch.includes(item));
-      applyMenuFilters();
+      setMenuRowsForScope(scope, menuRowsForScope(scope).filter(item => !branch.includes(item)));
+      if (scope === 'platformMenu') applyMenuFilters();
       updateMenuParentOptions();
+      updatePaginationTotal(row.closest('table'));
     }
 
-    function nextMenuNodeId(){
-      let index = menuRows.length + 1;
-      let id = `menu-node-${index}`;
-      while (document.querySelector(`[data-node="${id}"]`)) {
+    function nextMenuNodeId(scope = 'platformMenu'){
+      const prefix = scope === 'tenantMenu' ? 'tenant-menu-node-' : 'menu-node-';
+      let index = menuRowsForScope(scope).length + 1;
+      let id = `${prefix}${index}`;
+      while (document.querySelector(`${menuScopeConfig(scope).table} [data-node="${id}"]`)) {
         index += 1;
-        id = `menu-node-${index}`;
+        id = `${prefix}${index}`;
       }
       return id;
     }
@@ -4330,17 +5302,17 @@
       return row.cells[0].textContent.trim().replace(/^⌄\s*/, '').replace(/^›\s*/, '');
     }
 
-    function parentMenuName(parentId){
+    function parentMenuName(parentId, scope = menuContext.scope || 'platformMenu'){
       if (!parentId) return '无上级菜单 / 根目录';
-      const parent = document.querySelector(`#menus tbody [data-node="${parentId}"]`);
+      const parent = document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`);
       return parent ? menuName(parent) : '当前上级菜单';
     }
 
-    function insertMenuRow(row, parentId){
-      const tbody = document.querySelector('#menus tbody');
+    function insertMenuRow(row, parentId, scope = 'platformMenu'){
+      const tbody = document.querySelector(`${menuScopeConfig(scope).table} tbody`);
       if (!parentId) {
         const lastPlatformRow = Array.from(tbody.querySelectorAll('.tree-row'))
-          .filter(item => item.cells[1].textContent.trim() === '运营管理平台')
+          .filter(item => item.cells[1].textContent.trim() === row.cells[1].textContent.trim())
           .pop();
         if (lastPlatformRow) {
           lastPlatformRow.after(row);
@@ -4373,20 +5345,21 @@
       insertAfter.after(row);
     }
 
-    function createMenuRow({ id, parentId, system, type, name, permission, route, status }){
+    function createMenuRow({ id, parentId, system, type, name, permission, route, status, scope = 'platformMenu' }){
       const row = document.createElement('tr');
       row.className = 'tree-row';
       row.dataset.node = id;
+      if (scope === 'platformMenu' && system !== '运营管理平台') row.dataset.sharedMenuKey = id;
       if (parentId) row.dataset.parent = parentId;
 
       const nameCell = document.createElement('td');
-      const parentRow = parentId ? document.querySelector(`#menus tbody [data-node="${parentId}"]`) : null;
+      const parentRow = parentId ? document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`) : null;
       const indent = parentRow ? Math.min(rowLevel(parentRow) + 1, 3) : 0;
       if (indent) nameCell.className = `tree-indent-${indent}`;
       const nameWrap = document.createElement('div');
       nameWrap.className = 'tree-name';
       const supportsChildren = type === '目录' || type === '菜单';
-      const hasChildren = !!document.querySelector(`#menus tbody [data-parent="${id}"]`);
+      const hasChildren = !!document.querySelector(`${menuScopeConfig(scope).table} tbody [data-parent="${id}"]`);
       if (supportsChildren && hasChildren) {
         const toggle = document.createElement('button');
         toggle.type = 'button';
@@ -4400,8 +5373,6 @@
 
       const systemCell = document.createElement('td');
       systemCell.textContent = system;
-      const permissionCell = document.createElement('td');
-      permissionCell.textContent = permission;
       const routeCell = document.createElement('td');
       routeCell.textContent = route;
       const typeCell = document.createElement('td');
@@ -4417,8 +5388,118 @@
       edit.textContent = '编辑';
       actionCell.appendChild(edit);
 
-      row.append(nameCell, systemCell, permissionCell, routeCell, typeCell, statusCell, actionCell);
+      if (scope === 'tenantMenu') {
+        row.append(nameCell, systemCell, routeCell, typeCell, statusCell, actionCell);
+      } else {
+        const permissionCell = document.createElement('td');
+        permissionCell.textContent = permission;
+        row.append(nameCell, systemCell, permissionCell, routeCell, typeCell, statusCell, actionCell);
+      }
       return row;
+    }
+
+    function renderMenuActions(row){
+      const scope = menuRowScope(row);
+      const actionCell = row.cells[menuColumnIndex(scope, 'action')];
+      const statusCell = row.cells[menuColumnIndex(scope, 'status')];
+      if (!actionCell || !statusCell) return;
+      const type = row.cells[menuColumnIndex(scope, 'type')]?.textContent.trim() || '';
+      const system = row.cells[1]?.textContent.trim() || '';
+      const isDisabled = statusCell.textContent.includes('停用');
+      const canChild = canAddChild(row);
+      actionCell.innerHTML = `
+        <div class="row-actions">
+          <button class="link menu-status-action" type="button" data-menu-action="edit">编辑</button>
+          <button class="link menu-status-action" type="button" data-menu-action="status">${isDisabled ? '启用' : '停用'}</button>
+          ${canChild ? '<button class="link menu-status-action" type="button" data-menu-action="add-child">新增下级</button>' : ''}
+          ${isDisabled ? '<button class="link menu-status-action" type="button" data-menu-action="delete">删除</button>' : ''}
+        </div>
+      `;
+      actionCell.querySelector('[data-menu-action="edit"]')?.addEventListener('click', () => {
+        openMenuModal({
+          mode: 'edit',
+          type,
+          system,
+          row,
+          scope,
+          parentId: row.dataset.parent || '',
+          parentName: parentMenuName(row.dataset.parent || '', scope)
+        });
+      });
+      actionCell.querySelector('[data-menu-action="status"]')?.addEventListener('click', event => {
+        const action = event.currentTarget;
+        const currentDisabled = statusCell.textContent.includes('停用');
+        openConfirm(
+          currentDisabled ? '确认启用菜单' : '确认停用菜单',
+          `是否确认${currentDisabled ? '启用' : '停用'}「${menuName(row)}」？`,
+          () => toggleMenuStatus(row, action)
+        );
+      });
+      actionCell.querySelector('[data-menu-action="add-child"]')?.addEventListener('click', () => {
+        openMenuModal({
+          mode: 'create',
+          type: childType(type),
+          system,
+          scope,
+          parentId: row.dataset.node || '',
+          parentName: menuName(row)
+        });
+      });
+      actionCell.querySelector('[data-menu-action="delete"]')?.addEventListener('click', () => {
+        const branchCount = collectMenuBranch(row).length;
+        openConfirm(
+          '确认删除菜单',
+          `是否确认删除「${menuName(row)}」${branchCount > 1 ? `及其 ${branchCount - 1} 个下级菜单` : ''}？`,
+          () => deleteMenuRow(row)
+        );
+      });
+    }
+
+    function syncSharedTenantMenus(){
+      const tenantTable = document.querySelector('#tenant-menu-page table');
+      const tenantBody = tenantTable?.querySelector('tbody');
+      if (!tenantBody) return;
+
+      const sharedRows = Array.from(document.querySelectorAll('#menus tbody [data-shared-menu-key]'));
+      sharedRows.forEach(source => {
+        const key = source.dataset.sharedMenuKey;
+        const sourceName = menuName(source);
+        const sourceSystem = source.cells[1]?.textContent.trim() || '';
+        const sourceRoute = source.cells[3]?.textContent.trim() || '';
+        const sourceType = normalizedMenuType(source, 'platformMenu');
+        const sourceStatus = source.cells[5]?.textContent.includes('停用') ? '停用' : '正常';
+        let target = tenantBody.querySelector(`[data-shared-menu-key="${key}"]`);
+
+        if (!target) {
+          target = createMenuRow({
+            id: `shared-${key}`,
+            parentId: '',
+            system: sourceSystem,
+            type: sourceType,
+            name: sourceName,
+            permission: '',
+            route: sourceRoute,
+            status: sourceStatus,
+            scope: 'tenantMenu'
+          });
+          target.dataset.sharedMenuKey = key;
+          tenantBody.appendChild(target);
+          bindMenuRow(target);
+        } else {
+          target.cells[0].querySelector('.tree-name')?.lastChild
+            && (target.cells[0].querySelector('.tree-name').lastChild.textContent = sourceName);
+          target.cells[1].textContent = sourceSystem;
+          target.cells[2].textContent = sourceRoute;
+          target.cells[3].textContent = sourceType;
+          target.cells[4].innerHTML = sourceStatus === '停用'
+            ? '<span class="tag red">停用</span>'
+            : '<span class="tag green">正常</span>';
+          renderMenuActions(target);
+        }
+      });
+
+      tenantMenuRows = Array.from(tenantBody.querySelectorAll('.tree-row'));
+      updatePaginationTotal(tenantTable);
     }
 
     function saveMenu(){
@@ -4428,32 +5509,47 @@
         return false;
       }
 
+      const scope = menuContext.scope || 'platformMenu';
       const type = menuFormType.value;
       const system = menuFormSystem.value;
       const parentId = menuContext.parentId || '';
-      const permission = menuContext.mode === 'edit' && menuContext.row
-        ? (type === '按钮' ? menuFormPermission.value.trim() : menuContext.row.cells[2].textContent.trim())
-        : type === '按钮' && menuFormPermission.value.trim()
-          ? menuFormPermission.value.trim()
-        : autoPermission(system, type, name);
+      const permission = scope === 'platformMenu'
+        ? (menuContext.mode === 'edit' && menuContext.row
+            ? (type === '按钮' ? menuFormPermission.value.trim() : menuContext.row.cells[menuColumnIndex(scope, 'permission')].textContent.trim())
+            : type === '按钮' && menuFormPermission.value.trim()
+              ? menuFormPermission.value.trim()
+              : autoPermission(system, type, name))
+        : '';
       const route = menuFormRoute.value.trim();
       const status = menuFormStatus.value;
 
       if (menuContext.mode === 'edit' && menuContext.row) {
         const row = menuContext.row;
         row.cells[0].querySelector('.tree-name')?.lastChild && (row.cells[0].querySelector('.tree-name').lastChild.textContent = name);
-        row.cells[2].textContent = permission;
-        row.cells[3].textContent = route;
-        row.cells[5].innerHTML = status === '停用'
-          ? '<span class="tag red">停用</span>'
-          : '<span class="tag green">正常</span>';
-        const statusAction = row.cells[6].querySelector('.menu-status-action:not(:first-child)');
-        if (statusAction) statusAction.textContent = status === '停用' ? '启用' : '停用';
-        applyMenuFilters();
+        if (scope === 'tenantMenu') {
+          row.cells[2].textContent = route;
+          row.cells[3].textContent = type;
+          row.cells[4].innerHTML = status === '停用'
+            ? '<span class="tag red">停用</span>'
+            : '<span class="tag green">正常</span>';
+          renderMenuActions(row);
+        } else {
+          row.cells[2].textContent = permission;
+          row.cells[3].textContent = route;
+          row.cells[4].textContent = type;
+          row.cells[5].innerHTML = status === '停用'
+            ? '<span class="tag red">停用</span>'
+            : '<span class="tag green">正常</span>';
+          renderMenuActions(row);
+        }
+        if (scope === 'platformMenu') {
+          syncSharedTenantMenus();
+          applyMenuFilters();
+        }
         return true;
       }
 
-      const id = nextMenuNodeId();
+      const id = nextMenuNodeId(scope);
       const row = createMenuRow({
         id,
         parentId,
@@ -4462,26 +5558,33 @@
         name,
         permission,
         route,
-        status
+        status,
+        scope
       });
       if (parentId) {
-        const parent = document.querySelector(`#menus tbody [data-node="${parentId}"]`);
+        const parent = document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`);
         const parentToggle = parent?.querySelector('.tree-toggle');
         if (!parentToggle || parentToggle.classList.contains('collapsed')) row.classList.add('hidden');
       }
-      insertMenuRow(row, parentId);
-      menuRows.push(row);
+      insertMenuRow(row, parentId, scope);
+      const rows = menuRowsForScope(scope);
+      rows.push(row);
+      setMenuRowsForScope(scope, rows);
       bindMenuRow(row);
 
       if (parentId) {
-        const parent = document.querySelector(`#menus tbody [data-node="${parentId}"]`);
+        const parent = document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`);
         const parentToggle = parent?.querySelector('.tree-toggle');
         if (parentToggle) {
           parentToggle.classList.remove('collapsed');
-          setTreeBranchVisible(parentId, true);
+          setTreeBranchVisible(parentId, true, scope);
         }
       }
-      applyMenuFilters();
+      if (scope === 'platformMenu') {
+        syncSharedTenantMenus();
+        applyMenuFilters();
+      }
+      updatePaginationTotal(document.querySelector(menuScopeConfig(scope).table));
       return true;
     }
 
@@ -4498,77 +5601,16 @@
     function bindTreeToggle(toggle){
       toggle.addEventListener('click', () => {
         const target = toggle.dataset.treeTarget;
-        const children = Array.from(document.querySelectorAll(`[data-parent="${target}"]`));
+        const scope = toggle.closest('#tenant-menu-page') ? 'tenantMenu' : 'platformMenu';
+        const children = Array.from(document.querySelectorAll(`${menuScopeConfig(scope).table} [data-parent="${target}"]`));
         const shouldShow = children.some(child => child.classList.contains('hidden'));
-        setTreeBranchVisible(target, shouldShow);
+        setTreeBranchVisible(target, shouldShow, scope);
         toggle.classList.toggle('collapsed', !shouldShow);
       });
     }
 
     function bindMenuRow(row){
-      const statusCell = row.cells[5];
-      const actionCell = row.cells[6];
-      const system = row.cells[1].textContent.trim();
-      const type = row.cells[4].textContent.trim();
-      const editLink = actionCell.querySelector('.link');
-      editLink?.addEventListener('click', () => {
-        openMenuModal({
-          mode: 'edit',
-          type,
-          system,
-          row,
-          parentId: row.dataset.parent || '',
-          parentName: parentMenuName(row.dataset.parent || '')
-        });
-      });
-
-      const action = document.createElement('button');
-      action.type = 'button';
-      action.className = 'link menu-status-action';
-      action.textContent = statusCell.textContent.includes('停用') ? '启用' : '停用';
-      action.addEventListener('click', () => {
-        const isDisabled = statusCell.textContent.includes('停用');
-        openConfirm(
-          isDisabled ? '确认启用菜单' : '确认停用菜单',
-          `是否确认${isDisabled ? '启用' : '停用'}「${menuName(row)}」？`,
-          () => toggleMenuStatus(row, action)
-        );
-      });
-      actionCell.appendChild(document.createTextNode('　'));
-      actionCell.appendChild(action);
-      if (canAddChild(row)) {
-        const addChild = document.createElement('button');
-        addChild.type = 'button';
-        addChild.className = 'link menu-status-action';
-        addChild.textContent = '新增下级';
-        addChild.addEventListener('click', () => {
-          openMenuModal({
-            mode: 'create',
-            type: childType(type),
-            system,
-            parentId: row.dataset.node || '',
-            parentName: menuName(row)
-          });
-        });
-        actionCell.appendChild(document.createTextNode('　'));
-        actionCell.appendChild(addChild);
-      }
-
-      const deleteAction = document.createElement('button');
-      deleteAction.type = 'button';
-      deleteAction.className = 'link menu-status-action';
-      deleteAction.textContent = '删除';
-      deleteAction.addEventListener('click', () => {
-        const branchCount = collectMenuBranch(row).length;
-        openConfirm(
-          '确认删除菜单',
-          `是否确认删除「${menuName(row)}」${branchCount > 1 ? `及其 ${branchCount - 1} 个下级菜单` : ''}？`,
-          () => deleteMenuRow(row)
-        );
-      });
-      actionCell.appendChild(document.createTextNode('　'));
-      actionCell.appendChild(deleteAction);
-
+      renderMenuActions(row);
       const treeToggle = row.querySelector('.tree-toggle[data-tree-target]');
       if (treeToggle) bindTreeToggle(treeToggle);
     }
@@ -4576,14 +5618,17 @@
     normalizeSelectPrompts();
     normalizeSearchBars();
     bindPersonnelFilters();
-    bindListDeleteActions('#personnel table', '账号');
-    bindListDeleteActions('#roles table', '角色');
     bindAccountActions();
-    bindRoleEditActions();
+    bindTenantAccountFilters();
+    bindTenantAccountActions();
+    bindRoleEditActions('platformRole');
+    bindRoleEditActions('tenantRole');
     bindTenantActions();
     addPaginationBars();
     enhanceVisibleSelects();
     menuRows.forEach(bindMenuRow);
+    tenantMenuRows.forEach(bindMenuRow);
+    syncSharedTenantMenus();
     updatePersonnelSummary();
 
     menuItems.forEach(item => item.addEventListener('click', () => activate(item.dataset.page)));
@@ -4646,12 +5691,26 @@
     document.querySelectorAll('[data-choice-for]').forEach(group => {
       const select = document.getElementById(group.dataset.choiceFor);
       group.querySelectorAll('.choice-option').forEach(option => {
-        option.addEventListener('click', () => {
-          if (!select || select.disabled) return;
-          select.value = option.dataset.value;
-          syncChoiceGroup(select);
-          select.dispatchEvent(new Event('change'));
-        });
+        const isMultiple = select?.multiple || group.dataset.choiceMode === 'multiple';
+        if (isMultiple) {
+          const input = option.querySelector('input[type="checkbox"]');
+          input?.addEventListener('change', () => {
+            if (!select || select.disabled) return;
+            const targetOption = Array.from(select.options).find(item => item.value === option.dataset.value);
+            if (!targetOption) return;
+            targetOption.selected = input.checked;
+            syncChoiceGroup(select);
+            select.dispatchEvent(new Event('change'));
+          });
+        } else {
+          option.addEventListener('click', event => {
+            if (!select || select.disabled) return;
+            event.preventDefault();
+            select.value = option.dataset.value;
+            syncChoiceGroup(select);
+            select.dispatchEvent(new Event('change'));
+          });
+        }
       });
       if (select) syncChoiceGroup(select);
     });
@@ -4662,6 +5721,11 @@
       if (!hasChildren) {
         toggle.remove();
       }
+    });
+    document.querySelectorAll('#tenant-menu-page tbody .tree-toggle').forEach(toggle => {
+      const target = toggle.dataset.treeTarget;
+      const hasChildren = !!Array.from(document.querySelectorAll(`#tenant-menu-page tbody [data-parent="${target}"]`)).some(item => normalizedMenuType(item) !== '按钮');
+      if (!hasChildren) toggle.remove();
     });
     document.querySelectorAll('.permission-picker input[type="checkbox"]').forEach(input => {
       input.addEventListener('change', () => toggleChildPermissions(input.closest('label'), input.checked));
@@ -4688,7 +5752,7 @@
       updateContactField();
     });
     personTenantId.addEventListener('change', () => {
-      renderTenantIdOptions(personTenantId.value, personContext.mode === 'edit' ? personContext.row : null);
+      renderTenantIdOptions(personTenantId.value);
     });
     personContact.addEventListener('input', () => {
       setContactError(false);
@@ -4706,8 +5770,11 @@
     });
     roleTarget.addEventListener('change', updateRoleFields);
     roleTenantType.addEventListener('change', updateRoleFields);
+    tenantCreateEnterpriseType?.addEventListener('change', updateTenantComplianceFields);
     tenantRegion?.addEventListener('change', updateTenantRegionFields);
     updateTenantRegionFields();
+    updateTenantComplianceFields();
+    bindTenantUploadControls();
     closeModal.addEventListener('click', hideModal);
     cancelModal.addEventListener('click', hideModal);
     confirmCancel.addEventListener('click', hideConfirm);
@@ -4722,7 +5789,7 @@
     });
     menuFormSystem.addEventListener('change', () => {
       syncChoiceGroup(menuFormSystem);
-      updateMenuParentOptions();
+      updateMenuFormFields();
     });
     menuParentSelect.addEventListener('change', () => {
       menuContext.parentId = menuParentSelect.value;
@@ -4765,21 +5832,48 @@
         mode: 'create',
         type: '目录',
         lockType: false,
+        scope: 'platformMenu',
         system: '运营管理平台',
         parentId: '',
         parentName: '根目录'
       });
     });
+    tenantRoleAdd?.addEventListener('click', () => openRoleModal({ mode: 'create', scope: 'tenantRole' }));
+    tenantMenuAdd?.addEventListener('click', () => {
+      openMenuModal({
+        mode: 'create',
+        type: '目录',
+        lockType: false,
+        scope: 'tenantMenu',
+        system: '商户运营后台',
+        parentId: '',
+        parentName: '根目录'
+      });
+    });
+    tenantAccountAdd?.addEventListener('click', () => openPersonnelModal({ mode: 'create', row: null, scope: 'tenantAccount' }));
     modalSave.addEventListener('click', () => {
       const activeSegment = segs.find(seg => seg.classList.contains('active'))?.dataset.seg;
       if (activeSegment === 'menu' && saveMenu()) hideModal();
       if (activeSegment === 'personnel' && savePersonnel()) hideModal();
+      if (activeSegment === 'assign-role' && saveAssignRole()) hideModal();
       if (activeSegment === 'password' && savePassword()) hideModal();
       if (activeSegment === 'role' && saveRole()) hideModal();
       if (activeSegment === 'tenant-form' && saveTenant()) hideModal();
       if (activeSegment === 'tenant-qualification') hideModal();
     });
     modal.addEventListener('click', e => { if (e.target === modal) hideModal(); });
+    imagePreviewClose?.addEventListener('click', hideImagePreview);
+    imagePreviewModal?.addEventListener('click', e => {
+      if (e.target === imagePreviewModal) hideImagePreview();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        if (imagePreviewModal?.classList.contains('show')) {
+          hideImagePreview();
+          return;
+        }
+      }
+    });
 
     const initial = location.hash.replace('#','') || 'personnel';
     activate(initial === 'accounts' ? 'personnel' : initial);
