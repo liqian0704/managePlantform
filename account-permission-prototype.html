@@ -161,16 +161,15 @@
     .region-config-table th:nth-child(3),.region-config-table td:nth-child(3){width:6%}
     .region-config-table th:nth-child(4),.region-config-table td:nth-child(4){width:5%}
     .region-config-table th:nth-child(5),.region-config-table td:nth-child(5){width:6%}
-    .region-config-table th:nth-child(6),.region-config-table td:nth-child(6){width:6%}
+    .region-config-table th:nth-child(6),.region-config-table td:nth-child(6){width:7%}
     .region-config-table th:nth-child(7),.region-config-table td:nth-child(7){width:7%}
-    .region-config-table th:nth-child(8),.region-config-table td:nth-child(8){width:7%}
-    .region-config-table th:nth-child(9),.region-config-table td:nth-child(9){width:6%}
+    .region-config-table th:nth-child(8),.region-config-table td:nth-child(8){width:6%}
+    .region-config-table th:nth-child(9),.region-config-table td:nth-child(9){width:7%}
     .region-config-table th:nth-child(10),.region-config-table td:nth-child(10){width:7%}
-    .region-config-table th:nth-child(11),.region-config-table td:nth-child(11){width:7%}
+    .region-config-table th:nth-child(11),.region-config-table td:nth-child(11){width:5%}
     .region-config-table th:nth-child(12),.region-config-table td:nth-child(12){width:5%}
     .region-config-table th:nth-child(13),.region-config-table td:nth-child(13){width:5%}
-    .region-config-table th:nth-child(14),.region-config-table td:nth-child(14){width:5%}
-    .region-config-table th:nth-child(15),.region-config-table td:nth-child(15){width:6%}
+    .region-config-table th:nth-child(14),.region-config-table td:nth-child(14){width:6%}
     #product-list .panel-body{padding-left:8px}
     .product-filter-bar{grid-template-columns:220px 220px 220px auto}
     .table-scroll{width:100%;overflow-x:auto}
@@ -1003,6 +1002,11 @@
     .store-auth-main{display:flex;align-items:center;gap:10px;min-width:0}
     .store-auth-main input{width:16px;height:16px;margin:0;accent-color:var(--primary)}
     .store-auth-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .store-auth-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .store-auth-hint{color:#f04438;font-size:12px;white-space:nowrap}
+    .store-auth-row.disabled{opacity:.55;cursor:not-allowed}
+    .store-auth-row.disabled .store-auth-name{color:#98a2b3;text-decoration:line-through}
+    .store-auth-row.disabled .tag.gray{background:#f1f5f9;color:#98a2b3}
     .store-auth-count{margin-top:6px;color:#667085;font-size:12px}
     .modal.permission-mode .modal-panel{width:min(720px,calc(100vw - 48px))}
     .modal.permission-mode .modal-body{padding:22px 24px 20px}
@@ -2667,16 +2671,16 @@
                   <tr><th>用户</th><th>手机号</th><th>订单量</th><th>总金额</th><th>已取消</th><th>取消金额</th><th>已退款</th><th>退款金额</th><th>最近订单时间</th><th>注册时间</th><th>来源</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>点单屏用户-76</td><td>85261234567</td><td>22</td><td>325.2</td><td>21</td><td>320.2</td><td>1</td><td>5</td><td>2026-08-10 16:26:54</td><td>2026-07-29 09:19:18</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-75</td><td>886912345678</td><td>786</td><td>12078.2</td><td>678</td><td>11045.7</td><td>6</td><td>48.2</td><td>2026-08-10 20:47:57</td><td>2026-07-02 12:09:49</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-64</td><td>447700900123</td><td>5120</td><td>53745.4</td><td>1792</td><td>18878.1</td><td>170</td><td>2240.7</td><td>2026-06-29 13:45:02</td><td>2026-04-30 10:52:07</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-63</td><td>85262345678</td><td>134</td><td>1314.6</td><td>117</td><td>1143.8</td><td>3</td><td>26.8</td><td>2026-08-10 19:29:26</td><td>2026-07-27 20:26:47</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-58</td><td>886934567890</td><td>3175</td><td>24035.7</td><td>1171</td><td>8959.3</td><td>36</td><td>385.2</td><td>2026-08-06 14:46:45</td><td>2026-04-30 21:03:07</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-456</td><td>85263456789</td><td>73</td><td>1578.8</td><td>59</td><td>1388.3</td><td>0</td><td>0</td><td>2026-08-11 10:24:51</td><td>2026-08-08 09:48:53</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-455</td><td>447700900456</td><td>144</td><td>1787.8</td><td>121</td><td>1468</td><td>2</td><td>74.2</td><td>2026-08-11 10:47:05</td><td>2026-08-04 18:13:21</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-453</td><td>886945678901</td><td>69</td><td>3330.3</td><td>56</td><td>2646.6</td><td>4</td><td>625.3</td><td>2026-08-09 12:58:26</td><td>2026-08-01 11:48:12</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-452</td><td>85264567890</td><td>204</td><td>1337.5</td><td>168</td><td>1070.9</td><td>7</td><td>63.6</td><td>2026-08-11 09:44:58</td><td>2026-07-31 15:40:16</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
-                  <tr><td>点单屏用户-446</td><td>447700900789</td><td>705</td><td>27696.7</td><td>602</td><td>26278.7</td><td>2</td><td>47.5</td><td>2026-08-11 10:42:51</td><td>2026-07-24 18:46:13</td><td>pad</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000113812345678</td><td>13812345678</td><td>22</td><td>325.2</td><td>21</td><td>320.2</td><td>1</td><td>5</td><td>2026-08-10 16:26:54</td><td>2026-07-29 09:19:18</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000213987654321</td><td>13987654321</td><td>786</td><td>12078.2</td><td>678</td><td>11045.7</td><td>6</td><td>48.2</td><td>2026-08-10 20:47:57</td><td>2026-07-02 12:09:49</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000313725836914</td><td>13725836914</td><td>5120</td><td>53745.4</td><td>1792</td><td>18878.1</td><td>170</td><td>2240.7</td><td>2026-06-29 13:45:02</td><td>2026-04-30 10:52:07</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000415814785236</td><td>15814785236</td><td>134</td><td>1314.6</td><td>117</td><td>1143.8</td><td>3</td><td>26.8</td><td>2026-08-10 19:29:26</td><td>2026-07-27 20:26:47</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000518625874159</td><td>18625874159</td><td>3175</td><td>24035.7</td><td>1171</td><td>8959.3</td><td>36</td><td>385.2</td><td>2026-08-06 14:46:45</td><td>2026-04-30 21:03:07</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000618845612378</td><td>18845612378</td><td>73</td><td>1578.8</td><td>59</td><td>1388.3</td><td>0</td><td>0</td><td>2026-08-11 10:24:51</td><td>2026-08-08 09:48:53</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000715975324681</td><td>15975324681</td><td>144</td><td>1787.8</td><td>121</td><td>1468</td><td>2</td><td>74.2</td><td>2026-08-11 10:47:05</td><td>2026-08-04 18:13:21</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000813695147823</td><td>13695147823</td><td>69</td><td>3330.3</td><td>56</td><td>2646.6</td><td>4</td><td>625.3</td><td>2026-08-09 12:58:26</td><td>2026-08-01 11:48:12</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜000917736925814</td><td>17736925814</td><td>204</td><td>1337.5</td><td>168</td><td>1070.9</td><td>7</td><td>63.6</td><td>2026-08-11 09:44:58</td><td>2026-07-31 15:40:16</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
+                  <tr><td>小呼噜001019912365478</td><td>19912365478</td><td>705</td><td>27696.7</td><td>602</td><td>26278.7</td><td>2</td><td>47.5</td><td>2026-08-11 10:42:51</td><td>2026-07-24 18:46:13</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
                 </tbody>
               </table>
             </div>
@@ -2707,7 +2711,7 @@
               </div>
               <div class="user-order-panel active" data-user-order-panel="normal">
                 <table class="user-order-table" data-total="102" data-page-size="10" data-pagination="compact">
-                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>店铺</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
+                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>门店名称</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
                   <tbody>
                     <tr><td><span>N26081019M555977</span></td><td>1</td><td>7</td><td>7</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-08-10 19:54:09</td><td>正常完成</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
                     <tr><td><span>N26081017M394111</span></td><td>1</td><td>5</td><td>5</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-08-10 17:11:01</td><td>正常完成</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
@@ -2719,7 +2723,7 @@
               </div>
               <div class="user-order-panel" data-user-order-panel="cancel">
                 <table class="user-order-table" data-total="21" data-page-size="10" data-pagination="compact">
-                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>店铺</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
+                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>门店名称</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
                   <tbody>
                     <tr><td><span>N26080821M789555</span></td><td>1</td><td>5</td><td>0</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-08-08 21:49:45</td><td>已取消</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
                     <tr><td><span>N26080820M733943</span></td><td>1</td><td>8.5</td><td>0</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-08-08 20:55:45</td><td>已取消</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
@@ -2728,7 +2732,7 @@
               </div>
               <div class="user-order-panel" data-user-order-panel="refund">
                 <table class="user-order-table" data-total="6" data-page-size="10" data-pagination="compact">
-                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>店铺</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
+                  <thead><tr><th>订单编号</th><th>商品数量</th><th>金额</th><th>实付金额</th><th>城市</th><th>门店名称</th><th>创建时间</th><th>订单状态</th><th>操作</th></tr></thead>
                   <tbody>
                     <tr><td><span>N26072219M401352</span></td><td>1</td><td>9.9</td><td>9.9</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-07-22 19:30:53</td><td>已退款</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
                     <tr><td><span>N26071616M212862</span></td><td>1</td><td>9.9</td><td>9.9</td><td>深圳</td><td>深圳宝安体育馆太空舱</td><td>2026-07-16 16:23:24</td><td>已退款</td><td><button class="link" type="button" data-order-detail>订单详情</button></td></tr>
@@ -2749,7 +2753,7 @@
                 <div class="order-detail-field"><label>顺序号</label><div class="order-detail-value" id="orderDetailSequence">1073</div></div>
                 <div class="order-detail-field"><label>订单状态</label><div class="order-detail-value" id="orderDetailStatus">正常完成（已完成）</div></div>
                 <div class="order-detail-field"><label>城市</label><div class="order-detail-value" id="orderDetailCity">-</div></div>
-                <div class="order-detail-field"><label>店铺</label><div class="order-detail-value" id="orderDetailStore">-</div></div>
+                <div class="order-detail-field"><label>门店名称</label><div class="order-detail-value" id="orderDetailStore">-</div></div>
                 <div class="order-detail-field"><label>租户名称</label><div class="order-detail-value" id="orderDetailTenantName">-</div></div>
                 <div class="order-detail-field"><label>创建时间</label><div class="order-detail-value" id="orderDetailCreatedAt">-</div></div>
                 <div class="order-detail-field"><label>商品数量</label><div class="order-detail-value" id="orderDetailQuantity">-</div></div>
@@ -3153,10 +3157,18 @@
                 <div class="order-filter-field"><label>租户名称</label>
                   <select><option>请选择租户名称</option><option>平台自营租户</option><option>天齐企业租户</option><option>香港渠道加盟商 A</option></select>
                 </div>
-                <div class="order-filter-field"><label>渠道订单号</label><input placeholder="请输入渠道订单号" /></div>
-                <div class="order-filter-field"><label>店铺</label>
+                <div class="order-filter-field"><label>订单来源</label>
                   <select>
-                    <option>请选择店铺</option>
+                    <option>请选择订单来源</option>
+                    <option>点单屏</option>
+                    <option>H5</option>
+                    <option>小程序</option>
+                    <option>NEXGO 终端</option>
+                  </select>
+                </div>
+                <div class="order-filter-field"><label>门店名称</label>
+                  <select>
+                    <option>请选择门店名称</option>
                     <option>圆明园大空舱</option>
                     <option>江西景德镇法恩扎广场店太空舱</option>
                     <option>哈工大（深圳）实训楼K栋架空层</option>
@@ -3212,9 +3224,9 @@
               <div class="order-filter refund-filter">
                 <div class="order-filter-field"><label>订单编号</label><input placeholder="请输入订单编号" /></div>
                 <div class="order-filter-field"><label>取单号</label><input placeholder="请输入取单号" /></div>
-                <div class="order-filter-field"><label>店铺</label>
+                <div class="order-filter-field"><label>门店名称</label>
                   <select>
-                    <option>请选择店铺</option>
+                    <option>请选择门店名称</option>
                     <option>铜仁古镇太空舱</option>
                     <option>深圳大芬湾太空舱</option>
                     <option>大融城西区</option>
@@ -3283,13 +3295,13 @@
                 </div>
                 <table class="region-config-table">
                   <thead>
-                    <tr><th>国家/地区</th><th>默认时区</th><th>默认语言</th><th>默认币种</th><th>默认税种</th><th>现制饮品税率</th><th>预包装商品税率</th><th>日期格式</th><th>时间格式</th><th>数字格式</th><th>币种符号位置</th><th>计量单位</th><th>首日</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>国家/地区</th><th>默认时区</th><th>默认语言</th><th>默认币种</th><th>现制饮品税率</th><th>预包装商品税率</th><th>日期格式</th><th>时间格式</th><th>数字格式</th><th>币种符号位置</th><th>计量单位</th><th>首日</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>英国 GB</td><td>Europe/London</td><td>en-GB</td><td>GBP</td><td>VAT</td><td>20%</td><td>0%</td><td>dd/MM/yyyy</td><td>HH:mm</td><td>1,000.00</td><td>前缀 (£)</td><td>公制</td><td>周一</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
-                    <tr><td>香港 HK</td><td>Asia/Hong_Kong</td><td>zh-HK</td><td>HKD</td><td>无</td><td>0%</td><td>0%</td><td>yyyy-MM-dd</td><td>hh:mm a</td><td>1,000.00</td><td>前缀 (HK$)</td><td>公制</td><td>周日</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
-                    <tr><td>台湾 TW</td><td>Asia/Taipei</td><td>zh-TW</td><td>TWD</td><td>营业税</td><td>5%</td><td>5%</td><td>yyyy-MM-dd</td><td>hh:mm a</td><td>1,000.00</td><td>前缀 (NT$)</td><td>公制</td><td>周日</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
-                    <tr><td>中国 CN</td><td>Asia/Shanghai</td><td>zh-CN</td><td>CNY</td><td>增值税</td><td>13%</td><td>9%</td><td>yyyy-MM-dd</td><td>HH:mm</td><td>1,000.00</td><td>前缀 (¥)</td><td>公制</td><td>周一</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
+                    <tr><td>英国 GB</td><td>Europe/London</td><td>en-GB</td><td>GBP</td><td>20%</td><td>0%</td><td>dd/MM/yyyy</td><td>HH:mm</td><td>1,000.00</td><td>前缀 (£)</td><td>公制</td><td>周一</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
+                    <tr><td>香港 HK</td><td>Asia/Hong_Kong</td><td>zh-HK</td><td>HKD</td><td>0%</td><td>0%</td><td>yyyy-MM-dd</td><td>hh:mm a</td><td>1,000.00</td><td>前缀 (HK$)</td><td>公制</td><td>周日</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
+                    <tr><td>台湾 TW</td><td>Asia/Taipei</td><td>zh-TW</td><td>TWD</td><td>5%</td><td>5%</td><td>yyyy-MM-dd</td><td>hh:mm a</td><td>1,000.00</td><td>前缀 (NT$)</td><td>公制</td><td>周日</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
+                    <tr><td>中国 CN</td><td>Asia/Shanghai</td><td>zh-CN</td><td>CNY</td><td>13%</td><td>9%</td><td>yyyy-MM-dd</td><td>HH:mm</td><td>1,000.00</td><td>前缀 (¥)</td><td>公制</td><td>周一</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-region-action="edit">编辑</button><button class="link" type="button" data-region-action="status">停用</button></div></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -3442,13 +3454,13 @@
               </div>
               <table>
                 <thead>
-                  <tr><th>租户ID</th><th>租户名称</th><th>租户类型</th><th>版本</th><th>适用端</th><th>适用地区</th><th>支付渠道</th><th>下级商户继承范围</th><th>状态</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>租户ID</th><th>租户名称</th><th>租户类型</th><th>收银台版本</th><th>适用端</th><th>适用地区</th><th>支付渠道</th><th>已配置门店名称</th><th>状态</th><th>更新时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
                   <tr data-tenant-cashier-id="T10001-domestic-screen" data-tenant-id="T10001" data-channels="微信支付,支付宝,宝付" data-merchants="好饮自营商户,好饮机场店"><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>V2.3.0</td><td>点单屏</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>好饮自营商户、好饮机场店</td><td><span class="tag green">启用</span></td><td>2026-08-11 17:22:10</td><td></td></tr>
                   <tr data-tenant-cashier-id="T10002-h5" data-tenant-id="T10002" data-channels="微信支付,支付宝" data-merchants="深圳好饮科技旗舰店"><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>V1.9.0</td><td>H5</td><td>中国大陆</td><td>微信支付、支付宝</td><td>深圳好饮科技旗舰店</td><td><span class="tag green">启用</span></td><td>2026-08-10 15:06:33</td><td></td></tr>
                   <tr data-tenant-cashier-id="T20001-nexgo" data-tenant-id="T20001" data-channels="湃卡国际" data-merchants="London Central Store、Manchester Store"><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>V1.5.0</td><td>NEXGO 终端</td><td>海外</td><td>湃卡国际</td><td>London Central Store、Manchester Store</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
-                  <tr data-tenant-cashier-id="T30001-tw" data-tenant-id="T30001" data-channels="摩宝支付" data-merchants="台北信义店"><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>V1.2.0</td><td>点单屏 / H5</td><td>台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
+                  <tr data-tenant-cashier-id="T30001-tw" data-tenant-id="T30001" data-channels="摩宝支付" data-merchants="台北信义店"><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>V1.2.0</td><td>点单屏</td><td>台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
                 </tbody>
               </table>
             </div>
@@ -3623,7 +3635,6 @@
                   <option>H5</option>
                   <option>小程序</option>
                   <option>NEXGO 终端</option>
-                  <option>点单屏 / H5</option>
                 </select>
               </div>
               <div class="field"><label><span class="required-mark">*</span>适用地区</label>
@@ -3857,7 +3868,6 @@
             <div class="field"><label><span class="required-mark">*</span>默认时区</label><input id="regionFormTimezone" placeholder="如 Asia/Tokyo" /></div>
             <div class="field"><label><span class="required-mark">*</span>默认语言</label><input id="regionFormLanguage" placeholder="如 ja-JP" /></div>
             <div class="field"><label><span class="required-mark">*</span>默认币种</label><input id="regionFormCurrency" placeholder="如 JPY" /></div>
-            <div class="field"><label><span class="required-mark">*</span>默认税种</label><input id="regionFormTaxType" placeholder="如 VAT / 消费税 / 无" /></div>
             <div class="field"><label><span class="required-mark">*</span>现制饮品税率</label><input id="regionFormTaxRate" placeholder="现制饮品类" /></div>
             <div class="field"><label><span class="required-mark">*</span>预包装商品税率</label><input id="regionFormFoodTaxRate" placeholder="咖啡豆等预包装食品" /></div>
             <div class="field"><label><span class="required-mark">*</span>日期格式</label><input id="regionFormDateFormat" placeholder="如 yyyy-MM-dd" /></div>
@@ -4221,7 +4231,7 @@
             <div class="refund-field"><label>顺序号</label><div class="refund-value" id="refundSequence">-</div></div>
             <div class="refund-field"><label>订单状态</label><div class="refund-value" id="refundStatus">-</div></div>
             <div class="refund-field"><label>城市</label><div class="refund-value" id="refundCity">-</div></div>
-            <div class="refund-field"><label>店铺</label><div class="refund-value" id="refundStore">-</div></div>
+            <div class="refund-field"><label>门店名称</label><div class="refund-value" id="refundStore">-</div></div>
             <div class="refund-field"><label>租户名称</label><div class="refund-value" id="refundTenantName">-</div></div>
             <div class="refund-field"><label>创建时间</label><div class="refund-value" id="refundCreatedAt">-</div></div>
             <div class="refund-field"><label>商品数量</label><div class="refund-value" id="refundQuantity">-</div></div>
@@ -4698,7 +4708,6 @@
     const regionFormTimezone = document.getElementById('regionFormTimezone');
     const regionFormLanguage = document.getElementById('regionFormLanguage');
     const regionFormCurrency = document.getElementById('regionFormCurrency');
-    const regionFormTaxType = document.getElementById('regionFormTaxType');
     const regionFormTaxRate = document.getElementById('regionFormTaxRate');
     const regionFormFoodTaxRate = document.getElementById('regionFormFoodTaxRate');
     const regionFormDateFormat = document.getElementById('regionFormDateFormat');
@@ -4743,25 +4752,25 @@
     });
     const tenantMerchantOptions = {
       T10001: [
-        { id: '392', name: '好饮自营商户', city: '北京' },
-        { id: '388', name: '好饮机场店', city: '北京' },
-        { id: '387', name: '好饮高铁店', city: '上海' },
-        { id: '386', name: '好饮太空舱店', city: '深圳' }
+        { id: '392', name: '好饮自营商户', city: '北京', scenario: '点单屏' },
+        { id: '388', name: '好饮机场店', city: '北京', scenario: '点单屏' },
+        { id: '387', name: '好饮高铁店', city: '上海', scenario: 'H5' },
+        { id: '386', name: '好饮太空舱店', city: '深圳', scenario: '小程序' }
       ],
       T10002: [
-        { id: '501', name: '深圳好饮科技旗舰店', city: '深圳' },
-        { id: '502', name: '深圳科技园店', city: '深圳' },
-        { id: '503', name: '深圳湾体验店', city: '深圳' }
+        { id: '501', name: '深圳好饮科技旗舰店', city: '深圳', scenario: 'H5' },
+        { id: '502', name: '深圳科技园店', city: '深圳', scenario: '点单屏' },
+        { id: '503', name: '深圳湾体验店', city: '深圳', scenario: '小程序' }
       ],
       T20001: [
-        { id: '701', name: 'London Central Store', city: 'London' },
-        { id: '702', name: 'Manchester Store', city: 'Manchester' },
-        { id: '703', name: 'Birmingham Store', city: 'Birmingham' }
+        { id: '701', name: 'London Central Store', city: 'London', scenario: 'NEXGO 终端' },
+        { id: '702', name: 'Manchester Store', city: 'Manchester', scenario: 'NEXGO 终端' },
+        { id: '703', name: 'Birmingham Store', city: 'Birmingham', scenario: '点单屏' }
       ],
       T30001: [
-        { id: '801', name: '台北信义店', city: '台北' },
-        { id: '802', name: '台中公益店', city: '台中' },
-        { id: '803', name: '高雄左营店', city: '高雄' }
+        { id: '801', name: '台北信义店', city: '台北', scenario: '点单屏' },
+        { id: '802', name: '台中公益店', city: '台中', scenario: 'H5' },
+        { id: '803', name: '高雄左营店', city: '高雄', scenario: '小程序' }
       ]
     };
     const menuKeyword = document.getElementById('menuKeyword');
@@ -8011,22 +8020,20 @@
         regionFormTimezone.value = row.cells[1].textContent.trim();
         regionFormLanguage.value = row.cells[2].textContent.trim();
         regionFormCurrency.value = row.cells[3].textContent.trim();
-        regionFormTaxType.value = row.cells[4].textContent.trim();
-        regionFormTaxRate.value = row.cells[5].textContent.trim();
-        regionFormFoodTaxRate.value = row.cells[6].textContent.trim();
-        regionFormDateFormat.value = row.cells[7].textContent.trim();
-        regionFormTimeFormat.value = row.cells[8].textContent.trim();
-        regionFormNumberFormat.value = row.cells[9].textContent.trim();
-        regionFormSymbolPos.value = row.cells[10].textContent.includes('前缀') ? '前缀' : '后缀';
-        regionFormUnit.value = row.cells[11].textContent.trim();
-        regionFormFirstDay.value = row.cells[12].textContent.trim();
-        regionFormStatus.value = row.cells[13].textContent.includes('停用') ? '停用' : '启用';
+        regionFormTaxRate.value = row.cells[4].textContent.trim();
+        regionFormFoodTaxRate.value = row.cells[5].textContent.trim();
+        regionFormDateFormat.value = row.cells[6].textContent.trim();
+        regionFormTimeFormat.value = row.cells[7].textContent.trim();
+        regionFormNumberFormat.value = row.cells[8].textContent.trim();
+        regionFormSymbolPos.value = row.cells[9].textContent.includes('前缀') ? '前缀' : '后缀';
+        regionFormUnit.value = row.cells[10].textContent.trim();
+        regionFormFirstDay.value = row.cells[11].textContent.trim();
+        regionFormStatus.value = row.cells[12].textContent.includes('停用') ? '停用' : '启用';
       } else {
         regionFormCountry.value = '';
         regionFormTimezone.value = '';
         regionFormLanguage.value = '';
         regionFormCurrency.value = '';
-        regionFormTaxType.value = '';
         regionFormTaxRate.value = '';
         regionFormFoodTaxRate.value = '';
         regionFormDateFormat.value = '';
@@ -8046,7 +8053,6 @@
       if (!regionFormTimezone.value.trim()) { regionFormTimezone.focus(); return false; }
       if (!regionFormLanguage.value.trim()) { regionFormLanguage.focus(); return false; }
       if (!regionFormCurrency.value.trim()) { regionFormCurrency.focus(); return false; }
-      if (!regionFormTaxType.value.trim()) { regionFormTaxType.focus(); return false; }
       if (!regionFormTaxRate.value.trim()) { regionFormTaxRate.focus(); return false; }
       if (!regionFormFoodTaxRate.value.trim()) { regionFormFoodTaxRate.focus(); return false; }
       if (!regionFormDateFormat.value.trim()) { regionFormDateFormat.focus(); return false; }
@@ -8061,7 +8067,6 @@
         <td>${escapeHtml(regionFormTimezone.value.trim())}</td>
         <td>${escapeHtml(regionFormLanguage.value.trim())}</td>
         <td>${escapeHtml(regionFormCurrency.value.trim())}</td>
-        <td>${escapeHtml(regionFormTaxType.value.trim())}</td>
         <td>${escapeHtml(regionFormTaxRate.value.trim())}</td>
         <td>${escapeHtml(regionFormFoodTaxRate.value.trim())}</td>
         <td>${escapeHtml(regionFormDateFormat.value.trim())}</td>
@@ -8082,8 +8087,8 @@
     }
 
     function renderRegionActions(row){
-      const statusCell = row.cells[13];
-      const actionCell = row.cells[14];
+      const statusCell = row.cells[12];
+      const actionCell = row.cells[13];
       if (!statusCell || !actionCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       actionCell.innerHTML = `
@@ -8096,7 +8101,7 @@
     }
 
     function toggleRegionStatus(row){
-      const statusCell = row.cells[13];
+      const statusCell = row.cells[12];
       if (!statusCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
@@ -8392,15 +8397,21 @@
         const cityMatched = !cityKeyword || store.city.toLowerCase().includes(cityKeyword);
         return nameMatched && idMatched && cityMatched;
       });
+      const terminal = tenantCashierTerminal.value;
+      let disabledCount = 0;
       tenantCashierMerchantChoices.innerHTML = merchants.map(store => {
-        const checked = selectedSet.has(store.name) ? ' checked' : '';
+        const different = Boolean(terminal && store.scenario && store.scenario !== terminal);
+        if (different) disabledCount++;
+        const checked = !different && selectedSet.has(store.name) ? ' checked' : '';
+        const scenarioTag = store.scenario ? `<span class="tag gray">${escapeHtml(store.scenario)}</span>` : '';
         return `
-          <label class="store-auth-row" data-value="${escapeHtml(store.name)}">
-            <span class="store-auth-main"><input type="checkbox"${checked} /><span class="store-auth-name">${escapeHtml(store.id)} - ${escapeHtml(store.name)} - ${escapeHtml(store.city)}</span></span>
+          <label class="store-auth-row${different ? ' disabled' : ''}" data-value="${escapeHtml(store.name)}">
+            <span class="store-auth-main"><input type="checkbox"${checked}${different ? ' disabled' : ''} /><span class="store-auth-name">${escapeHtml(store.id)} - ${escapeHtml(store.name)} - ${escapeHtml(store.city)}</span></span>
+            <span class="store-auth-side">${scenarioTag}${different ? '<span class="store-auth-hint">使用其他收银台</span>' : ''}</span>
           </label>
         `;
       }).join('');
-      if (tenantCashierMerchantCount) tenantCashierMerchantCount.textContent = `共 ${merchants.length} 家门店`;
+      if (tenantCashierMerchantCount) tenantCashierMerchantCount.textContent = `共 ${merchants.length} 家门店${disabledCount ? `，其中 ${disabledCount} 家使用其他收银台不可勾选` : ''}`;
     }
 
     function defaultTenantCashierMerchantValues(){
@@ -9238,6 +9249,10 @@
     });
     tenantCashierRegion?.addEventListener('change', () => {
       updateTenantCashierChannels();
+    });
+    tenantCashierTerminal?.addEventListener('change', () => {
+      updateTenantCashierSelectedMerchantsFromList();
+      renderTenantCashierMerchants(tenantCashierSelectedMerchants);
     });
     [tenantCashierChannelChoices, tenantCashierMerchantChoices].forEach(group => {
       group?.addEventListener('change', event => {
