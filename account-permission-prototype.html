@@ -144,16 +144,17 @@
       padding:12px 8px;white-space:normal;word-break:break-word;line-height:1.45
     }
     #store-list table th:nth-child(1),#store-list table td:nth-child(1){width:5%}
-    #store-list table th:nth-child(2),#store-list table td:nth-child(2){width:12%}
-    #store-list table th:nth-child(3),#store-list table td:nth-child(3){width:11%}
-    #store-list table th:nth-child(4),#store-list table td:nth-child(4){width:7%}
-    #store-list table th:nth-child(5),#store-list table td:nth-child(5){width:6%}
-    #store-list table th:nth-child(6),#store-list table td:nth-child(6){width:6%}
-    #store-list table th:nth-child(7),#store-list table td:nth-child(7){width:18%;text-align:left}
-    #store-list table th:nth-child(8),#store-list table td:nth-child(8){width:11%}
-    #store-list table th:nth-child(9),#store-list table td:nth-child(9){width:8%}
-    #store-list table th:nth-child(10),#store-list table td:nth-child(10){width:7%}
-    #store-list table th:nth-child(11),#store-list table td:nth-child(11){width:9%}
+    #store-list table th:nth-child(2),#store-list table td:nth-child(2){width:11%}
+    #store-list table th:nth-child(3),#store-list table td:nth-child(3){width:10%}
+    #store-list table th:nth-child(4),#store-list table td:nth-child(4){width:6%}
+    #store-list table th:nth-child(5),#store-list table td:nth-child(5){width:7%}
+    #store-list table th:nth-child(6),#store-list table td:nth-child(6){width:10%}
+    #store-list table th:nth-child(7),#store-list table td:nth-child(7){width:5%}
+    #store-list table th:nth-child(8),#store-list table td:nth-child(8){width:17%;text-align:left}
+    #store-list table th:nth-child(9),#store-list table td:nth-child(9){width:10%}
+    #store-list table th:nth-child(10),#store-list table td:nth-child(10){width:6%}
+    #store-list table th:nth-child(11),#store-list table td:nth-child(11){width:6%}
+    #store-list table th:nth-child(12),#store-list table td:nth-child(12){width:7%}
     .merchant-filter-bar{
       display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) auto;align-items:end;gap:16px;padding-bottom:18px
     }
@@ -192,6 +193,19 @@
     .region-config-table th:nth-child(11),.region-config-table td:nth-child(11){width:6%}
     .region-config-table th:nth-child(12),.region-config-table td:nth-child(12){width:5%}
     .region-config-table th:nth-child(13),.region-config-table td:nth-child(13){width:6%}
+    .address-level-table{width:100%;table-layout:fixed}
+    .address-level-table th,.address-level-table td{padding:12px 8px;white-space:normal;word-break:break-word;line-height:1.45}
+    .address-level-table th:nth-child(1),.address-level-table td:nth-child(1){width:8%}
+    .address-level-table th:nth-child(2),.address-level-table td:nth-child(2){width:6%}
+    .address-level-table th:nth-child(3),.address-level-table td:nth-child(3){width:13%}
+    .address-level-table th:nth-child(4),.address-level-table td:nth-child(4){width:15%}
+    .address-level-table th:nth-child(5),.address-level-table td:nth-child(5){width:9%}
+    .address-level-table th:nth-child(6),.address-level-table td:nth-child(6){width:9%}
+    .address-level-table th:nth-child(7),.address-level-table td:nth-child(7){width:10%}
+    .address-level-table th:nth-child(8),.address-level-table td:nth-child(8){width:11%}
+    .address-level-table th:nth-child(9),.address-level-table td:nth-child(9){width:8%}
+    .address-level-table th:nth-child(10),.address-level-table td:nth-child(10){width:5%}
+    .address-level-table th:nth-child(11),.address-level-table td:nth-child(11){width:6%}
     #product-list .panel-body{padding-left:8px}
     .product-filter-bar{grid-template-columns:220px 220px 220px auto}
     .table-scroll{width:100%;overflow-x:auto}
@@ -1815,6 +1829,7 @@
         </div>
         <div class="submenu" id="i18nSubmenu">
           <div class="menu-item sub" data-page="region-config">地区参数配置</div>
+          <div class="menu-item sub" data-page="address-level-config">地址层级配置</div>
           <div class="menu-item sub" data-page="country-unit-mapping">国家计量单位映射</div>
           <div class="menu-item sub" data-page="tax-config">税率配置</div>
           <div class="menu-item sub" data-page="exchange-rate-config">汇率配置</div>
@@ -2636,9 +2651,8 @@
                 <div class="filter-field"><label>机器编码：</label><input placeholder="请输入机器编码" /></div>
                 <div class="filter-field"><label>状态：</label><select><option value="">请选择状态</option><option>正常营业</option><option>暂停营业</option><option>闭店</option></select></div>
                 <div class="filter-field"><label>租户名称：</label><input placeholder="请输入租户名称" /></div>
-                <div class="filter-field"><label>省：</label><select id="filterProvince"><option value="">请选择省</option><option>北京</option><option>上海</option><option>江苏省</option><option>浙江省</option><option>广东省</option><option>海南省</option><option>四川省</option></select></div>
-                <div class="filter-field"><label>市：</label><select id="filterCity"><option value="">请选择市</option></select></div>
-                <div class="filter-field"><label>区：</label><select id="filterDistrict"><option value="">请选择区</option></select></div>
+                <div class="filter-field"><label>国家/地区：</label><select id="filterStoreRegion"><option value="">请选择国家/地区</option><option>中国大陆</option><option>中国香港</option><option>中国台湾</option><option>新加坡</option><option>英国</option></select></div>
+                <div class="filter-field"><label id="filterStoreAreaLabel">行政区划：</label><select id="filterStoreArea"><option value="">请先选择国家/地区</option></select></div>
                 <div class="filter-actions">
                   <button class="btn primary">搜索</button>
                   <button class="btn">重置</button>
@@ -2646,19 +2660,19 @@
               </div>
               <table data-total="315">
                 <thead>
-                  <tr><th>门店ID</th><th>门店名称</th><th>租户名称</th><th>门店类型</th><th>省市区</th><th>设备数量</th><th>地址</th><th>创建时间</th><th>营业时间</th><th>状态</th><th>操作</th></tr>
+                  <tr><th>门店ID</th><th>门店名称</th><th>租户名称</th><th>门店类型</th><th>国家/地区</th><th>行政区划</th><th>设备数量</th><th>地址</th><th>创建时间</th><th>营业时间</th><th>状态</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>456</td><td>天坛店</td><td>平台自营租户</td><td>太空舱</td><td>北京/北京市/东城区</td><td>1</td><td>北京市东城区天坛斋宫</td><td>2026-08-07 13:41:32</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>455</td><td>无锡硕放机场太空舱</td><td>平台自营租户</td><td>太空舱</td><td>江苏省/无锡市/新吴区</td><td>1</td><td>新吴区机场路1号无锡硕放机场T2航站楼</td><td>2026-08-04 16:51:19</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>454</td><td>海口宁家服务太空舱</td><td>海口宁家服务租户</td><td>咖啡亭</td><td>海南省/海口市/龙华区</td><td>1</td><td>海南省海口市龙华区金盘路2号宁德时代宁家服务直营体验中心</td><td>2026-08-04 16:48:35</td><td>08:00<br>~<br>23:30</td><td>暂停营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>453</td><td>上海花博会太空舱</td><td>平台自营租户</td><td>太空舱</td><td>上海/上海市/浦东新区</td><td>1</td><td>上海市浦东新区世博文化公园世界花艺园南入口</td><td>2026-08-01 10:52:49</td><td>10:00<br>~<br>22:00</td><td>暂停营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>452</td><td>上海-张江科学之门太空舱</td><td>平台自营租户</td><td>太空舱</td><td>上海/上海市/浦东新区</td><td>1</td><td>上海市浦东新区中科路与卓闻路交叉口银河太空舱</td><td>2026-07-31 14:23:01</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>451</td><td>宜宾赛事中心店</td><td>宜宾赛事中心租户</td><td>太空舱</td><td>四川省/宜宾市/叙州区</td><td>0</td><td>四川省宜宾市叙州区叙州大道普和东路与西环线交叉口东南500米</td><td>2026-07-29 11:23:49</td><td>10:00<br>~<br>22:00</td><td>闭店</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>450</td><td>宜宾山湖广场店</td><td>宜宾山湖广场租户</td><td>太空舱</td><td>四川省/宜宾市/叙州区</td><td>0</td><td>四川省宜宾市叙州区民和街1号山湖天地广场赛事中心东侧</td><td>2026-07-28 19:36:37</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>449</td><td>宜宾赛事中心太空舱</td><td>宜宾赛事中心租户</td><td>咖啡亭</td><td>四川省/宜宾市/叙州区</td><td>1</td><td>四川省宜宾市叙州区金沙江南路东段体育赛事中心</td><td>2026-07-28 15:46:27</td><td>09:00<br>~<br>21:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>448</td><td>鼎好B座测试太空舱</td><td>平台自营租户</td><td>太空舱</td><td>北京/北京市/海淀区</td><td>0</td><td>鼎好大厦B座楼下测试太空舱</td><td>2026-07-27 18:50:07</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
-                  <tr><td>447</td><td>深圳前海石渡艺公园咖啡亭</td><td>渠道加盟租户</td><td>咖啡亭</td><td>广东省/深圳市/南山区</td><td>1</td><td>前海石渡艺公园</td><td>2026-07-24 19:36:58</td><td>06:00<br>~<br>23:59</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>456</td><td>天坛店</td><td>平台自营租户</td><td>太空舱</td><td>中国大陆</td><td>北京/北京市/东城区</td><td>1</td><td>北京市东城区天坛斋宫</td><td>2026-08-07 13:41:32</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>455</td><td>无锡硕放机场太空舱</td><td>平台自营租户</td><td>太空舱</td><td>中国大陆</td><td>江苏省/无锡市/新吴区</td><td>1</td><td>新吴区机场路1号无锡硕放机场T2航站楼</td><td>2026-08-04 16:51:19</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>454</td><td>海口宁家服务太空舱</td><td>海口宁家服务租户</td><td>咖啡亭</td><td>中国大陆</td><td>海南省/海口市/龙华区</td><td>1</td><td>海南省海口市龙华区金盘路2号宁德时代宁家服务直营体验中心</td><td>2026-08-04 16:48:35</td><td>08:00<br>~<br>23:30</td><td>暂停营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>453</td><td>上海花博会太空舱</td><td>平台自营租户</td><td>太空舱</td><td>中国大陆</td><td>上海/上海市/浦东新区</td><td>1</td><td>上海市浦东新区世博文化公园世界花艺园南入口</td><td>2026-08-01 10:52:49</td><td>10:00<br>~<br>22:00</td><td>暂停营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>452</td><td>上海-张江科学之门太空舱</td><td>平台自营租户</td><td>太空舱</td><td>中国大陆</td><td>上海/上海市/浦东新区</td><td>1</td><td>上海市浦东新区中科路与卓闻路交叉口银河太空舱</td><td>2026-07-31 14:23:01</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>451</td><td>伦敦金融城咖啡亭</td><td>英国渠道运营租户</td><td>咖啡亭</td><td>英国</td><td>England/Greater London/City of London</td><td>1</td><td>1 Poultry, London EC2R 8EJ</td><td>2026-07-29 11:23:49</td><td>07:00<br>~<br>20:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>450</td><td>香港中环太空舱</td><td>香港渠道加盟商 A</td><td>太空舱</td><td>中国香港</td><td>香港岛/中西区/中环</td><td>1</td><td>香港中环皇后大道中99号</td><td>2026-07-28 19:36:37</td><td>08:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>449</td><td>台北信义咖啡亭</td><td>台湾运营租户</td><td>咖啡亭</td><td>中国台湾</td><td>台北市/信义区/松寿路商圈</td><td>1</td><td>台北市信义区松寿路11号</td><td>2026-07-28 15:46:27</td><td>09:00<br>~<br>21:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>448</td><td>鼎好B座测试太空舱</td><td>平台自营租户</td><td>太空舱</td><td>中国大陆</td><td>北京/北京市/海淀区</td><td>0</td><td>鼎好大厦B座楼下测试太空舱</td><td>2026-07-27 18:50:07</td><td>10:00<br>~<br>22:00</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
+                  <tr><td>447</td><td>深圳前海石渡艺公园咖啡亭</td><td>渠道加盟租户</td><td>咖啡亭</td><td>中国大陆</td><td>广东省/深圳市/南山区</td><td>1</td><td>前海石渡艺公园</td><td>2026-07-24 19:36:58</td><td>06:00<br>~<br>23:59</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
                 </tbody>
               </table>
             </div>
@@ -3741,6 +3755,40 @@
           </div>
         </section>
 
+        <section class="page" id="address-level-config" data-title="地址层级配置" data-breadcrumb="国际化配置中心,地址层级配置">
+          <div class="panel">
+            <div class="panel-head no-title">
+              <div></div>
+              <div class="actions">
+                <button class="btn primary" id="addressLevelAdd">+ 新增地址层级</button>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="search cols-5">
+                <input id="addressLevelRegionFilter" placeholder="国家/地区" />
+                <select id="addressLevelControlFilter"><option value="">全部控件类型</option><option>级联选择</option><option>单一下拉</option><option>手工输入</option><option>地图选择</option></select>
+                <select id="addressLevelSourceFilter"><option value="">全部数据来源</option><option>平台维护</option><option>第三方地址库</option><option>业务手工录入</option></select>
+                <select id="addressLevelStatusFilter"><option value="">全部状态</option><option>启用</option><option>停用</option></select>
+                <div class="search-btns"><button class="btn primary" id="addressLevelSearch">搜索</button><button class="btn soft" id="addressLevelReset">重置</button></div>
+              </div>
+              <table class="address-level-table" data-pagination="none">
+                <thead><tr><th>国家/地区</th><th>国家代码</th><th>层级展示</th><th>开发引用编码</th><th>控件类型</th><th>必填层级</th><th>数据来源</th><th>示例值</th><th>适用业务</th><th>状态</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr><td>中国大陆</td><td>CN</td><td>省 / 市 / 区</td><td>ADDR_CN_PROVINCE_CITY_DISTRICT</td><td>级联选择</td><td>省、市、区</td><td>平台维护</td><td>广东省/深圳市/南山区</td><td>门店、商户、租户</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-address-level-action="edit">编辑</button><button class="link" type="button" data-address-level-action="status">停用</button></div></td></tr>
+                  <tr><td>中国香港</td><td>HK</td><td>分区 / 地区 / 商圈</td><td>ADDR_HK_REGION_DISTRICT_AREA</td><td>级联选择</td><td>分区、地区</td><td>平台维护</td><td>香港岛/中西区/中环</td><td>门店、商户、租户</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-address-level-action="edit">编辑</button><button class="link" type="button" data-address-level-action="status">停用</button></div></td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>县市 / 行政区 / 商圈</td><td>ADDR_TW_CITY_DISTRICT_AREA</td><td>级联选择</td><td>县市、行政区</td><td>平台维护</td><td>台北市/信义区/松寿路商圈</td><td>门店、商户、租户</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-address-level-action="edit">编辑</button><button class="link" type="button" data-address-level-action="status">停用</button></div></td></tr>
+                  <tr><td>新加坡</td><td>SG</td><td>区域 / 规划区</td><td>ADDR_SG_REGION_PLANNING_AREA</td><td>单一下拉</td><td>规划区</td><td>平台维护</td><td>Central Region/Downtown Core</td><td>门店、商户</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-address-level-action="edit">编辑</button><button class="link" type="button" data-address-level-action="status">停用</button></div></td></tr>
+                  <tr><td>英国</td><td>GB</td><td>地区 / 郡 / 城市</td><td>ADDR_GB_REGION_COUNTY_CITY</td><td>级联选择</td><td>地区、城市</td><td>第三方地址库</td><td>England/Greater London/City of London</td><td>门店、商户、支付资质</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-address-level-action="edit">编辑</button><button class="link" type="button" data-address-level-action="status">停用</button></div></td></tr>
+                </tbody>
+              </table>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">使用说明</b>
+                门店列表、商户地址、租户地址等页面应根据「国家/地区 + 开发引用编码」获取地址层级配置，动态渲染字段名称、占位文案和校验规则，避免在业务页面写死“省市区”。
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="page" id="tax-config">
           <div class="panel">
             <div class="panel-head">
@@ -4467,6 +4515,31 @@
               <div class="choice-grid" data-choice-for="regionFormStatus">
                 <label class="choice-option" data-value="启用"><input type="radio" name="regionStatusRadio" />启用</label>
                 <label class="choice-option" data-value="停用"><input type="radio" name="regionStatusRadio" />停用</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-seg" data-seg="address-level-config">
+          <div class="modal-grid">
+            <div class="field"><label><span class="required-mark">*</span>国家/地区</label><input id="addressLevelFormRegion" placeholder="如 英国" /></div>
+            <div class="field"><label><span class="required-mark">*</span>国家代码</label><input id="addressLevelFormCode" placeholder="如 GB" /></div>
+            <div class="field"><label><span class="required-mark">*</span>层级展示</label><input id="addressLevelFormLabels" placeholder="如 地区 / 郡 / 城市" /></div>
+            <div class="field"><label><span class="required-mark">*</span>开发引用编码</label><input id="addressLevelFormRef" placeholder="如 ADDR_GB_REGION_COUNTY_CITY" /></div>
+            <div class="field"><label><span class="required-mark">*</span>控件类型</label>
+              <select id="addressLevelFormControl"><option value="">请选择控件类型</option><option>级联选择</option><option>单一下拉</option><option>手工输入</option><option>地图选择</option></select>
+            </div>
+            <div class="field"><label><span class="required-mark">*</span>必填层级</label><input id="addressLevelFormRequired" placeholder="如 地区、城市" /></div>
+            <div class="field"><label><span class="required-mark">*</span>数据来源</label>
+              <select id="addressLevelFormSource"><option value="">请选择数据来源</option><option>平台维护</option><option>第三方地址库</option><option>业务手工录入</option></select>
+            </div>
+            <div class="field"><label><span class="required-mark">*</span>示例值</label><input id="addressLevelFormExample" placeholder="如 England/Greater London/City of London" /></div>
+            <div class="field"><label><span class="required-mark">*</span>适用业务</label><input id="addressLevelFormScenes" placeholder="如 门店、商户、租户" /></div>
+            <div class="field status-inline"><label><span class="required-mark">*</span>状态</label>
+              <select id="addressLevelFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
+              <div class="choice-grid" data-choice-for="addressLevelFormStatus">
+                <label class="choice-option" data-value="启用"><input type="radio" name="addressLevelStatusRadio" />启用</label>
+                <label class="choice-option" data-value="停用"><input type="radio" name="addressLevelStatusRadio" />停用</label>
               </div>
             </div>
           </div>
@@ -5459,6 +5532,24 @@
     const regionFormFirstDay = document.getElementById('regionFormFirstDay');
     const regionFormStatus = document.getElementById('regionFormStatus');
     let regionContext = { mode: 'create', row: null };
+    const addressLevelAdd = document.getElementById('addressLevelAdd');
+    const addressLevelRegionFilter = document.getElementById('addressLevelRegionFilter');
+    const addressLevelControlFilter = document.getElementById('addressLevelControlFilter');
+    const addressLevelSourceFilter = document.getElementById('addressLevelSourceFilter');
+    const addressLevelStatusFilter = document.getElementById('addressLevelStatusFilter');
+    const addressLevelSearch = document.getElementById('addressLevelSearch');
+    const addressLevelReset = document.getElementById('addressLevelReset');
+    const addressLevelFormRegion = document.getElementById('addressLevelFormRegion');
+    const addressLevelFormCode = document.getElementById('addressLevelFormCode');
+    const addressLevelFormLabels = document.getElementById('addressLevelFormLabels');
+    const addressLevelFormRef = document.getElementById('addressLevelFormRef');
+    const addressLevelFormControl = document.getElementById('addressLevelFormControl');
+    const addressLevelFormRequired = document.getElementById('addressLevelFormRequired');
+    const addressLevelFormSource = document.getElementById('addressLevelFormSource');
+    const addressLevelFormExample = document.getElementById('addressLevelFormExample');
+    const addressLevelFormScenes = document.getElementById('addressLevelFormScenes');
+    const addressLevelFormStatus = document.getElementById('addressLevelFormStatus');
+    let addressLevelContext = { mode: 'create', row: null };
     const taxConfigAdd = document.getElementById('taxConfigAdd');
     const taxRegionFilter = document.getElementById('taxRegionFilter');
     const taxTypeFilter = document.getElementById('taxTypeFilter');
@@ -6293,12 +6384,13 @@
         name: row.cells[1]?.textContent.trim() || '-',
         tenant: row.cells[2]?.textContent.trim() || '-',
         type: row.cells[3]?.textContent.trim() || '-',
-        city: row.cells[4]?.textContent.trim() || '-',
-        deviceCount: row.cells[5]?.textContent.trim() || '0',
-        address: row.cells[6]?.textContent.trim() || '-',
-        createdAt: row.cells[7]?.textContent.trim() || '-',
-        hours: row.cells[8]?.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim() || '-',
-        status: row.cells[9]?.textContent.trim() || '-'
+        country: row.cells[4]?.textContent.trim() || '-',
+        city: row.cells[5]?.textContent.trim() || '-',
+        deviceCount: row.cells[6]?.textContent.trim() || '0',
+        address: row.cells[7]?.textContent.trim() || '-',
+        createdAt: row.cells[8]?.textContent.trim() || '-',
+        hours: row.cells[9]?.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim() || '-',
+        status: row.cells[10]?.textContent.trim() || '-'
       };
     }
 
@@ -6309,7 +6401,7 @@
         storeDetailCode: data.id,
         storeDetailType: data.type,
         storeDetailTenant: data.tenant,
-        storeDetailCity: data.city,
+        storeDetailCity: `${data.country} / ${data.city}`,
         storeDetailAddress: data.address,
         storeDetailHours: data.hours,
         storeDetailStatus: data.status,
@@ -9202,6 +9294,131 @@
       updatePaginationTotal(row.closest('table'));
     }
 
+    function addressLevelStatusHtml(status){
+      return status === '停用'
+        ? '<span class="tag red">停用</span>'
+        : '<span class="tag green">启用</span>';
+    }
+
+    function applyAddressLevelFilters(){
+      const region = (addressLevelRegionFilter?.value || '').trim().toLowerCase();
+      const control = addressLevelControlFilter?.value || '';
+      const source = addressLevelSourceFilter?.value || '';
+      const status = addressLevelStatusFilter?.value || '';
+      document.querySelectorAll('#address-level-config tbody tr').forEach(row => {
+        const matchedRegion = !region || row.cells[0].textContent.trim().toLowerCase().includes(region) || row.cells[1].textContent.trim().toLowerCase().includes(region);
+        const matchedControl = !control || row.cells[4].textContent.trim() === control;
+        const matchedSource = !source || row.cells[6].textContent.trim() === source;
+        const matchedStatus = !status || row.cells[9].textContent.includes(status);
+        row.classList.toggle('filtered-out', !(matchedRegion && matchedControl && matchedSource && matchedStatus));
+      });
+    }
+
+    function resetAddressLevelFilters(){
+      addressLevelRegionFilter.value = '';
+      addressLevelControlFilter.value = '';
+      addressLevelSourceFilter.value = '';
+      addressLevelStatusFilter.value = '';
+      applyAddressLevelFilters();
+    }
+
+    function openAddressLevelModal(context = { mode: 'create', row: null }){
+      addressLevelContext = context;
+      modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode','tax-mode','exchange-mode','product-mode','category-mode','spec-mode','material-mode');
+      modal.classList.add('region-mode');
+      modalTitle.textContent = context.mode === 'edit' ? '编辑地址层级配置' : '新增地址层级配置';
+      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'address-level-config'));
+      if (context.mode === 'edit' && context.row) {
+        const row = context.row;
+        addressLevelFormRegion.value = row.cells[0].textContent.trim();
+        addressLevelFormCode.value = row.cells[1].textContent.trim();
+        addressLevelFormLabels.value = row.cells[2].textContent.trim();
+        addressLevelFormRef.value = row.cells[3].textContent.trim();
+        addressLevelFormControl.value = row.cells[4].textContent.trim();
+        addressLevelFormRequired.value = row.cells[5].textContent.trim();
+        addressLevelFormSource.value = row.cells[6].textContent.trim();
+        addressLevelFormExample.value = row.cells[7].textContent.trim();
+        addressLevelFormScenes.value = row.cells[8].textContent.trim();
+        addressLevelFormStatus.value = row.cells[9].textContent.includes('停用') ? '停用' : '启用';
+      } else {
+        [addressLevelFormRegion, addressLevelFormCode, addressLevelFormLabels, addressLevelFormRef, addressLevelFormRequired, addressLevelFormExample, addressLevelFormScenes].forEach(field => { if (field) field.value = ''; });
+        addressLevelFormControl.value = '';
+        addressLevelFormSource.value = '';
+        addressLevelFormStatus.value = '启用';
+      }
+      syncChoiceGroup(addressLevelFormStatus);
+      refreshCustomSelects(modal);
+      modal.classList.add('show');
+    }
+
+    function saveAddressLevel(){
+      const requiredFields = [
+        addressLevelFormRegion,
+        addressLevelFormCode,
+        addressLevelFormLabels,
+        addressLevelFormRef,
+        addressLevelFormControl,
+        addressLevelFormRequired,
+        addressLevelFormSource,
+        addressLevelFormExample,
+        addressLevelFormScenes
+      ];
+      const emptyField = requiredFields.find(field => !field?.value?.trim());
+      if (emptyField) {
+        emptyField.focus();
+        return false;
+      }
+      const row = addressLevelContext.mode === 'edit' && addressLevelContext.row ? addressLevelContext.row : document.createElement('tr');
+      row.innerHTML = `
+        <td>${escapeHtml(addressLevelFormRegion.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormCode.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormLabels.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormRef.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormControl.value)}</td>
+        <td>${escapeHtml(addressLevelFormRequired.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormSource.value)}</td>
+        <td>${escapeHtml(addressLevelFormExample.value.trim())}</td>
+        <td>${escapeHtml(addressLevelFormScenes.value.trim())}</td>
+        <td>${addressLevelStatusHtml(addressLevelFormStatus.value)}</td>
+        <td></td>
+      `;
+      if (addressLevelContext.mode !== 'edit') {
+        document.querySelector('#address-level-config tbody')?.prepend(row);
+        updatePaginationTotal(row.closest('table'));
+      }
+      renderAddressLevelActions(row);
+      applyAddressLevelFilters();
+      return true;
+    }
+
+    function renderAddressLevelActions(row){
+      const statusCell = row.cells[9];
+      const actionCell = row.cells[10];
+      if (!statusCell || !actionCell) return;
+      const isDisabled = statusCell.textContent.includes('停用');
+      actionCell.innerHTML = `
+        <div class="row-actions">
+          <button class="link" type="button" data-address-level-action="edit">编辑</button>
+          <button class="link" type="button" data-address-level-action="status">${isDisabled ? '启用' : '停用'}</button>
+          ${isDisabled ? '<button class="link" type="button" data-address-level-action="delete">删除</button>' : ''}
+        </div>
+      `;
+    }
+
+    function toggleAddressLevelStatus(row){
+      const statusCell = row.cells[9];
+      if (!statusCell) return;
+      const isDisabled = statusCell.textContent.includes('停用');
+      statusCell.innerHTML = addressLevelStatusHtml(isDisabled ? '启用' : '停用');
+      renderAddressLevelActions(row);
+      applyAddressLevelFilters();
+    }
+
+    function deleteAddressLevel(row){
+      row.remove();
+      updatePaginationTotal(row.closest('table'));
+    }
+
     function openTaxConfigModal(context = { mode: 'create', row: null }){
       taxContext = context;
       modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode');
@@ -9670,6 +9887,24 @@
       if (action === 'edit') openRegionConfigModal({ mode: 'edit', row });
       else if (action === 'status') toggleRegionStatus(row);
       else if (action === 'delete') deleteRegion(row);
+    });
+    addressLevelAdd?.addEventListener('click', () => openAddressLevelModal());
+    addressLevelSearch?.addEventListener('click', applyAddressLevelFilters);
+    addressLevelReset?.addEventListener('click', resetAddressLevelFilters);
+    [addressLevelRegionFilter, addressLevelControlFilter, addressLevelSourceFilter, addressLevelStatusFilter].forEach(control => {
+      control?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') applyAddressLevelFilters();
+      });
+      control?.addEventListener('change', applyAddressLevelFilters);
+    });
+    document.addEventListener('click', event => {
+      const btn = event.target.closest('[data-address-level-action]');
+      if (!btn || !btn.closest('#address-level-config')) return;
+      const row = btn.closest('tr');
+      const action = btn.dataset.addressLevelAction;
+      if (action === 'edit') openAddressLevelModal({ mode: 'edit', row });
+      else if (action === 'status') toggleAddressLevelStatus(row);
+      else if (action === 'delete') deleteAddressLevel(row);
     });
     taxConfigAdd?.addEventListener('click', () => openTaxConfigModal());
     taxSearch?.addEventListener('click', applyTaxFilters);
@@ -10986,6 +11221,7 @@
       if (activeSegment === 'product-spec-form' && saveProductSpec()) hideModal();
       if (activeSegment === 'product-material-form' && saveProductMaterial()) hideModal();
       if (activeSegment === 'region-config' && saveRegionConfig()) hideModal();
+      if (activeSegment === 'address-level-config' && saveAddressLevel()) hideModal();
       if (activeSegment === 'standard-unit' && saveStandardUnit()) hideModal();
       if (activeSegment === 'country-unit' && saveCountryUnit()) hideModal();
       if (activeSegment === 'tax-config' && saveTaxConfig()) hideModal();
@@ -11010,39 +11246,76 @@
     const initial = location.hash.replace('#','') || 'tenant-cashier-config';
     activate(initial === 'accounts' ? 'personnel' : initial === 'tenant-account' ? 'tenant-list' : initial);
 
-    const cityData = {
-      '北京': { '北京市': ['东城区','西城区','朝阳区','海淀区','丰台区','石景山区','通州区','大兴区','昌平区','顺义区','房山区','门头沟区','延庆区'] },
-      '上海': { '上海市': ['黄浦区','徐汇区','长宁区','静安区','普陀区','虹口区','杨浦区','浦东新区','闵行区','宝山区','嘉定区','金山区','松江区','青浦区','奉贤区','崇明区'] },
-      '江苏省': { '无锡市': ['梁溪区','锡山区','惠山区','滨湖区','新吴区','江阴市','宜兴市'], '南京市': ['玄武区','秦淮区','建邺区','鼓楼区','浦口区','栖霞区','雨花台区','江宁区','六合区','溧水区','高淳区'], '苏州市': ['虎丘区','吴中区','相城区','姑苏区','吴江区','常熟市','张家港市','昆山市','太仓市'] },
-      '浙江省': { '杭州市': ['上城区','拱墅区','西湖区','滨江区','萧山区','余杭区','富阳区','临安区','桐庐县','淳安县','建德市'], '宁波市': ['海曙区','江北区','北仑区','镇海区','鄞州区','奉化区','象山县','宁海县','余姚市','慈溪市'] },
-      '广东省': { '深圳市': ['罗湖区','福田区','南山区','宝安区','龙岗区','盐田区','龙华区','坪山区','光明区'], '广州市': ['荔湾区','越秀区','海珠区','天河区','白云区','黄埔区','番禺区','花都区','南沙区','从化区','增城区'] },
-      '海南省': { '海口市': ['秀英区','龙华区','琼山区','美兰区'], '三亚市': ['海棠区','吉阳区','天涯区','崖州区'] },
-      '四川省': { '宜宾市': ['翠屏区','南溪区','叙州区','江安县','长宁县','高县','珙县','筠连县','兴文县','屏山县'], '成都市': ['锦江区','青羊区','金牛区','武侯区','成华区','龙泉驿区','青白江区','新都区','温江区','双流区','郫都区','新津区'] }
+    const storeAreaData = {
+      '中国大陆': {
+        label: '省 / 市 / 区',
+        placeholder: '请选择省 / 市 / 区',
+        options: [
+          '北京/北京市/东城区',
+          '北京/北京市/海淀区',
+          '上海/上海市/浦东新区',
+          '江苏省/无锡市/新吴区',
+          '广东省/深圳市/南山区',
+          '海南省/海口市/龙华区',
+          '四川省/宜宾市/叙州区'
+        ]
+      },
+      '中国香港': {
+        label: '分区 / 地区 / 商圈',
+        placeholder: '请选择分区 / 地区 / 商圈',
+        options: [
+          '香港岛/中西区/中环',
+          '香港岛/湾仔区/铜锣湾',
+          '九龙/油尖旺区/尖沙咀',
+          '新界/荃湾区/荃湾'
+        ]
+      },
+      '中国台湾': {
+        label: '县市 / 行政区 / 商圈',
+        placeholder: '请选择县市 / 行政区 / 商圈',
+        options: [
+          '台北市/信义区/松寿路商圈',
+          '台北市/中山区/南京商圈',
+          '新北市/板桥区/府中商圈',
+          '台中市/西屯区/逢甲商圈'
+        ]
+      },
+      '新加坡': {
+        label: '区域 / 规划区',
+        placeholder: '请选择区域 / 规划区',
+        options: [
+          'Central Region/Downtown Core',
+          'Central Region/Orchard',
+          'East Region/Changi',
+          'West Region/Jurong East'
+        ]
+      },
+      '英国': {
+        label: '地区 / 郡 / 城市',
+        placeholder: '请选择地区 / 郡 / 城市',
+        options: [
+          'England/Greater London/City of London',
+          'England/Greater London/Westminster',
+          'England/Greater Manchester/Manchester',
+          'Scotland/City of Edinburgh/Edinburgh'
+        ]
+      }
     };
-    const prov = document.getElementById('filterProvince');
-    const city = document.getElementById('filterCity');
-    const dist = document.getElementById('filterDistrict');
-    if (prov && city && dist) {
-      prov.addEventListener('change', () => {
-        city.innerHTML = '<option value="">请选择市</option>';
-        dist.innerHTML = '<option value="">请选择区</option>';
-        const cities = cityData[prov.value];
-        if (cities) {
-          Object.keys(cities).forEach(c => {
-            city.innerHTML += '<option value="'+c+'">'+c+'</option>';
-          });
-        }
+    const storeRegionFilter = document.getElementById('filterStoreRegion');
+    const storeAreaFilter = document.getElementById('filterStoreArea');
+    const storeAreaLabel = document.getElementById('filterStoreAreaLabel');
+    function updateStoreAreaFilter(){
+      if (!storeRegionFilter || !storeAreaFilter || !storeAreaLabel) return;
+      const config = storeAreaData[storeRegionFilter.value];
+      storeAreaLabel.textContent = config ? `${config.label}：` : '行政区划：';
+      storeAreaFilter.innerHTML = `<option value="">${config ? config.placeholder : '请先选择国家/地区'}</option>`;
+      (config?.options || []).forEach(option => {
+        storeAreaFilter.innerHTML += `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`;
       });
-      city.addEventListener('change', () => {
-        dist.innerHTML = '<option value="">请选择区</option>';
-        const districts = cityData[prov.value]?.[city.value];
-        if (districts) {
-          districts.forEach(d => {
-            dist.innerHTML += '<option value="'+d+'">'+d+'</option>';
-          });
-        }
-      });
+      rebuildCustomSelectOptions(storeAreaFilter);
     }
+    storeRegionFilter?.addEventListener('change', updateStoreAreaFilter);
+    updateStoreAreaFilter();
   </script>
 </body>
 </html>
