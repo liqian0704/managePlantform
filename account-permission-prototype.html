@@ -121,7 +121,7 @@
     .search.cols-3{grid-template-columns:1fr 1fr auto}
     .search.cols-4{grid-template-columns:1fr 1fr 1fr auto}
     .search-btns{display:flex;gap:8px}
-    .search.country-unit-search{grid-template-columns:repeat(4,minmax(0,1fr)) auto;align-items:center}
+    .search.country-unit-search{grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:center}
     .search.country-unit-search .search-btns{justify-content:flex-end}
     .search.config-inline-search{
       gap:12px;margin-bottom:24px;align-items:center
@@ -131,18 +131,24 @@
     .search.config-inline-search .custom-select{
       width:200px;min-width:0
     }
-    #tax-config .search.config-inline-search,
-    #country-unit-mapping .search.config-inline-search{
+    #tax-config .search.config-inline-search{
       display:grid!important;grid-template-columns:minmax(0,1.15fr) repeat(3,200px) auto;justify-content:start
     }
-    #exchange-rate-config .search.config-inline-search{
-      display:grid!important;grid-template-columns:minmax(0,1.15fr) 200px 200px auto;justify-content:start
+    #country-unit-mapping .search.config-inline-search{
+      display:grid!important;grid-template-columns:minmax(0,1.15fr) 200px auto;justify-content:start
     }
     #tax-config .search.config-inline-search .search-btns,
-    #country-unit-mapping .search.config-inline-search .search-btns,
-    #exchange-rate-config .search.config-inline-search .search-btns{
+    #country-unit-mapping .search.config-inline-search .search-btns{
       justify-self:start;margin-left:0
     }
+    .filter-bar.country-unit-search{flex-wrap:wrap}
+    .filter-bar.country-unit-search .filter-field{min-width:0;flex:0 0 calc(33.33% - 19px)}
+    .filter-bar.country-unit-search .filter-field label{flex:0 0 auto}
+    .filter-bar.country-unit-search .search-btns{order:99;flex-shrink:0;margin-left:0}
+    #tax-config .filter-bar{flex-wrap:nowrap}
+    #tax-config .filter-bar .filter-field{min-width:0;flex:1 1 0}
+    #tax-config .filter-bar .filter-field label{flex:0 0 auto}
+    #tax-config .filter-bar .search-btns{order:99;flex-shrink:0;margin-left:0}
     #tax-config .search.config-inline-search > :nth-child(1),
     #tax-config .search.config-inline-search > :nth-child(2),
     #tax-config .search.config-inline-search > :nth-child(3),
@@ -152,11 +158,7 @@
     #country-unit-mapping .search.config-inline-search > :nth-child(2),
     #country-unit-mapping .search.config-inline-search > :nth-child(3),
     #country-unit-mapping .search.config-inline-search > :nth-child(4),
-    #country-unit-mapping .search.config-inline-search > :nth-child(5),
-    #exchange-rate-config .search.config-inline-search > :nth-child(1),
-    #exchange-rate-config .search.config-inline-search > :nth-child(2),
-    #exchange-rate-config .search.config-inline-search > :nth-child(3),
-    #exchange-rate-config .search.config-inline-search > :nth-child(4){
+    #country-unit-mapping .search.config-inline-search > :nth-child(5){
       min-width:0
     }
     .filter-bar{display:flex;align-items:center;gap:18px 28px;flex-wrap:wrap;padding:0 0 28px}
@@ -256,7 +258,7 @@
     .product-table th:nth-child(9),.product-table td:nth-child(9){width:9%}
     .product-table th:nth-child(10),.product-table td:nth-child(10){width:7%}
     .product-table th:nth-child(11),.product-table td:nth-child(11){width:9%}
-    .product-name-link{color:#000;font-weight:500;line-height:1.5}
+    .product-name-link{color:inherit;font-weight:400;line-height:1.5}
     .product-thumb-img{
       width:56px;height:72px;margin:0 auto;border-radius:6px;border:1px solid #edf0f5;
       display:grid;place-items:center;overflow:hidden;background:#f8fafc;color:#98a2b3;font-size:12px
@@ -953,16 +955,13 @@
     .country-unit-table .tag{height:22px;padding:0 6px;font-size:11px}
     .country-unit-table .row-actions{gap:6px;justify-content:center}
     .country-unit-table .link{font-size:13px}
-    .country-unit-table th:nth-child(1),.country-unit-table td:nth-child(1){width:7%}
-    .country-unit-table th:nth-child(2),.country-unit-table td:nth-child(2){width:5%}
-    .country-unit-table th:nth-child(3),.country-unit-table td:nth-child(3){width:8%}
-    .country-unit-table th:nth-child(4),.country-unit-table td:nth-child(4){width:13%}
-    .country-unit-table th:nth-child(5),.country-unit-table td:nth-child(5){width:7%}
-    .country-unit-table th:nth-child(6),.country-unit-table td:nth-child(6){width:9%}
-    .country-unit-table th:nth-child(7),.country-unit-table td:nth-child(7){width:17%}
-    .country-unit-table th:nth-child(8),.country-unit-table td:nth-child(8){width:15%}
-    .country-unit-table th:nth-child(9),.country-unit-table td:nth-child(9){width:7%}
-    .country-unit-table th:nth-child(10),.country-unit-table td:nth-child(10){width:12%}
+    .country-unit-table th:nth-child(1),.country-unit-table td:nth-child(1){width:12%}
+    .country-unit-table th:nth-child(2),.country-unit-table td:nth-child(2){width:8%}
+    .country-unit-table th:nth-child(3),.country-unit-table td:nth-child(3){width:10%}
+    .country-unit-table th:nth-child(4),.country-unit-table td:nth-child(4){width:15%}
+    .country-unit-table th:nth-child(5),.country-unit-table td:nth-child(5){width:10%}
+    .country-unit-table th:nth-child(6),.country-unit-table td:nth-child(6){width:20%}
+    .country-unit-table th:nth-child(7),.country-unit-table td:nth-child(7){width:25%}
     .standard-unit-cell{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
     .standard-unit-code{font-weight:700;color:#111827;font-size:12px;line-height:1.25}
     .standard-unit-name{font-size:12px;color:#667085}
@@ -1883,7 +1882,6 @@
           <div class="menu-item sub" data-page="address-level-config">地址层级配置</div>
           <div class="menu-item sub" data-page="country-unit-mapping">国家计量单位映射</div>
           <div class="menu-item sub" data-page="tax-config">税率配置</div>
-          <div class="menu-item sub" data-page="exchange-rate-config">汇率配置</div>
         </div>
       </div>
 
@@ -2948,7 +2946,7 @@
                 </div>
               </div>
               <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
-                <button class="btn primary" id="productAdd" type="button">+ 新增商品</button>
+                <button class="btn primary" id="productAdd" type="button">+ 新增标品</button>
               </div>
               <div class="table-scroll">
                 <table class="product-table" data-total="286" data-page-size="10" data-pagination="compact">
@@ -3786,7 +3784,7 @@
             <div class="panel-head no-title">
               <div></div>
               <div class="actions">
-                <button class="btn primary" id="addressLevelAdd">+ 新增地址层级</button>
+              
               </div>
             </div>
             <div class="panel-body">
@@ -3800,10 +3798,10 @@
                 <thead><tr><th>国家/地区</th><th>国家代码</th><th>层级展示</th><th>开发引用编码</th><th>控件类型</th><th>必填层级</th><th>数据来源</th><th>示例值</th><th>适用业务</th></tr></thead>
                 <tbody>
                   <tr><td>中国大陆</td><td>CN</td><td>省 / 市 / 区</td><td>ADDR_CN_PROVINCE_CITY_DISTRICT</td><td>级联选择</td><td>省、市、区</td><td>平台维护</td><td>广东省/深圳市/南山区</td><td>门店、商户、租户</td></tr>
-                  <tr><td>中国香港</td><td>HK</td><td>分区 / 地区 / 商圈</td><td>ADDR_HK_REGION_DISTRICT_AREA</td><td>级联选择</td><td>分区、地区</td><td>平台维护</td><td>香港岛/中西区/中环</td><td>门店、商户、租户</td></tr>
-                  <tr><td>中国台湾</td><td>TW</td><td>县市 / 行政区 / 商圈</td><td>ADDR_TW_CITY_DISTRICT_AREA</td><td>级联选择</td><td>县市、行政区</td><td>平台维护</td><td>台北市/信义区/松寿路商圈</td><td>门店、商户、租户</td></tr>
-                  <tr><td>英国</td><td>GB</td><td>地区 / 郡 / 城市</td><td>ADDR_GB_REGION_COUNTY_CITY</td><td>级联选择</td><td>地区、城市</td><td>第三方地址库</td><td>England/Greater London/City of London</td><td>门店、商户</td></tr>
-                  <tr><td>法国</td><td>FR</td><td>大区 / 省 / 城市</td><td>ADDR_FR_REGION_DEPARTMENT_CITY</td><td>级联选择</td><td>大区、城市</td><td>第三方地址库</td><td>Île-de-France/Paris/Paris</td><td>门店、商户</td></tr>
+                  <tr><td>中国香港</td><td>HK</td><td>分區 / 地區 / 商圈</td><td>ADDR_HK_REGION_DISTRICT_AREA</td><td>级联选择</td><td>分区、地区</td><td>平台维护</td><td>香港岛/中西区/中环</td><td>门店、商户、租户</td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>縣市 / 行政區 / 商圈</td><td>ADDR_TW_CITY_DISTRICT_AREA</td><td>级联选择</td><td>县市、行政区</td><td>平台维护</td><td>台北市/信义区/松寿路商圈</td><td>门店、商户、租户</td></tr>
+                  <tr><td>英国</td><td>GB</td><td>Region / County / City</td><td>ADDR_GB_REGION_COUNTY_CITY</td><td>级联选择</td><td>地区、城市</td><td>第三方地址库</td><td>England/Greater London/City of London</td><td>门店、商户</td></tr>
+                  <tr><td>法国</td><td>FR</td><td>Région / Département / Ville</td><td>ADDR_FR_REGION_DEPARTMENT_CITY</td><td>级联选择</td><td>大区、城市</td><td>第三方地址库</td><td>Île-de-France/Paris/Paris</td><td>门店、商户</td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
@@ -3818,9 +3816,6 @@
           <div class="panel">
             <div class="panel-head no-title">
               <div></div>
-              <div class="actions">
-                <button class="btn primary" id="taxConfigAdd">+ 新增税率</button>
-              </div>
             </div>
             <div class="panel-body">
               <div class="search cols-5 config-inline-search">
@@ -3829,6 +3824,9 @@
                 <select id="taxTierFilter"><option value="">全部档位</option><option>标准税率</option><option>低税率</option><option>零税率</option><option>阶梯税率</option></select>
                 <select id="taxStatusFilter"><option value="">全部状态</option><option>启用</option><option>停用</option></select>
                 <div class="search-btns"><button class="btn primary" id="taxSearch">搜索</button><button class="btn soft" id="taxReset">重置</button></div>
+              </div>
+              <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
+                <button class="btn primary" id="taxConfigAdd" type="button">+ 新增税率</button>
               </div>
               <table class="tax-config-table" data-pagination="none">
                 <thead><tr><th>国家/地区</th><th>国家代码</th><th>税种</th><th>税率档位</th><th>适用品类</th><th>税率</th><th>生效日期</th><th>失效日期</th><th>状态</th><th>操作</th></tr></thead>
@@ -3854,109 +3852,108 @@
           </div>
         </section>
 
-        <section class="page" id="exchange-rate-config">
-          <div class="panel">
-            <div class="panel-head no-title">
-              <div></div>
-              <div class="actions">
-                <button class="btn primary" id="exchangeRateAdd">+ 新增汇率</button>
-              </div>
-            </div>
-            <div class="panel-body">
-              <div class="search cols-4 config-inline-search">
-                <input id="exchangePairFilter" placeholder="国家/地区" />
-                <select id="exchangeSourceFilter"><option value="">全部来源</option><option>自动同步</option><option>人工录入</option></select>
-                <select id="exchangeStatusFilter"><option value="">全部状态</option><option>启用</option><option>停用</option></select>
-                <div class="search-btns"><button class="btn primary" id="exchangeSearch">搜索</button><button class="btn soft" id="exchangeReset">重置</button></div>
-              </div>
-              <table class="exchange-rate-table" data-pagination="none">
-                <thead><tr><th>国家/地区对</th><th>国家代码对</th><th>币种对</th><th>汇率</th><th>生效时间</th><th>失效时间</th><th>数据来源</th><th>状态</th><th>操作</th></tr></thead>
-                <tbody>
-                  <tr><td>英国 / 中国大陆</td><td>GB / CN</td><td>GBP/CNY</td><td>9.1000</td><td>2026-08-17 00:00</td><td>—</td><td>自动同步</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-exchange-action="edit">编辑</button><button class="link" type="button" data-exchange-action="status">停用</button></div></td></tr>
-                  <tr><td>法国 / 中国大陆</td><td>FR / CN</td><td>EUR/CNY</td><td>7.8500</td><td>2026-08-17 00:00</td><td>—</td><td>自动同步</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-exchange-action="edit">编辑</button><button class="link" type="button" data-exchange-action="status">停用</button></div></td></tr>
-                  <tr><td>中国香港 / 中国大陆</td><td>HK / CN</td><td>HKD/CNY</td><td>0.9200</td><td>2026-08-17 00:00</td><td>—</td><td>自动同步</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-exchange-action="edit">编辑</button><button class="link" type="button" data-exchange-action="status">停用</button></div></td></tr>
-                  <tr><td>中国台湾 / 中国大陆</td><td>TW / CN</td><td>TWD/CNY</td><td>0.2300</td><td>2026-08-17 00:00</td><td>—</td><td>自动同步</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-exchange-action="edit">编辑</button><button class="link" type="button" data-exchange-action="status">停用</button></div></td></tr>
-                  <tr><td>英国 / 中国大陆</td><td>GB / CN</td><td>GBP/CNY</td><td>9.0500</td><td>2026-08-16 00:00</td><td>2026-08-16 23:59</td><td>自动同步</td><td><span class="tag red">停用</span></td><td><div class="row-actions"><button class="link" type="button" data-exchange-action="edit">编辑</button><button class="link" type="button" data-exchange-action="status">启用</button><button class="link" type="button" data-exchange-action="delete">删除</button></div></td></tr>
-                </tbody>
-              </table>
-              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
-                <b style="display:block;margin-bottom:6px">备注：汇率发生时机与存量业务处理</b>
-                汇率只在「收款币种 ≠ 提现到账币种」的跨境提现时发生，按「国家/地区对 × 币种对 × 生效时间」维护为时间序列，历史汇率保留不覆盖（如上英国/中国大陆 GBP/CNY、法国/中国大陆 EUR/CNY 的历史与现行记录）。<br />
-                <b>同币种提现不涉及汇率</b>：若收款币种与结算/提现币种一致，则无需汇率转换。<br />
-                <b>存量业务锁定</b>：汇率在「发起转账/提现」那一刻锁定，之后汇率变动不重算在途单据。
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section class="page" id="country-unit-mapping" data-unit-tab="mapping">
           <div class="panel">
             <div class="panel-head no-title">
               <div></div>
-              <div class="actions">
-                <button class="btn primary" id="countryUnitAdd">+ 新增计量单位映射</button>
-              </div>
             </div>
             <div class="panel-body">
               <div class="unit-tabs" role="tablist" aria-label="计量单位配置">
                 <button class="unit-tab active" type="button" data-unit-tab-target="mapping">国家/地区单位映射</button>
                 <button class="unit-tab" type="button" data-unit-tab-target="standard">标准单位库</button>
               </div>
-              <div class="unit-section-title unit-standard-block">
-                <button class="btn primary" id="standardUnitAdd">+ 新增标准单位</button>
-              </div>
               <table class="standard-unit-master-table unit-standard-block" data-pagination="none">
                 <thead><tr><th>开发引用编码</th><th>标准单位名称</th><th>单位类型</th><th>内部基准单位</th><th>适用业务</th><th>状态</th><th>操作</th></tr></thead>
                 <tbody></tbody>
               </table>
-              <div class="search cols-5 country-unit-search config-inline-search unit-mapping-block">
+              <div class="search country-unit-search config-inline-search unit-mapping-block">
                 <input id="countryUnitRegionFilter" placeholder="国家/地区" />
-                <select id="countryUnitTypeFilter"><option value="">全部单位类型</option><option>容量</option><option>重量</option><option>数量</option><option>包装</option></select>
-                <input id="countryUnitKeyword" placeholder="本地单位/名称" />
-                <select id="countryUnitStatusFilter"><option value="">全部状态</option><option>启用</option><option>停用</option></select>
+                <select id="countryUnitStandardFilter"><option value="">全部标准单位</option></select>
                 <div class="search-btns"><button class="btn primary" id="countryUnitSearch">搜索</button><button class="btn soft" id="countryUnitReset">重置</button></div>
               </div>
               <table class="country-unit-table unit-mapping-block" id="countryUnitDetailTable">
-                <thead><tr><th>国家/地区</th><th>国家代码</th><th>语言</th><th>标准单位</th><th>单位类型</th><th>本地展示单位</th><th>换算关系</th><th>使用场景</th><th>状态</th><th>操作</th></tr></thead>
+                <thead><tr><th>国家/地区</th><th>国家代码</th><th>语言</th><th>标准单位</th><th>单位类型</th><th>本地展示单位</th><th>换算关系</th></tr></thead>
                 <tbody>
-                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量" data-scenarios="商品展示,配方,库存"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td><td><div class="unit-tags"><span class="tag gray">商品展示</span><span class="tag gray">配方</span><span class="tag gray">库存</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量" data-scenarios="库存,补货,商品展示"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>升</td><td>1 升 = 1000 ml</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">商品展示</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量" data-scenarios="配方,库存,补货"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>克</td><td>1 克 = 1 g</td><td><div class="unit-tags"><span class="tag gray">配方</span><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量" data-scenarios="库存,补货,设备耗材"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>个</td><td>1 个 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">设备耗材</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量" data-scenarios="库存,补货"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装" data-scenarios="库存,补货"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装" data-scenarios="库存,补货"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装" data-scenarios="库存,补货"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>瓶</td><td>1 瓶 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量" data-scenarios="商品展示,小票,配方"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td><td><div class="unit-tags"><span class="tag gray">商品展示</span><span class="tag gray">小票</span><span class="tag gray">配方</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量" data-scenarios="库存,补货,商品展示"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>升</td><td>1 升 = 1000 ml</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">商品展示</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量" data-scenarios="库存,补货,配方"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>克</td><td>1 克 = 1 g</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">配方</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量" data-scenarios="库存,补货,设备耗材"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>個</td><td>1 個 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">设备耗材</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装" data-scenarios="库存,补货"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>支</td><td>1 支 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量" data-scenarios="库存,补货"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装" data-scenarios="库存,补货"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装" data-scenarios="库存,补货"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量" data-scenarios="商品展示,小票,配方"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td><td><div class="unit-tags"><span class="tag gray">商品展示</span><span class="tag gray">小票</span><span class="tag gray">配方</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量" data-scenarios="库存,补货,商品展示"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>公升</td><td>1 公升 = 1000 ml</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">商品展示</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量" data-scenarios="库存,补货,配方"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>公克</td><td>1 公克 = 1 g</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">配方</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量" data-scenarios="库存,补货,设备耗材"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>個</td><td>1 個 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">设备耗材</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装" data-scenarios="库存,补货"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>瓶</td><td>1 瓶 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量" data-scenarios="库存,补货"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装" data-scenarios="库存,补货"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装" data-scenarios="库存,补货"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量" data-scenarios="商品展示,库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>ml</td><td>1 ml = 1 ml</td><td><div class="unit-tags"><span class="tag gray">商品展示</span><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量" data-scenarios="库存,补货,商品展示"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>L</td><td>1 L = 1000 ml</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">商品展示</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量" data-scenarios="配方,库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>g</td><td>1 g = 1 g</td><td><div class="unit-tags"><span class="tag gray">配方</span><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量" data-scenarios="库存,补货,设备耗材"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>pcs</td><td>1 pcs = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">设备耗材</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装" data-scenarios="库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>pack</td><td>1 pack = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量" data-scenarios="库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>serving</td><td>1 serving = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装" data-scenarios="库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>box</td><td>1 box = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装" data-scenarios="库存,补货"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>carton</td><td>1 carton = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量" data-scenarios="商品展示,小票,配方"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>ml</td><td>1 ml = 1 ml</td><td><div class="unit-tags"><span class="tag gray">商品展示</span><span class="tag gray">小票</span><span class="tag gray">配方</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量" data-scenarios="库存,补货,商品展示"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>L</td><td>1 L = 1000 ml</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">商品展示</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量" data-scenarios="配方,库存,补货"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>g</td><td>1 g = 1 g</td><td><div class="unit-tags"><span class="tag gray">配方</span><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量" data-scenarios="库存,补货,设备耗材"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>pcs</td><td>1 pcs = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span><span class="tag gray">设备耗材</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装" data-scenarios="库存,补货"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>paquet</td><td>1 paquet = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
-                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装" data-scenarios="库存,补货"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>boîte</td><td>1 boîte = 1 pcs</td><td><div class="unit-tags"><span class="tag gray">库存</span><span class="tag gray">补货</span></div></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-country-unit-action="edit">编辑</button><button class="link" type="button" data-country-unit-action="status">停用</button></div></td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>升</td><td>1 升 = 1000 ml</td></tr>
+                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>克</td><td>1 克 = 1 g</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>个</td><td>1 个 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>瓶</td><td>1 瓶 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SLICE" data-standard-name="片" data-unit-type="数量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SLICE</span><span class="standard-unit-name">片</span></div></td><td>数量</td><td>片</td><td>1 片 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_GRAIN" data-standard-name="粒" data-unit-type="数量"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_GRAIN</span><span class="standard-unit-name">粒</span></div></td><td>数量</td><td>粒</td><td>1 粒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>包</td><td>1 包 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>箱</td><td>1 箱 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BUCKET" data-standard-name="桶" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BUCKET</span><span class="standard-unit-name">桶</span></div></td><td>包装</td><td>桶</td><td>1 桶 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CAN" data-standard-name="罐" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CAN</span><span class="standard-unit-name">罐</span></div></td><td>包装</td><td>罐</td><td>1 罐 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_TRAY" data-standard-name="盘" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_TRAY</span><span class="standard-unit-name">盘</span></div></td><td>包装</td><td>盘</td><td>1 盘 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_ROLL" data-standard-name="卷" data-unit-type="包装"><td>中国大陆</td><td>CN</td><td>简体中文 zh-CN</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_ROLL</span><span class="standard-unit-name">卷</span></div></td><td>包装</td><td>卷</td><td>1 卷 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>升</td><td>1 升 = 1000 ml</td></tr>
+                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>克</td><td>1 克 = 1 g</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>個</td><td>1 個 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>支</td><td>1 支 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SLICE" data-standard-name="片" data-unit-type="数量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SLICE</span><span class="standard-unit-name">片</span></div></td><td>数量</td><td>片</td><td>1 片 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_GRAIN" data-standard-name="粒" data-unit-type="数量"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_GRAIN</span><span class="standard-unit-name">粒</span></div></td><td>数量</td><td>粒</td><td>1 粒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>包</td><td>1 包 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>箱</td><td>1 箱 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BUCKET" data-standard-name="桶" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BUCKET</span><span class="standard-unit-name">桶</span></div></td><td>包装</td><td>桶</td><td>1 桶 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CAN" data-standard-name="罐" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CAN</span><span class="standard-unit-name">罐</span></div></td><td>包装</td><td>罐</td><td>1 罐 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_TRAY" data-standard-name="盘" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_TRAY</span><span class="standard-unit-name">盘</span></div></td><td>包装</td><td>盤</td><td>1 盤 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_ROLL" data-standard-name="卷" data-unit-type="包装"><td>中国香港</td><td>HK</td><td>繁体中文 zh-HK</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_ROLL</span><span class="standard-unit-name">卷</span></div></td><td>包装</td><td>卷</td><td>1 卷 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>毫升</td><td>1 毫升 = 1 ml</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>公升</td><td>1 公升 = 1000 ml</td></tr>
+                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>公克</td><td>1 公克 = 1 g</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>個</td><td>1 個 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>瓶</td><td>1 瓶 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>份</td><td>1 份 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>袋</td><td>1 袋 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>盒</td><td>1 盒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SLICE" data-standard-name="片" data-unit-type="数量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SLICE</span><span class="standard-unit-name">片</span></div></td><td>数量</td><td>片</td><td>1 片 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_GRAIN" data-standard-name="粒" data-unit-type="数量"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_GRAIN</span><span class="standard-unit-name">粒</span></div></td><td>数量</td><td>粒</td><td>1 粒 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>包</td><td>1 包 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>箱</td><td>1 箱 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BUCKET" data-standard-name="桶" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BUCKET</span><span class="standard-unit-name">桶</span></div></td><td>包装</td><td>桶</td><td>1 桶 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CAN" data-standard-name="罐" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CAN</span><span class="standard-unit-name">罐</span></div></td><td>包装</td><td>罐</td><td>1 罐 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_TRAY" data-standard-name="盘" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_TRAY</span><span class="standard-unit-name">盘</span></div></td><td>包装</td><td>盤</td><td>1 盤 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_ROLL" data-standard-name="卷" data-unit-type="包装"><td>中国台湾</td><td>TW</td><td>繁体中文 zh-TW</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_ROLL</span><span class="standard-unit-name">卷</span></div></td><td>包装</td><td>卷</td><td>1 卷 = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>ml</td><td>1 ml = 1 ml</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>L</td><td>1 L = 1000 ml</td></tr>
+                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>g</td><td>1 g = 1 g</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>pcs</td><td>1 pcs = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>pack</td><td>1 pack = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>serving</td><td>1 serving = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>box</td><td>1 box = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>carton</td><td>1 carton = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SLICE" data-standard-name="片" data-unit-type="数量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SLICE</span><span class="standard-unit-name">片</span></div></td><td>数量</td><td>slice</td><td>1 slice = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_GRAIN" data-standard-name="粒" data-unit-type="数量"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_GRAIN</span><span class="standard-unit-name">粒</span></div></td><td>数量</td><td>grain</td><td>1 grain = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>bag</td><td>1 bag = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>bottle</td><td>1 bottle = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BUCKET" data-standard-name="桶" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BUCKET</span><span class="standard-unit-name">桶</span></div></td><td>包装</td><td>bucket</td><td>1 bucket = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CAN" data-standard-name="罐" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CAN</span><span class="standard-unit-name">罐</span></div></td><td>包装</td><td>can</td><td>1 can = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_TRAY" data-standard-name="盘" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_TRAY</span><span class="standard-unit-name">盘</span></div></td><td>包装</td><td>tray</td><td>1 tray = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_ROLL" data-standard-name="卷" data-unit-type="包装"><td>英国</td><td>GB</td><td>English en-GB</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_ROLL</span><span class="standard-unit-name">卷</span></div></td><td>包装</td><td>roll</td><td>1 roll = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_ML" data-standard-name="毫升" data-unit-type="容量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_ML</span><span class="standard-unit-name">毫升</span></div></td><td>容量</td><td>ml</td><td>1 ml = 1 ml</td></tr>
+                  <tr data-standard-code="UNIT_VOLUME_L" data-standard-name="升" data-unit-type="容量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_VOLUME_L</span><span class="standard-unit-name">升</span></div></td><td>容量</td><td>L</td><td>1 L = 1000 ml</td></tr>
+                  <tr data-standard-code="UNIT_WEIGHT_G" data-standard-name="克" data-unit-type="重量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_WEIGHT_G</span><span class="standard-unit-name">克</span></div></td><td>重量</td><td>g</td><td>1 g = 1 g</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_PCS" data-standard-name="个" data-unit-type="数量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_PCS</span><span class="standard-unit-name">个</span></div></td><td>数量</td><td>pcs</td><td>1 pcs = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_PACK" data-standard-name="包" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_PACK</span><span class="standard-unit-name">包</span></div></td><td>包装</td><td>paquet</td><td>1 paquet = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOX" data-standard-name="盒" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOX</span><span class="standard-unit-name">盒</span></div></td><td>包装</td><td>boîte</td><td>1 boîte = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SERVING" data-standard-name="份" data-unit-type="数量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SERVING</span><span class="standard-unit-name">份</span></div></td><td>数量</td><td>portion</td><td>1 portion = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_SLICE" data-standard-name="片" data-unit-type="数量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_SLICE</span><span class="standard-unit-name">片</span></div></td><td>数量</td><td>tranche</td><td>1 tranche = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_COUNT_GRAIN" data-standard-name="粒" data-unit-type="数量"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_COUNT_GRAIN</span><span class="standard-unit-name">粒</span></div></td><td>数量</td><td>grain</td><td>1 grain = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BAG" data-standard-name="袋" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BAG</span><span class="standard-unit-name">袋</span></div></td><td>包装</td><td>sachet</td><td>1 sachet = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CARTON" data-standard-name="箱" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CARTON</span><span class="standard-unit-name">箱</span></div></td><td>包装</td><td>carton</td><td>1 carton = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BOTTLE" data-standard-name="瓶" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BOTTLE</span><span class="standard-unit-name">瓶</span></div></td><td>包装</td><td>bouteille</td><td>1 bouteille = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_BUCKET" data-standard-name="桶" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_BUCKET</span><span class="standard-unit-name">桶</span></div></td><td>包装</td><td>seau</td><td>1 seau = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_CAN" data-standard-name="罐" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_CAN</span><span class="standard-unit-name">罐</span></div></td><td>包装</td><td>canette</td><td>1 canette = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_TRAY" data-standard-name="盘" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_TRAY</span><span class="standard-unit-name">盘</span></div></td><td>包装</td><td>plateau</td><td>1 plateau = 1 pcs</td></tr>
+                  <tr data-standard-code="UNIT_PACKAGE_ROLL" data-standard-name="卷" data-unit-type="包装"><td>法国</td><td>FR</td><td>Français fr-FR</td><td><div class="standard-unit-cell"><span class="standard-unit-code">UNIT_PACKAGE_ROLL</span><span class="standard-unit-name">卷</span></div></td><td>包装</td><td>rouleau</td><td>1 rouleau = 1 pcs</td></tr>
                 </tbody>
               </table>
             </div>
@@ -4662,17 +4659,6 @@
             <div class="field"><label>单位类型</label><input id="countryUnitFormType" readonly placeholder="选择标准单位后自动带出" /></div>
             <div class="field"><label><span class="required-mark">*</span>本地展示单位</label><input id="countryUnitFormLocalName" placeholder="如 fl oz / 克 / 個" /></div>
             <div class="field"><label><span class="required-mark">*</span>换算关系</label><input id="countryUnitFormConversion" placeholder="如 1 fl oz = 29.5735 ml" /></div>
-            <div class="field full"><label><span class="required-mark">*</span>使用场景</label>
-              <select id="countryUnitFormScenarios" class="hidden-control" multiple></select>
-              <div class="choice-grid" data-choice-for="countryUnitFormScenarios" data-choice-mode="multiple"></div>
-            </div>
-            <div class="field"><label><span class="required-mark">*</span>状态</label>
-              <select id="countryUnitFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
-              <div class="choice-grid" data-choice-for="countryUnitFormStatus">
-                <label class="choice-option" data-value="启用"><input type="radio" name="countryUnitStatusRadio" />启用</label>
-                <label class="choice-option" data-value="停用"><input type="radio" name="countryUnitStatusRadio" />停用</label>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -4718,23 +4704,6 @@
             <div class="field"><label>失效日期</label><input id="taxFormExpiry" placeholder="留空表示长期有效" /></div>
             <div class="field"><label><span class="required-mark">*</span>状态</label>
               <select id="taxFormStatus"><option>启用</option><option>停用</option></select>
-            </div>
-          </div>
-        </section>
-
-        <section class="modal-seg" data-seg="exchange-rate-config">
-          <div class="modal-grid">
-            <div class="field"><label><span class="required-mark">*</span>国家/地区对</label><input id="exchangeFormCountry" placeholder="如 英国 / 中国大陆" /></div>
-            <div class="field"><label><span class="required-mark">*</span>国家代码对</label><input id="exchangeFormCountryCode" placeholder="如 US / CN" /></div>
-            <div class="field"><label><span class="required-mark">*</span>币种对</label><input id="exchangeFormPair" placeholder="如 USD/CNY" /></div>
-            <div class="field"><label><span class="required-mark">*</span>汇率</label><input id="exchangeFormRate" placeholder="如 7.2000" /></div>
-            <div class="field"><label><span class="required-mark">*</span>生效时间</label><input id="exchangeFormEffective" placeholder="如 2026-08-17 00:00" /></div>
-            <div class="field"><label>失效时间</label><input id="exchangeFormExpiry" placeholder="留空表示当前有效" /></div>
-            <div class="field"><label><span class="required-mark">*</span>数据来源</label>
-              <select id="exchangeFormSource"><option>自动同步</option><option>人工录入</option></select>
-            </div>
-            <div class="field"><label><span class="required-mark">*</span>状态</label>
-              <select id="exchangeFormStatus"><option>启用</option><option>停用</option></select>
             </div>
           </div>
         </section>
@@ -5667,9 +5636,7 @@
       ]
     };
     const countryUnitRegionFilter = document.getElementById('countryUnitRegionFilter');
-    const countryUnitTypeFilter = document.getElementById('countryUnitTypeFilter');
-    const countryUnitKeyword = document.getElementById('countryUnitKeyword');
-    const countryUnitStatusFilter = document.getElementById('countryUnitStatusFilter');
+    const countryUnitStandardFilter = document.getElementById('countryUnitStandardFilter');
     const countryUnitSearch = document.getElementById('countryUnitSearch');
     const countryUnitReset = document.getElementById('countryUnitReset');
     const regionFormCountry = document.getElementById('regionFormCountry');
@@ -5719,22 +5686,6 @@
     const taxFormExpiry = document.getElementById('taxFormExpiry');
     const taxFormStatus = document.getElementById('taxFormStatus');
     let taxContext = { mode: 'create', row: null };
-    const exchangeRateAdd = document.getElementById('exchangeRateAdd');
-    const exchangePairFilter = document.getElementById('exchangePairFilter');
-    const exchangeSourceFilter = document.getElementById('exchangeSourceFilter');
-    const exchangeStatusFilter = document.getElementById('exchangeStatusFilter');
-    const exchangeSearch = document.getElementById('exchangeSearch');
-    const exchangeReset = document.getElementById('exchangeReset');
-    const exchangeFormCountry = document.getElementById('exchangeFormCountry');
-    const exchangeFormCountryCode = document.getElementById('exchangeFormCountryCode');
-    const exchangeFormPair = document.getElementById('exchangeFormPair');
-    const exchangeFormRate = document.getElementById('exchangeFormRate');
-    const exchangeFormEffective = document.getElementById('exchangeFormEffective');
-    const exchangeFormExpiry = document.getElementById('exchangeFormExpiry');
-    const exchangeFormSource = document.getElementById('exchangeFormSource');
-    const exchangeFormStatus = document.getElementById('exchangeFormStatus');
-    let exchangeContext = { mode: 'create', row: null };
-    const standardUnitAdd = document.getElementById('standardUnitAdd');
     const standardUnitFormCode = document.getElementById('standardUnitFormCode');
     const standardUnitFormName = document.getElementById('standardUnitFormName');
     const standardUnitFormType = document.getElementById('standardUnitFormType');
@@ -5750,8 +5701,6 @@
     const countryUnitFormType = document.getElementById('countryUnitFormType');
     const countryUnitFormLocalName = document.getElementById('countryUnitFormLocalName');
     const countryUnitFormConversion = document.getElementById('countryUnitFormConversion');
-    const countryUnitFormScenarios = document.getElementById('countryUnitFormScenarios');
-    const countryUnitFormStatus = document.getElementById('countryUnitFormStatus');
     let countryUnitContext = { mode: 'create', row: null };
     function renderStandardUnitMasterTable(){
       const tbody = document.querySelector('.standard-unit-master-table tbody');
@@ -5779,15 +5728,15 @@
         materialFormUnit.innerHTML = '<option value="">请选择计量单位</option>' + STANDARD_UNITS.map(unit => `<option>${escapeHtml(unit.code)}</option>`).join('');
         materialFormUnit.value = materialSelected;
       }
+      if (countryUnitStandardFilter) {
+        countryUnitStandardFilter.innerHTML = '<option value="">全部标准单位</option>' + STANDARD_UNITS.map(unit => `<option value="${escapeHtml(unit.code)}">${escapeHtml(unit.code)} - ${escapeHtml(unit.name)}</option>`).join('');
+      }
     }
     renderStandardUnitOptions();
     renderStandardUnitMasterTable();
     if (standardUnitFormScenarios) standardUnitFormScenarios.innerHTML = UNIT_SCENARIOS.map(item => `<option>${item}</option>`).join('');
     const standardUnitScenarioChoices = document.querySelector('[data-choice-for="standardUnitFormScenarios"]');
     if (standardUnitScenarioChoices) standardUnitScenarioChoices.innerHTML = UNIT_SCENARIOS.map(item => `<label class="choice-option" data-value="${item}"><input type="checkbox" />${item}</label>`).join('');
-    if (countryUnitFormScenarios) countryUnitFormScenarios.innerHTML = COUNTRY_UNIT_SCENARIOS.map(item => `<option>${item}</option>`).join('');
-    const countryUnitScenarioChoices = document.querySelector('[data-choice-for="countryUnitFormScenarios"]');
-    if (countryUnitScenarioChoices) countryUnitScenarioChoices.innerHTML = COUNTRY_UNIT_SCENARIOS.map(item => `<label class="choice-option" data-value="${item}"><input type="checkbox" />${item}</label>`).join('');
     const regionTaxRateMap = {
       '中国 CN': { drink: '13%', food: '9%' },
       '中国大陆 CN': { drink: '13%', food: '9%' },
@@ -5942,7 +5891,7 @@
       renderPageNavigation(pageId);
       location.hash = pageId;
       window.scrollTo({ top: 0, behavior: 'auto' });
-      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'exchange-rate-config' || pageId === 'country-unit-mapping') {
+      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping') {
         refreshCustomSelects(page);
       }
       if (pageId === 'tenant-create') {
@@ -9467,24 +9416,17 @@
 
     function applyCountryUnitFilters(){
       const region = (countryUnitRegionFilter?.value || '').trim().toLowerCase();
-      const type = countryUnitTypeFilter?.value || '';
-      const keyword = (countryUnitKeyword?.value || '').trim().toLowerCase();
-      const status = countryUnitStatusFilter?.value || '';
+      const standard = countryUnitStandardFilter?.value || '';
       document.querySelectorAll('#countryUnitDetailTable tbody tr').forEach(row => {
         const matchedRegion = !region || row.cells[0].textContent.trim().toLowerCase().includes(region) || row.cells[1].textContent.trim().toLowerCase().includes(region);
-        const matchedType = !type || row.cells[4].textContent.trim() === type;
-        const haystack = (row.cells[3].textContent + ' ' + row.cells[5].textContent).toLowerCase();
-        const matchedKeyword = !keyword || haystack.includes(keyword);
-        const matchedStatus = !status || row.cells[8].textContent.includes(status);
-        row.classList.toggle('filtered-out', !(matchedRegion && matchedType && matchedKeyword && matchedStatus));
+        const matchedStandard = !standard || (row.dataset.standardCode || '') === standard;
+        row.classList.toggle('filtered-out', !(matchedRegion && matchedStandard));
       });
     }
 
     function resetCountryUnitFilters(){
       countryUnitRegionFilter.value = '';
-      countryUnitTypeFilter.value = '';
-      countryUnitKeyword.value = '';
-      countryUnitStatusFilter.value = '';
+      countryUnitStandardFilter.value = '';
       applyCountryUnitFilters();
     }
 
@@ -9714,7 +9656,7 @@
 
     function openAddressLevelModal(context = { mode: 'create', row: null }){
       addressLevelContext = context;
-      modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode','tax-mode','exchange-mode','product-mode','category-mode','spec-mode','material-mode');
+      modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode','tax-mode','product-mode','category-mode','spec-mode','material-mode');
       modal.classList.add('region-mode');
       modalTitle.textContent = context.mode === 'edit' ? '编辑地址层级配置' : '新增地址层级配置';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'address-level-config'));
@@ -9915,108 +9857,6 @@
       applyTaxFilters();
     }
 
-    function openExchangeRateModal(context = { mode: 'create', row: null }){
-      exchangeContext = context;
-      modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode','tax-mode');
-      modal.classList.add('exchange-mode');
-      modalTitle.textContent = context.mode === 'edit' ? '编辑汇率配置' : '新增汇率配置';
-      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'exchange-rate-config'));
-      if (context.mode === 'edit' && context.row) {
-        const row = context.row;
-        exchangeFormCountry.value = row.cells[0].textContent.trim();
-        exchangeFormCountryCode.value = row.cells[1].textContent.trim();
-        exchangeFormPair.value = row.cells[2].textContent.trim();
-        exchangeFormRate.value = row.cells[3].textContent.trim();
-        exchangeFormEffective.value = row.cells[4].textContent.trim();
-        exchangeFormExpiry.value = row.cells[5].textContent.trim() === '—' ? '' : row.cells[5].textContent.trim();
-        exchangeFormSource.value = row.cells[6].textContent.trim();
-        exchangeFormStatus.value = row.cells[7].textContent.includes('停用') ? '停用' : '启用';
-      } else {
-        exchangeFormCountry.value = '';
-        exchangeFormCountryCode.value = '';
-        exchangeFormPair.value = '';
-        exchangeFormRate.value = '';
-        exchangeFormEffective.value = '';
-        exchangeFormExpiry.value = '';
-        exchangeFormSource.value = '自动同步';
-        exchangeFormStatus.value = '启用';
-      }
-      modal.classList.add('show');
-    }
-
-    function saveExchangeRate(){
-      if (!exchangeFormCountry.value.trim()) { exchangeFormCountry.focus(); return false; }
-      if (!exchangeFormCountryCode.value.trim()) { exchangeFormCountryCode.focus(); return false; }
-      if (!exchangeFormPair.value.trim()) { exchangeFormPair.focus(); return false; }
-      if (!exchangeFormRate.value.trim()) { exchangeFormRate.focus(); return false; }
-      if (!exchangeFormEffective.value.trim()) { exchangeFormEffective.focus(); return false; }
-      const expiry = exchangeFormExpiry.value.trim() || '—';
-      const row = exchangeContext.mode === 'edit' && exchangeContext.row ? exchangeContext.row : document.createElement('tr');
-      row.innerHTML = `
-        <td>${escapeHtml(exchangeFormCountry.value.trim())}</td>
-        <td>${escapeHtml(exchangeFormCountryCode.value.trim())}</td>
-        <td>${escapeHtml(exchangeFormPair.value.trim())}</td>
-        <td>${escapeHtml(exchangeFormRate.value.trim())}</td>
-        <td>${escapeHtml(exchangeFormEffective.value.trim())}</td>
-        <td>${escapeHtml(expiry)}</td>
-        <td>${escapeHtml(exchangeFormSource.value)}</td>
-        <td>${exchangeFormStatus.value === '停用' ? '<span class="tag red">停用</span>' : '<span class="tag green">启用</span>'}</td>
-        <td></td>
-      `;
-      if (exchangeContext.mode !== 'edit') {
-        document.querySelector('#exchange-rate-config tbody')?.prepend(row);
-        updatePaginationTotal(row.closest('table'));
-      }
-      renderExchangeActions(row);
-      return true;
-    }
-
-    function renderExchangeActions(row){
-      const statusCell = row.cells[7];
-      const actionCell = row.cells[8];
-      if (!statusCell || !actionCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      actionCell.innerHTML = `
-        <div class="row-actions">
-          <button class="link" type="button" data-exchange-action="edit">编辑</button>
-          <button class="link" type="button" data-exchange-action="status">${isDisabled ? '启用' : '停用'}</button>
-          ${isDisabled ? '<button class="link" type="button" data-exchange-action="delete">删除</button>' : ''}
-        </div>
-      `;
-    }
-
-    function toggleExchangeStatus(row){
-      const statusCell = row.cells[7];
-      if (!statusCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      statusCell.innerHTML = isDisabled ? '<span class="tag green">启用</span>' : '<span class="tag red">停用</span>';
-      renderExchangeActions(row);
-    }
-
-    function deleteExchange(row){
-      row.remove();
-      updatePaginationTotal(row.closest('table'));
-    }
-
-    function applyExchangeFilters(){
-      const pair = (exchangePairFilter?.value || '').trim().toLowerCase();
-      const source = exchangeSourceFilter?.value || '';
-      const status = exchangeStatusFilter?.value || '';
-      document.querySelectorAll('#exchange-rate-config tbody tr').forEach(row => {
-        const matchedPair = !pair || row.cells[0].textContent.trim().toLowerCase().includes(pair) || row.cells[1].textContent.trim().toLowerCase().includes(pair) || row.cells[2].textContent.trim().toLowerCase().includes(pair);
-        const matchedSource = !source || row.cells[6].textContent.trim() === source;
-        const matchedStatus = !status || row.cells[7].textContent.includes(status);
-        row.classList.toggle('filtered-out', !(matchedPair && matchedSource && matchedStatus));
-      });
-    }
-
-    function resetExchangeFilters(){
-      exchangePairFilter.value = '';
-      exchangeSourceFilter.value = '';
-      exchangeStatusFilter.value = '';
-      applyExchangeFilters();
-    }
-
     function countryUnitTagsHtml(items){
       return items.map(item => `<span class="tag gray">${escapeHtml(item)}</span>`).join('');
     }
@@ -10161,9 +10001,6 @@
         syncCountryUnitType();
         countryUnitFormLocalName.value = context.row.cells[5].textContent.trim();
         countryUnitFormConversion.value = context.row.cells[6].textContent.trim();
-        const scenarios = (context.row.dataset.scenarios || '').split(',').filter(Boolean);
-        Array.from(countryUnitFormScenarios.options).forEach(o => { o.selected = scenarios.includes(o.value); });
-        countryUnitFormStatus.value = context.row.cells[8].textContent.includes('停用') ? '停用' : '启用';
       } else {
         countryUnitFormCountry.value = '';
         countryUnitFormCountryCode.value = '';
@@ -10172,11 +10009,7 @@
         syncCountryUnitType();
         countryUnitFormLocalName.value = '';
         countryUnitFormConversion.value = '';
-        Array.from(countryUnitFormScenarios.options).forEach(o => { o.selected = false; });
-        countryUnitFormStatus.value = '启用';
       }
-      syncChoiceGroup(countryUnitFormScenarios);
-      syncChoiceGroup(countryUnitFormStatus);
       modal.classList.add('show');
       countryUnitFormCountry?.focus();
     }
@@ -10189,13 +10022,10 @@
       if (!unit) { countryUnitFormStandard.focus(); return false; }
       if (!countryUnitFormLocalName.value.trim()) { countryUnitFormLocalName.focus(); return false; }
       if (!countryUnitFormConversion.value.trim()) { countryUnitFormConversion.focus(); return false; }
-      const scenarios = Array.from(countryUnitFormScenarios.selectedOptions).map(o => o.value);
-      if (!scenarios.length) return false;
       const row = countryUnitContext.mode === 'edit' && countryUnitContext.row ? countryUnitContext.row : document.createElement('tr');
       row.dataset.standardCode = unit.code;
       row.dataset.standardName = unit.name;
       row.dataset.unitType = unit.type;
-      row.dataset.scenarios = scenarios.join(',');
       row.innerHTML = `
         <td>${escapeHtml(countryUnitFormCountry.value.trim())}</td>
         <td>${escapeHtml(countryUnitFormCountryCode.value.trim())}</td>
@@ -10204,43 +10034,12 @@
         <td>${escapeHtml(unit.type)}</td>
         <td>${escapeHtml(countryUnitFormLocalName.value.trim())}</td>
         <td>${escapeHtml(countryUnitFormConversion.value.trim())}</td>
-        <td><div class="unit-tags">${countryUnitTagsHtml(scenarios)}</div></td>
-        <td>${countryUnitFormStatus.value === '停用' ? '<span class="tag red">停用</span>' : '<span class="tag green">启用</span>'}</td>
-        <td></td>
       `;
-      renderCountryUnitActions(row);
       if (countryUnitContext.mode !== 'edit') {
         document.querySelector('#country-unit-mapping tbody')?.prepend(row);
         updatePaginationTotal(row.closest('table'));
       }
       return true;
-    }
-
-    function renderCountryUnitActions(row){
-      const statusCell = row.cells[8];
-      const actionCell = row.cells[9];
-      if (!statusCell || !actionCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      actionCell.innerHTML = `
-        <div class="row-actions">
-          <button class="link" type="button" data-country-unit-action="edit">编辑</button>
-          <button class="link" type="button" data-country-unit-action="status">${isDisabled ? '启用' : '停用'}</button>
-          <button class="link" type="button" data-country-unit-action="delete">删除</button>
-        </div>
-      `;
-    }
-
-    function toggleCountryUnitStatus(row){
-      const statusCell = row.cells[8];
-      if (!statusCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      statusCell.innerHTML = isDisabled ? '<span class="tag green">启用</span>' : '<span class="tag red">停用</span>';
-      renderCountryUnitActions(row);
-    }
-
-    function deleteCountryUnit(row){
-      row.remove();
-      updatePaginationTotal(row.closest('table'));
     }
 
     addressLevelAdd?.addEventListener('click', () => openAddressLevelModal());
@@ -10270,24 +10069,6 @@
       else if (action === 'status') toggleTaxStatus(row);
       else if (action === 'delete') deleteTax(row);
     });
-    exchangeRateAdd?.addEventListener('click', () => openExchangeRateModal());
-    exchangeSearch?.addEventListener('click', applyExchangeFilters);
-    exchangeReset?.addEventListener('click', resetExchangeFilters);
-    [exchangePairFilter, exchangeSourceFilter, exchangeStatusFilter].forEach(control => {
-      control?.addEventListener('keydown', event => {
-        if (event.key === 'Enter') applyExchangeFilters();
-      });
-      control?.addEventListener('change', applyExchangeFilters);
-    });
-    document.addEventListener('click', event => {
-      const btn = event.target.closest('[data-exchange-action]');
-      if (!btn || !btn.closest('#exchange-rate-config')) return;
-      const row = btn.closest('tr');
-      const action = btn.dataset.exchangeAction;
-      if (action === 'edit') openExchangeRateModal({ mode: 'edit', row });
-      else if (action === 'status') toggleExchangeStatus(row);
-      else if (action === 'delete') deleteExchange(row);
-    });
 
     document.querySelectorAll('[data-unit-tab-target]').forEach(tab => {
       tab.addEventListener('click', () => {
@@ -10300,7 +10081,6 @@
         });
       });
     });
-    standardUnitAdd?.addEventListener('click', () => openStandardUnitModal());
     document.addEventListener('click', event => {
       const btn = event.target.closest('[data-standard-unit-action]');
       if (!btn || !btn.closest('.standard-unit-master-table')) return;
@@ -10311,15 +10091,6 @@
     });
     countryUnitAdd?.addEventListener('click', () => openCountryUnitModal());
     countryUnitFormStandard?.addEventListener('change', syncCountryUnitType);
-    document.addEventListener('click', event => {
-      const btn = event.target.closest('[data-country-unit-action]');
-      if (!btn || !btn.closest('#country-unit-mapping')) return;
-      const row = btn.closest('tr');
-      const action = btn.dataset.countryUnitAction;
-      if (action === 'edit') openCountryUnitModal({ mode: 'edit', row });
-      else if (action === 'status') toggleCountryUnitStatus(row);
-      else if (action === 'delete') deleteCountryUnit(row);
-    });
 
     document.addEventListener('click', event => {
       const btn = event.target.closest('[data-product-action]');
@@ -11318,7 +11089,7 @@
     });
     countryUnitSearch?.addEventListener('click', applyCountryUnitFilters);
     countryUnitReset?.addEventListener('click', resetCountryUnitFilters);
-    [countryUnitRegionFilter, countryUnitTypeFilter, countryUnitKeyword, countryUnitStatusFilter].forEach(control => {
+    [countryUnitRegionFilter, countryUnitStandardFilter].forEach(control => {
       control?.addEventListener('keydown', event => {
         if (event.key === 'Enter') applyCountryUnitFilters();
       });
@@ -11590,7 +11361,6 @@
       if (activeSegment === 'standard-unit' && saveStandardUnit()) hideModal();
       if (activeSegment === 'country-unit' && saveCountryUnit()) hideModal();
       if (activeSegment === 'tax-config' && saveTaxConfig()) hideModal();
-      if (activeSegment === 'exchange-rate-config' && saveExchangeRate()) hideModal();
       if (activeSegment === 'merchant-form') hideModal();
       if (activeSegment === 'tenant-qualification') hideModal();
     });
