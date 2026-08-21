@@ -244,21 +244,89 @@
     .address-level-table th:nth-child(9),.address-level-table td:nth-child(9){width:8%}
     #product-list .panel-body{padding-left:8px}
     .product-filter-bar{grid-template-columns:220px 220px 220px auto}
+    .goods-filter-bar{grid-template-columns:repeat(4,minmax(210px,1fr));gap:16px 20px}
+    .goods-filter-bar .filter-actions{grid-column:auto}
+    #goods-list .panel-body{padding-left:8px}
+    .goods-table{min-width:1540px}
+    .goods-table th:nth-child(1),.goods-table td:nth-child(1){width:6%}
+    .goods-table th:nth-child(2),.goods-table td:nth-child(2){width:11%}
+    .goods-table th:nth-child(3),.goods-table td:nth-child(3){width:6%}
+    .goods-table th:nth-child(4),.goods-table td:nth-child(4){width:7%}
+    .goods-table th:nth-child(5),.goods-table td:nth-child(5){width:6%}
+    .goods-table th:nth-child(6),.goods-table td:nth-child(6){width:14%}
+    .goods-table th:nth-child(7),.goods-table td:nth-child(7){width:8%}
+    .goods-table th:nth-child(8),.goods-table td:nth-child(8){width:8%}
+    .goods-table th:nth-child(9),.goods-table td:nth-child(9){width:5%}
+    .goods-table th:nth-child(10),.goods-table td:nth-child(10){width:9%}
+    .goods-table th:nth-child(11),.goods-table td:nth-child(11){width:8%}
+    .goods-table th:nth-child(12),.goods-table td:nth-child(12){width:8%}
+    .goods-table th:nth-child(13),.goods-table td:nth-child(13){width:4%}
+    #cargo-list .panel-body{padding-left:8px}
+    .cargo-filter-bar{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(190px,1fr)) auto;
+      gap:14px 18px;
+      align-items:center
+    }
+    .cargo-filter-bar .filter-field{min-width:0;width:100%}
+    .cargo-filter-bar .filter-field label{flex:0 0 82px}
+    .cargo-filter-bar .filter-field input,
+    .cargo-filter-bar .filter-field select,
+    .cargo-filter-bar .filter-field .custom-select{width:100%;min-width:0;flex:1 1 auto}
+    .cargo-filter-bar .filter-actions{grid-column:auto}
+    .cargo-table{table-layout:fixed;min-width:1720px;width:100%}
+    .cargo-table th,.cargo-table td{text-align:center;vertical-align:middle;padding:12px 6px;white-space:normal;word-break:break-word;line-height:1.45}
+    .cargo-table th:nth-child(1),.cargo-table td:nth-child(1){width:7%;text-align:left}
+    .cargo-table th:nth-child(2),.cargo-table td:nth-child(2){width:12%;text-align:left}
+    .cargo-table th:nth-child(3),.cargo-table td:nth-child(3){width:7%}
+    .cargo-table th:nth-child(4),.cargo-table td:nth-child(4){width:6%}
+    .cargo-table th:nth-child(5),.cargo-table td:nth-child(5){width:8%}
+    .cargo-table th:nth-child(6),.cargo-table td:nth-child(6){width:7%}
+    .cargo-table th:nth-child(7),.cargo-table td:nth-child(7){width:6%}
+    .cargo-table th:nth-child(8),.cargo-table td:nth-child(8){width:6%}
+    .cargo-table th:nth-child(9),.cargo-table td:nth-child(9){width:12%}
+    .cargo-table th:nth-child(10),.cargo-table td:nth-child(10){width:10%}
+    .cargo-table th:nth-child(11),.cargo-table td:nth-child(11){width:8%}
+    .cargo-table th:nth-child(12),.cargo-table td:nth-child(12){width:13%}
+    .cargo-table th:nth-child(13),.cargo-table td:nth-child(13){width:9%}
     .table-scroll{width:100%;overflow-x:auto}
-    .product-table{table-layout:fixed;width:100%;min-width:1160px}
+    .product-table{table-layout:fixed;width:100%;min-width:1240px}
     .product-table th,.product-table td{text-align:center;vertical-align:middle;padding:12px 6px;white-space:normal;word-break:break-word;line-height:1.45}
-    .product-table th:nth-child(1),.product-table td:nth-child(1){width:15%;text-align:left}
-    .product-table th:nth-child(2),.product-table td:nth-child(2){width:6%}
+    .product-table th:nth-child(1),.product-table td:nth-child(1){width:7%;text-align:left}
+    .product-table th:nth-child(2),.product-table td:nth-child(2){width:13%;text-align:left}
     .product-table th:nth-child(3),.product-table td:nth-child(3){width:7%}
     .product-table th:nth-child(4),.product-table td:nth-child(4){width:8%}
-    .product-table th:nth-child(5),.product-table td:nth-child(5){width:8%}
-    .product-table th:nth-child(6),.product-table td:nth-child(6){width:5%}
+    .product-table th:nth-child(5),.product-table td:nth-child(5){width:7%}
+    .product-table th:nth-child(6),.product-table td:nth-child(6){width:19%;vertical-align:middle;text-align:center}
     .product-table th:nth-child(7),.product-table td:nth-child(7){width:8%}
-    .product-table th:nth-child(8),.product-table td:nth-child(8){width:9%}
-    .product-table th:nth-child(9),.product-table td:nth-child(9){width:9%}
-    .product-table th:nth-child(10),.product-table td:nth-child(10){width:7%}
-    .product-table th:nth-child(11),.product-table td:nth-child(11){width:9%}
+    .product-table th:nth-child(8),.product-table td:nth-child(8){width:8%}
+    .product-table th:nth-child(9),.product-table td:nth-child(9){width:6%}
+    .product-table th:nth-child(10),.product-table td:nth-child(10){width:14%}
+    .product-table th:nth-child(11),.product-table td:nth-child(11){width:11%}
+    .product-country-tags{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;color:#5f6b7a;line-height:1.5}
+    .product-country-tags .tag{display:block;background:transparent;border:0;border-radius:0;height:auto;padding:0;color:inherit;font-size:13px;font-weight:400;white-space:nowrap}
+    .product-table td:nth-child(6) .spec-detail{display:inline-flex;flex-direction:column;justify-content:center;vertical-align:middle;text-align:left;line-height:1.7}
     .product-name-link{color:inherit;font-weight:400;line-height:1.5}
+    .product-detail-form{margin-top:16px}
+    .product-detail-readonly{min-height:40px;border:1px solid #d6dbe3;border-radius:4px;background:#f8fafc;color:#344054;padding:9px 12px;line-height:20px;display:flex;align-items:center}
+    .product-detail-readonly.multiline{min-height:72px;align-items:flex-start;white-space:pre-line}
+    .product-detail-readonly .tag{margin-right:4px}
+    .product-detail-image-grid{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:center;gap:10px}
+    .product-detail-image-thumb{width:64px;height:64px;border:1px solid #edf0f5;border-radius:6px;background:#fff;display:grid;place-items:center;overflow:hidden}
+    .product-detail-image-thumb .product-thumb-img{transform:scale(.7);margin:0}
+    .product-detail-image-meta{min-width:0;color:#667085;font-size:12px;line-height:18px}
+    .product-detail-form .product-upload-field{grid-template-columns:110px minmax(0,1fr)!important;align-items:center!important;gap:12px!important}
+    .product-detail-form .product-upload-field label{padding-top:0;white-space:normal}
+    .product-detail-form .product-upload-field .product-detail-readonly{width:100%;min-width:0;min-height:86px;padding:10px 12px}
+    .product-detail-form .product-detail-image-grid{width:100%;display:block}
+    .product-detail-form .product-detail-image-thumb{width:100px;height:100px}
+    .product-detail-form .product-detail-image-thumb .product-thumb-img{transform:scale(.9)}
+    .product-detail-form .product-detail-image-meta{display:none}
+    #product-form-page .panel-body{padding:20px 24px 24px}
+    .product-form-page-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid #edf0f4}
+    .product-form-page-toolbar h2{margin:0;color:#1f2937;font-size:18px;font-weight:700}
+    .product-form-page-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid #edf0f4}
+    #productFormPageBody .modal-seg{display:block}
     .product-thumb-img{
       width:56px;height:72px;margin:0 auto;border-radius:6px;border:1px solid #edf0f5;
       display:grid;place-items:center;overflow:hidden;background:#f8fafc;color:#98a2b3;font-size:12px
@@ -294,11 +362,13 @@
     .product-material-table th{background:#f2f4f7;color:#344054;font-size:14px}
     .product-material-table td{color:#4b5563;font-size:14px}
     .product-material-table tbody tr:nth-child(even){background:#f7f9fc}
-    .product-material-table th:nth-child(1),.product-material-table td:nth-child(1){width:30%}
-    .product-material-table th:nth-child(2),.product-material-table td:nth-child(2){width:16%}
-    .product-material-table th:nth-child(3),.product-material-table td:nth-child(3){width:16%}
-    .product-material-table th:nth-child(4),.product-material-table td:nth-child(4){width:16%}
-    .product-material-table th:nth-child(5),.product-material-table td:nth-child(5){width:22%}
+    .product-material-table th:nth-child(1),.product-material-table td:nth-child(1){width:12%}
+    .product-material-table th:nth-child(2),.product-material-table td:nth-child(2){width:24%}
+    .product-material-table th:nth-child(3),.product-material-table td:nth-child(3){width:10%}
+    .product-material-table th:nth-child(4),.product-material-table td:nth-child(4){width:10%}
+    .product-material-table th:nth-child(5),.product-material-table td:nth-child(5){width:12%}
+    .product-material-table th:nth-child(6),.product-material-table td:nth-child(6){width:12%}
+    .product-material-table th:nth-child(7),.product-material-table td:nth-child(7){width:18%}
     .product-material-name{color:#2f36ff;font-weight:600}
     .product-material-table .row-actions{gap:12px}
     #product-specs .panel-body{padding-left:8px;padding-top:0}
@@ -310,20 +380,30 @@
     .product-spec-filter .filter-field .custom-select{width:210px;flex:0 0 210px;border-radius:6px}
     .product-spec-filter .filter-actions{gap:10px;margin-left:0}
     .product-spec-filter .filter-actions .btn{width:78px;height:36px;border-radius:6px;padding:0}
-    .product-spec-actions{display:flex;justify-content:flex-start;margin:0 0 10px}
+    .product-spec-actions{display:flex;justify-content:flex-end;margin:0 0 10px}
+    .unit-demo{border:1px solid #e6ebf2;border-radius:8px;background:#f8fafc;padding:14px 18px;margin:0 0 16px}
+    .unit-demo-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+    .unit-demo-title{font-weight:700;color:#1f2937;font-size:14px}
+    .unit-demo-hint{color:#8c95a6;font-size:12px}
+    .unit-demo-select{margin-left:auto;display:flex;align-items:center;gap:8px;color:#344054;font-weight:600;font-size:13px}
+    .unit-demo-select select{height:34px;border:1px solid #d0d5dd;border-radius:4px;padding:0 8px;background:#fff}
+    .unit-demo-body{display:flex;gap:28px;flex-wrap:wrap}
+    .unit-demo-item{display:flex;flex-direction:column;gap:3px;min-width:150px;padding:10px 14px;background:#fff;border:1px solid #eef1f5;border-radius:6px}
+    .unit-demo-item .label{color:#667085;font-size:12px}
+    .unit-demo-item .value{color:#1f2937;font-weight:700;font-size:16px}
+    .unit-demo-item .std{color:#98a2b3;font-size:11px}
     .product-spec-add{height:32px;border-color:#91caff;background:#eaf5ff;color:#1677ff;border-radius:4px;font-weight:600}
     .product-spec-table{table-layout:fixed;width:100%;min-width:1180px}
     .product-spec-table th,.product-spec-table td{text-align:center;vertical-align:middle;padding:12px 10px;white-space:normal;line-height:1.55}
     .product-spec-table th{height:44px;background:#f5f6f8;color:#475467;font-size:13px;font-weight:700}
     .product-spec-table td{height:44px;color:#5f6b7a}
-    .product-spec-table th:nth-child(1),.product-spec-table td:nth-child(1){width:12%}
-    .product-spec-table th:nth-child(2),.product-spec-table td:nth-child(2){width:8%}
-    .product-spec-table th:nth-child(3),.product-spec-table td:nth-child(3){width:8%}
-    .product-spec-table th:nth-child(4),.product-spec-table td:nth-child(4){width:12%}
-    .product-spec-table th:nth-child(5),.product-spec-table td:nth-child(5){width:26%}
-    .product-spec-table th:nth-child(6),.product-spec-table td:nth-child(6){width:11%}
-    .product-spec-table th:nth-child(7),.product-spec-table td:nth-child(7){width:9%}
-    .product-spec-table th:nth-child(8),.product-spec-table td:nth-child(8){width:14%}
+    .product-spec-table th:nth-child(1),.product-spec-table td:nth-child(1){width:10%}
+    .product-spec-table th:nth-child(2),.product-spec-table td:nth-child(2){width:10%}
+    .product-spec-table th:nth-child(3),.product-spec-table td:nth-child(3){width:18%}
+    .product-spec-table th:nth-child(4),.product-spec-table td:nth-child(4){width:24%}
+    .product-spec-table th:nth-child(5),.product-spec-table td:nth-child(5){width:24%}
+    .product-spec-table th:nth-child(6),.product-spec-table td:nth-child(6){width:7%}
+    .product-spec-table th:nth-child(7),.product-spec-table td:nth-child(7){width:7%}
     .product-spec-name{color:#1677ff;font-weight:600}
     .spec-type-badge{display:inline-flex;align-items:center;min-height:24px;padding:0 8px;border-radius:4px;background:#f0f5ff;color:#2f36d4;font-size:12px;font-weight:700}
     .spec-option-tags{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
@@ -1087,6 +1167,25 @@
     .spec-flag-group{display:flex;align-items:center;gap:22px}
     .spec-flag{display:inline-flex;align-items:center;gap:6px;color:#344054;font-size:14px;font-weight:600;cursor:pointer}
     .spec-flag input{width:16px;height:16px;accent-color:var(--primary)}
+    .spec-config-box{min-width:0;border:1px solid #e4e7ec;border-radius:4px;background:#fff;overflow:hidden}
+    .spec-config-table{width:100%;border-collapse:collapse;table-layout:fixed}
+    .spec-config-table th{height:40px;background:#f5f6f8;color:#344054;font-size:13px;font-weight:700;text-align:left;padding:0 12px;border-bottom:1px solid #e4e7ec}
+    .spec-config-table td{height:50px;padding:8px 12px;border-bottom:1px solid #edf1f5;color:#475467;font-size:14px;vertical-align:middle}
+    .spec-config-table tr:last-child td{border-bottom:0}
+    .spec-config-material-cell{display:flex;align-items:center;gap:8px}
+    .spec-shared-material{display:flex;align-items:center;gap:8px;min-width:0}
+    .spec-shared-material input{flex:1;min-width:0;background:#fff}
+    .spec-config-qty-cell{display:flex;align-items:center;gap:8px}
+    .spec-config-qty-cell .spec-config-qty{width:160px}
+    .spec-config-unit{display:inline-flex;align-items:center;color:#475467;font-weight:600;line-height:34px}
+    .spec-config-table input[type="text"]{height:34px;width:100%}
+    .spec-config-table input[type="checkbox"].spec-config-use{width:15px;height:15px;accent-color:var(--primary)}
+    .spec-config-qty:disabled{background:#f5f6f8;color:#98a2b3;cursor:not-allowed}
+    .spec-config-pick{height:34px;border:1px solid #2f80ed;border-radius:4px;background:#fff;color:#2f80ed;padding:0 12px;font-weight:600;white-space:nowrap;cursor:pointer}
+    .spec-config-pick:hover{background:#f0f7ff}
+    .spec-config-table input[type="radio"],.spec-config-table input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary)}
+    .spec-config-check{text-align:center}
+    .spec-config-help{border-top:1px solid #edf1f5;background:#fafbfc;color:#667085;font-size:12px;line-height:18px;padding:8px 12px}
     .spec-material-field{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-height:40px;border:1px solid #d6dbe3;border-radius:4px;padding:6px 10px;background:#fff}
     .spec-material-field .spec-option-tags{justify-content:flex-start}
     .spec-tag-remove{width:16px;height:16px;border:none;background:none;color:#94a3b8;cursor:pointer;font-size:14px;line-height:1;padding:0;margin-left:4px;display:inline-flex;align-items:center;justify-content:center}
@@ -1102,25 +1201,110 @@
     .spec-textarea-count{position:absolute;right:10px;bottom:6px;color:#98a2b3;font-size:12px;line-height:16px}
     .material-picker-modal{position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;align-items:center;justify-content:center;z-index:105}
     .material-picker-modal.show{display:flex}
-    .material-picker-panel{width:min(680px,calc(100vw - 48px));max-height:90vh;background:#fff;border-radius:4px;box-shadow:0 18px 48px rgba(15,23,42,.22);display:flex;flex-direction:column}
+    .material-picker-panel{width:min(820px,calc(100vw - 48px));height:min(900px,calc(100vh - 48px));max-height:90vh;background:#fff;border-radius:4px;box-shadow:0 18px 48px rgba(15,23,42,.22);display:flex;flex-direction:column}
     .material-picker-head{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eef1f5}
     .material-picker-head h3{margin:0;font-size:18px;font-weight:600;color:#1f2937}
     .material-picker-close{width:30px;height:30px;border:0;background:transparent;color:#98a2b3;font-size:22px;cursor:pointer}
-    .material-picker-body{padding:20px 18px 8px;overflow:auto}
-    .material-picker-search{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-    .material-picker-search label{color:#344054;font-weight:600}
-    .material-picker-search input{width:190px;height:36px}
-    .material-picker-table{width:100%;border-collapse:collapse}
+    .material-picker-body{flex:1;min-height:0;padding:20px 18px 8px;overflow:auto}
+    .material-picker-search{display:grid;grid-template-columns:56px 140px 64px 170px 64px 156px 48px;align-items:center;gap:10px;margin-bottom:18px}
+    .material-picker-search label{color:#344054;font-weight:600;line-height:20px;white-space:nowrap}
+    .material-picker-search input,.material-picker-search select,.material-picker-search .custom-select{width:100%;height:36px;min-width:0}
+    .material-picker-search .custom-select-trigger{height:36px}
+    .material-picker-search .custom-select-trigger input{height:34px}
+    .material-picker-search .btn{width:48px;height:36px;padding:0}
+    .material-picker-modal.base-mode .material-picker-panel{width:min(680px,calc(100vw - 48px))}
+    .material-picker-modal.base-mode .material-picker-search{display:flex;align-items:center;gap:10px}
+    .material-picker-modal.base-mode [data-material-filter="id"],.material-picker-modal.base-mode [data-material-filter="role"],.material-picker-modal.base-mode #materialPickerTypeFilter + .custom-select{display:none}
+    .material-picker-modal.base-mode .material-picker-search input{width:240px;flex:0 0 240px}
+    .material-picker-table{width:100%;border-collapse:collapse;table-layout:fixed}
     .material-picker-table th{height:44px;background:#f5f6f8;color:#344054;font-weight:700;text-align:center}
     .material-picker-table td{height:56px;border-bottom:1px solid #e6ebf2;text-align:center;color:#4b5563;padding:8px}
     .material-picker-empty td{height:144px;color:#98a2b3;font-size:14px;background:#fff;text-align:center}
-    .material-picker-table input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary)}
-    .material-picker-table .material-qty{width:268px;height:36px;border-radius:4px}
-    .material-picker-unit{margin-left:6px;color:#475467;height:36px;border:1px solid #d0d5dd;border-radius:4px;padding:0 8px;background:#fff}
+    .material-picker-table input[type="radio"]{width:16px!important;height:16px!important;min-width:16px;min-height:16px;margin:0;accent-color:var(--primary)}
     .material-picker-page{height:46px;display:flex;align-items:center;justify-content:space-between;color:#667085;font-size:13px}
     .material-picker-pages{display:flex;align-items:center;gap:18px}
     .material-picker-pages .active{color:#1677ff;font-weight:800}
     .material-picker-foot{padding:16px 20px 20px;display:flex;justify-content:flex-end;gap:10px}
+    .spec-picker-modal{position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;align-items:center;justify-content:center;z-index:105}
+    .spec-picker-modal.show{display:flex}
+    .spec-picker-panel{width:min(680px,calc(100vw - 48px));max-height:90vh;background:#fff;border-radius:4px;box-shadow:0 18px 48px rgba(15,23,42,.22);display:flex;flex-direction:column}
+    .spec-picker-head{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eef1f5}
+    .spec-picker-head h3{margin:0;font-size:18px;font-weight:600;color:#1f2937}
+    .spec-picker-close{width:30px;height:30px;border:0;background:transparent;color:#98a2b3;font-size:22px;cursor:pointer}
+    .spec-picker-body{padding:20px 18px 8px;overflow:auto}
+    .spec-picker-search{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+    .spec-picker-search label{color:#344054;font-weight:600}
+    .spec-picker-search input{width:240px;height:36px}
+    .spec-picker-table{width:100%;border-collapse:collapse}
+    .spec-picker-table th{height:44px;background:#f5f6f8;color:#344054;font-weight:700;text-align:center}
+    .spec-picker-table td{height:56px;border-bottom:1px solid #e6ebf2;text-align:center;color:#4b5563;padding:8px}
+    .spec-picker-table tr.spec-picker-selected{background:#f0f5ff}
+    .spec-picker-table tr:hover{background:#f9fafb;cursor:pointer}
+    .spec-picker-table input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary)}
+    .spec-picker-foot{padding:16px 20px 20px;display:flex;justify-content:flex-end;gap:10px}
+    .machine-model-picker-modal{position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;align-items:center;justify-content:center;z-index:105}
+    .machine-model-picker-modal.show{display:flex}
+    .machine-model-picker-panel{width:min(760px,calc(100vw - 48px));max-height:90vh;background:#fff;border-radius:4px;box-shadow:0 18px 48px rgba(15,23,42,.22);display:flex;flex-direction:column}
+    .machine-model-picker-head{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eef1f5}
+    .machine-model-picker-head h3{margin:0;font-size:18px;font-weight:600;color:#1f2937}
+    .machine-model-picker-close{width:30px;height:30px;border:0;background:transparent;color:#98a2b3;font-size:22px;cursor:pointer}
+    .machine-model-picker-body{padding:20px 18px 8px;overflow:auto}
+    .machine-model-picker-search{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+    .machine-model-picker-search label{color:#344054;font-weight:600;white-space:nowrap}
+    .machine-model-picker-search input{width:260px;height:36px}
+    .machine-model-picker-table{width:100%;border-collapse:collapse;table-layout:fixed}
+    .machine-model-picker-table th{height:44px;background:#f5f6f8;color:#344054;font-weight:700;text-align:center}
+    .machine-model-picker-table td{height:56px;border-bottom:1px solid #e6ebf2;text-align:center;color:#4b5563;padding:8px}
+    .machine-model-picker-table tr:hover{background:#f9fafb;cursor:pointer}
+    .machine-model-picker-table input[type="checkbox"]{width:15px;height:15px;accent-color:var(--primary)}
+    .machine-model-picker-empty td{height:120px;color:#98a2b3;background:#fff}
+    .machine-model-picker-foot{padding:16px 20px 20px;display:flex;justify-content:flex-end;gap:10px}
+    .production-config-modal{position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;align-items:center;justify-content:center;z-index:105;padding:24px}
+    .production-config-modal.show{display:flex}
+    .production-config-panel{width:min(1080px,calc(100vw - 48px));max-height:90vh;background:#fff;border-radius:4px;box-shadow:0 18px 48px rgba(15,23,42,.22);display:flex;flex-direction:column}
+    .production-config-head{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #eef1f5}
+    .production-config-head h3{margin:0;font-size:18px;font-weight:600;color:#1f2937}
+    .production-config-close{width:30px;height:30px;border:0;background:transparent;color:#98a2b3;font-size:22px;cursor:pointer}
+    .production-config-body{padding:14px 20px 8px;overflow:auto}
+    .production-config-table{width:100%;border-collapse:collapse;table-layout:fixed}
+    .production-config-table th{height:44px;background:#f5f6f8;color:#475467;font-size:13px;font-weight:700;text-align:left;padding:0 14px}
+    .production-config-table td{height:54px;border-bottom:1px solid #dfe5ec;color:#5f6672;padding:10px 14px;vertical-align:middle;line-height:1.55}
+    .production-config-table th:nth-child(1),.production-config-table td:nth-child(1){width:24%;padding-left:58px}
+    .production-config-table th:nth-child(2),.production-config-table td:nth-child(2){width:24%}
+    .production-config-table th:nth-child(3),.production-config-table td:nth-child(3){width:23%}
+    .production-config-table th:nth-child(4),.production-config-table td:nth-child(4){width:29%}
+    .production-product-cell{position:relative}
+    .production-expand{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:0;background:transparent;color:#8c95a6;font-size:17px;cursor:pointer;padding:0}
+    .production-expand::before{content:'›';display:block;transition:transform .16s ease}
+    .production-main-row.expanded{background:#f5f8fc}
+    .production-main-row.expanded .production-expand::before{transform:rotate(90deg)}
+    .production-config-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .production-config-actions .link{white-space:nowrap}
+    .production-config-actions .danger-link{color:#f04438}
+    .production-step-row{display:none;background:#fff}
+    .production-step-row.show{display:table-row}
+    .production-step-row td{height:auto;padding:14px 0 12px!important;color:#667085}
+    .production-step-editor{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+    .production-step-line{display:grid;grid-template-columns:50px 194px 98px 98px;align-items:center;gap:10px}
+    .production-step-label{font-size:13px;text-align:right;color:#5f6672}
+    .production-step-cascader{position:relative;width:194px}
+    .production-step-trigger{width:194px;height:36px;border:1px solid #d5dbe4;border-radius:4px;background:#fff;color:#5f6672;padding:0 34px 0 14px;text-align:left;cursor:pointer;position:relative;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .production-step-trigger::after{content:'⌄';position:absolute;right:12px;top:7px;color:#a3acb9;font-size:16px}
+    .production-step-trigger.placeholder{color:#b6bdc8}
+    .production-step-menu{position:absolute;left:0;top:40px;display:none;width:356px;min-height:204px;background:#fff;border:1px solid #d9dee7;box-shadow:0 5px 14px rgba(15,23,42,.13);z-index:130}
+    .production-step-cascader.open .production-step-menu{display:grid;grid-template-columns:178px 178px}
+    .production-step-menu-column{padding:4px 0;border-right:1px solid #e5e9ef}
+    .production-step-menu-column:last-child{border-right:0}
+    .production-step-menu-item{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 20px;color:#5f6672;font-size:14px;cursor:pointer;white-space:nowrap}
+    .production-step-menu-item:hover,.production-step-menu-item.active{background:#f5f8fc;color:#1683ff}
+    .production-step-menu-item.selected{color:#1683ff}
+    .production-step-menu-arrow{font-size:18px;color:#8d98a8}
+    .production-step-menu-check{width:16px;color:#1683ff;font-size:15px}
+    .production-step-line .btn{height:36px;padding:0 18px;border-radius:4px;background:#fff}
+    .production-step-line .production-step-delete{visibility:hidden}
+    .production-step-line:not(:first-child) .production-step-delete{visibility:visible}
+    .production-step-empty{color:#98a2b3;padding:8px 14px 12px 62px}
+    .production-config-foot{padding:16px 20px 20px;display:flex;justify-content:flex-end;gap:10px}
     .material-remark-wrap{position:relative}
     .material-remark-count{position:absolute;right:10px;bottom:6px;color:#98a2b3;font-size:12px;line-height:16px}
     .store-auth-box{border:1px solid #d0d5dd;border-radius:4px;background:#f8fafc;padding:10px}
@@ -1562,13 +1746,15 @@
     .modal-seg.active{display:block}
     .modal-foot{padding:0 20px 20px;display:flex;justify-content:flex-end;gap:10px}
     .confirm-modal{
-      position:fixed;inset:0;background:rgba(15,23,42,.36);display:none;align-items:center;justify-content:center;z-index:90
+      position:fixed;inset:0;background:rgba(15,23,42,.42);display:none;align-items:center;justify-content:center;z-index:160
     }
     .confirm-modal.show{display:flex}
     .confirm-panel{width:360px;background:#fff;border-radius:10px;box-shadow:0 18px 50px rgba(15,23,42,.24);padding:22px}
     .confirm-title{font-size:17px;font-weight:800;color:#111827;margin-bottom:10px}
     .confirm-text{font-size:14px;color:#5f6b7a;line-height:1.7;margin-bottom:22px}
     .confirm-actions{display:flex;justify-content:flex-end;gap:10px}
+    .confirm-actions .btn.danger{background:#f04438;border-color:#f04438;color:#fff}
+    .confirm-actions .btn.danger:hover{background:#d92d20;border-color:#d92d20}
     .image-preview-modal{
       position:fixed;inset:0;background:rgba(15,23,42,.62);display:none;align-items:center;justify-content:center;z-index:95;padding:24px
     }
@@ -1795,10 +1981,12 @@
         </div>
         <div class="submenu" id="productSubmenu">
           <div class="menu-item sub" data-page="product-list">标品列表</div>
-          <div class="menu-item sub" data-page="product-category">商品分类</div>
+          <div class="menu-item sub" data-page="goods-list">商品列表</div>
+          <div class="menu-item sub" data-page="cargo-list">货品列表</div>
+          <div class="menu-item sub" data-page="product-category">标品分类</div>
           <div class="menu-item sub" data-page="product-specs">商品规格</div>
           <div class="menu-item sub" data-page="product-materials">商品原料</div>
-          <div class="menu-item sub" data-page="materials">原料列表</div>
+
         </div>
       </div>
 
@@ -2939,7 +3127,7 @@
               <div class="filter-bar product-filter-bar">
                 <div class="filter-field"><label>标品名称：</label><input placeholder="请输入标品名称" /></div>
                 <div class="filter-field"><label>状态：</label><select><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
-                <div class="filter-field"><label>标品分类：</label><select><option value="">请选择分类</option><option>瓶装饮料</option><option>其它</option><option>甄选经典</option><option>大师特调</option></select></div>
+                <div class="filter-field"><label>标品分类：</label><select id="productCategoryFilter"><option value="">请选择分类</option></select></div>
                 <div class="filter-actions">
                   <button class="btn primary">搜索</button>
                   <button class="btn">重置</button>
@@ -2951,38 +3139,38 @@
               <div class="table-scroll">
                 <table class="product-table" data-total="286" data-page-size="10" data-pagination="compact">
                   <thead>
-                    <tr><th>标品名称</th><th>编码</th><th>缩略图</th><th>标品分类</th><th>描述</th><th>售价</th><th>规格详情</th><th>创建时间</th><th>上架时间</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>标品ID</th><th>标品名称</th><th>缩略图</th><th>标品分类</th><th>折扣价</th><th>规格详情</th><th>创建时间</th><th>更新时间</th><th>状态</th><th>下发国家/地区</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><span class="product-name-link">农夫山泉电解质水低糖<br>柠檬味550ml</span></td>
+                    <tr data-original-price="9" data-desc="">
                       <td>G668</td>
+                      <td><span class="product-name-link">农夫山泉电解质水低糖<br>柠檬味550ml</span></td>
                       <td><div class="product-thumb-img"><div class="product-bottle"></div></div></td>
-                      <td>瓶装饮料</td><td>-</td><td>9</td><td><button class="link" type="button">配置</button></td><td>2026-08-11</td><td>2026-08-11</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-product-action="status">停用</button></div></td>
+                      <td>人气Top</td><td>9</td><td>-</td><td>2026-08-11 09:12:36</td><td>2026-08-11 10:18:24</td><td><span class="tag green">启用</span></td><td><div class="product-country-tags"><span class="tag">中国大陆 CN</span><span class="tag">英国 GB</span></div></td><td></td>
                     </tr>
-                    <tr>
-                      <td><span class="product-name-link">农夫山泉苏打天然水饮品<br>白桃味410ml</span></td>
+                    <tr data-original-price="9" data-desc="">
                       <td>G667</td>
+                      <td><span class="product-name-link">农夫山泉苏打天然水饮品<br>白桃味410ml</span></td>
                       <td><div class="product-thumb-img"><div class="product-bottle red"></div></div></td>
-                      <td>瓶装饮料</td><td>-</td><td>9</td><td><button class="link" type="button">配置</button></td><td>2026-08-11</td><td>2026-08-11</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-product-action="status">停用</button></div></td>
+                      <td>人气Top</td><td>9</td><td>-</td><td>2026-08-11 09:16:08</td><td>2026-08-11 10:22:11</td><td><span class="tag green">启用</span></td><td><div class="product-country-tags"><span class="tag">中国大陆 CN</span></div></td><td></td>
                     </tr>
-                    <tr>
-                      <td><span class="product-name-link">芭乐茉莉冰茶</span></td>
+                    <tr data-original-price="13.9" data-desc="">
                       <td>G664</td>
+                      <td><span class="product-name-link">芭乐茉莉冰茶</span></td>
                       <td><div class="product-thumb-img drink"><div class="product-cup"></div></div></td>
-                      <td>其它</td><td>-</td><td>11.9</td><td><button class="link" type="button">配置</button></td><td>2026-08-11</td><td>2026-08-11</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-product-action="status">停用</button></div></td>
+                      <td>特调果汁美式</td><td>11.9</td><td><div class="spec-detail"><div>甜度：少甜、正常甜</div><div>温度：热、冰、少冰</div><div>杯盖：有杯盖、无杯盖</div></div></td><td>2026-08-11 09:28:43</td><td>2026-08-11 11:05:19</td><td><span class="tag green">启用</span></td><td><div class="product-country-tags"><span class="tag">中国大陆 CN</span><span class="tag">中国香港 HK</span><span class="tag">中国台湾 TW</span></div></td><td></td>
                     </tr>
-                    <tr>
-                      <td><span class="product-name-link">茉莉荔枝冰茶</span></td>
+                    <tr data-original-price="13.9" data-desc="">
                       <td>G666</td>
+                      <td><span class="product-name-link">茉莉荔枝冰茶</span></td>
                       <td><div class="product-thumb-img drink"><div class="product-cup milk"></div></div></td>
-                      <td>其它</td><td>-</td><td>11.9</td><td><button class="link" type="button">配置</button></td><td>2026-08-11</td><td>2026-08-11</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-product-action="status">停用</button></div></td>
+                      <td>特调果汁美式</td><td>11.9</td><td><div class="spec-detail"><div>甜度：少甜、正常甜</div><div>温度：热、冰、少冰</div><div>杯盖：有杯盖、无杯盖</div></div></td><td>2026-08-11 09:35:27</td><td>2026-08-11 11:18:52</td><td><span class="tag green">启用</span></td><td><div class="product-country-tags"><span class="tag">中国大陆 CN</span><span class="tag">中国香港 HK</span></div></td><td></td>
                     </tr>
-                    <tr>
-                      <td><span class="product-name-link">芭乐茉莉冰奶</span></td>
+                    <tr data-original-price="13.9" data-desc="">
                       <td>G665</td>
+                      <td><span class="product-name-link">芭乐茉莉冰奶</span></td>
                       <td><div class="product-thumb-img drink"><div class="product-cup milk"></div></div></td>
-                      <td>其它</td><td>-</td><td>11.9</td><td><button class="link" type="button">配置</button></td><td>2026-08-11</td><td>2026-08-11</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-product-action="status">停用</button></div></td>
+                      <td>生椰家族</td><td>11.9</td><td><div class="spec-detail"><div>甜度：少甜、正常甜</div><div>温度：热、冰、少冰</div><div>杯盖：有杯盖、无杯盖</div></div></td><td>2026-08-11 09:42:05</td><td>2026-08-11 11:26:37</td><td><span class="tag green">启用</span></td><td><div class="product-country-tags"><span class="tag">中国大陆 CN</span><span class="tag">英国 GB</span><span class="tag">法国 FR</span></div></td><td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -2991,7 +3179,120 @@
           </div>
         </section>
 
-        <section class="page" id="product-category" data-title="商品分类" data-breadcrumb="商品管理,商品分类">
+        <section class="page" id="goods-list" data-title="商品列表" data-breadcrumb="商品管理,商品列表">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="filter-bar goods-filter-bar">
+                <div class="filter-field"><label>商品名称：</label><input id="goodsNameFilter" placeholder="请输入商品名称" /></div>
+                <div class="filter-field"><label>标品名称：</label><input id="goodsStandardNameFilter" placeholder="请输入标品名称" /></div>
+                <div class="filter-field"><label>标品ID：</label><input id="goodsStandardIdFilter" placeholder="请输入标品ID" /></div>
+                <div class="filter-field"><label>状态：</label><select id="goodsStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
+                <div class="filter-field"><label>商品分类：</label><select id="goodsCategoryFilter"><option value="">请选择分类</option></select></div>
+                <div class="filter-field"><label>国家/地区：</label><select id="goodsCountryFilter"><option value="">请选择国家/地区</option><option>中国大陆 CN</option><option>中国香港 HK</option><option>中国台湾 TW</option><option>英国 GB</option><option>法国 FR</option></select></div>
+                <div class="filter-field"><label>区域：</label><select id="goodsRegionFilter"><option value="">请选择区域</option><option>华南区域</option><option>华东区域</option><option>华北区域</option></select></div>
+                <div class="filter-field"><label>租户名称：</label><select id="goodsTenantFilter"><option value="">请选择租户名称</option><option>深圳好饮科技有限公司</option><option>华南咖啡运营中心</option><option>上海城市空间商业管理有限公司</option></select></div>
+                <div class="filter-field"><label>门店名称：</label><input id="goodsStoreFilter" placeholder="请输入门店名称" /></div>
+                <div class="filter-field"><label>门店类型：</label><select id="goodsStoreTypeFilter"><option value="">请选择门店类型</option><option>咖啡亭</option><option>太空舱</option></select></div>
+                <div class="filter-actions"><button class="btn primary" id="goodsSearch" type="button">搜索</button><button class="btn" id="goodsReset" type="button">重置</button></div>
+              </div>
+              <div class="table-scroll">
+                <table class="product-table goods-table" data-total="286" data-page-size="10" data-pagination="compact">
+                  <thead><tr><th>商品ID</th><th>商品名称</th><th>缩略图</th><th>商品分类</th><th>折扣价</th><th>规格详情</th><th>创建时间</th><th>更新时间</th><th>状态</th><th>国家/地区</th><th>门店名称</th><th>租户名称</th><th>操作</th></tr></thead>
+                  <tbody id="goodsListRows"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="cargo-list" data-title="货品列表" data-breadcrumb="商品管理,货品列表">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="filter-bar cargo-filter-bar">
+                <div class="filter-field"><label>货品名称：</label><input id="cargoNameFilter" placeholder="请输入货品名称" /></div>
+                <div class="filter-field"><label>门店名称：</label><input id="cargoStoreFilter" placeholder="请输入门店名称" /></div>
+                <div class="filter-field"><label>租户名称：</label><input id="cargoTenantFilter" placeholder="请输入租户名称" /></div>
+                <div class="filter-field"><label>原料名称：</label><input id="cargoMaterialFilter" placeholder="请输入原料名称" /></div>
+                <div class="filter-field"><label>品牌：</label><input id="cargoBrandFilter" placeholder="请输入品牌" /></div>
+                <div class="filter-field"><label>国家/地区：</label><select id="cargoCountryFilter"><option value="">请选择国家/地区</option><option>中国大陆</option><option>中国香港</option><option>中国台湾</option><option>新加坡</option><option>英国</option></select></div>
+                <div class="filter-field"><label id="cargoAreaFilterLabel">区域：</label><select id="cargoAreaFilter"><option value="">请先选择国家/地区</option></select></div>
+                <div class="filter-actions"><button class="btn primary" id="cargoSearch" type="button">搜索</button><button class="btn" id="cargoReset" type="button">重置</button></div>
+              </div>
+              <div class="table-scroll">
+                <table class="cargo-table" data-total="1286" data-page-size="10" data-pagination="compact">
+                  <thead>
+                    <tr><th>货品ID</th><th>货品名称</th><th>品牌</th><th>单价</th><th>货品类别</th><th>原料ID</th><th>货品单位</th><th>库存</th><th>门店名称</th><th>租户名称</th><th>国家/地区</th><th id="cargoAreaColHeader">区域</th><th>创建时间</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr data-material-name="葡萄糖浆"><td>CG20260811001</td><td>焦糖糖浆 1L</td><td>MONIN</td><td>68.00</td><td>糖浆类</td><td>RM021</td><td>瓶</td><td>48</td><td>深圳宝安体育馆太空舱</td><td>深圳好饮科技有限公司</td><td>中国大陆</td><td>广东省/深圳市/宝安区</td><td>2026-08-11 09:12:36</td></tr>
+                    <tr data-material-name="纯净水"><td>CG20260811002</td><td>纯净水桶装 18.9L</td><td>怡宝</td><td>22.00</td><td>冰水类</td><td>RM018</td><td>桶</td><td>126</td><td>深圳南山科技园咖啡亭</td><td>深圳好饮科技有限公司</td><td>中国大陆</td><td>广东省/深圳市/南山区</td><td>2026-08-11 09:28:43</td></tr>
+                    <tr data-material-name="浓缩咖啡液"><td>CG20260811003</td><td>浓缩咖啡液 2L</td><td>好饮自有</td><td>138.00</td><td>咖啡类</td><td>RM006</td><td>盒</td><td>36</td><td>上海浦东世纪汇咖啡亭</td><td>上海城市空间商业管理有限公司</td><td>中国大陆</td><td>上海/上海市/浦东新区</td><td>2026-08-11 10:05:19</td></tr>
+                    <tr data-material-name="燕麦奶"><td>CG20260811004</td><td>燕麦奶 1L</td><td>OATLY</td><td>24.50</td><td>乳制品</td><td>RM016</td><td>盒</td><td>82</td><td>香港中环太空舱</td><td>香港渠道加盟商 A</td><td>中国香港</td><td>香港岛/中西区/中环</td><td>2026-08-11 10:18:52</td></tr>
+                    <tr data-material-name="咖啡杯盖"><td>CG20260811005</td><td>90mm 热饮杯盖</td><td>BioPak</td><td>0.18</td><td>物料类</td><td>RM030</td><td>个</td><td>3200</td><td>台北信义咖啡亭</td><td>台湾运营租户</td><td>中国台湾</td><td>台北市/信义区/松寿路商圈</td><td>2026-08-11 10:42:05</td></tr>
+                    <tr data-material-name="香草糖浆"><td>CG20260811006</td><td>香草糖浆 700ml</td><td>1883</td><td>59.00</td><td>糖浆类</td><td>RM024</td><td>瓶</td><td>64</td><td>London Central Store</td><td>英国渠道运营租户</td><td>英国</td><td>England/Greater London/City of London</td><td>2026-08-11 11:26:37</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="product-form-page" data-title="新增标品" data-breadcrumb="商品管理,标品列表,新增标品" data-menu-page="product-list">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="product-form-page-toolbar">
+                <h2 id="productFormPageTitle">新增标品</h2>
+              </div>
+              <div id="productFormPageBody"></div>
+              <div class="product-form-page-actions">
+                <button class="btn soft" id="productFormPageCancel" type="button">取消</button>
+                <button class="btn primary" id="productFormPageSave" type="button">保存</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="product-detail-page" data-title="标品详情" data-breadcrumb="商品管理,标品列表" data-menu-page="product-list">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="product-form-page-toolbar">
+                <h2>标品详情</h2>
+              </div>
+              <div class="product-form-grid product-detail-form">
+                <div class="field"><label>标品ID</label><div class="product-detail-readonly" id="productDetailId">-</div></div>
+                <div class="field"><label><span class="required-mark">*</span>名称</label><div class="product-detail-readonly" id="productDetailName">巨峰葡萄拿铁</div></div>
+                <div class="field"><label><span class="required-mark">*</span>商品类型</label><div class="product-detail-readonly" id="productDetailType">现制饮品</div></div>
+                <div class="field"><label><span class="required-mark">*</span>商品分类</label><div class="product-detail-readonly" id="productDetailCategory">生椰家族</div></div>
+                <div class="field"><label><span class="required-mark">*</span>规格</label><div class="product-detail-readonly multiline" id="productDetailSpec">甜度：少甜、正常甜；温度：热、冰、少冰</div></div>
+                <div class="field full" style="align-items:start"><label>选择基料</label><div class="product-detail-readonly multiline" id="productDetailBaseMaterials">-</div></div>
+                <div class="field full" style="align-items:start"><label><span class="required-mark">*</span>适配机器型号</label><div class="product-detail-readonly multiline" id="productDetailMachineModels">HY001001、HY001002</div></div>
+                <div class="field"><label><span class="required-mark">*</span>制作时长</label><div class="product-detail-readonly" id="productDetailDuration">60秒</div></div>
+                <div class="field full" style="align-items:start"><label><span class="required-mark">*</span>下发国家/地区</label><div class="product-detail-readonly multiline" id="productDetailCountries">中国大陆 CN</div></div>
+                <div class="field"><label><span class="required-mark">*</span>原价</label><div class="product-detail-readonly" id="productDetailOriginalPrice">13.9</div></div>
+                <div class="field"><label>折扣价</label><div class="product-detail-readonly" id="productDetailDiscountPrice">-</div></div>
+                <div class="field product-upload-field"><label><span class="required-mark">*</span>缩略图点单屏</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailThumbOrder">-</div><div class="product-detail-image-meta" id="productDetailThumbOrderMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label>缩略图小程序</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailThumbMini">-</div><div class="product-detail-image-meta" id="productDetailThumbMiniMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label><span class="required-mark">*</span>介绍图点单屏</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailIntroOrder">-</div><div class="product-detail-image-meta" id="productDetailIntroOrderMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label>介绍图小程序</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailIntroMini">-</div><div class="product-detail-image-meta" id="productDetailIntroMiniMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label><span class="required-mark">*</span>内容图点单屏</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailContentOrder">-</div><div class="product-detail-image-meta" id="productDetailContentOrderMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label>内容图小程序</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailContentMini">-</div><div class="product-detail-image-meta" id="productDetailContentMiniMeta">-</div></div></div></div>
+                <div class="field product-upload-field"><label>小程序首页图</label><div class="product-detail-readonly"><div class="product-detail-image-grid"><div class="product-detail-image-thumb" id="productDetailHomeMini">-</div><div class="product-detail-image-meta" id="productDetailHomeMiniMeta">-</div></div></div></div>
+                <div class="field full" style="align-items:start"><label>标签</label><div class="product-detail-readonly multiline" id="productDetailTags">-</div></div>
+                <div class="field"><label>描述</label><div class="product-detail-readonly multiline" id="productDetailDesc">-</div></div>
+                <div class="field"><label>备注</label><div class="product-detail-readonly multiline" id="productDetailRemark">-</div></div>
+                <div class="field"><label>状态</label><div class="product-detail-readonly" id="productDetailStatus">-</div></div>
+                <div class="field"><label>创建时间</label><div class="product-detail-readonly" id="productDetailCreatedAt">-</div></div>
+                <div class="field"><label>更新时间</label><div class="product-detail-readonly" id="productDetailUpdatedAt">-</div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="goods-detail-page" data-title="商品详情" data-breadcrumb="商品管理,商品列表,商品详情" data-menu-page="goods-list">
+          <div id="goodsDetailPageBody"></div>
+        </section>
+
+        <section class="page" id="product-category" data-title="标品分类" data-breadcrumb="商品管理,标品分类">
           <div class="panel">
             <div class="panel-body">
               <div class="filter-bar category-filter-bar">
@@ -3008,7 +3309,7 @@
               <div class="table-scroll">
                 <table class="category-table" data-total="4" data-page-size="10" data-pagination="compact">
                   <thead>
-                    <tr><th>分类名称</th><th>编码</th><th>图片</th><th>备注</th><th>商品数量</th><th>顺序</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>分类名称</th><th>编码</th><th>图片</th><th>备注</th><th>标品数量</th><th>顺序</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
                     <tr>
@@ -3062,29 +3363,29 @@
           <div class="panel">
             <div class="panel-body">
               <div class="product-spec-filter">
-                <div class="filter-field"><label>规格名称</label><input placeholder="请输入规格名称" /></div>
-                <div class="filter-field"><label>状态</label><select><option>全部</option><option>启用</option><option>停用</option></select></div>
+                <div class="filter-field"><label>原料</label><input id="productSpecMaterialFilter" placeholder="请输入原料名称" /></div>
+                <div class="filter-field"><label>规格ID</label><input id="productSpecIdFilter" placeholder="请输入规格ID" /></div>
+                <div class="filter-field"><label>规格</label><input id="productSpecNameFilter" placeholder="请输入规格，如甜度/温度/浓度" /></div>
+                <div class="filter-field"><label>适用商品名称</label><input id="productSpecProductFilter" placeholder="请输入适用商品名称" /></div>
+                <div class="filter-field"><label>状态</label><select id="productSpecStatusFilter"><option value="">全部</option><option>启用</option><option>停用</option></select></div>
                 <div class="filter-actions">
-                  <button class="btn primary">搜索</button>
-                  <button class="btn">重置</button>
+                  <button class="btn primary" id="productSpecSearch" type="button">搜索</button>
+                  <button class="btn" id="productSpecReset" type="button">重置</button>
                 </div>
               </div>
               <div class="product-spec-actions">
-                <button class="btn primary product-spec-add" type="button">+ 新增</button>
+                <button class="btn primary product-spec-add" type="button">+ 新增规格</button>
               </div>
               <div class="table-scroll">
                 <table class="product-spec-table" data-total="229" data-page-size="10" data-pagination="compact">
                   <thead>
-                    <tr><th>规格名称</th><th>规格编码</th><th>规格</th><th>规格项</th><th>原料</th><th>影响原料/物料</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>规格ID</th><th>规格</th><th>规格项</th><th>原料</th><th>适用商品名称</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><span class="product-spec-name">巨峰葡萄拿铁 - 少甜</span></td><td>PS337</td><td><span class="spec-type-badge">甜度</span></td><td><span class="spec-type-badge">少甜（推荐）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">葡萄糖浆 15g</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">巨峰葡萄拿铁 - 正常甜</span></td><td>PS268</td><td><span class="spec-type-badge">甜度</span></td><td><span class="spec-type-badge">正常甜（默认）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">葡萄糖浆 20g</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">巨峰葡萄拿铁 - 热</span></td><td>PS916</td><td><span class="spec-type-badge">温度</span></td><td><span class="spec-type-badge">热（推荐）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">冰 0g</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">巨峰葡萄拿铁 - 冰</span></td><td>PS915</td><td><span class="spec-type-badge">温度</span></td><td><span class="spec-type-badge">冰（默认）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">冰 140g</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">巨峰葡萄拿铁 - 少冰</span></td><td>PS914</td><td><span class="spec-type-badge">温度</span></td><td><span class="spec-type-badge">少冰</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">冰 100g</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">有杯盖</span></td><td>PS913</td><td><span class="spec-type-badge">杯盖</span></td><td><span class="spec-type-badge">需要杯盖（默认）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">杯盖 1</span></div></td><td>是</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-spec-name">无杯盖</span></td><td>PS912</td><td><span class="spec-type-badge">杯盖</span></td><td><span class="spec-type-badge">不需要杯盖（推荐）</span></td><td><div class="spec-option-tags"><span class="spec-option-tag">杯盖 0</span></div></td><td>否</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>PS001</td><td><span class="spec-type-badge product-spec-name">甜度</span></td><td>少甜、正常甜、多甜</td><td><div class="spec-material-lines"><div>少甜：香草糖浆 15g</div><div>正常甜：香草糖浆 20g</div><div>多甜：香草糖浆 30g</div></div></td><td>香草拿铁、焦糖拿铁、海盐焦糖拿铁、玫瑰拿铁</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>PS002</td><td><span class="spec-type-badge product-spec-name">温度</span></td><td>热、冰、少冰、常温</td><td><div class="spec-material-lines"><div>热：无</div><div>冰：冰块 140g</div><div>少冰：冰块 100g</div><div>常温：无</div></div></td><td>香草拿铁、冰美式、冷萃咖啡、厚乳拿铁</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>PS003</td><td><span class="spec-type-badge product-spec-name">浓度</span></td><td>默认浓度、加浓</td><td><div class="spec-material-lines"><div>默认浓度：浓缩咖啡液 30ml</div><div>加浓：浓缩咖啡液 45ml</div></div></td><td>美式咖啡、拿铁、冷萃咖啡、厚乳拿铁</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>PS004</td><td><span class="spec-type-badge product-spec-name">杯盖</span></td><td>需要杯盖、不需要杯盖</td><td><div class="spec-material-lines"><div>需要杯盖：咖啡杯盖 1个</div><div>不需要杯盖：无</div></div></td><td>美式咖啡、拿铁、冷萃咖啡、果味咖啡</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">编辑</button><button class="link" type="button">停用</button></div></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -3097,46 +3398,57 @@
             <div class="panel-body">
               <div class="product-material-filter">
                 <div class="filter-field"><label>原料名称</label>
-                  <select><option value="">请选择原料名称</option><option>香草籽风味饮料浓浆</option><option>乌龙茶液</option><option>Mlittle Ice拿铁</option><option>Mid拿铁</option><option>Slittle Ice拿铁</option><option>芭乐糖浆</option><option>海盐焦糖糖浆</option><option>焦糖糖浆</option><option>玫瑰糖浆</option></select>
+                  <select id="productMaterialNameFilter"><option value="">请选择原料名称</option><option>香草籽风味饮料浓浆</option><option>乌龙茶液</option><option>Mlittle Ice拿铁</option><option>Mid拿铁</option><option>Slittle Ice拿铁</option><option>芭乐糖浆</option><option>海盐焦糖糖浆</option><option>焦糖糖浆</option><option>玫瑰糖浆</option><option>薄荷糖浆</option><option>香草糖浆</option><option>榛果糖浆</option><option>黑糖糖浆</option><option>桂花糖浆</option><option>浓缩咖啡液</option><option>冷萃咖啡液</option><option>阿拉比卡咖啡豆</option><option>深烘咖啡豆</option><option>冻干咖啡粉</option><option>拿铁风味基底</option><option>摩卡风味基底</option><option>抹茶风味基底</option><option>可可风味粉</option><option>全脂牛奶</option><option>燕麦奶</option><option>厚乳</option><option>淡奶油</option><option>纯净水</option><option>冰块</option><option>咖啡纸杯</option><option>咖啡杯盖</option></select>
                 </div>
-                <div class="filter-field"><label>状态</label><select><option>全部</option><option>启用</option><option>停用</option></select></div>
+                <div class="filter-field"><label>原料类型</label><select id="productMaterialTypeFilter"><option value="">全部类型</option><option>物料类</option><option>冰水类</option><option>糖浆类</option><option>咖啡类</option><option>风味基底</option><option>乳制品</option></select></div>
+                <div class="filter-field"><label>规格归属</label><select id="productMaterialRoleFilter"><option value="">全部归属</option><option>基料</option><option>甜度</option><option>温度</option><option>浓度</option><option>杯盖</option></select></div>
+                <div class="filter-field"><label>状态</label><select id="productMaterialStatusFilter"><option value="">全部</option><option>启用</option><option>停用</option></select></div>
                 <div class="filter-actions">
-                  <button class="btn primary">搜索</button>
-                  <button class="btn">重置</button>
+                  <button class="btn primary" id="productMaterialSearch" type="button">搜索</button>
+                  <button class="btn" id="productMaterialReset" type="button">重置</button>
                 </div>
                 <button class="btn primary" id="productMaterialAdd" type="button" style="margin-left:auto">+ 新增原料</button>
               </div>
               <div class="table-scroll">
                 <table class="product-material-table" data-total="126" data-page-size="10" data-pagination="compact">
                   <thead>
-                    <tr><th>原料名称</th><th>编码</th><th>计量单位</th><th>状态</th><th>操作</th></tr>
+                    <tr><th>原料ID</th><th>原料名称</th><th>类型</th><th>计量单位</th><th>规格归属</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><span class="product-material-name">香草籽风味饮料浓浆</span></td><td>RM338</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">乌龙茶液</span></td><td>RM105</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">Mlittle Ice拿铁</span></td><td>RM913</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">Mid拿铁</span></td><td>RM912</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">Slittle Ice拿铁</span></td><td>RM910</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">芭乐糖浆</span></td><td>RM147</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">海盐焦糖糖浆</span></td><td>RM146</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">焦糖糖浆</span></td><td>RM145</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">玫瑰糖浆</span></td><td>RM144</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                    <tr><td><span class="product-material-name">薄荷糖浆</span></td><td>RM143</td><td>g</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM338</td><td><span class="product-material-name">香草籽风味饮料浓浆</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM105</td><td><span class="product-material-name">乌龙茶液</span></td><td>咖啡类</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM913</td><td><span class="product-material-name">Mlittle Ice拿铁</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM912</td><td><span class="product-material-name">Mid拿铁</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM910</td><td><span class="product-material-name">Slittle Ice拿铁</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM147</td><td><span class="product-material-name">芭乐糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM146</td><td><span class="product-material-name">海盐焦糖糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM145</td><td><span class="product-material-name">焦糖糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM144</td><td><span class="product-material-name">玫瑰糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM143</td><td><span class="product-material-name">薄荷糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM148</td><td><span class="product-material-name">香草糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM149</td><td><span class="product-material-name">榛果糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM150</td><td><span class="product-material-name">黑糖糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM151</td><td><span class="product-material-name">桂花糖浆</span></td><td>糖浆类</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM201</td><td><span class="product-material-name">浓缩咖啡液</span></td><td>咖啡类</td><td>毫升</td><td><span class="tag">浓度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM202</td><td><span class="product-material-name">冷萃咖啡液</span></td><td>咖啡类</td><td>毫升</td><td><span class="tag">浓度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM203</td><td><span class="product-material-name">阿拉比卡咖啡豆</span></td><td>咖啡类</td><td>克</td><td><span class="tag">浓度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM204</td><td><span class="product-material-name">深烘咖啡豆</span></td><td>咖啡类</td><td>克</td><td><span class="tag">浓度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM205</td><td><span class="product-material-name">冻干咖啡粉</span></td><td>咖啡类</td><td>克</td><td><span class="tag">浓度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM339</td><td><span class="product-material-name">拿铁风味基底</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM340</td><td><span class="product-material-name">摩卡风味基底</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM341</td><td><span class="product-material-name">抹茶风味基底</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM342</td><td><span class="product-material-name">可可风味粉</span></td><td>风味基底</td><td>克</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM401</td><td><span class="product-material-name">全脂牛奶</span></td><td>乳制品</td><td>毫升</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM402</td><td><span class="product-material-name">燕麦奶</span></td><td>乳制品</td><td>毫升</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM403</td><td><span class="product-material-name">厚乳</span></td><td>乳制品</td><td>毫升</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM404</td><td><span class="product-material-name">淡奶油</span></td><td>乳制品</td><td>克</td><td><span class="tag">甜度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM501</td><td><span class="product-material-name">纯净水</span></td><td>冰水类</td><td>毫升</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM502</td><td><span class="product-material-name">冰块</span></td><td>冰水类</td><td>克</td><td><span class="tag">温度</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM601</td><td><span class="product-material-name">咖啡纸杯</span></td><td>物料类</td><td>个</td><td><span class="tag gray">基料</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
+                    <tr><td>RM602</td><td><span class="product-material-name">咖啡杯盖</span></td><td>物料类</td><td>个</td><td><span class="tag">杯盖</span></td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="page" id="materials" data-title="原料列表" data-breadcrumb="商品管理,原料列表">
-          <div class="panel">
-            <div class="panel-body">
-              <div class="search cols-4"><input placeholder="原料名称 / 编码" /><select><option>原料类型</option><option>咖啡豆</option><option>牛奶</option><option>糖浆</option><option>耗材</option></select><select><option>状态</option><option>启用</option><option>停用</option></select><div class="search-btns"><button class="btn primary">搜索</button><button class="btn">重置</button></div></div>
-              <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
-                <button class="btn primary">+ 新增原料</button>
-              </div>
-              <table><thead><tr><th>原料名称</th><th>原料类型</th><th>规格</th><th>计量单位</th><th>安全库存</th><th>状态</th><th>操作</th></tr></thead><tbody><tr><td>阿拉比卡咖啡豆</td><td>咖啡豆</td><td>1kg/袋</td><td>g</td><td>20袋</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr><tr><td>燕麦奶</td><td>牛奶</td><td>1L/盒</td><td>ml</td><td>50盒</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr></tbody></table>
             </div>
           </div>
         </section>
@@ -4434,21 +4746,25 @@
         <section class="modal-seg" data-seg="product-form">
           <div class="product-form-grid">
             <div class="field"><label><span class="required-mark">*</span>名称</label><input id="productFormName" placeholder="请输入名称" /></div>
-            <div class="field"><label><span class="required-mark">*</span>商品分类</label>
-              <select id="productFormCategory">
-                <option value="">请选择商品分类</option>
+            <div class="field"><label><span class="required-mark">*</span>商品类型</label>
+              <select id="productFormType">
+                <option value="">请选择商品类型</option>
                 <option>现制饮品</option>
                 <option>预包装商品</option>
               </select>
             </div>
-            <div class="field"><label><span class="required-mark">*</span>规格</label><input id="productFormSpec" placeholder="请输入规格" /></div>
+            <div class="field"><label><span class="required-mark">*</span>商品分类</label>
+              <select id="productFormCategory">
+                <option value="">请选择商品分类</option>
+              </select>
+            </div>
+            <div class="field"><label><span class="required-mark">*</span>规格</label><div style="display:flex;gap:8px;align-items:flex-start"><textarea id="productFormSpec" placeholder="请输入规格" style="flex:1;min-height:72px;resize:vertical" readonly></textarea><button class="btn soft" type="button" id="specPickerBtn" style="margin-top:2px">选择规格</button></div></div>
+            <div class="field full" style="align-items:start"><label>选择基料</label><div style="min-width:0"><div class="spec-material-field"><div class="spec-option-tags" id="productBaseMaterialTags"></div><button class="spec-option-material" id="productBaseMaterialAdd" type="button">添加选择基料</button></div><div style="color:#8c95a6;font-size:12px;margin-top:6px">基料：与规格无关、任何规格组合均使用的原料（如拿铁底、牛奶、浓缩咖啡液）</div></div></div>
+            <div class="field full" style="align-items:start"><label><span class="required-mark">*</span>适配机器型号</label><div style="min-width:0"><div class="spec-material-field"><div class="spec-option-tags" id="productMachineModelTags"></div><button class="spec-option-material" id="productMachineModelAdd" type="button">选择机器型号</button></div><div style="color:#8c95a6;font-size:12px;margin-top:6px">支持多选；选项来自设备型号页面的机器型号字段</div></div></div>
             <div class="field"><label><span class="required-mark">*</span>制作时长</label><input id="productFormDuration" placeholder="请输入时长，单位秒" inputmode="numeric" /></div>
-            <div class="field"><label><span class="required-mark">*</span>原料价格</label><input id="productFormMaterialPrice" placeholder="请输入原料价格" inputmode="decimal" /></div>
-            <div class="field"><label><span class="required-mark">*</span>适用地区</label><input id="productFormRegion" value="中国大陆 CN" readonly /></div>
-            <div class="field"><label><span class="required-mark">*</span>税率</label><input class="product-tax-input" id="productFormTaxRate" placeholder="选择商品分类后自动带出" readonly /></div>
-            <div class="field"><label><span class="required-mark">*</span>原价</label><input id="productFormOriginalPrice" placeholder="自动计算" readonly /></div>
-            <div class="field"><label><span class="required-mark">*</span>折扣价</label><input id="productFormDiscountPrice" placeholder="请输入折扣价" inputmode="decimal" /></div>
-            <div class="field"></div>
+            <div class="field full" style="align-items:start"><label><span class="required-mark">*</span>下发国家/地区</label><div style="min-width:0"><select id="productFormCountries" class="hidden-control" multiple><option value="中国大陆 CN" selected>中国大陆 CN</option><option value="中国香港 HK">中国香港 HK</option><option value="中国台湾 TW">中国台湾 TW</option><option value="英国 GB">英国 GB</option><option value="法国 FR">法国 FR</option></select><div class="choice-grid" data-choice-for="productFormCountries" data-choice-mode="multiple"><label class="choice-option" data-value="中国大陆 CN"><input type="checkbox" />中国大陆 CN</label><label class="choice-option" data-value="中国香港 HK"><input type="checkbox" />中国香港 HK</label><label class="choice-option" data-value="中国台湾 TW"><input type="checkbox" />中国台湾 TW</label><label class="choice-option" data-value="英国 GB"><input type="checkbox" />英国 GB</label><label class="choice-option" data-value="法国 FR"><input type="checkbox" />法国 FR</label></div><div style="color:#8c95a6;font-size:12px;margin-top:6px">勾选标品需下发的国家/地区；下发后各国家/地区按本地计量单位与语言展示，创建方（中国大陆）查看标准单位与价格</div></div></div>
+            <div class="field"><label><span class="required-mark">*</span>原价</label><input id="productFormOriginalPrice" placeholder="请输入原价" inputmode="decimal" /></div>
+            <div class="field"><label>折扣价</label><input id="productFormDiscountPrice" placeholder="请输入折扣价（选填）" inputmode="decimal" /></div>
 
             <div class="field product-upload-field">
               <label><span class="required-mark">*</span>缩略图点单屏</label>
@@ -4480,7 +4796,6 @@
               <button class="product-upload-box" type="button" aria-label="上传内容图小程序">+</button>
               <div class="product-upload-help">请上传 大小不超过 <strong>5MB</strong> 格式为 <strong>png/jpg/jpeg</strong> 的文件</div>
             </div>
-            <div class="field"></div>
             <div class="field product-upload-field">
               <label>小程序首页图</label>
               <button class="product-upload-box" type="button" aria-label="上传小程序首页图">+</button>
@@ -4517,49 +4832,49 @@
         <section class="modal-seg" data-seg="product-spec-form">
           <div class="spec-form-grid">
             <div class="spec-name-row">
-              <label class="spec-required-label"><span class="required-mark">*</span>规格名称</label>
-              <input id="specFormName" placeholder="如 巨峰葡萄拿铁" />
-            </div>
-            <div class="spec-name-row">
               <label class="spec-required-label"><span class="required-mark">*</span>规格</label>
               <select id="specFormType">
                 <option value="">请选择规格</option>
                 <option>甜度</option>
                 <option>温度</option>
+                <option>浓度</option>
                 <option>杯盖</option>
               </select>
             </div>
-            <div class="spec-name-row">
-              <label class="spec-required-label"><span class="required-mark">*</span>规格项</label>
-              <select id="specFormItem">
-                <option value="">请先选择规格</option>
-              </select>
-            </div>
-            <div class="spec-name-row">
-              <label class="spec-required-label">默认/推荐</label>
-              <div class="spec-flag-group">
-                <label class="spec-flag"><input id="specFormDefault" type="checkbox" />默认</label>
-                <label class="spec-flag"><input id="specFormRecommend" type="checkbox" />推荐</label>
-              </div>
-            </div>
-            <div class="spec-switch-row">
-              <span>影响原料/物料</span>
-              <label class="switch-control"><input id="specFormRequiredMaterial" type="checkbox" /><span></span></label>
+            <div class="spec-name-row spec-wide">
+              <label class="spec-required-label"><span class="required-mark">*</span>适用商品名称</label>
+              <input id="specFormProductRemark" placeholder="请输入适用商品名称，多个商品用顿号分隔" />
             </div>
             <div class="spec-name-row spec-wide">
-              <label class="spec-required-label">原料/物料</label>
-              <div class="spec-material-field">
-                <div class="spec-option-tags" id="specMaterialTags"></div>
-                <button class="spec-option-material" id="specMaterialAdd" type="button">添加原料/物料</button>
+              <label class="spec-required-label"><span class="required-mark">*</span>规格原料</label>
+              <div class="spec-shared-material">
+                <input id="specSharedMaterial" placeholder="请选择规格相关原料" readonly />
+                <button class="spec-config-pick" id="specSharedMaterialPick" type="button">选择</button>
+              </div>
+            </div>
+            <div class="spec-name-row spec-wide">
+              <label class="spec-required-label"><span class="required-mark">*</span>规格项用量</label>
+              <div class="spec-config-box">
+                <table class="spec-config-table">
+                  <thead>
+                    <tr>
+                      <th style="width:24%">规格项</th>
+                      <th style="width:72px;text-align:center">使用</th>
+                      <th>用量</th>
+                      <th style="width:72px;text-align:center">默认</th>
+                      <th style="width:72px;text-align:center">推荐</th>
+                    </tr>
+                  </thead>
+                  <tbody id="specItemConfigRows">
+                    <tr><td colspan="5" style="text-align:center;color:#98a2b3">请先选择规格</td></tr>
+                  </tbody>
+                </table>
+                <div class="spec-config-help">规格原料只需选择一次；不同规格项只维护对应用量。</div>
               </div>
             </div>
             <div class="spec-name-row spec-wide">
               <label class="spec-required-label">备注</label>
               <div class="spec-textarea-wrap"><textarea id="specFormRemark" maxlength="500" placeholder="请输入内容"></textarea><span class="spec-textarea-count" id="specRemarkCount">0/500</span></div>
-            </div>
-            <div class="spec-name-row spec-wide">
-              <label class="spec-required-label">原料/物料备注</label>
-              <div class="spec-textarea-wrap"><textarea id="specFormMaterialRemark" maxlength="500" placeholder="请输入内容"></textarea><span class="spec-textarea-count" id="specMaterialRemarkCount">0/500</span></div>
             </div>
           </div>
         </section>
@@ -4571,8 +4886,31 @@
               <input id="materialFormName" placeholder="请输入原料名称" />
             </div>
             <div class="field">
+              <label><span class="required-mark">*</span>原料类型</label>
+              <select id="materialFormType">
+                <option value="">请选择原料类型</option>
+                <option>物料类</option>
+                <option>冰水类</option>
+                <option>糖浆类</option>
+                <option>咖啡类</option>
+                <option>风味基底</option>
+                <option>乳制品</option>
+              </select>
+            </div>
+            <div class="field">
               <label><span class="required-mark">*</span>计量单位</label>
               <select id="materialFormUnit"></select>
+            </div>
+            <div class="field">
+              <label><span class="required-mark">*</span>规格归属</label>
+              <select id="materialFormRole">
+                <option value="">请选择规格归属</option>
+                <option>基料</option>
+                <option>甜度</option>
+                <option>温度</option>
+                <option>浓度</option>
+                <option>杯盖</option>
+              </select>
             </div>
             <div class="field">
               <label>备注</label>
@@ -4980,17 +5318,21 @@
   <div class="material-picker-modal" id="materialPickerModal">
     <div class="material-picker-panel" role="dialog" aria-modal="true" aria-labelledby="materialPickerTitle">
       <div class="material-picker-head">
-        <h3 id="materialPickerTitle">选择原料/物料</h3>
+        <h3 id="materialPickerTitle">请选择原料</h3>
         <button class="material-picker-close" id="materialPickerClose" type="button" aria-label="关闭">×</button>
       </div>
       <div class="material-picker-body">
         <div class="material-picker-search">
-          <label>原料/物料名称</label>
-          <input id="materialPickerKeyword" placeholder="请输入原料/物料名称" />
+          <label data-material-filter="id">原料ID</label>
+          <input id="materialPickerId" data-material-filter="id" placeholder="请输入原料ID" />
+          <label data-material-filter="name">原料名称</label>
+          <input id="materialPickerKeyword" placeholder="请输入原料名称" />
+          <label data-material-filter="role">规格归属</label>
+          <select id="materialPickerTypeFilter" data-material-filter="role" style="height:36px;border:1px solid #d0d5dd;border-radius:4px;padding:0 8px"><option value="">全部规格</option><option>温度</option><option>甜度</option><option>浓度</option><option>杯盖</option></select>
           <button class="btn primary" id="materialPickerSearch" type="button">搜索</button>
         </div>
         <table class="material-picker-table">
-          <thead><tr><th style="width:44px"><input id="materialPickerAll" type="checkbox" /></th><th>原料/物料名称</th><th>原料/物料数量</th></tr></thead>
+          <thead><tr><th style="width:44px"></th><th>原料ID</th><th>原料名称</th><th>原料类型</th><th>规格归属</th></tr></thead>
           <tbody id="materialPickerRows"></tbody>
         </table>
         <div class="material-picker-page">
@@ -5001,6 +5343,73 @@
       <div class="material-picker-foot">
         <button class="btn primary" id="materialPickerConfirm" type="button">确定</button>
         <button class="btn soft" id="materialPickerCancel" type="button">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-picker-modal" id="specPickerModal">
+    <div class="spec-picker-panel" role="dialog" aria-modal="true" aria-labelledby="specPickerTitle">
+      <div class="spec-picker-head">
+        <h3 id="specPickerTitle">选择规格</h3>
+        <button class="spec-picker-close" id="specPickerClose" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="spec-picker-body">
+        <div class="spec-picker-search">
+          <label>规格</label>
+          <input id="specPickerKeyword" placeholder="请输入规格，如甜度/温度/浓度" />
+          <button class="btn primary" id="specPickerSearch" type="button">搜索</button>
+        </div>
+        <table class="spec-picker-table">
+          <thead><tr><th style="width:44px"><input id="specPickerAll" type="checkbox" /></th><th>规格ID</th><th>规格</th><th>规格项</th><th>适用商品名称</th></tr></thead>
+          <tbody id="specPickerRows"></tbody>
+        </table>
+      </div>
+      <div class="spec-picker-foot">
+        <button class="btn primary" id="specPickerConfirm" type="button">确定</button>
+        <button class="btn soft" id="specPickerCancel" type="button">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="machine-model-picker-modal" id="machineModelPickerModal">
+    <div class="machine-model-picker-panel" role="dialog" aria-modal="true" aria-labelledby="machineModelPickerTitle">
+      <div class="machine-model-picker-head">
+        <h3 id="machineModelPickerTitle">选择机器型号</h3>
+        <button class="machine-model-picker-close" id="machineModelPickerClose" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="machine-model-picker-body">
+        <div class="machine-model-picker-search">
+          <label>机器型号</label>
+          <input id="machineModelPickerKeyword" placeholder="请输入机器型号" />
+          <button class="btn primary" id="machineModelPickerSearch" type="button">搜索</button>
+        </div>
+        <table class="machine-model-picker-table">
+          <thead><tr><th style="width:44px"><input id="machineModelPickerAll" type="checkbox" /></th><th>机器代码</th><th>机器类别</th><th>机器型号</th><th>机器数量</th></tr></thead>
+          <tbody id="machineModelPickerRows"></tbody>
+        </table>
+      </div>
+      <div class="machine-model-picker-foot">
+        <button class="btn primary" id="machineModelPickerConfirm" type="button">确定</button>
+        <button class="btn soft" id="machineModelPickerCancel" type="button">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="production-config-modal" id="productionConfigModal">
+    <div class="production-config-panel" role="dialog" aria-modal="true" aria-labelledby="productionConfigTitle">
+      <div class="production-config-head">
+        <h3 id="productionConfigTitle">配置制作步骤</h3>
+        <button class="production-config-close" id="productionConfigClose" type="button" aria-label="关闭">×</button>
+      </div>
+      <div class="production-config-body">
+        <table class="production-config-table">
+          <thead><tr><th>商品名称</th><th>商品规格</th><th>机器型号</th><th>操作</th></tr></thead>
+          <tbody id="productionConfigRows"></tbody>
+        </table>
+      </div>
+      <div class="production-config-foot">
+        <button class="btn soft" id="productionConfigCancel" type="button">取消</button>
+        <button class="btn primary" id="productionConfigConfirm" type="button">确定</button>
       </div>
     </div>
   </div>
@@ -5099,13 +5508,29 @@
     const confirmCancel = document.getElementById('confirmCancel');
     const confirmOk = document.getElementById('confirmOk');
     const materialPickerModal = document.getElementById('materialPickerModal');
+    const materialPickerTitle = document.getElementById('materialPickerTitle');
     const materialPickerClose = document.getElementById('materialPickerClose');
     const materialPickerCancel = document.getElementById('materialPickerCancel');
     const materialPickerConfirm = document.getElementById('materialPickerConfirm');
+    const materialPickerId = document.getElementById('materialPickerId');
     const materialPickerKeyword = document.getElementById('materialPickerKeyword');
+    const materialPickerTypeFilter = document.getElementById('materialPickerTypeFilter');
     const materialPickerSearch = document.getElementById('materialPickerSearch');
-    const materialPickerAll = document.getElementById('materialPickerAll');
     const materialPickerRows = document.getElementById('materialPickerRows');
+    const machineModelPickerModal = document.getElementById('machineModelPickerModal');
+    const machineModelPickerClose = document.getElementById('machineModelPickerClose');
+    const machineModelPickerCancel = document.getElementById('machineModelPickerCancel');
+    const machineModelPickerConfirm = document.getElementById('machineModelPickerConfirm');
+    const machineModelPickerKeyword = document.getElementById('machineModelPickerKeyword');
+    const machineModelPickerSearch = document.getElementById('machineModelPickerSearch');
+    const machineModelPickerRows = document.getElementById('machineModelPickerRows');
+    const machineModelPickerAll = document.getElementById('machineModelPickerAll');
+    const productionConfigModal = document.getElementById('productionConfigModal');
+    const productionConfigClose = document.getElementById('productionConfigClose');
+    const productionConfigCancel = document.getElementById('productionConfigCancel');
+    const productionConfigConfirm = document.getElementById('productionConfigConfirm');
+    const productionConfigRows = document.getElementById('productionConfigRows');
+    let productionConfigProductRow = null;
     const imagePreviewModal = document.getElementById('imagePreviewModal');
     const imagePreviewClose = document.getElementById('imagePreviewClose');
     const imagePreviewImg = document.getElementById('imagePreviewImg');
@@ -5349,77 +5774,169 @@
     let tenantCashierSelectedMerchants = [];
     const productAdd = document.getElementById('productAdd');
     let productContext = { mode: 'create', row: null };
+    const productFormPageBody = document.getElementById('productFormPageBody');
+    const productFormPageTitle = document.getElementById('productFormPageTitle');
+    const productFormPageBack = document.getElementById('productFormPageBack');
+    const productFormPageCancel = document.getElementById('productFormPageCancel');
+    const productFormPageSave = document.getElementById('productFormPageSave');
     const productFormName = document.getElementById('productFormName');
+    const productFormType = document.getElementById('productFormType');
     const productFormCategory = document.getElementById('productFormCategory');
+    const productCategoryFilter = document.getElementById('productCategoryFilter');
+    const goodsNameFilter = document.getElementById('goodsNameFilter');
+    const goodsStandardNameFilter = document.getElementById('goodsStandardNameFilter');
+    const goodsStandardIdFilter = document.getElementById('goodsStandardIdFilter');
+    const goodsStatusFilter = document.getElementById('goodsStatusFilter');
+    const goodsCategoryFilter = document.getElementById('goodsCategoryFilter');
+    const goodsCountryFilter = document.getElementById('goodsCountryFilter');
+    const goodsRegionFilter = document.getElementById('goodsRegionFilter');
+    const goodsTenantFilter = document.getElementById('goodsTenantFilter');
+    const goodsStoreFilter = document.getElementById('goodsStoreFilter');
+    const goodsStoreTypeFilter = document.getElementById('goodsStoreTypeFilter');
+    const goodsSearch = document.getElementById('goodsSearch');
+    const goodsReset = document.getElementById('goodsReset');
+    const goodsListRows = document.getElementById('goodsListRows');
+    const goodsDetailPageBody = document.getElementById('goodsDetailPageBody');
+    const cargoNameFilter = document.getElementById('cargoNameFilter');
+    const cargoStoreFilter = document.getElementById('cargoStoreFilter');
+    const cargoTenantFilter = document.getElementById('cargoTenantFilter');
+    const cargoMaterialFilter = document.getElementById('cargoMaterialFilter');
+    const cargoBrandFilter = document.getElementById('cargoBrandFilter');
+    const cargoCountryFilter = document.getElementById('cargoCountryFilter');
+    const cargoAreaFilter = document.getElementById('cargoAreaFilter');
+    const cargoAreaFilterLabel = document.getElementById('cargoAreaFilterLabel');
+    const cargoAreaColHeader = document.getElementById('cargoAreaColHeader');
+    const cargoSearch = document.getElementById('cargoSearch');
+    const cargoReset = document.getElementById('cargoReset');
     const productFormSpec = document.getElementById('productFormSpec');
+    const specPickerBtn = document.getElementById('specPickerBtn');
     const productFormDuration = document.getElementById('productFormDuration');
     const productFormDurationRequired = productFormDuration?.closest('.field')?.querySelector('.required-mark');
     const productFormDiscountPrice = document.getElementById('productFormDiscountPrice');
     const productFormOriginalPrice = document.getElementById('productFormOriginalPrice');
-    const productFormMaterialPrice = document.getElementById('productFormMaterialPrice');
-    const productFormRegion = document.getElementById('productFormRegion');
-    const productFormTaxRate = document.getElementById('productFormTaxRate');
-    function calcOriginalPrice(){
-      const material = parseFloat(productFormMaterialPrice?.value) || 0;
-      const rateStr = (productFormTaxRate?.value || '').replace('%', '');
-      const rate = parseFloat(rateStr) || 0;
-      if (material > 0 && rate > 0) {
-        productFormOriginalPrice.value = (material * (1 + rate / 100)).toFixed(2);
-      } else {
-        productFormOriginalPrice.value = '';
+    const productFormCountries = document.getElementById('productFormCountries');
+    const PRODUCT_STANDARD_REGION = '中国大陆 CN';
+    function getProductCountries(){
+      return Array.from(productFormCountries?.selectedOptions || []).map(option => option.value);
+    }
+    function setProductCountries(list){
+      if (!productFormCountries) return;
+      Array.from(productFormCountries.options).forEach(option => { option.selected = (list || []).includes(option.value); });
+      syncChoiceGroup(productFormCountries);
+    }
+    function productCountryCellHtml(countries){
+      if (!countries.length) return '-';
+      return `<div class="product-country-tags">${countries.map(c => `<span class="tag">${escapeHtml(c)}</span>`).join('')}</div>`;
+    }
+
+    function productDateTimeNow(){
+      return new Date().toISOString().slice(0, 19).replace('T', ' ');
+    }
+
+    function getProductCategoryNames(){
+      const names = Array.from(document.querySelectorAll('#product-category .category-table tbody .category-name'))
+        .map(item => item.textContent.trim())
+        .filter(Boolean);
+      return Array.from(new Set(names));
+    }
+
+    function populateProductCategoryOptions(selectedValue = ''){
+      const categories = getProductCategoryNames();
+      const optionHtml = categories.map(name => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join('');
+      if (productFormCategory) {
+        productFormCategory.innerHTML = '<option value="">请选择商品分类</option>' + optionHtml;
+        if (selectedValue && categories.includes(selectedValue)) productFormCategory.value = selectedValue;
+        rebuildCustomSelectOptions(productFormCategory);
+      }
+      if (productCategoryFilter) {
+        const currentFilterValue = productCategoryFilter.value;
+        productCategoryFilter.innerHTML = '<option value="">请选择分类</option>' + optionHtml;
+        if (currentFilterValue && categories.includes(currentFilterValue)) productCategoryFilter.value = currentFilterValue;
+        rebuildCustomSelectOptions(productCategoryFilter);
+      }
+      if (goodsCategoryFilter) {
+        const currentGoodsCategory = goodsCategoryFilter.value;
+        goodsCategoryFilter.innerHTML = '<option value="">请选择分类</option>' + optionHtml;
+        if (currentGoodsCategory && categories.includes(currentGoodsCategory)) goodsCategoryFilter.value = currentGoodsCategory;
+        rebuildCustomSelectOptions(goodsCategoryFilter);
       }
     }
-    productFormMaterialPrice?.addEventListener('input', calcOriginalPrice);
-    productFormTaxRate?.addEventListener('input', calcOriginalPrice);
-    function autoFillProductTaxRate(){
-      const region = productFormRegion?.value;
-      const category = productFormCategory?.value;
-      const rates = regionTaxRateMap[region];
-      if (!rates) { productFormTaxRate.value = ''; return; }
-      if (category === '现制饮品') productFormTaxRate.value = rates.drink;
-      else if (category === '预包装商品') productFormTaxRate.value = rates.food;
-      else productFormTaxRate.value = '';
-      calcOriginalPrice();
-    }
-    productFormRegion?.addEventListener('change', autoFillProductTaxRate);
-    productFormCategory?.addEventListener('change', () => {
-      const isPrepackaged = productFormCategory.value === '预包装商品';
+
+    function syncProductTypeFields(){
+      const isPrepackaged = productFormType?.value === '预包装商品';
       productFormDuration.required = !isPrepackaged;
       if (productFormDurationRequired) {
         productFormDurationRequired.style.display = isPrepackaged ? 'none' : 'inline';
       }
-      autoFillProductTaxRate();
-    });
+    }
+
+    productFormType?.addEventListener('change', syncProductTypeFields);
     const productFormDesc = document.getElementById('productFormDesc');
     const productFormRemark = document.getElementById('productFormRemark');
+    const productFormSegment = document.querySelector('[data-seg="product-form"]');
+    if (productFormPageBody && productFormSegment) {
+      productFormSegment.classList.remove('active');
+      productFormPageBody.appendChild(productFormSegment);
+    }
     const productTagBox = document.querySelector('.product-tag-box');
     const productTagAdd = productTagBox?.querySelector('.product-tag-add');
     const productCategoryAdd = document.getElementById('productCategoryAdd');
     const productMaterialAdd = document.getElementById('productMaterialAdd');
+    const productMaterialNameFilter = document.getElementById('productMaterialNameFilter');
+    const productMaterialTypeFilter = document.getElementById('productMaterialTypeFilter');
+    const productMaterialRoleFilter = document.getElementById('productMaterialRoleFilter');
+    const productMaterialStatusFilter = document.getElementById('productMaterialStatusFilter');
+    const productMaterialSearch = document.getElementById('productMaterialSearch');
+    const productMaterialReset = document.getElementById('productMaterialReset');
     const productSpecAdd = document.querySelector('#product-specs .product-spec-add');
+    const productSpecMaterialFilter = document.getElementById('productSpecMaterialFilter');
+    const productSpecIdFilter = document.getElementById('productSpecIdFilter');
+    const productSpecNameFilter = document.getElementById('productSpecNameFilter');
+    const productSpecProductFilter = document.getElementById('productSpecProductFilter');
+    const productSpecStatusFilter = document.getElementById('productSpecStatusFilter');
+    const productSpecSearch = document.getElementById('productSpecSearch');
+    const productSpecReset = document.getElementById('productSpecReset');
     let categoryContext = { mode: 'create', row: null };
     let materialContext = { mode: 'create', row: null };
     let specContext = { mode: 'create', row: null };
     const materialPickerData = [
-      '香草籽风味饮料浓浆',
-      '乌龙茶液',
-      'Mlittle Ice拿铁',
-      'Mid拿铁',
-      'Slittle Ice拿铁',
-      '芭乐糖浆',
-      '海盐焦糖糖浆',
-      '焦糖糖浆',
-      '玫瑰糖浆',
-      '薄荷糖浆',
-      '咖啡杯盖',
-      '咖啡纸杯',
-      '吸管'
+      { name: '香草籽风味饮料浓浆', type: '风味基底', role: '基料' },
+      { name: '乌龙茶液', type: '咖啡类', role: '基料' },
+      { name: 'Mlittle Ice拿铁', type: '风味基底', role: '基料' },
+      { name: 'Mid拿铁', type: '风味基底', role: '基料' },
+      { name: 'Slittle Ice拿铁', type: '风味基底', role: '基料' },
+      { name: '浓缩咖啡液', type: '咖啡类', role: '浓度' },
+      { name: '冷萃咖啡液', type: '咖啡类', role: '浓度' },
+      { name: '阿拉比卡咖啡豆', type: '咖啡类', role: '浓度' },
+      { name: '深烘咖啡豆', type: '咖啡类', role: '浓度' },
+      { name: '冻干咖啡粉', type: '咖啡类', role: '浓度' },
+      { name: '拿铁风味基底', type: '风味基底', role: '基料' },
+      { name: '摩卡风味基底', type: '风味基底', role: '基料' },
+      { name: '抹茶风味基底', type: '风味基底', role: '基料' },
+      { name: '可可风味粉', type: '风味基底', role: '基料' },
+      { name: '全脂牛奶', type: '乳制品', role: '基料' },
+      { name: '燕麦奶', type: '乳制品', role: '基料' },
+      { name: '厚乳', type: '乳制品', role: '基料' },
+      { name: '纯净水', type: '冰水类', role: '基料' },
+      { name: '芭乐糖浆', type: '糖浆类', role: '甜度' },
+      { name: '海盐焦糖糖浆', type: '糖浆类', role: '甜度' },
+      { name: '焦糖糖浆', type: '糖浆类', role: '甜度' },
+      { name: '玫瑰糖浆', type: '糖浆类', role: '甜度' },
+      { name: '薄荷糖浆', type: '糖浆类', role: '甜度' },
+      { name: '香草糖浆', type: '糖浆类', role: '甜度' },
+      { name: '榛果糖浆', type: '糖浆类', role: '甜度' },
+      { name: '黑糖糖浆', type: '糖浆类', role: '甜度' },
+      { name: '桂花糖浆', type: '糖浆类', role: '甜度' },
+      { name: '淡奶油', type: '乳制品', role: '甜度' },
+      { name: '冰块', type: '冰水类', role: '温度' },
+      { name: '咖啡杯盖', type: '物料类', role: '杯盖' },
+      { name: '咖啡纸杯', type: '物料类', role: '基料' }
     ];
     const STANDARD_UNITS = [
       { code: 'UNIT_VOLUME_ML', name: '毫升', type: '容量', base: 'ml', conversion: '小数 2 位', scenarios: ['配方', '库存', '商品展示'] },
       { code: 'UNIT_VOLUME_L', name: '升', type: '容量', base: 'ml', conversion: '小数 1 位', scenarios: ['库存', '补货', '商品展示'] },
       { code: 'UNIT_WEIGHT_G', name: '克', type: '重量', base: 'g', conversion: '小数 2 位', scenarios: ['配方', '库存', '补货'] },
-      { code: 'UNIT_COUNT_PCS', name: '个', type: '数量', base: 'pcs', conversion: '整数', scenarios: ['杯盖', '吸管', '耗材'] },
+      { code: 'UNIT_COUNT_PCS', name: '个', type: '数量', base: 'pcs', conversion: '整数', scenarios: ['杯盖', '配方辅料', '原料盘点'] },
       { code: 'UNIT_COUNT_SERVING', name: '份', type: '数量', base: 'pcs', conversion: '整数', scenarios: ['套餐', '商品展示'] },
       { code: 'UNIT_COUNT_SLICE', name: '片', type: '数量', base: 'pcs', conversion: '整数', scenarios: ['配料', '库存'] },
       { code: 'UNIT_COUNT_GRAIN', name: '粒', type: '数量', base: 'pcs', conversion: '整数', scenarios: ['小料', '配方'] },
@@ -5435,31 +5952,38 @@
     ];
     const UNIT_SCENARIOS = ['商品展示', '配方', '库存', '补货', '小票', '设备耗材', '运维服务', '海外展示', '仓储', '杯型', '营养', '服务周期'];
     const COUNTRY_UNIT_SCENARIOS = ['商品展示', '配方', '库存', '补货', '小票', '设备耗材', '运维服务'];
-    const MATERIAL_UNITS = STANDARD_UNITS.map(unit => unit.code);
     const materialFormName = document.getElementById('materialFormName');
+    const materialFormType = document.getElementById('materialFormType');
     const materialFormUnit = document.getElementById('materialFormUnit');
+    const materialFormRole = document.getElementById('materialFormRole');
     const materialFormRemark = document.getElementById('materialFormRemark');
     const materialRemarkCount = document.getElementById('materialRemarkCount');
     const categoryFormName = document.getElementById('categoryFormName');
     const categoryFormOrder = document.getElementById('categoryFormOrder');
     const categoryFormStatus = document.getElementById('categoryFormStatus');
     const categoryFormRemark = document.getElementById('categoryFormRemark');
-    const specFormName = document.getElementById('specFormName');
     const specFormType = document.getElementById('specFormType');
-    const specFormItem = document.getElementById('specFormItem');
-    const specFormDefault = document.getElementById('specFormDefault');
-    const specFormRecommend = document.getElementById('specFormRecommend');
-    const specFormRequiredMaterial = document.getElementById('specFormRequiredMaterial');
+    const specFormProductRemark = document.getElementById('specFormProductRemark');
+    const specSharedMaterial = document.getElementById('specSharedMaterial');
+    const specSharedMaterialPick = document.getElementById('specSharedMaterialPick');
+    const specItemConfigRows = document.getElementById('specItemConfigRows');
     const specMaterialTags = document.getElementById('specMaterialTags');
     const specMaterialAdd = document.getElementById('specMaterialAdd');
+    const productBaseMaterialTags = document.getElementById('productBaseMaterialTags');
+    const productBaseMaterialAdd = document.getElementById('productBaseMaterialAdd');
+    const productMachineModelTags = document.getElementById('productMachineModelTags');
+    const productMachineModelAdd = document.getElementById('productMachineModelAdd');
+    const unitDemoCountry = document.getElementById('unitDemoCountry');
+    const unitDemoBody = document.getElementById('unitDemoBody');
     const specFormRemark = document.getElementById('specFormRemark');
     const specFormMaterialRemark = document.getElementById('specFormMaterialRemark');
     const specRemarkCount = document.getElementById('specRemarkCount');
     const specMaterialRemarkCount = document.getElementById('specMaterialRemarkCount');
     const specItemOptions = {
-      '甜度': ['少甜', '正常甜'],
-      '温度': ['热', '冰', '少冰'],
-      '杯盖': ['需要杯盖', '不需要杯盖（环保推荐）']
+      '甜度': ['少甜', '正常甜', '多甜'],
+      '温度': ['热', '冰', '少冰', '常温'],
+      '浓度': ['默认浓度', '加浓'],
+      '杯盖': ['需要杯盖', '不需要杯盖']
     };
     let tagInlineActive = false;
     function showTagInline(){
@@ -5492,6 +6016,12 @@
       item.innerHTML = `<span class="tag-type">${escapeHtml(type)}</span>${escapeHtml(desc)}<button class="tag-remove" type="button" aria-label="移除标签">×</button>`;
       item.querySelector('.tag-remove').addEventListener('click', () => item.remove());
       productTagBox.insertBefore(item, productTagAdd);
+    }
+    function productTagText(){
+      return Array.from(productTagBox?.querySelectorAll('.product-tag-item') || [])
+        .map(item => item.textContent.replace('×', '').trim())
+        .filter(Boolean)
+        .join('、');
     }
     productTagAdd?.addEventListener('click', showTagInline);
     const paymentChannelAdd = document.getElementById('paymentChannelAdd');
@@ -5725,7 +6255,7 @@
       }
       if (materialFormUnit) {
         const materialSelected = materialFormUnit.value;
-        materialFormUnit.innerHTML = '<option value="">请选择计量单位</option>' + STANDARD_UNITS.map(unit => `<option>${escapeHtml(unit.code)}</option>`).join('');
+        materialFormUnit.innerHTML = '<option value="">请选择计量单位</option>' + STANDARD_UNITS.map(unit => `<option>${escapeHtml(unit.name)}</option>`).join('');
         materialFormUnit.value = materialSelected;
       }
       if (countryUnitStandardFilter) {
@@ -5891,7 +6421,8 @@
       renderPageNavigation(pageId);
       location.hash = pageId;
       window.scrollTo({ top: 0, behavior: 'auto' });
-      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping') {
+      if (pageId === 'goods-list') buildGoodsList();
+      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping' || pageId === 'goods-list' || pageId === 'cargo-list') {
         refreshCustomSelects(page);
       }
       if (pageId === 'tenant-create') {
@@ -7330,12 +7861,16 @@
     function openConfirm(title, text, handler){
       confirmTitle.textContent = title;
       confirmText.textContent = text;
+      confirmOk.classList.toggle('danger', String(title).includes('删除'));
+      confirmOk.textContent = String(title).includes('删除') ? '确认删除' : '确认';
       confirmHandler = handler;
       confirmModal.classList.add('show');
     }
 
     function hideConfirm(){
       confirmModal.classList.remove('show');
+      confirmOk.classList.remove('danger');
+      confirmOk.textContent = '确认';
       confirmHandler = null;
     }
 
@@ -8734,88 +9269,76 @@
       modal.classList.add('show');
     }
 
-    const productTaxRates = {
-      '中国 CN': { '现制饮品': '13%', '预包装商品': '9%' },
-      '中国大陆 CN': { '现制饮品': '6%', '预包装商品': '13%' },
-      '英国 GB': { '现制饮品': '20%', '预包装商品': '20%' },
-      '中国香港 HK': { '现制饮品': '0%', '预包装商品': '0%' },
-      '中国台湾 TW': { '现制饮品': '5%', '预包装商品': '5%' },
-      '法国 FR': { '现制饮品': '20%', '预包装商品': '5.5%' }
-    };
-
-    function updateProductTaxRate(){
-      const region = productFormRegion?.value || '';
-      const category = productFormCategory?.value || '';
-      productFormTaxRate.value = productTaxRates[region]?.[category] || '';
-    }
-
     function openProductModal(context = { mode: 'create', row: null }){
       productContext = context;
-      modal.classList.remove('menu-mode');
-      modal.classList.remove('role-mode');
-      modal.classList.remove('tenant-mode');
-      modal.classList.remove('permission-mode');
-      modal.classList.remove('qualification-mode');
-      modal.classList.remove('assign-role-mode');
-      modal.classList.remove('tenant-cashier-mode');
-      modal.classList.remove('payment-mode');
-      modal.classList.remove('region-mode');
-      modal.classList.remove('category-mode');
-      modal.classList.remove('material-mode');
-      modal.classList.remove('spec-mode');
-      modal.classList.add('product-mode');
-      modalTitle.textContent = context.mode === 'edit' ? '编辑商品' : '添加商品';
-      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'product-form'));
+      const pageTitle = context.mode === 'edit' ? '编辑标品' : '新增标品';
+      if (productFormPageTitle) productFormPageTitle.textContent = pageTitle;
+      const productFormPage = document.getElementById('product-form-page');
+      if (productFormPage) {
+        productFormPage.dataset.title = pageTitle;
+        productFormPage.dataset.breadcrumb = `商品管理,标品列表,${pageTitle}`;
+      }
+      const existingCategory = context.mode === 'edit' && context.row ? context.row.cells[3].textContent.trim() : '';
+      populateProductCategoryOptions(existingCategory);
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
-        productFormName.value = row.cells[0].textContent.trim();
-        productFormCategory.value = row.cells[3].textContent.trim() === '瓶装饮料' ? '预包装商品' : '现制饮品';
-        productFormSpec.value = row.cells[6].textContent.trim() === '配置' ? '默认规格' : row.cells[6].textContent.trim();
-        productFormDuration.value = productFormCategory.value === '预包装商品' ? '' : '60';
-        productFormDiscountPrice.value = row.cells[5].textContent.trim();
-        productFormOriginalPrice.value = row.cells[5].textContent.trim();
-        productFormMaterialPrice.value = row.cells[5].textContent.trim();
-        productFormRegion.value = '中国大陆 CN';
-        productFormDesc.value = row.cells[4].textContent.trim() === '-' ? '' : row.cells[4].textContent.trim();
-        productFormRemark.value = '';
-        updateProductTaxRate();
+        productFormName.value = row.cells[1].textContent.trim();
+        productFormType.value = row.dataset.productType || (row.cells[5].textContent.trim() === '-' ? '预包装商品' : '现制饮品');
+        productFormCategory.value = existingCategory;
+        productFormSpec.value = '默认规格';
+        productFormDuration.value = productFormType.value === '预包装商品' ? '' : '60';
+        productFormOriginalPrice.value = row.dataset.originalPrice || row.cells[4].textContent.trim();
+        productFormDiscountPrice.value = row.cells[4].textContent.trim();
+        setProductCountries(Array.from(row.cells[9].querySelectorAll('.tag')).map(tag => tag.textContent.trim()));
+        productFormDesc.value = row.dataset.desc || '';
+        productFormRemark.value = row.dataset.remark || '';
+        productBaseMaterialTags.innerHTML = '';
+        (row.dataset.baseMaterials || '').split(',').filter(Boolean).forEach(addBaseMaterialTag);
+        productMachineModelTags.innerHTML = '';
+        (row.dataset.machineModels || '').split(',').filter(Boolean).forEach(addMachineModelTag);
       } else {
         [
           productFormName,
+          productFormType,
           productFormCategory,
           productFormSpec,
           productFormDuration,
           productFormDiscountPrice,
           productFormOriginalPrice,
-          productFormMaterialPrice,
-          productFormTaxRate,
           productFormDesc,
           productFormRemark
         ].forEach(field => { if (field) field.value = ''; });
-        if (productFormRegion) productFormRegion.value = '中国大陆 CN';
+        setProductCountries([PRODUCT_STANDARD_REGION]);
+        if (productBaseMaterialTags) productBaseMaterialTags.innerHTML = '';
+        if (productMachineModelTags) productMachineModelTags.innerHTML = '';
       }
-      modal.classList.add('show');
+      syncProductTypeFields();
+      refreshCustomSelects(productFormPageBody);
+      activate('product-form-page');
+      productFormName?.focus();
     }
 
     function saveProductForm(){
       const requiredFields = [
         productFormName,
+        productFormType,
         productFormCategory,
         productFormSpec,
-        productFormDuration,
-        productFormDiscountPrice,
-        productFormOriginalPrice,
-        productFormMaterialPrice,
-        productFormRegion
+        productFormOriginalPrice
       ];
+      if (productFormType.value === '现制饮品') requiredFields.push(productFormDuration);
       const emptyField = requiredFields.find(field => !field?.value?.trim());
       if (emptyField) {
         emptyField.focus();
         return false;
       }
-      updateProductTaxRate();
-      if (!productFormTaxRate.value) {
-        productFormRegion.focus();
+      const countries = getProductCountries();
+      if (!countries.length) {
+        return false;
+      }
+      const machineModels = getSelectedTagNames(productMachineModelTags);
+      if (!machineModels.length) {
+        productMachineModelAdd?.focus();
         return false;
       }
       const table = document.querySelector('#product-list .product-table');
@@ -8823,24 +9346,36 @@
       if (!tbody) return true;
       const name = productFormName.value.trim();
       const row = productContext.mode === 'edit' && productContext.row ? productContext.row : document.createElement('tr');
+      const specCell = productFormType.value === '现制饮品'
+        ? '<div class="spec-detail"><div>甜度：少甜、正常甜</div><div>温度：热、冰、少冰</div><div>杯盖：有杯盖、无杯盖</div></div>'
+        : '-';
       row.innerHTML = `
+        <td>${productContext.mode === 'edit' && productContext.row ? escapeHtml(productContext.row.cells[0].textContent.trim()) : `G${Math.floor(700 + Math.random() * 200)}`}</td>
         <td><span class="product-name-link">${escapeHtml(name).replace(/(.{12})/, '$1<br>')}</span></td>
-        <td>${productContext.mode === 'edit' && productContext.row ? escapeHtml(productContext.row.cells[1].textContent.trim()) : `G${Math.floor(700 + Math.random() * 200)}`}</td>
         <td><div class="product-thumb-img drink"><div class="product-cup"></div></div></td>
         <td>${escapeHtml(productFormCategory.value)}</td>
-        <td>${escapeHtml(productFormDesc.value.trim() || '-')}</td>
-        <td>${escapeHtml(productFormDiscountPrice.value.trim())}</td>
-        <td><button class="link" type="button">配置</button></td>
-        <td>${productContext.mode === 'edit' && productContext.row ? escapeHtml(productContext.row.cells[7].textContent.trim()) : new Date().toISOString().slice(0, 10)}</td>
-        <td>${productContext.mode === 'edit' && productContext.row ? escapeHtml(productContext.row.cells[8].textContent.trim()) : '-'}</td>
-        <td>${productContext.mode === 'edit' && productContext.row ? productContext.row.cells[9].innerHTML : '<span class="tag green">启用</span>'}</td>
+        <td>${escapeHtml(productFormDiscountPrice.value.trim() || '-')}</td>
+        <td>${specCell}</td>
+        <td>${productContext.mode === 'edit' && productContext.row ? escapeHtml(productContext.row.cells[6].textContent.trim()) : productDateTimeNow()}</td>
+        <td>${productDateTimeNow()}</td>
+        <td>${productContext.mode === 'edit' && productContext.row ? productContext.row.cells[8].innerHTML : '<span class="tag green">启用</span>'}</td>
+        <td>${productCountryCellHtml(countries)}</td>
         <td></td>
       `;
+      row.dataset.baseMaterials = getSelectedTagNames(productBaseMaterialTags).join(',');
+      row.dataset.machineModels = machineModels.join(',');
+      row.dataset.originalPrice = productFormOriginalPrice.value.trim();
+      row.dataset.desc = productFormDesc.value.trim();
+      row.dataset.remark = productFormRemark.value.trim();
+      row.dataset.duration = productFormDuration.value.trim() ? `${productFormDuration.value.trim()}秒` : '';
+      row.dataset.tags = productTagText();
+      row.dataset.productType = productFormType.value;
       renderProductActions(row);
       if (productContext.mode !== 'edit') {
         tbody.prepend(row);
         updatePaginationTotal(table);
       }
+      buildGoodsList();
       return true;
     }
 
@@ -8900,6 +9435,7 @@
         tbody.prepend(row);
         updatePaginationTotal(table);
       }
+      populateProductCategoryOptions();
       return true;
     }
 
@@ -8913,44 +9449,108 @@
       if (specMaterialRemarkCount && specFormMaterialRemark) specMaterialRemarkCount.textContent = `${specFormMaterialRemark.value.length}/500`;
     }
 
-    function addSpecMaterialTag(name){
-      if (!specMaterialTags || !name) return;
-      const exists = Array.from(specMaterialTags.querySelectorAll('.spec-option-tag')).some(tag => tag.dataset.name === name);
+    let materialPickerTarget = 'spec';
+    let activeSpecMaterialInput = null;
+
+    function appendMaterialTag(container, name){
+      if (!container || !name) return;
+      const exists = Array.from(container.querySelectorAll('.spec-option-tag')).some(tag => tag.dataset.name === name);
       if (exists) return;
       const tag = document.createElement('span');
       tag.className = 'spec-option-tag';
       tag.dataset.name = name;
       tag.innerHTML = `${escapeHtml(name)}<button class="spec-tag-remove" type="button" aria-label="移除">×</button>`;
       tag.querySelector('.spec-tag-remove').addEventListener('click', () => tag.remove());
-      specMaterialTags.appendChild(tag);
+      container.appendChild(tag);
+    }
+
+    function addSpecMaterialTag(name){ appendMaterialTag(specMaterialTags, name); }
+    function addBaseMaterialTag(name){ appendMaterialTag(productBaseMaterialTags, name); }
+    function addMachineModelTag(name){ appendMaterialTag(productMachineModelTags, name); }
+
+    function getSelectedTagNames(container){
+      return Array.from(container?.querySelectorAll('.spec-option-tag') || [])
+        .map(tag => tag.dataset.name)
+        .filter(Boolean);
+    }
+
+    function getDeviceModelOptions(){
+      const rows = Array.from(document.querySelectorAll('#device-models .device-table tbody tr'));
+      const options = rows.map(row => ({
+        code: row.cells[0]?.textContent.trim() || '',
+        category: row.cells[1]?.textContent.trim() || '',
+        model: row.cells[2]?.textContent.trim() || '',
+        count: row.cells[4]?.textContent.trim() || '0'
+      })).filter(item => item.model);
+      const seen = new Set();
+      return options.filter(item => {
+        if (seen.has(item.model)) return false;
+        seen.add(item.model);
+        return true;
+      });
+    }
+
+    function unitForMaterialName(name){
+      if (!name) return '克';
+      if (name.includes('杯盖')) return '个';
+      if (name.includes('咖啡液') || name.includes('冷萃')) return '毫升';
+      return '克';
+    }
+
+    function materialPickerIdFor(item){
+      const index = materialPickerData.indexOf(item);
+      return `RM${String(index + 1).padStart(3, '0')}`;
     }
 
     function renderMaterialPickerRows(){
       if (!materialPickerRows) return;
+      const idKeyword = (materialPickerId?.value || '').trim().toUpperCase();
       const keyword = (materialPickerKeyword?.value || '').trim();
-      const list = materialPickerData.filter(name => !keyword || name.includes(keyword));
+      const typeFilter = materialPickerTypeFilter?.value || '';
+      const isBaseMode = materialPickerTarget === 'product';
+      const list = materialPickerData.filter(item =>
+        (!idKeyword || materialPickerIdFor(item).includes(idKeyword)) &&
+        (!keyword || item.name.includes(keyword)) &&
+        (!typeFilter || item.role === typeFilter) &&
+        (isBaseMode ? item.role === '基料' : item.role !== '基料')
+      );
       if (!list.length) {
-        materialPickerRows.innerHTML = '<tr class="material-picker-empty"><td colspan="3">暂无数据</td></tr>';
-        if (materialPickerAll) {
-          materialPickerAll.checked = false;
-          materialPickerAll.disabled = true;
-        }
+        materialPickerRows.innerHTML = '<tr class="material-picker-empty"><td colspan="5">暂无数据</td></tr>';
         return;
       }
-      materialPickerRows.innerHTML = list.map(name => `
+      materialPickerRows.innerHTML = list.map(item => `
         <tr>
-          <td><input class="material-picker-check" type="checkbox" /></td>
-          <td>${escapeHtml(name)}</td>
-          <td><input class="material-qty" placeholder="请输入原料/物料数量" inputmode="decimal" /><select class="material-picker-unit">${MATERIAL_UNITS.map(u => `<option${u === 'UNIT_WEIGHT_G' ? ' selected' : ''}>${u}</option>`).join('')}</select></td>
+          <td><input class="material-picker-check" ${isBaseMode ? 'type="checkbox"' : 'name="materialPickerSelected" type="radio"'} /></td>
+          <td>${escapeHtml(materialPickerIdFor(item))}</td>
+          <td>${escapeHtml(item.name)}</td>
+          <td>${escapeHtml(item.type)}</td>
+          <td>${escapeHtml(item.role)}</td>
         </tr>
       `).join('');
-      if (materialPickerAll) {
-        materialPickerAll.checked = false;
-        materialPickerAll.disabled = false;
-      }
     }
 
-    function openMaterialPicker(){
+    function openMaterialPicker(target = 'spec'){
+      materialPickerTarget = target;
+      const isBaseMode = target === 'product';
+      materialPickerModal?.classList.toggle('base-mode', isBaseMode);
+      if (materialPickerTitle) {
+        materialPickerTitle.textContent = isBaseMode ? '选择基料' : '请选择原料';
+      }
+      const nameLabel = document.querySelector('[data-material-filter="name"]');
+      if (nameLabel) nameLabel.textContent = isBaseMode ? '基料名称' : '原料名称';
+      const nameHeader = materialPickerRows?.closest('table')?.querySelector('thead th:nth-child(3)');
+      if (nameHeader) nameHeader.textContent = isBaseMode ? '基料名称' : '原料名称';
+      if (materialPickerKeyword) {
+        materialPickerKeyword.placeholder = isBaseMode ? '请输入基料名称' : '请输入原料名称';
+        materialPickerKeyword.value = '';
+      }
+      if (materialPickerId) {
+        materialPickerId.value = '';
+      }
+      if (materialPickerTypeFilter) {
+        materialPickerTypeFilter.value = target === 'product' ? '' : specFormType?.value || '';
+        syncCustomSelect(materialPickerTypeFilter);
+      }
       renderMaterialPickerRows();
       materialPickerModal?.classList.add('show');
       materialPickerKeyword?.focus();
@@ -8958,23 +9558,114 @@
 
     function closeMaterialPicker(){
       materialPickerModal?.classList.remove('show');
+      activeSpecMaterialInput = null;
     }
 
     function confirmMaterialPicker(){
-      const selected = Array.from(materialPickerRows?.querySelectorAll('tr') || [])
-        .filter(row => row.querySelector('.material-picker-check')?.checked)
-        .map(row => {
-          const name = row.cells[1]?.textContent.trim();
-          const qty = row.querySelector('.material-qty')?.value.trim();
-          const unit = row.querySelector('.material-picker-unit')?.value || 'g';
-          return qty ? `${name} ${qty}${unit}` : name;
-        });
-      if (!selected.length) {
+      const selectedRows = Array.from(materialPickerRows?.querySelectorAll('tr') || [])
+        .filter(row => row.querySelector('.material-picker-check')?.checked);
+      if (!selectedRows.length) {
         materialPickerRows?.querySelector('.material-picker-check')?.focus();
         return;
       }
-      selected.forEach(addSpecMaterialTag);
+      if (materialPickerTarget === 'product') {
+        selectedRows.map(row => row.cells[2]?.textContent.trim()).filter(Boolean).forEach(addBaseMaterialTag);
+      } else if (materialPickerTarget === 'spec-row' && activeSpecMaterialInput) {
+        activeSpecMaterialInput.value = selectedRows[0].cells[2]?.textContent.trim() || '';
+      }
+      else if (materialPickerTarget === 'spec-shared' && specSharedMaterial) {
+        specSharedMaterial.value = selectedRows[0].cells[2]?.textContent.trim() || '';
+        updateSpecConfigUnits();
+      }
+      else addSpecMaterialTag(selectedRows[0].cells[2]?.textContent.trim() || '');
+      activeSpecMaterialInput = null;
       closeMaterialPicker();
+    }
+
+    function getDefaultSpecMaterial(type, item){
+      return '';
+    }
+
+    function splitMaterialValue(value){
+      const text = (value || '').trim();
+      if (!text || text === '无') return { material: '', qty: '' };
+      const match = text.match(/^(.*?)[\s　]*([0-9]+(?:\.[0-9]+)?)(克|毫升|个|g|ml)?$/i);
+      if (!match) return { material: text, qty: '' };
+      return { material: match[1].trim(), qty: match[2] };
+    }
+
+    function updateSpecConfigUnits(){
+      const unit = unitForMaterialName(specSharedMaterial?.value || '');
+      specItemConfigRows?.querySelectorAll('.spec-config-unit').forEach(item => { item.textContent = unit; });
+    }
+
+    function renderSpecConfigRows(qtyByItem = {}, flagByItem = {}, enabledByItem = {}){
+      if (!specItemConfigRows) return;
+      const type = specFormType?.value || '';
+      const items = specItemOptions[type] || [];
+      if (!items.length) {
+        specItemConfigRows.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#98a2b3">请先选择规格</td></tr>';
+        return;
+      }
+      const unit = unitForMaterialName(specSharedMaterial?.value || '');
+      const hasExplicitEnabled = Object.keys(enabledByItem || {}).length > 0;
+      specItemConfigRows.innerHTML = items.map((item, index) => {
+        const qty = qtyByItem[item] ?? '';
+        const isEnabled = enabledByItem[item] ?? !hasExplicitEnabled;
+      const isDefault = flagByItem[item]?.default ?? (isEnabled && index === 0);
+      const isRecommend = flagByItem[item]?.recommend ?? (isEnabled && index === 0);
+        return `
+          <tr data-spec-item="${escapeHtml(item)}">
+            <td>${escapeHtml(item)}</td>
+            <td class="spec-config-check"><input class="spec-config-use" type="checkbox"${isEnabled ? ' checked' : ''} /></td>
+            <td><div class="spec-config-qty-cell"><input class="spec-config-qty" type="text" value="${escapeHtml(qty)}" placeholder="请输入用量" inputmode="decimal"${isEnabled ? '' : ' disabled'} /><span class="spec-config-unit">${escapeHtml(unit)}</span></div></td>
+            <td class="spec-config-check"><input class="spec-config-default" type="radio" name="specDefaultItem"${isDefault ? ' checked' : ''} /></td>
+            <td class="spec-config-check"><input class="spec-config-recommend" type="checkbox"${isRecommend ? ' checked' : ''} /></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function collectSpecConfigRows(){
+      return Array.from(specItemConfigRows?.querySelectorAll('tr[data-spec-item]') || []).map(row => ({
+        item: row.dataset.specItem || row.cells[0]?.textContent.trim() || '',
+        useMaterial: !!row.querySelector('.spec-config-use')?.checked,
+        qty: row.querySelector('.spec-config-qty')?.value.trim() || '',
+        unit: row.querySelector('.spec-config-unit')?.textContent.trim() || unitForMaterialName(specSharedMaterial?.value || ''),
+        isDefault: !!row.querySelector('.spec-config-default')?.checked,
+        isRecommend: !!row.querySelector('.spec-config-recommend')?.checked
+      })).filter(row => row.item);
+    }
+
+    function parseSpecMaterialLines(row){
+      const qtyByItem = {};
+      const enabledByItem = {};
+      const flagByItem = {};
+      let sharedMaterial = '';
+      Array.from(row?.querySelectorAll('.spec-material-lines div') || []).forEach(line => {
+        const text = line.textContent.trim();
+        const separatorIndex = text.indexOf('：');
+        if (separatorIndex === -1) return;
+        const item = text.slice(0, separatorIndex).replace('（默认）', '').replace('（推荐）', '').trim();
+        const materialValue = text.slice(separatorIndex + 1).trim();
+        const parsed = splitMaterialValue(materialValue);
+        if (!item) return;
+        enabledByItem[item] = materialValue !== '无';
+        if (!sharedMaterial && parsed.material) sharedMaterial = parsed.material;
+        qtyByItem[item] = parsed.qty;
+        flagByItem[item] = {
+          default: text.includes('（默认）'),
+          recommend: text.includes('（推荐）')
+        };
+      });
+      return { sharedMaterial, qtyByItem, enabledByItem, flagByItem };
+    }
+
+    function nextProductSpecCode(tbody){
+      const existingCodes = Array.from(tbody.querySelectorAll('tr'))
+        .map(item => Number((item.cells[0]?.textContent || '').replace(/\D/g, '')))
+        .filter(Number.isFinite);
+      return `PS${String(Math.max(0, ...existingCodes) + 1).padStart(3, '0')}`;
     }
 
     function openProductSpecModal(context = { mode: 'create', row: null }){
@@ -8992,82 +9683,77 @@
       modal.classList.remove('category-mode');
       modal.classList.remove('material-mode');
       modal.classList.add('spec-mode');
-      modalTitle.textContent = context.mode === 'edit' ? '编辑规格' : '添加规格';
+      modalTitle.textContent = context.mode === 'edit' ? '编辑规格' : '新增规格';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'product-spec-form'));
       if (context.mode === 'edit' && context.row) {
-        specFormName.value = context.row.cells[0].textContent.trim();
-        specFormType.value = context.row.cells[2].textContent.trim();
-        const itemText = context.row.cells[3].textContent.trim();
-        renderSpecItemOptions(itemText.replace('（默认）', '').replace('（推荐）', '').trim());
-        specFormDefault.checked = itemText.includes('默认');
-        specFormRecommend.checked = itemText.includes('推荐');
-        specFormRequiredMaterial.checked = context.row.cells[5].textContent.trim() === '是';
-        specMaterialTags.innerHTML = '';
-        Array.from(context.row.querySelectorAll('.spec-option-tag')).forEach(tag => addSpecMaterialTag(tag.textContent.trim()));
-        specFormRemark.value = '';
-        specFormMaterialRemark.value = '';
+        specFormType.value = context.row.cells[1].textContent.trim();
+        const parsed = parseSpecMaterialLines(context.row);
+        if (specSharedMaterial) specSharedMaterial.value = parsed.sharedMaterial || '';
+        renderSpecConfigRows(parsed.qtyByItem, parsed.flagByItem, parsed.enabledByItem);
+        if (specFormProductRemark) specFormProductRemark.value = context.row.cells[4].textContent.trim() === '-' ? '' : context.row.cells[4].textContent.trim();
+        if (specFormRemark) specFormRemark.value = '';
       } else {
-        [specFormName, specFormType, specFormRemark, specFormMaterialRemark].forEach(field => { if (field) field.value = ''; });
-        renderSpecItemOptions();
-        specFormDefault.checked = false;
-        specFormRecommend.checked = false;
-        specFormRequiredMaterial.checked = true;
-        specMaterialTags.innerHTML = '';
+        [specFormType, specFormProductRemark, specSharedMaterial, specFormRemark].forEach(field => { if (field) field.value = ''; });
+        renderSpecConfigRows();
       }
+      syncCustomSelect(specFormType);
       updateSpecTextCounts();
       modal.classList.add('show');
-      specFormName?.focus();
+      specFormType?.focus();
     }
 
     function renderSpecItemOptions(selectedValue = ''){
-      if (!specFormItem) return;
-      const type = specFormType?.value || '';
-      const options = specItemOptions[type] || [];
-      const placeholder = type ? '请选择规格项' : '请先选择规格';
-      specFormItem.innerHTML = `<option value="">${placeholder}</option>` + options
-        .map(option => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`)
-        .join('');
-      if (selectedValue && options.includes(selectedValue)) {
-        specFormItem.value = selectedValue;
-      } else {
-        specFormItem.value = '';
-      }
-      rebuildCustomSelectOptions(specFormItem);
+      renderSpecConfigRows();
     }
 
     function saveProductSpec(){
-      if (!specFormName.value.trim()) {
-        specFormName.focus();
-        return false;
-      }
       if (!specFormType.value) {
         specFormType.focus();
         return false;
       }
-      if (!specFormItem.value.trim()) {
-        specFormItem.focus();
+      if (!specFormProductRemark?.value.trim()) {
+        specFormProductRemark?.focus();
+        return false;
+      }
+      if (!specSharedMaterial?.value.trim()) {
+        specSharedMaterial?.focus();
+        return false;
+      }
+      const specRows = collectSpecConfigRows();
+      if (!specRows.length) {
+        specFormType.focus();
+        return false;
+      }
+      const selectedSpecRows = specRows.filter(specRow => specRow.useMaterial);
+      if (!selectedSpecRows.length) {
+        specItemConfigRows?.querySelector('.spec-config-use')?.focus();
+        return false;
+      }
+      const missingQty = selectedSpecRows.find(specRow => !specRow.qty);
+      if (missingQty) {
+        const missingInput = Array.from(specItemConfigRows?.querySelectorAll('tr[data-spec-item]') || [])
+          .find(row => row.dataset.specItem === missingQty.item)
+          ?.querySelector('.spec-config-qty');
+        missingInput?.focus();
         return false;
       }
       const table = document.querySelector('#product-specs .product-spec-table');
       const tbody = table?.querySelector('tbody');
       if (!tbody) return true;
-      const materialTags = Array.from(specMaterialTags?.querySelectorAll('.spec-option-tag') || []).map(tag => tag.dataset.name || tag.textContent.trim());
-      const optionHtml = materialTags.map(name => `<span class="spec-option-tag">${escapeHtml(name)}</span>`).join('');
       const row = specContext.mode === 'edit' && specContext.row ? specContext.row : document.createElement('tr');
-      const existingCodes = Array.from(tbody.querySelectorAll('tr')).map(item => Number((item.cells[1]?.textContent || '').replace(/\D/g, ''))).filter(Number.isFinite);
-      const code = specContext.mode === 'edit' && specContext.row ? specContext.row.cells[1].textContent.trim() : `PS${String(Math.max(100, ...existingCodes) + 1).padStart(3, '0')}`;
-      const status = specContext.mode === 'edit' && specContext.row ? specContext.row.cells[6].textContent.trim() : '启用';
-      const specItem = specFormItem.value.trim();
-      let specItemDisplay = specItem;
-      if (specFormDefault.checked) specItemDisplay += '（默认）';
-      if (specFormRecommend.checked) specItemDisplay += '（推荐）';
+      const code = specContext.mode === 'edit' && specContext.row ? specContext.row.cells[0].textContent.trim() : nextProductSpecCode(tbody);
+      const status = specContext.mode === 'edit' && specContext.row ? specContext.row.cells[5].textContent.trim() : '启用';
+      const sharedMaterial = specSharedMaterial.value.trim();
+      const materialLines = selectedSpecRows.map(specRow => {
+        const materialText = `${sharedMaterial} ${specRow.qty}${specRow.unit}`;
+        return `<div>${escapeHtml(specRow.item)}：${escapeHtml(materialText)}</div>`;
+      }).join('');
       row.innerHTML = `
-        <td><span class="product-spec-name">${escapeHtml(specFormName.value.trim())}</span></td>
         <td>${escapeHtml(code)}</td>
-        <td><span class="spec-type-badge">${escapeHtml(specFormType.value)}</span></td>
-        <td><span class="spec-type-badge">${escapeHtml(specItemDisplay)}</span></td>
-        <td><div class="spec-option-tags">${optionHtml}</div></td>
-        <td>${specFormRequiredMaterial.checked ? '是' : '否'}</td>
+        <td><span class="spec-type-badge product-spec-name">${escapeHtml(specFormType.value)}</span></td>
+        <td>${selectedSpecRows.map(row => escapeHtml(row.item)).join('、')}</td>
+        <td><div class="spec-material-lines">${materialLines}</div></td>
+        <td>${escapeHtml(specFormProductRemark?.value.trim() || '-')}</td>
         <td>${statusTagHtml(status)}</td>
         <td></td>
       `;
@@ -9097,11 +9783,13 @@
       modalTitle.textContent = context.mode === 'edit' ? '编辑原料' : '添加原料';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'product-material-form'));
       if (context.mode === 'edit' && context.row) {
-        materialFormName.value = context.row.cells[0].textContent.trim();
-        materialFormUnit.value = context.row.cells[2].textContent.trim();
+        materialFormName.value = context.row.cells[1].textContent.trim();
+        materialFormType.value = context.row.cells[2].textContent.trim();
+        materialFormUnit.value = context.row.cells[3].textContent.trim();
+        materialFormRole.value = context.row.cells[4].textContent.trim();
         materialFormRemark.value = '';
       } else {
-        [materialFormName, materialFormUnit, materialFormRemark].forEach(field => { if (field) field.value = ''; });
+        [materialFormName, materialFormType, materialFormUnit, materialFormRole, materialFormRemark].forEach(field => { if (field) field.value = ''; });
       }
       updateMaterialRemarkCount();
       modal.classList.add('show');
@@ -9109,7 +9797,7 @@
     }
 
     function saveProductMaterial(){
-      const requiredFields = [materialFormName, materialFormUnit];
+      const requiredFields = [materialFormName, materialFormType, materialFormUnit, materialFormRole];
       const emptyField = requiredFields.find(field => !field?.value?.trim());
       if (emptyField) {
         emptyField.focus();
@@ -9119,15 +9807,17 @@
       const tbody = table?.querySelector('tbody');
       if (!tbody) return true;
       const existingCodes = Array.from(tbody.querySelectorAll('tr'))
-        .map(row => Number((row.cells[1]?.textContent || '').replace(/\D/g, '')))
+        .map(row => Number((row.cells[0]?.textContent || '').replace(/\D/g, '')))
         .filter(Number.isFinite);
       const code = `RM${String(Math.max(100, ...existingCodes) + 1).padStart(3, '0')}`;
       const row = materialContext.mode === 'edit' && materialContext.row ? materialContext.row : document.createElement('tr');
       row.innerHTML = `
+        <td>${materialContext.mode === 'edit' && materialContext.row ? escapeHtml(materialContext.row.cells[0].textContent.trim()) : code}</td>
         <td><span class="product-material-name">${escapeHtml(materialFormName.value.trim())}</span></td>
-        <td>${materialContext.mode === 'edit' && materialContext.row ? escapeHtml(materialContext.row.cells[1].textContent.trim()) : code}</td>
+        <td>${escapeHtml(materialFormType.value.trim())}</td>
         <td>${escapeHtml(materialFormUnit.value.trim())}</td>
-        <td>${statusTagHtml(materialContext.mode === 'edit' && materialContext.row ? materialContext.row.cells[3].textContent.trim() : '启用')}</td>
+        <td>${materialFormRole.value.trim() === '基料' ? '<span class="tag gray">基料</span>' : `<span class="tag">${escapeHtml(materialFormRole.value.trim())}</span>`}</td>
+        <td>${statusTagHtml(materialContext.mode === 'edit' && materialContext.row ? materialContext.row.cells[5].textContent.trim() : '启用')}</td>
         <td></td>
       `;
       renderMaterialActions(row);
@@ -9138,28 +9828,103 @@
       return true;
     }
 
+    function applyProductMaterialFilters(){
+      const name = productMaterialNameFilter?.value || '';
+      const type = productMaterialTypeFilter?.value || '';
+      const role = productMaterialRoleFilter?.value || '';
+      const status = productMaterialStatusFilter?.value || '';
+      document.querySelectorAll('#product-materials .product-material-table tbody tr').forEach(row => {
+        const rowName = row.cells[1]?.textContent.trim() || '';
+        const rowType = row.cells[2]?.textContent.trim() || '';
+        const rowRole = row.cells[4]?.textContent.trim() || '';
+        const rowStatus = row.cells[5]?.textContent.trim() || '';
+        const matched = (!name || rowName === name) &&
+          (!type || rowType === type) &&
+          (!role || rowRole === role) &&
+          (!status || rowStatus === status);
+        row.style.display = matched ? '' : 'none';
+      });
+    }
+
+    function resetProductMaterialFilters(){
+      [productMaterialNameFilter, productMaterialTypeFilter, productMaterialRoleFilter, productMaterialStatusFilter].forEach(control => {
+        if (control) control.value = '';
+      });
+      document.querySelectorAll('#product-materials .product-material-table tbody tr').forEach(row => {
+        row.style.display = '';
+      });
+    }
+
+    function applyProductSpecFilters(){
+      const material = (productSpecMaterialFilter?.value || '').trim().toLowerCase();
+      const specId = (productSpecIdFilter?.value || '').trim().toLowerCase();
+      const specName = (productSpecNameFilter?.value || '').trim().toLowerCase();
+      const productName = (productSpecProductFilter?.value || '').trim().toLowerCase();
+      const status = productSpecStatusFilter?.value || '';
+      document.querySelectorAll('#product-specs .product-spec-table tbody tr').forEach(row => {
+        const rowId = row.cells[0]?.textContent.trim().toLowerCase() || '';
+        const rowSpec = row.cells[1]?.textContent.trim().toLowerCase() || '';
+        const rowMaterial = row.cells[3]?.textContent.trim().toLowerCase() || '';
+        const rowProduct = row.cells[4]?.textContent.trim().toLowerCase() || '';
+        const rowStatus = row.cells[5]?.textContent.trim() || '';
+        const matched = (!material || rowMaterial.includes(material)) &&
+          (!specId || rowId.includes(specId)) &&
+          (!specName || rowSpec.includes(specName)) &&
+          (!productName || rowProduct.includes(productName)) &&
+          (!status || rowStatus === status);
+        row.style.display = matched ? '' : 'none';
+      });
+    }
+
+    function resetProductSpecFilters(){
+      [productSpecMaterialFilter, productSpecIdFilter, productSpecNameFilter, productSpecProductFilter, productSpecStatusFilter].forEach(control => {
+        if (control) control.value = '';
+      });
+      document.querySelectorAll('#product-specs .product-spec-table tbody tr').forEach(row => { row.style.display = ''; });
+    }
+
     productAdd?.addEventListener('click', openProductModal);
+    productFormPageBack?.addEventListener('click', () => activate('product-list'));
+    productFormPageCancel?.addEventListener('click', () => activate('product-list'));
+    productFormPageSave?.addEventListener('click', () => {
+      if (saveProductForm()) activate('product-list');
+    });
+    goodsSearch?.addEventListener('click', applyGoodsFilters);
+    goodsReset?.addEventListener('click', resetGoodsFilters);
+    [goodsNameFilter, goodsStandardNameFilter, goodsStandardIdFilter, goodsStoreFilter].forEach(control => control?.addEventListener('keydown', event => { if (event.key === 'Enter') applyGoodsFilters(); }));
+    cargoSearch?.addEventListener('click', applyCargoFilters);
+    cargoReset?.addEventListener('click', resetCargoFilters);
+    [cargoNameFilter, cargoStoreFilter, cargoTenantFilter, cargoMaterialFilter, cargoBrandFilter].forEach(control => control?.addEventListener('keydown', event => { if (event.key === 'Enter') applyCargoFilters(); }));
     productCategoryAdd?.addEventListener('click', openProductCategoryModal);
     productSpecAdd?.addEventListener('click', openProductSpecModal);
+    productSpecSearch?.addEventListener('click', applyProductSpecFilters);
+    productSpecReset?.addEventListener('click', resetProductSpecFilters);
     productMaterialAdd?.addEventListener('click', openProductMaterialModal);
+    productMaterialSearch?.addEventListener('click', applyProductMaterialFilters);
+    productMaterialReset?.addEventListener('click', resetProductMaterialFilters);
     materialFormRemark?.addEventListener('input', updateMaterialRemarkCount);
     specFormRemark?.addEventListener('input', updateSpecTextCounts);
     specFormMaterialRemark?.addEventListener('input', updateSpecTextCounts);
     specMaterialAdd?.addEventListener('click', () => openMaterialPicker());
-    specFormType?.addEventListener('change', () => renderSpecItemOptions());
+    productBaseMaterialAdd?.addEventListener('click', () => openMaterialPicker('product'));
+    specFormType?.addEventListener('change', () => renderSpecConfigRows());
+    specSharedMaterialPick?.addEventListener('click', () => openMaterialPicker('spec-shared'));
+    specItemConfigRows?.addEventListener('change', event => {
+      const useCheckbox = event.target.closest('.spec-config-use');
+      if (!useCheckbox) return;
+      const qtyInput = useCheckbox.closest('tr')?.querySelector('.spec-config-qty');
+      if (!qtyInput) return;
+      qtyInput.disabled = !useCheckbox.checked;
+      if (!useCheckbox.checked) qtyInput.value = '';
+      else qtyInput.focus();
+    });
     materialPickerSearch?.addEventListener('click', renderMaterialPickerRows);
-    materialPickerKeyword?.addEventListener('keydown', event => {
+    materialPickerTypeFilter?.addEventListener('change', renderMaterialPickerRows);
+    materialPickerId?.addEventListener('keydown', event => {
       if (event.key === 'Enter') renderMaterialPickerRows();
     });
-    materialPickerAll?.addEventListener('change', () => {
-      materialPickerRows?.querySelectorAll('.material-picker-check').forEach(check => { check.checked = materialPickerAll.checked; });
-    });
-    materialPickerRows?.addEventListener('input', event => {
-      if (event.target.closest('.material-qty')) {
-        const row = event.target.closest('tr');
-        const check = row?.querySelector('.material-picker-check');
-        if (check && event.target.value.trim()) check.checked = true;
-      }
+    materialPickerKeyword?.addEventListener('keydown', event => {
+      if (event.key === 'Enter') renderMaterialPickerRows();
     });
     materialPickerConfirm?.addEventListener('click', confirmMaterialPicker);
     materialPickerCancel?.addEventListener('click', closeMaterialPicker);
@@ -9167,9 +9932,197 @@
     materialPickerModal?.addEventListener('click', event => {
       if (event.target === materialPickerModal) closeMaterialPicker();
     });
-    productFormCategory?.addEventListener('change', updateProductTaxRate);
-    productFormRegion?.addEventListener('change', updateProductTaxRate);
 
+    const specPickerModal = document.getElementById('specPickerModal');
+    const specPickerClose = document.getElementById('specPickerClose');
+    const specPickerKeyword = document.getElementById('specPickerKeyword');
+    const specPickerSearch = document.getElementById('specPickerSearch');
+    const specPickerRows = document.getElementById('specPickerRows');
+    const specPickerConfirm = document.getElementById('specPickerConfirm');
+    const specPickerCancel = document.getElementById('specPickerCancel');
+    let specPickerSelectedName = '';
+    let machineModelPickerSelected = new Set();
+
+    function renderMachineModelPickerRows(keyword = ''){
+      if (!machineModelPickerRows) return;
+      const kw = (keyword || '').trim().toLowerCase();
+      const list = getDeviceModelOptions().filter(item =>
+        !kw ||
+        item.model.toLowerCase().includes(kw) ||
+        item.code.toLowerCase().includes(kw) ||
+        item.category.toLowerCase().includes(kw)
+      );
+      if (!list.length) {
+        machineModelPickerRows.innerHTML = '<tr class="machine-model-picker-empty"><td colspan="5">暂无数据</td></tr>';
+        if (machineModelPickerAll) machineModelPickerAll.checked = false;
+        return;
+      }
+      machineModelPickerRows.innerHTML = list.map(item => `
+        <tr data-machine-model="${escapeHtml(item.model)}">
+          <td><input class="machine-model-picker-check" type="checkbox" ${machineModelPickerSelected.has(item.model) ? 'checked' : ''} /></td>
+          <td>${escapeHtml(item.code)}</td>
+          <td>${escapeHtml(item.category)}</td>
+          <td>${escapeHtml(item.model)}</td>
+          <td>${escapeHtml(item.count)}</td>
+        </tr>
+      `).join('');
+      if (machineModelPickerAll) {
+        const checks = Array.from(machineModelPickerRows.querySelectorAll('.machine-model-picker-check'));
+        machineModelPickerAll.checked = checks.length > 0 && checks.every(cb => cb.checked);
+      }
+    }
+
+    function openMachineModelPicker(){
+      machineModelPickerSelected = new Set(getSelectedTagNames(productMachineModelTags));
+      if (machineModelPickerKeyword) machineModelPickerKeyword.value = '';
+      renderMachineModelPickerRows('');
+      machineModelPickerModal?.classList.add('show');
+      machineModelPickerKeyword?.focus();
+    }
+
+    function closeMachineModelPicker(){
+      machineModelPickerModal?.classList.remove('show');
+    }
+
+    function confirmMachineModelPicker(){
+      if (!machineModelPickerSelected.size) {
+        machineModelPickerRows?.querySelector('.machine-model-picker-check')?.focus();
+        return;
+      }
+      if (productMachineModelTags) productMachineModelTags.innerHTML = '';
+      Array.from(machineModelPickerSelected).forEach(addMachineModelTag);
+      closeMachineModelPicker();
+    }
+
+    productMachineModelAdd?.addEventListener('click', openMachineModelPicker);
+    machineModelPickerSearch?.addEventListener('click', () => renderMachineModelPickerRows(machineModelPickerKeyword?.value));
+    machineModelPickerKeyword?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') renderMachineModelPickerRows(machineModelPickerKeyword.value);
+    });
+    machineModelPickerRows?.addEventListener('click', e => {
+      const tr = e.target.closest('tr[data-machine-model]');
+      if (!tr) return;
+      if (e.target.type === 'checkbox') return;
+      const cb = tr.querySelector('.machine-model-picker-check');
+      if (cb) {
+        cb.checked = !cb.checked;
+        if (cb.checked) machineModelPickerSelected.add(tr.dataset.machineModel);
+        else machineModelPickerSelected.delete(tr.dataset.machineModel);
+      }
+    });
+    machineModelPickerRows?.addEventListener('change', e => {
+      const cb = e.target.closest('.machine-model-picker-check');
+      if (!cb) return;
+      const tr = cb.closest('tr[data-machine-model]');
+      if (!tr) return;
+      if (cb.checked) machineModelPickerSelected.add(tr.dataset.machineModel);
+      else machineModelPickerSelected.delete(tr.dataset.machineModel);
+      if (machineModelPickerAll) {
+        const checks = Array.from(machineModelPickerRows.querySelectorAll('.machine-model-picker-check'));
+        machineModelPickerAll.checked = checks.length > 0 && checks.every(item => item.checked);
+      }
+    });
+    machineModelPickerAll?.addEventListener('change', () => {
+      machineModelPickerRows?.querySelectorAll('tr[data-machine-model]').forEach(row => {
+        const cb = row.querySelector('.machine-model-picker-check');
+        if (!cb) return;
+        cb.checked = machineModelPickerAll.checked;
+        if (cb.checked) machineModelPickerSelected.add(row.dataset.machineModel);
+        else machineModelPickerSelected.delete(row.dataset.machineModel);
+      });
+    });
+    machineModelPickerConfirm?.addEventListener('click', confirmMachineModelPicker);
+    machineModelPickerCancel?.addEventListener('click', closeMachineModelPicker);
+    machineModelPickerClose?.addEventListener('click', closeMachineModelPicker);
+    machineModelPickerModal?.addEventListener('click', e => {
+      if (e.target === machineModelPickerModal) closeMachineModelPicker();
+    });
+
+    function getSpecPickerData(){
+      const specs = [];
+      document.querySelectorAll('#product-specs tbody tr').forEach(row => {
+        specs.push({
+          name: row.cells[1]?.textContent.trim() || '',
+          code: row.cells[0]?.textContent.trim() || '',
+          type: row.cells[1]?.textContent.trim() || '',
+          item: row.cells[2]?.textContent.trim() || '',
+          remark: row.cells[4]?.textContent.trim() || '',
+          status: row.cells[5]?.textContent.trim() || ''
+        });
+      });
+      return specs;
+    }
+
+    function renderSpecPickerRows(keyword){
+      const data = getSpecPickerData();
+      const kw = (keyword || '').trim().toLowerCase();
+      const filtered = data.filter(s => !kw || s.name.toLowerCase().includes(kw) || s.code.toLowerCase().includes(kw) || s.type.toLowerCase().includes(kw));
+      if (!filtered.length){
+        specPickerRows.innerHTML = '<tr><td colspan="5" style="height:120px;color:#98a2b3;background:#fff">暂无数据</td></tr>';
+        return;
+      }
+      specPickerRows.innerHTML = filtered.map(s =>
+        `<tr data-spec-name="${s.name}" data-spec-type="${s.type}" data-spec-item="${s.item}"><td style="width:44px"><input class="spec-picker-check" type="checkbox" /></td><td>${s.code}</td><td>${s.name}</td><td>${s.item}</td><td>${s.remark || '-'}</td></tr>`
+      ).join('');
+    }
+
+    function openSpecPicker(){
+      specPickerSelectedName = productFormSpec?.value || '';
+      specPickerKeyword.value = '';
+      renderSpecPickerRows('');
+      specPickerModal?.classList.add('show');
+      specPickerKeyword?.focus();
+    }
+
+    function closeSpecPicker(){
+      specPickerModal?.classList.remove('show');
+    }
+
+    specPickerBtn?.addEventListener('click', openSpecPicker);
+    specPickerSearch?.addEventListener('click', () => renderSpecPickerRows(specPickerKeyword.value));
+    specPickerKeyword?.addEventListener('keydown', e => { if (e.key === 'Enter') renderSpecPickerRows(specPickerKeyword.value); });
+    specPickerClose?.addEventListener('click', closeSpecPicker);
+    specPickerCancel?.addEventListener('click', closeSpecPicker);
+    specPickerModal?.addEventListener('click', e => { if (e.target === specPickerModal) closeSpecPicker(); });
+    specPickerRows?.addEventListener('click', e => {
+      const tr = e.target.closest('tr[data-spec-name]');
+      if (!tr) return;
+      if (e.target.type === 'checkbox') return;
+      const cb = tr.querySelector('.spec-picker-check');
+      if (cb) cb.checked = !cb.checked;
+    });
+    specPickerRows?.addEventListener('dblclick', e => {
+      const tr = e.target.closest('tr[data-spec-name]');
+      if (!tr) return;
+      const type = tr.dataset.specType || '';
+      const item = tr.dataset.specItem || '';
+      if (productFormSpec) productFormSpec.value = item ? `${type}：${item}` : type;
+      closeSpecPicker();
+    });
+    specPickerConfirm?.addEventListener('click', () => {
+      if (productFormSpec) productFormSpec.value = getSelectedSpecNames();
+      closeSpecPicker();
+    });
+    const specPickerAll = document.getElementById('specPickerAll');
+    specPickerAll?.addEventListener('change', () => {
+      specPickerRows?.querySelectorAll('.spec-picker-check').forEach(cb => { cb.checked = specPickerAll.checked; });
+    });
+    function getSelectedSpecNames(){
+      const lines = [];
+      const seen = new Set();
+      specPickerRows?.querySelectorAll('.spec-picker-check:checked').forEach(cb => {
+        const tr = cb.closest('tr[data-spec-name]');
+        if (!tr) return;
+        const type = tr.dataset.specType || '';
+        const item = tr.dataset.specItem || '';
+        if (!type) return;
+        const key = type + '|' + item;
+        if (seen.has(key)) return;
+        seen.add(key);
+        lines.push(item ? `${type}：${item}` : type);
+      });
+      return lines.join('\n');
+    }
     function statusTagHtml(status){
       return String(status || '').includes('停用')
         ? '<span class="tag red">停用</span>'
@@ -9187,8 +10140,178 @@
       `;
     }
 
+    function closeProductionConfig(){
+      productionConfigModal?.classList.remove('show');
+      productionConfigProductRow = null;
+    }
+
+    const PRODUCTION_STEP_OPTIONS = [
+      { name: '取杯', children: ['冷杯', '热杯'] },
+      { name: '加冰', children: ['少冰', '正常冰', '多冰'] },
+      { name: '加果酱糖浆', children: ['葡萄糖浆', '果酱糖浆'] },
+      { name: '加冰水浓缩液', children: ['冰水', '浓缩液'] },
+      { name: '加咖啡', children: ['浓缩咖啡液', '拿铁'] },
+      { name: '加液体墙(摇晃)', children: ['开启摇晃', '停止摇晃'] }
+    ];
+
+    function productionStepLineHtml(index, value = ''){
+      const display = value || '请选择';
+      return `<div class="production-step-line"><span class="production-step-label">步骤${index}:</span><div class="production-step-cascader" data-step-value="${escapeHtml(value)}"><button class="production-step-trigger${value ? '' : ' placeholder'}" type="button">${escapeHtml(display)}</button><div class="production-step-menu"><div class="production-step-menu-column production-step-categories"></div><div class="production-step-menu-column production-step-children"></div></div></div><button class="btn soft" type="button" data-production-step-action="add">增加步骤</button><button class="btn soft production-step-delete" type="button" data-production-step-action="delete">删除步骤</button></div>`;
+    }
+
+    function renderProductionStepMenu(cascader, activeCategory = ''){
+      const selectedValue = cascader.dataset.stepValue || '';
+      const selectedParts = selectedValue.split(' / ');
+      const active = activeCategory || selectedParts[0] || PRODUCTION_STEP_OPTIONS[0].name;
+      const categories = cascader.querySelector('.production-step-categories');
+      const children = cascader.querySelector('.production-step-children');
+      categories.innerHTML = PRODUCTION_STEP_OPTIONS.map(item => `<div class="production-step-menu-item${item.name === active ? ' active' : ''}" data-step-category="${escapeHtml(item.name)}"><span>${escapeHtml(item.name)}</span><span class="production-step-menu-arrow">›</span></div>`).join('');
+      const group = PRODUCTION_STEP_OPTIONS.find(item => item.name === active);
+      children.innerHTML = (group?.children || []).map(item => `<div class="production-step-menu-item${selectedParts[0] === active && selectedParts[1] === item ? ' selected' : ''}" data-step-child="${escapeHtml(item)}" data-step-parent="${escapeHtml(active)}"><span class="production-step-menu-check">${selectedParts[0] === active && selectedParts[1] === item ? '✓' : ''}</span><span style="flex:1">${escapeHtml(item)}</span></div>`).join('');
+    }
+
+    function renumberProductionSteps(editor){
+      editor?.querySelectorAll('.production-step-line').forEach((line, index) => {
+        line.querySelector('.production-step-label').textContent = `步骤${index + 1}:`;
+      });
+    }
+
+    function productionConfigRowHtml(productName, spec, model, index){
+      return `
+        <tr class="production-main-row" data-production-sku="${index}">
+          <td class="production-product-cell"><button class="production-expand" type="button" data-production-action="view" aria-label="展开制作步骤"></button>${escapeHtml(productName)}</td>
+          <td>${escapeHtml(spec)}</td>
+          <td class="production-machine-model">${escapeHtml(model)}</td>
+          <td><div class="production-config-actions">
+            <button class="link" type="button" data-production-action="view">查看步骤</button>
+            <button class="link" type="button" data-production-action="edit">编辑</button>
+            <button class="link danger-link" type="button" data-production-action="delete-steps">删除全部步骤</button>
+            <button class="link danger-link" type="button" data-production-action="delete-sku">删除当前SKU</button>
+          </div></td>
+        </tr>
+        <tr class="production-step-row" data-production-step-for="${index}">
+          <td colspan="4"><div class="production-step-editor">${productionStepLineHtml(1, '取杯 / 热杯')}${productionStepLineHtml(2, '加果酱糖浆 / 葡萄糖浆')}${productionStepLineHtml(3, '加咖啡 / 拿铁')}${productionStepLineHtml(4)}</div></td>
+        </tr>
+      `;
+    }
+
+    function openProductionConfig(row){
+      productionConfigProductRow = row;
+      const productName = row.cells[1]?.textContent.trim().replace(/\s+/g, '') || '当前商品';
+      const specText = row.cells[5]?.textContent.trim();
+      const specs = specText && specText !== '-'
+        ? Array(10).fill('温度:热 甜度:正常甜 杯盖:需要杯盖')
+        : ['默认规格'];
+      const models = ['HY001001', 'HY001002', 'HY001003', 'HY001004', 'HY001005', 'HY001006', 'HY001007', 'YH001001', 'YH001002', 'YH001008'];
+      productionConfigRows.innerHTML = specs.map((spec, index) => productionConfigRowHtml(productName, spec, models[index] || 'HY001001', index)).join('');
+      const firstRow = productionConfigRows.querySelector('[data-production-sku="0"]');
+      const firstSteps = productionConfigRows.querySelector('[data-production-step-for="0"]');
+      firstRow?.classList.add('expanded');
+      firstSteps?.classList.add('show');
+      const firstEdit = firstRow?.querySelector('[data-production-action="edit"]');
+      if (firstEdit) firstEdit.textContent = '保存';
+      productionConfigModal?.classList.add('show');
+    }
+
     function renderProductActions(row){
-      row.cells[10].innerHTML = actionByStatus(row.cells[9].textContent, 'data-product-action="status"', 'data-product-action="edit"', 'data-product-action="delete"');
+      const isFresh = row.dataset.productType
+        ? row.dataset.productType === '现制饮品'
+        : row.cells[5].textContent.trim() !== '-';
+      const disabled = row.cells[8].textContent.includes('停用');
+      row.cells[10].innerHTML = `
+        <div class="row-actions">
+          <button class="link" type="button" data-product-action="detail">详情</button>
+          ${isFresh ? '<button class="link" type="button" data-product-action="config">配置</button>' : ''}
+          <button class="link" type="button" data-product-action="edit">编辑</button>
+          <button class="link" type="button" data-product-action="status">${disabled ? '启用' : '停用'}</button>
+          ${disabled ? '<button class="link" type="button" data-product-action="delete">删除</button>' : ''}
+        </div>
+      `;
+    }
+
+    function productDetailTextFromTags(row, selector){
+      const values = Array.from(row.querySelectorAll(selector)).map(tag => tag.textContent.trim()).filter(Boolean);
+      return values.length ? values.join('\n') : '-';
+    }
+
+    function productDetailImageHtml(row){
+      return row.cells[2]?.innerHTML || '<span style="color:#98a2b3;font-size:12px">无图</span>';
+    }
+
+    function setProductDetailImage(id, metaId, row, label, required = false){
+      const box = document.getElementById(id);
+      const meta = document.getElementById(metaId);
+      if (box) box.innerHTML = productDetailImageHtml(row);
+      if (meta) meta.textContent = '';
+    }
+
+    function openProductDetailPage(row, shouldActivate = true){
+      const isPrepackaged = (row.dataset.productType || '').includes('预包装') || row.cells[5]?.textContent.trim() === '-';
+      const defaultBaseMaterials = isPrepackaged ? '纯净水、饮料浓缩液' : '拿铁风味基底、纯净水、全脂牛奶、浓缩咖啡液';
+      const defaultMachineModels = isPrepackaged ? 'HY001001、HY001002' : 'HY001001、HY001002、YH001008';
+      const defaultTags = isPrepackaged ? '瓶装饮料、即取商品、畅销' : '现制饮品、推荐上架、夏日限定';
+      const defaultSpec = isPrepackaged ? '容量：550ml\n包装：瓶装' : '甜度：少甜、正常甜\n温度：热、冰、少冰\n杯盖：需要杯盖、不需要杯盖';
+      const detailValues = {
+        productDetailId: row.cells[0]?.textContent.trim() || '-',
+        productDetailName: row.cells[1]?.textContent.trim() || '-',
+        productDetailType: row.dataset.productType || (isPrepackaged ? '预包装商品' : '现制饮品'),
+        productDetailCategory: row.cells[3]?.textContent.trim() || '-',
+        productDetailStatus: row.cells[8]?.innerHTML || '-',
+        productDetailCreatedAt: row.cells[6]?.textContent.trim() || '-',
+        productDetailUpdatedAt: row.cells[7]?.textContent.trim() || '-',
+        productDetailOriginalPrice: row.dataset.originalPrice || '13.9',
+        productDetailDiscountPrice: row.cells[4]?.textContent.trim() === '-' ? '未设置' : (row.cells[4]?.textContent.trim() || '11.9'),
+        productDetailDesc: row.dataset.desc || '选用优质原料制作，口感清爽顺滑，适合门店点单屏及小程序展示。',
+        productDetailRemark: row.dataset.remark || '默认启用，适用于中国大陆及已配置的海外销售区域。',
+        productDetailSpec: row.cells[5]?.textContent.trim() === '-' ? defaultSpec : (row.cells[5]?.textContent.trim() || defaultSpec),
+        productDetailBaseMaterials: row.dataset.baseMaterials || defaultBaseMaterials,
+        productDetailMachineModels: row.dataset.machineModels || defaultMachineModels,
+        productDetailDuration: row.dataset.duration || (isPrepackaged ? '无需制作（即取）' : '60秒'),
+        productDetailTags: row.dataset.tags || defaultTags,
+        productDetailCountries: productDetailTextFromTags(row.cells[9] || row, '.tag')
+      };
+      Object.entries(detailValues).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        if (id === 'productDetailStatus') element.innerHTML = value || '-';
+        else element.textContent = value || '-';
+      });
+      setProductDetailImage('productDetailThumbOrder', 'productDetailThumbOrderMeta', row, 'thumb_order', true);
+      setProductDetailImage('productDetailThumbMini', 'productDetailThumbMiniMeta', row, 'thumb_mini');
+      setProductDetailImage('productDetailIntroOrder', 'productDetailIntroOrderMeta', row, 'intro_order', true);
+      setProductDetailImage('productDetailIntroMini', 'productDetailIntroMiniMeta', row, 'intro_mini');
+      setProductDetailImage('productDetailContentOrder', 'productDetailContentOrderMeta', row, 'content_order', true);
+      setProductDetailImage('productDetailContentMini', 'productDetailContentMiniMeta', row, 'content_mini');
+      setProductDetailImage('productDetailHomeMini', 'productDetailHomeMiniMeta', row, 'home_mini');
+      if (shouldActivate) activate('product-detail-page');
+    }
+
+    function openGoodsDetailPage(row){
+      openProductDetailPage(row, false);
+      const sourcePanel = document.querySelector('#product-detail-page .panel');
+      if (sourcePanel && goodsDetailPageBody) {
+        const clonedPanel = sourcePanel.cloneNode(true);
+        const detailForm = clonedPanel.querySelector('.product-detail-form');
+        const storeName = row.cells[10]?.textContent.trim() || '深圳宝安体育馆太空舱';
+        const tenantName = row.cells[11]?.textContent.trim() || '深圳好饮科技有限公司';
+        const relationFields = `
+          <div class="field" data-goods-detail-field="standard-name"><label><span class="required-mark">*</span>标品名称</label><div class="product-detail-readonly">${escapeHtml(row.dataset.standardName || row.cells[1]?.textContent.trim() || '默认标品')}</div></div>
+          <div class="field" data-goods-detail-field="standard-id"><label><span class="required-mark">*</span>标品ID</label><div class="product-detail-readonly">${escapeHtml(row.dataset.standardId || row.cells[0]?.textContent.trim() || 'G668')}</div></div>
+          <div class="field"><label><span class="required-mark">*</span>租户名称</label><div class="product-detail-readonly">${escapeHtml(tenantName)}</div></div>
+          <div class="field"><label><span class="required-mark">*</span>租户ID</label><div class="product-detail-readonly">${escapeHtml(row.dataset.tenantId || 'T10002')}</div></div>
+          <div class="field"><label><span class="required-mark">*</span>门店名称</label><div class="product-detail-readonly">${escapeHtml(storeName)}</div></div>
+          <div class="field"><label><span class="required-mark">*</span>门店ID</label><div class="product-detail-readonly">${escapeHtml(row.dataset.storeId || 'S440306001')}</div></div>
+          <div class="field"><label><span class="required-mark">*</span>门店类型</label><div class="product-detail-readonly">${escapeHtml(row.dataset.storeType || '太空舱')}</div></div>
+        `;
+        if (detailForm?.children[1]) detailForm.children[1].insertAdjacentHTML('afterend', relationFields);
+        clonedPanel.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+        goodsDetailPageBody.innerHTML = clonedPanel.outerHTML.replaceAll('标品', '商品');
+        const standardNameLabel = goodsDetailPageBody.querySelector('[data-goods-detail-field="standard-name"] label');
+        const standardIdLabel = goodsDetailPageBody.querySelector('[data-goods-detail-field="standard-id"] label');
+        if (standardNameLabel) standardNameLabel.innerHTML = '<span class="required-mark">*</span>标品名称';
+        if (standardIdLabel) standardIdLabel.innerHTML = '<span class="required-mark">*</span>标品ID';
+      }
+      activate('goods-detail-page');
     }
 
     function renderCategoryActions(row){
@@ -9196,17 +10319,148 @@
     }
 
     function renderSpecActions(row){
-      row.cells[7].innerHTML = actionByStatus(row.cells[6].textContent, 'data-spec-action="status"', 'data-spec-action="edit"', 'data-spec-action="delete"');
+      row.cells[6].innerHTML = actionByStatus(row.cells[5].textContent, 'data-spec-action="status"', 'data-spec-action="edit"', 'data-spec-action="delete"');
     }
 
     function renderMaterialActions(row){
-      row.cells[4].innerHTML = actionByStatus(row.cells[3].textContent, 'data-material-action="status"', 'data-material-action="edit"', 'data-material-action="delete"');
+      row.cells[6].innerHTML = actionByStatus(row.cells[5].textContent, 'data-material-action="status"', 'data-material-action="edit"', 'data-material-action="delete"');
     }
 
+    function buildGoodsList(){
+      if (!goodsListRows) return;
+      goodsListRows.innerHTML = '';
+      const stores = ['深圳宝安体育馆太空舱', '深圳南山科技园咖啡亭', '上海浦东世纪汇咖啡亭', '广州天河智慧咖啡亭', '深圳前海太空舱'];
+      const tenants = ['深圳好饮科技有限公司', '深圳好饮科技有限公司', '上海城市空间商业管理有限公司', '华南咖啡运营中心', '华南咖啡运营中心'];
+      const storeTypes = ['太空舱', '咖啡亭', '咖啡亭', '咖啡亭', '太空舱'];
+      const regions = ['华南区域', '华南区域', '华东区域', '华南区域', '华南区域'];
+      const tenantIds = ['T10002', 'T10002', 'T30003', 'T20001', 'T20001'];
+      const storeIds = ['S440306001', 'S440305002', 'S310115003', 'S440106004', 'S440305005'];
+      document.querySelectorAll('#product-list .product-table tbody tr').forEach((sourceRow, index) => {
+        const row = sourceRow.cloneNode(true);
+        const actionCell = row.cells[10];
+        const storeCell = document.createElement('td');
+        const tenantCell = document.createElement('td');
+        storeCell.textContent = stores[index % stores.length];
+        tenantCell.textContent = tenants[index % tenants.length];
+        row.dataset.storeType = storeTypes[index % storeTypes.length];
+        row.dataset.region = regions[index % regions.length];
+        row.dataset.tenantId = tenantIds[index % tenantIds.length];
+        row.dataset.storeId = storeIds[index % storeIds.length];
+        row.dataset.standardId = sourceRow.cells[0]?.textContent.trim() || `G${668 - index}`;
+        row.dataset.standardName = sourceRow.cells[1]?.textContent.trim().replace(/\s+/g, '') || '默认标品';
+        row.insertBefore(storeCell, actionCell);
+        row.insertBefore(tenantCell, actionCell);
+        actionCell.innerHTML = '<div class="row-actions"><button class="link" type="button" data-goods-action="detail">详情</button></div>';
+        goodsListRows.appendChild(row);
+      });
+    }
+
+    function applyGoodsFilters(){
+      const name = (goodsNameFilter?.value || '').trim().toLowerCase();
+      const standardName = (goodsStandardNameFilter?.value || '').trim().toLowerCase();
+      const standardId = (goodsStandardIdFilter?.value || '').trim().toLowerCase();
+      const status = goodsStatusFilter?.value || '';
+      const category = goodsCategoryFilter?.value || '';
+      const country = goodsCountryFilter?.value || '';
+      const region = goodsRegionFilter?.value || '';
+      const tenant = goodsTenantFilter?.value || '';
+      const store = (goodsStoreFilter?.value || '').trim().toLowerCase();
+      const storeType = goodsStoreTypeFilter?.value || '';
+      goodsListRows?.querySelectorAll('tr').forEach(row => {
+        const matched = (!name || row.cells[1].textContent.trim().toLowerCase().includes(name)) &&
+          (!standardName || (row.dataset.standardName || '').toLowerCase().includes(standardName)) &&
+          (!standardId || (row.dataset.standardId || '').toLowerCase().includes(standardId)) &&
+          (!status || row.cells[8].textContent.includes(status)) &&
+          (!category || row.cells[3].textContent.trim() === category) &&
+          (!country || row.cells[9].textContent.includes(country)) &&
+          (!region || row.dataset.region === region) &&
+          (!store || row.cells[10].textContent.trim().toLowerCase().includes(store)) &&
+          (!tenant || row.cells[11].textContent.trim() === tenant) &&
+          (!storeType || row.dataset.storeType === storeType);
+        row.style.display = matched ? '' : 'none';
+      });
+    }
+
+    function resetGoodsFilters(){
+      [goodsNameFilter, goodsStandardNameFilter, goodsStandardIdFilter, goodsStatusFilter, goodsCategoryFilter, goodsCountryFilter, goodsRegionFilter, goodsTenantFilter, goodsStoreFilter, goodsStoreTypeFilter].forEach(control => { if (control) control.value = ''; });
+      [goodsStatusFilter, goodsCategoryFilter, goodsCountryFilter, goodsRegionFilter, goodsTenantFilter, goodsStoreTypeFilter].forEach(control => control && rebuildCustomSelectOptions(control));
+      applyGoodsFilters();
+    }
+
+    function applyCargoFilters(){
+      const name = (cargoNameFilter?.value || '').trim().toLowerCase();
+      const store = (cargoStoreFilter?.value || '').trim().toLowerCase();
+      const tenant = (cargoTenantFilter?.value || '').trim().toLowerCase();
+      const material = (cargoMaterialFilter?.value || '').trim().toLowerCase();
+      const brand = (cargoBrandFilter?.value || '').trim().toLowerCase();
+      const country = cargoCountryFilter?.value || '';
+      const area = cargoAreaFilter?.value || '';
+      document.querySelectorAll('#cargo-list .cargo-table tbody tr').forEach(row => {
+        const matched = (!name || row.cells[1]?.textContent.trim().toLowerCase().includes(name)) &&
+          (!store || row.cells[8]?.textContent.trim().toLowerCase().includes(store)) &&
+          (!tenant || row.cells[9]?.textContent.trim().toLowerCase().includes(tenant)) &&
+          (!material || (row.dataset.materialName || '').toLowerCase().includes(material)) &&
+          (!brand || row.cells[2]?.textContent.trim().toLowerCase().includes(brand)) &&
+          (!country || row.cells[10]?.textContent.trim() === country) &&
+          (!area || row.cells[11]?.textContent.trim() === area);
+        row.style.display = matched ? '' : 'none';
+      });
+    }
+
+    function resetCargoFilters(){
+      [cargoNameFilter, cargoStoreFilter, cargoTenantFilter, cargoMaterialFilter, cargoBrandFilter, cargoCountryFilter, cargoAreaFilter].forEach(control => {
+        if (control) control.value = '';
+      });
+      if (cargoCountryFilter) rebuildCustomSelectOptions(cargoCountryFilter);
+      updateCargoAreaFilter();
+      applyCargoFilters();
+    }
+
+    populateProductCategoryOptions();
     document.querySelectorAll('#product-list tbody tr').forEach(renderProductActions);
+    buildGoodsList();
     document.querySelectorAll('#product-category tbody tr').forEach(renderCategoryActions);
     document.querySelectorAll('#product-specs tbody tr').forEach(renderSpecActions);
     document.querySelectorAll('#product-materials tbody tr').forEach(renderMaterialActions);
+
+    const UNIT_DEMO_DATA = [
+      { label: '容量（中杯）', value: 400, standardCode: 'UNIT_VOLUME_ML', base: 'ml' },
+      { label: '葡萄糖浆（少甜）', value: 15, standardCode: 'UNIT_WEIGHT_G', base: 'g' },
+      { label: '冰（冰）', value: 140, standardCode: 'UNIT_WEIGHT_G', base: 'g' },
+      { label: '杯盖（有杯盖）', value: 1, standardCode: 'UNIT_COUNT_PCS', base: 'pcs' }
+    ];
+
+    function buildUnitLookup(){
+      const map = {};
+      document.querySelectorAll('#countryUnitDetailTable tr[data-standard-code]').forEach(tr => {
+        const code = tr.getAttribute('data-standard-code');
+        const country = tr.cells[1]?.textContent.trim();
+        const localUnit = tr.cells[5]?.textContent.trim();
+        if (country && code && localUnit) {
+          map[country] = map[country] || {};
+          map[country][code] = localUnit;
+        }
+      });
+      return map;
+    }
+
+    function renderUnitDemo(countryCode){
+      if (!unitDemoBody) return;
+      const countryMap = buildUnitLookup()[countryCode] || {};
+      unitDemoBody.innerHTML = UNIT_DEMO_DATA.map(item => {
+        const localUnit = countryMap[item.standardCode] || item.base;
+        return `
+          <div class="unit-demo-item">
+            <span class="label">${escapeHtml(item.label)}</span>
+            <span class="value">${item.value} ${escapeHtml(localUnit)}</span>
+            <span class="std">标准单位 ${item.value} ${item.base}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    unitDemoCountry?.addEventListener('change', () => renderUnitDemo(unitDemoCountry.value));
+    renderUnitDemo(unitDemoCountry?.value || 'CN');
 
     function savePaymentChannel(){
       if (!paymentFormConfigCode.value.trim()) { paymentFormConfigCode.focus(); return false; }
@@ -10097,20 +11351,25 @@
       if (!btn || !btn.closest('#product-list')) return;
       const row = btn.closest('tr');
       const action = btn.dataset.productAction;
-      const productName = row.cells[0].textContent.trim().split('\n')[0];
-      if (action === 'edit') {
+      const productName = row.cells[1].textContent.trim().split('\n')[0];
+      if (action === 'detail') {
+        openProductDetailPage(row);
+      } else if (action === 'config') {
+        openProductionConfig(row);
+      } else if (action === 'edit') {
         openProductModal({ mode: 'edit', row });
       } else if (action === 'status') {
-        const isEnabled = row.cells[9].textContent.includes('启用');
+        const isEnabled = row.cells[8].textContent.includes('启用');
         openConfirm(
           isEnabled ? '确认停用' : '确认启用',
           `确定要${isEnabled ? '停用' : '启用'}标品「${productName}」吗？`,
           () => {
-            const statusCell = row.cells[9];
+            const statusCell = row.cells[8];
             const nowEnabled = statusCell.textContent.includes('启用');
             statusCell.innerHTML = nowEnabled
               ? '<span class="tag red">停用</span>'
               : '<span class="tag green">启用</span>';
+            if (row.cells[7]) row.cells[7].textContent = productDateTimeNow();
             renderProductActions(row);
           }
         );
@@ -10120,6 +11379,108 @@
           `确定要删除标品「${productName}」吗？删除后不可恢复。`,
           () => { row.remove(); }
         );
+      }
+    });
+
+    document.addEventListener('click', event => {
+      const button = event.target.closest('[data-goods-action="detail"]');
+      if (!button || !button.closest('#goods-list')) return;
+      openGoodsDetailPage(button.closest('tr'));
+    });
+
+    productionConfigClose?.addEventListener('click', closeProductionConfig);
+    productionConfigCancel?.addEventListener('click', closeProductionConfig);
+    productionConfigConfirm?.addEventListener('click', closeProductionConfig);
+    productionConfigModal?.addEventListener('click', event => {
+      if (event.target === productionConfigModal) closeProductionConfig();
+    });
+    productionConfigRows?.addEventListener('click', event => {
+      const trigger = event.target.closest('.production-step-trigger');
+      if (trigger) {
+        const cascader = trigger.closest('.production-step-cascader');
+        productionConfigRows.querySelectorAll('.production-step-cascader.open').forEach(item => {
+          if (item !== cascader) item.classList.remove('open');
+        });
+        const willOpen = !cascader.classList.contains('open');
+        cascader.classList.toggle('open', willOpen);
+        if (willOpen) renderProductionStepMenu(cascader);
+        return;
+      }
+      const categoryItem = event.target.closest('[data-step-category]');
+      if (categoryItem) {
+        renderProductionStepMenu(categoryItem.closest('.production-step-cascader'), categoryItem.dataset.stepCategory);
+        return;
+      }
+      const childItem = event.target.closest('[data-step-child]');
+      if (childItem) {
+        const cascader = childItem.closest('.production-step-cascader');
+        const value = `${childItem.dataset.stepParent} / ${childItem.dataset.stepChild}`;
+        cascader.dataset.stepValue = value;
+        const cascaderTrigger = cascader.querySelector('.production-step-trigger');
+        cascaderTrigger.textContent = value;
+        cascaderTrigger.classList.remove('placeholder');
+        cascader.classList.remove('open');
+        return;
+      }
+      const stepButton = event.target.closest('[data-production-step-action]');
+      if (stepButton) {
+        const editor = stepButton.closest('.production-step-editor');
+        const line = stepButton.closest('.production-step-line');
+        if (stepButton.dataset.productionStepAction === 'add') {
+          editor.insertAdjacentHTML('beforeend', productionStepLineHtml(editor.querySelectorAll('.production-step-line').length + 1));
+        } else if (stepButton.dataset.productionStepAction === 'delete' && editor.querySelectorAll('.production-step-line').length > 1) {
+          line.remove();
+          renumberProductionSteps(editor);
+        }
+        return;
+      }
+      const button = event.target.closest('[data-production-action]');
+      if (!button) return;
+      const row = button.closest('tr[data-production-sku]');
+      if (!row) return;
+      const action = button.dataset.productionAction;
+      const sku = row.dataset.productionSku;
+      const stepRow = productionConfigRows.querySelector(`[data-production-step-for="${sku}"]`);
+      const productName = row.cells[0].textContent.trim();
+      const productSpec = row.cells[1].textContent.trim();
+      const machineCell = row.querySelector('.production-machine-model');
+      const machineModel = machineCell?.textContent.trim() || '-';
+      if (action === 'view') {
+        const showing = stepRow?.classList.toggle('show');
+        row.classList.toggle('expanded', showing);
+        const editButton = row.querySelector('[data-production-action="edit"]');
+        if (editButton) editButton.textContent = showing ? '保存' : '编辑';
+      } else if (action === 'edit') {
+        const showing = stepRow?.classList.contains('show');
+        if (showing) {
+          stepRow.classList.remove('show');
+          row.classList.remove('expanded');
+          button.textContent = '编辑';
+        } else {
+          stepRow?.classList.add('show');
+          row.classList.add('expanded');
+          button.textContent = '保存';
+        }
+      } else if (action === 'delete-steps') {
+        openConfirm('确认删除全部步骤', `确定删除「${productName} / ${productSpec} / ${machineModel}」的全部制作步骤吗？删除后该 SKU 将无法执行制作流程。`, () => {
+          if (stepRow) {
+            stepRow.classList.add('show');
+            stepRow.querySelector('td').innerHTML = '<div class="production-step-empty">暂无制作步骤</div>';
+          }
+          row.classList.add('expanded');
+          const editButton = row.querySelector('[data-production-action="edit"]');
+          if (editButton) editButton.textContent = '保存';
+        });
+      } else if (action === 'delete-sku') {
+        openConfirm('确认删除当前 SKU', `确定删除「${productName} / ${productSpec} / ${machineModel}」吗？该 SKU 及其全部制作步骤将一并删除，且不可恢复。`, () => {
+          stepRow?.remove();
+          row.remove();
+        });
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.production-step-cascader')) {
+        productionConfigRows?.querySelectorAll('.production-step-cascader.open').forEach(item => item.classList.remove('open'));
       }
     });
 
@@ -10147,13 +11508,13 @@
       if (!btn || !btn.closest('#product-specs')) return;
       const row = btn.closest('tr');
       const action = btn.dataset.specAction;
-      const name = row.cells[0].textContent.trim();
+      const name = row.cells[1].textContent.trim();
       if (action === 'edit') {
         openProductSpecModal({ mode: 'edit', row });
       } else if (action === 'status') {
-        const enabled = row.cells[6].textContent.includes('启用');
+        const enabled = row.cells[5].textContent.includes('启用');
         openConfirm(enabled ? '确认停用' : '确认启用', `确定要${enabled ? '停用' : '启用'}规格「${name}」吗？`, () => {
-          row.cells[6].innerHTML = statusTagHtml(enabled ? '停用' : '启用');
+          row.cells[5].innerHTML = statusTagHtml(enabled ? '停用' : '启用');
           renderSpecActions(row);
         });
       } else if (action === 'delete') {
@@ -10166,13 +11527,13 @@
       if (!btn || !btn.closest('#product-materials')) return;
       const row = btn.closest('tr');
       const action = btn.dataset.materialAction;
-      const name = row.cells[0].textContent.trim();
+      const name = row.cells[1].textContent.trim();
       if (action === 'edit') {
         openProductMaterialModal({ mode: 'edit', row });
       } else if (action === 'status') {
-        const enabled = row.cells[3].textContent.includes('启用');
+        const enabled = row.cells[5].textContent.includes('启用');
         openConfirm(enabled ? '确认停用' : '确认启用', `确定要${enabled ? '停用' : '启用'}原料「${name}」吗？`, () => {
-          row.cells[3].innerHTML = statusTagHtml(enabled ? '停用' : '启用');
+          row.cells[5].innerHTML = statusTagHtml(enabled ? '停用' : '启用');
           renderMaterialActions(row);
         });
       } else if (action === 'delete') {
@@ -11453,6 +12814,24 @@
     }
     storeRegionFilter?.addEventListener('change', updateStoreAreaFilter);
     updateStoreAreaFilter();
+
+    function updateCargoAreaFilter(){
+      if (!cargoCountryFilter || !cargoAreaFilter || !cargoAreaFilterLabel) return;
+      const config = storeAreaData[cargoCountryFilter.value];
+      cargoAreaFilterLabel.textContent = config ? `${config.label}：` : '区域：';
+      if (cargoAreaColHeader) cargoAreaColHeader.textContent = config ? config.label : '区域';
+      cargoAreaFilter.innerHTML = `<option value="">${config ? config.placeholder : '请先选择国家/地区'}</option>`;
+      (config?.options || []).forEach(option => {
+        cargoAreaFilter.innerHTML += `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`;
+      });
+      rebuildCustomSelectOptions(cargoAreaFilter);
+    }
+    cargoCountryFilter?.addEventListener('change', () => {
+      updateCargoAreaFilter();
+      applyCargoFilters();
+    });
+    cargoAreaFilter?.addEventListener('change', applyCargoFilters);
+    updateCargoAreaFilter();
 
     const userRegionFilter = document.getElementById('filterUserRegion');
     const userTenantFilter = document.getElementById('filterUserTenant');
