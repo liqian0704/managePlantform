@@ -410,6 +410,12 @@
     .product-form-module-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 26px}
     .product-form-module-grid .field{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:center;gap:12px;min-width:0}
     .product-form-module-grid .field.full{grid-column:1/-1}
+    .split-basic-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .split-basic-grid .field{grid-template-columns:96px minmax(0,1fr)}
+    .split-basic-grid .field.full{grid-column:1/-1}
+    #split-config-form .panel,
+    #split-config-form .product-form-module{overflow:visible}
+    #split-config-form .form-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:20px}
     #productFormListedCountField[hidden]{display:none!important}
     .product-form-module-grid input[readonly]{background:#f5f7fa;color:#667085;cursor:not-allowed}
     .product-sku-picker{display:flex;gap:8px;align-items:center;min-width:0}
@@ -424,6 +430,33 @@
     .product-sku-table tr:last-child td{border-bottom:0}
     .product-sku-table th:nth-child(1),.product-sku-table td:nth-child(1){width:80px;text-align:center}
     .product-sku-table th:nth-child(3),.product-sku-table td:nth-child(3){width:180px}
+    .compact-head{padding:0;margin:0 0 14px;border:0}
+    .compact-head .product-form-module-title{margin:0}
+    .split-module-head{justify-content:space-between!important;align-items:center}
+    .split-store-picker{position:relative;width:min(560px,100%)}
+    .split-store-trigger{width:100%;min-height:38px;border:1px solid #d7deea;border-radius:4px;background:#fff;padding:7px 34px 7px 12px;color:#344054;text-align:left;line-height:22px;cursor:pointer}
+    .split-store-trigger:after{content:'⌄';position:absolute;right:12px;top:8px;color:#98a2b3}
+    .split-store-trigger.placeholder{color:#98a2b3}
+    .split-store-dropdown{display:none;position:absolute;z-index:20;top:42px;left:0;right:auto;width:100%;max-height:220px;overflow-y:auto;overflow-x:hidden;box-sizing:border-box;border:1px solid #d7deea;border-radius:4px;background:#fff;box-shadow:0 10px 24px rgba(15,23,42,.12);padding:6px}
+    .split-store-picker.open .split-store-dropdown{display:block}
+    .split-store-option{display:flex;align-items:center;justify-content:flex-start;width:100%;box-sizing:border-box;gap:8px;min-height:34px;padding:6px 8px;border-radius:4px;color:#344054;font-size:13px;text-align:left;cursor:pointer}
+    .split-store-option span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .split-store-option:hover{background:#f5f7fb}
+    .split-store-option input{width:15px;height:15px;margin:0;accent-color:var(--primary)}
+    .split-store-empty{padding:10px;color:#98a2b3;font-size:13px}
+    .split-participant-scroll{overflow-x:auto}
+    .split-participant-table{min-width:900px;table-layout:fixed}
+    .split-participant-table th:nth-child(1),.split-participant-table td:nth-child(1){width:240px;text-align:left}
+    .split-participant-table th:nth-child(2),.split-participant-table td:nth-child(2){width:160px;text-align:left}
+    .split-participant-table th:nth-child(3),.split-participant-table td:nth-child(3){width:190px;text-align:left}
+    .split-participant-table th:nth-child(4),.split-participant-table td:nth-child(4){width:120px;text-align:left}
+    .split-participant-table th:nth-child(5),.split-participant-table td:nth-child(5){width:120px;text-align:left}
+    .split-participant-table th:nth-child(6),.split-participant-table td:nth-child(6){width:90px;text-align:center}
+    .split-percent-field{display:grid;grid-template-columns:minmax(0,1fr) 18px;align-items:center;gap:6px}
+    .split-percent-field span{color:#667085;font-size:13px}
+    .split-participant-table input,.split-participant-table select{width:100%;height:32px;border:1px solid #d7deea;border-radius:4px;padding:0 10px;color:#344054;background:#fff}
+    .split-date-range{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:6px}
+    .split-date-range span{text-align:center;color:#667085}
     .product-detail-form .tenant-detail-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 10px}
     .product-detail-form .tenant-detail-field{grid-template-columns:92px minmax(0,1fr);gap:8px}
     .product-detail-form .tenant-detail-field label{font-size:13px;padding-top:9px}
@@ -1655,7 +1688,15 @@
     #payment-channel-config .panel-body{overflow-x:auto}
     #payment-channel-config table{min-width:1180px}
     #split-config .panel-body{overflow-x:auto}
-    #split-config table{min-width:1640px}
+    #split-config table{min-width:2100px}
+    #settlement-bills .panel-body{overflow-x:auto}
+    #settlement-bills table{min-width:1260px}
+    #settlement-bill-detail .panel-body{overflow-x:auto}
+    #settlement-bill-detail table{min-width:1560px}
+    #settlement-bill-detail .settlement-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:0}
+    #settlement-bill-detail .settlement-summary .stat{border-color:#dfe6f0;border-radius:10px;padding:22px 24px;min-height:112px}
+    #settlement-bill-detail .settlement-summary .stat label{font-size:15px;font-weight:650;color:#667085;margin-bottom:18px}
+    #settlement-bill-detail .settlement-summary .stat strong{font-size:28px;line-height:1.1;font-weight:800;color:#111827}
     #split-detail .panel-body{overflow-x:auto}
     #split-detail table{min-width:1780px}
     #account-balance .panel-body{overflow-x:auto}
@@ -1668,6 +1709,7 @@
     .amount-positive{color:#16a34a;font-weight:650}
     .amount-negative{color:#dc2626;font-weight:650}
     .amount-muted{color:#667085}
+    .empty-cell{text-align:center;color:#98a2b3;padding:28px 12px!important}
     .menu-status-action{border:0;background:transparent;padding:0;cursor:pointer;font:inherit}
     #menus table th:first-child{text-align:left;padding-left:38px}
     #menus table td:first-child{text-align:left;padding-left:8px}
@@ -2072,9 +2114,8 @@
         <div class="submenu" id="settlementSubmenu">
           <div class="menu-item sub" data-page="merchant-management">商户管理</div>
           <div class="menu-item sub" data-page="payment-channel-config">支付渠道配置</div>
-          <div class="menu-item sub" data-page="split-config">分账配置</div>
-          <div class="menu-item sub" data-page="split-detail">分账明细</div>
-          <div class="menu-item sub" data-page="account-balance">商户号余额</div>
+          <div class="menu-item sub" data-page="split-config">结算配置</div>
+          <div class="menu-item sub" data-page="settlement-bills">结算记录</div>
         </div>
       </div>
       <div class="menu-group">
@@ -4290,132 +4331,155 @@
           </div>
         </section>
 
-        <section class="page" id="split-config" data-title="分账配置" data-breadcrumb="支付结算,分账配置">
+        <section class="page" id="split-config" data-title="结算配置" data-breadcrumb="支付结算,结算配置">
           <div class="panel">
             <div class="panel-body">
               <div class="search cols-5">
-                <input id="splitKeyword" placeholder="配置ID / 租户名称 / 租户ID" />
+                <input id="splitTenantKeyword" placeholder="请输入租户名称" />
+                <input id="splitMerchantKeyword" placeholder="请输入商户名称" />
                 <select id="splitChannelFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
-                <select id="splitMethodFilter"><option value="">请选择分账方式</option><option>自动分账</option><option>手动分账</option></select>
                 <select id="splitStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary" id="splitSearch">搜索</button>
-                <button class="btn soft" id="splitReset">重置</button>
               </div>
               <div class="panel-head no-title">
                 <div></div>
                 <div class="actions">
-                  <button class="btn primary" id="splitConfigAdd">+ 新增分账配置</button>
+                  <button class="btn primary" id="splitConfigAdd">+ 新增结算配置</button>
                 </div>
               </div>
               <table data-pagination="none">
                 <thead>
-                  <tr><th>分账配置ID</th><th>租户ID</th><th>租户名称</th><th>支付渠道</th><th>平台商户号</th><th>子商户号</th><th>分账方式</th><th>平台比例</th><th>租户比例</th><th>分账手续费</th><th>状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>结算配置ID</th><th>租户ID</th><th>租户名称</th><th>支付渠道</th><th>结算门店</th><th>结算商户</th><th>银行名称</th><th>银行卡号</th><th>入账比例</th><th>手续费率</th><th>结算有效期</th><th>状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>1000</td><td>T10001</td><td>平台自营租户</td><td>微信支付</td><td>1900000109</td><td>WX-SUB-1900000109</td><td>自动分账</td><td>0%</td><td>100%</td><td>0.1%</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:00:00</td><td>2026-08-12 09:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1001</td><td>T10001</td><td>平台自营租户</td><td>宝付</td><td>BF-1002837465</td><td>BF-SUB-1002837465</td><td>自动分账</td><td>0%</td><td>100%</td><td>0.05%</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:05:00</td><td>2026-08-12 09:05:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1002</td><td>T10001</td><td>平台自营租户</td><td>支付宝</td><td>2088123456789012</td><td>ALIPAY-SUB-1900000109</td><td>自动分账</td><td>0%</td><td>100%</td><td>0%</td><td><span class="tag green">启用</span></td><td>2026-07-21 09:30:00</td><td>2026-08-13 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1003</td><td>T20001</td><td>英国渠道运营租户</td><td>湃卡国际</td><td>PK-UK-8837201</td><td>PK-UK-SUB-8837201</td><td>自动分账</td><td>15%</td><td>85%</td><td>0.3%</td><td><span class="tag green">启用</span></td><td>2026-07-22 11:00:00</td><td>2026-08-10 14:30:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1004</td><td>T30001</td><td>台湾运营租户</td><td>摩宝支付</td><td>MB-TW-1029384</td><td>MB-TW-SUB-1029384</td><td>手动分账</td><td>10%</td><td>90%</td><td>0.2%</td><td><span class="tag green">启用</span></td><td>2026-07-25 15:00:00</td><td>2026-08-08 16:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1005</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>支付宝</td><td>2088123456789012</td><td>ALIPAY-SUB-2088123456</td><td>自动分账</td><td>5%</td><td>95%</td><td>0.1%</td><td><span class="tag red">停用</span></td><td>2026-07-18 09:00:00</td><td>2026-08-05 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">启用</button><button class="link" type="button" data-split-action="delete">删除</button></div></td></tr>
+                  <tr><td>1000</td><td>T10001</td><td>平台自营租户</td><td>微信支付</td><td>好饮自营商户、好饮机场店，共 2 家门店</td><td>平台自营租户（WX-SUB-1900000109）</td><td>中国银行</td><td>6222601200008801</td><td>0.9%</td><td>0.1%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:00:00</td><td>2026-08-12 09:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
+                  <tr><td>1001</td><td>T10001</td><td>平台自营租户</td><td>宝付</td><td>好饮自营商户、好饮机场店，共 2 家门店</td><td>平台自营租户（BF-SUB-1002837465）</td><td>中国银行</td><td>6222601200008801</td><td>0.95%</td><td>0.05%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:05:00</td><td>2026-08-12 09:05:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
+                  <tr><td>1002</td><td>T10001</td><td>平台自营租户</td><td>支付宝</td><td>好饮高铁店、好饮太空舱店，共 2 家门店</td><td>平台自营租户（ALIPAY-SUB-1900000109）</td><td>招商银行</td><td>6225887559001028</td><td>1%</td><td>0%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-21 09:30:00</td><td>2026-08-13 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
+                  <tr><td>1003</td><td>T20001</td><td>英国渠道运营租户</td><td>湃卡国际</td><td>London Central Store、Manchester Store，共 2 家门店</td><td>英国渠道运营租户（PK-UK-SUB-8837201）</td><td>HSBC UK</td><td>5520174098121208</td><td>0.85%</td><td>0.15%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-22 11:00:00</td><td>2026-08-10 14:30:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
+                  <tr><td>1004</td><td>T30001</td><td>台湾运营租户</td><td>摩宝支付</td><td>台北信义店、台中公益店，共 2 家门店</td><td>台湾运营租户（MB-TW-SUB-1029384）</td><td>台湾合作银行</td><td>8220102938400911</td><td>0.9%</td><td>0.1%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-25 15:00:00</td><td>2026-08-08 16:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
+                  <tr><td>1005</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>支付宝</td><td>深圳好饮科技旗舰店，共 1 家门店</td><td>深圳好饮科技有限公司（ALIPAY-SUB-2088123456）</td><td>建设银行</td><td>6227002088122088</td><td>0.95%</td><td>0.05%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag red">停用</span></td><td>2026-07-18 09:00:00</td><td>2026-08-05 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">启用</button><button class="link" type="button" data-split-action="delete">删除</button></div></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <section class="page" id="split-detail" data-title="分账明细" data-breadcrumb="支付结算,分账明细">
+        <section class="page" id="split-config-form" data-title="新增结算配置" data-breadcrumb="支付结算,结算配置,新增结算配置" data-menu-page="split-config">
           <div class="panel">
             <div class="panel-body">
-              <div class="summary balance-summary">
-                <div class="stat"><label>待分账金额</label><strong>¥ 9,826.00</strong></div>
-                <div class="stat"><label>分账中金额</label><strong>¥ 3,420.00</strong></div>
-                <div class="stat"><label>分账成功金额</label><strong>¥ 268,640.30</strong></div>
-                <div class="stat"><label>分账失败金额</label><strong>¥ 1,260.00</strong></div>
-                <div class="stat"><label>退款退回金额</label><strong>¥ 3,280.00</strong></div>
+              <div class="product-form-grid">
+                <div class="product-form-module">
+                  <h3 class="product-form-module-title">基础配置</h3>
+                  <input id="splitFormConfigCode" type="hidden" />
+                  <div class="product-form-module-grid split-basic-grid">
+                    <div class="field"><label><span class="required-mark">*</span>租户名称</label>
+                      <select id="splitFormTenant">
+                        <option value="">请选择租户名称</option>
+                        <option value="T10001">平台自营租户（T10001）</option>
+                        <option value="T10002">深圳好饮科技有限公司（T10002）</option>
+                        <option value="T20001">英国渠道运营租户（T20001）</option>
+                        <option value="T30001">台湾运营租户（T30001）</option>
+                      </select>
+                    </div>
+                    <div class="field"><label><span class="required-mark">*</span>支付渠道</label>
+                      <select id="splitFormChannel"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
+                    </div>
+                    <div class="field"><label><span class="required-mark">*</span>结算有效期</label>
+                      <div class="split-date-range"><input id="splitFormStartDate" type="date" value="2026-08-01" /><span>至</span><input id="splitFormEndDate" type="date" value="2027-07-31" /></div>
+                    </div>
+                    <div class="field full"><label><span class="required-mark">*</span>结算门店</label>
+                      <div class="split-store-picker" id="splitStorePicker">
+                        <button class="split-store-trigger placeholder" id="splitStoreTrigger" type="button">请先选择租户</button>
+                        <div class="split-store-dropdown" id="splitStoreDropdown"></div>
+                      </div>
+                    </div>
+                    <select id="splitFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
+                  </div>
+                </div>
+
+                <div class="product-form-module">
+                  <div class="panel-head no-title compact-head split-module-head">
+                    <h3 class="product-form-module-title">结算商户</h3>
+                  </div>
+                  <div class="split-participant-scroll" id="splitParticipantSection">
+                    <table class="product-sku-table split-participant-table">
+                      <thead>
+                        <tr><th>商户名称</th><th>银行名称</th><th>银行卡号</th><th>入账比例</th><th>手续费率</th></tr>
+                      </thead>
+                      <tbody id="splitParticipantBody">
+                        <tr>
+                          <td><input id="splitFormSubNo" value="好饮管理平台（1900000109）" placeholder="请输入商户名称" /></td>
+                          <td><input value="招商银行" placeholder="请输入银行名称" /></td>
+                          <td><input value="6225887559001028" placeholder="请输入银行卡号" /></td>
+                          <td><div class="split-percent-field"><input class="split-income-rate" value="0.9" inputmode="decimal" /><span>%</span></div></td>
+                          <td><div class="split-percent-field"><input class="split-fee-rate" value="0.1" inputmode="decimal" /><span>%</span></div></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
+              <div class="form-actions">
+                <button class="btn soft" id="splitFormBack" type="button">取消</button>
+                <button class="btn primary" id="splitFormSave" type="button">确定</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="settlement-bills" data-title="结算记录" data-breadcrumb="支付结算,结算记录">
+          <div class="panel">
+            <div class="panel-body">
               <div class="search cols-5">
-                <input id="splitDetailKeyword" placeholder="订单编号 / 分账流水号 / 收款方" />
-                <select id="splitDetailChannelFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
-                <select id="splitDetailReceiverFilter"><option value="">请选择收款方类型</option><option>平台</option><option>租户</option><option>渠道商</option></select>
-                <select id="splitDetailStatusFilter"><option value="">请选择分账状态</option><option>待分账</option><option>分账中</option><option>分账成功</option><option>分账失败</option><option>已退回</option><option>无需分账</option></select>
-                <div class="search-btns"><button class="btn primary" id="splitDetailSearch">搜索</button><button class="btn soft" id="splitDetailReset">重置</button></div>
+                <div class="filter-field"><label>结算配置ID：</label><input id="settlementBillConfigFilter" placeholder="请输入结算配置ID" /></div>
+                <div class="filter-field"><label>租户名称：</label><input id="settlementBillTenantFilter" placeholder="请输入租户名称" /></div>
+                <div class="filter-field"><label>商户名称：</label><input id="settlementBillMerchantFilter" placeholder="请输入商户名称" /></div>
+                <button class="btn primary" id="settlementBillSearch">搜索</button>
               </div>
               <table data-pagination="none">
                 <thead>
-                  <tr><th>分账流水号</th><th>订单编号</th><th>支付渠道</th><th>付款金额</th><th>分账配置ID</th><th>收款方类型</th><th>收款方名称</th><th>收款商户号</th><th>分账比例</th><th>分账金额</th><th>分账状态</th><th>入账/资金流水</th><th>发起时间</th><th>完成时间</th><th>失败 / 退回原因</th></tr>
+                  <tr><th>结算记录ID</th><th>结算配置ID</th><th>租户ID</th><th>租户名称</th><th>支付渠道</th><th>商户名称</th><th>入账金额</th><th>结算明细</th><th>创建时间</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>SPL202608170090-T</td><td>ORD202608170090</td><td>微信支付</td><td>¥ 100.00</td><td>1000</td><td>租户</td><td>平台自营租户</td><td>WX-SUB-1900000109</td><td>100%</td><td class="amount-positive">¥ 100.00</td><td><span class="tag green">分账成功</span></td><td>TPF202608170010</td><td>2026-08-17 10:31:20</td><td>2026-08-17 10:31:44</td><td>-</td></tr>
-                  <tr><td>SPL202608170083-P</td><td>ORD202608170083</td><td>微信支付</td><td>¥ 124.00</td><td>1000</td><td>平台</td><td>好饮管理平台</td><td>1900000109</td><td>15%</td><td class="amount-positive">¥ 18.60</td><td><span class="tag green">分账成功</span></td><td>TPF202608170001</td><td>2026-08-17 10:32:01</td><td>2026-08-17 10:32:18</td><td>-</td></tr>
-                  <tr><td>SPL202608170083-T</td><td>ORD202608170083</td><td>微信支付</td><td>¥ 124.00</td><td>1000</td><td>租户</td><td>平台自营租户</td><td>WX-SUB-1900000109</td><td>85%</td><td class="amount-positive">¥ 105.40</td><td><span class="tag green">分账成功</span></td><td>TPF202608170012</td><td>2026-08-17 10:32:01</td><td>2026-08-17 10:32:20</td><td>-</td></tr>
-                  <tr><td>SPL202608170089-T</td><td>ORD202608170089</td><td>微信支付</td><td>¥ 128.00</td><td>1000</td><td>租户</td><td>平台自营租户</td><td>WX-SUB-1900000109</td><td>100%</td><td class="amount-positive">¥ 128.00</td><td><span class="tag warn">分账中</span></td><td>TPF202608170011</td><td>2026-08-17 10:20:02</td><td>-</td><td>三方已受理，等待结算为可用余额</td></tr>
-                  <tr><td>SPL202608160078-T</td><td>ORD202608160078</td><td>湃卡国际</td><td>£ 49.40</td><td>1003</td><td>租户</td><td>英国渠道运营租户</td><td>PK-UK-SUB-8837201</td><td>85%</td><td class="amount-positive">£ 42.00</td><td><span class="tag warn">分账中</span></td><td>TPF202608160080</td><td>2026-08-16 22:16:12</td><td>-</td><td>跨境服务商结算处理中</td></tr>
-                  <tr><td>SPL202608160078-C</td><td>ORD202608160078</td><td>湃卡国际</td><td>£ 49.40</td><td>1003</td><td>渠道商</td><td>伦敦渠道服务商</td><td>PK-UK-CH-20001</td><td>15%</td><td class="amount-positive">£ 7.40</td><td><span class="tag green">分账成功</span></td><td>TPF202608160150</td><td>2026-08-16 18:20:10</td><td>2026-08-16 18:20:37</td><td>-</td></tr>
-                  <tr><td>SPL202608160055-T</td><td>ORD202608160055</td><td>微信支付</td><td>¥ 68.00</td><td>1000</td><td>租户</td><td>平台自营租户</td><td>WX-SUB-1900000109</td><td>100%</td><td class="amount-negative">-¥ 68.00</td><td><span class="tag warn">已退回</span></td><td>TPF202608160025</td><td>2026-08-16 20:59:16</td><td>2026-08-16 21:08:36</td><td>用户全额退款，退回已分账金额</td></tr>
-                  <tr><td>SPL202608170101-T</td><td>ORD202608170101</td><td>支付宝</td><td>¥ 260.00</td><td>1005</td><td>租户</td><td>深圳好饮科技有限公司</td><td>ALIPAY-SUB-2088123456</td><td>95%</td><td class="amount-positive">¥ 247.00</td><td><span class="tag red">分账失败</span></td><td>-</td><td>2026-08-17 11:04:12</td><td>-</td><td>子商户号状态异常，等待重试</td></tr>
-                  <tr><td>SPL202608170102-P</td><td>ORD202608170102</td><td>宝付</td><td>¥ 88.00</td><td>1001</td><td>平台</td><td>好饮管理平台</td><td>BF-1002837465</td><td>0%</td><td class="amount-muted">¥ 0.00</td><td><span class="tag gray">无需分账</span></td><td>-</td><td>2026-08-17 11:08:44</td><td>2026-08-17 11:08:44</td><td>平台自营规则为租户 100%</td></tr>
+                  <tr data-bill-detail="微信支付订单 4 笔，退款扣减 3 笔，结算门店：好饮自营商户、好饮机场店"><td>SETT202608170001</td><td>1000</td><td>T10001</td><td>平台自营租户</td><td>微信支付</td><td>平台自营租户（WX-SUB-1900000109）</td><td class="amount-positive">¥ 25.62</td><td><button class="link" type="button" data-bill-action="detail">7 笔订单</button></td><td>2026-08-17 10:40:00</td></tr>
+                  <tr data-bill-detail="支付宝订单 2 笔，退款扣减 0 笔，结算门店：好饮高铁店、好饮太空舱店"><td>SETT202608170002</td><td>1002</td><td>T10001</td><td>平台自营租户</td><td>支付宝</td><td>平台自营租户（ALIPAY-SUB-1900000109）</td><td class="amount-positive">¥ 29.86</td><td><button class="link" type="button" data-bill-action="detail">2 笔订单</button></td><td>2026-08-17 10:45:00</td></tr>
+                  <tr data-bill-detail="湃卡国际订单 2 笔，退款扣减 1 笔，结算门店：London Central Store、Manchester Store"><td>SETT202608160001</td><td>1003</td><td>T20001</td><td>英国渠道运营租户</td><td>湃卡国际</td><td>英国渠道运营租户（PK-UK-SUB-8837201）</td><td class="amount-positive">£ 3.59</td><td><button class="link" type="button" data-bill-action="detail">3 笔订单</button></td><td>2026-08-16 22:30:00</td></tr>
+                  <tr data-bill-detail="摩宝支付订单 2 笔，退款扣减 2 笔，结算门店：台北信义店、台中公益店"><td>SETT202608160002</td><td>1004</td><td>T30001</td><td>台湾运营租户</td><td>摩宝支付</td><td>台湾运营租户（MB-TW-SUB-1029384）</td><td class="amount-positive">NT$ 12</td><td><button class="link" type="button" data-bill-action="detail">4 笔订单</button></td><td>2026-08-16 20:55:00</td></tr>
+                  <tr data-bill-detail="支付宝订单 2 笔，退款扣减 0 笔，结算门店：深圳好饮科技旗舰店"><td>SETT202608150001</td><td>1005</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>支付宝</td><td>深圳好饮科技有限公司（ALIPAY-SUB-2088123456）</td><td class="amount-positive">¥ 26.28</td><td><button class="link" type="button" data-bill-action="detail">2 笔订单</button></td><td>2026-08-15 21:10:00</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </section>
 
-        <section class="page" id="account-balance" data-title="商户号余额" data-breadcrumb="支付结算,商户号余额">
-          <div class="panel">
-            <div class="panel-body">
-              <div class="summary balance-summary">
-                <div class="stat"><label>商户号可用余额合计</label><strong>¥ 286,420.50</strong></div>
-                <div class="stat"><label>待结算金额</label><strong>¥ 18,640.20</strong></div>
-                <div class="stat"><label>待分账金额</label><strong>¥ 9,826.00</strong></div>
-                <div class="stat"><label>冻结金额</label><strong>¥ 6,420.00</strong></div>
-                <div class="stat"><label>已冲正金额</label><strong>¥ 3,280.00</strong></div>
+        <section class="page" id="settlement-bill-detail" data-title="结算记录明细" data-breadcrumb="支付结算,结算记录,结算记录明细" data-menu-page="settlement-bills">
+          <div class="tenant-detail-page">
+            <div class="panel">
+              <div class="panel-body">
+                <div class="summary settlement-summary">
+                  <div class="stat"><label>订单金额</label><strong id="settlementBillDetailOrderAmount">-</strong></div>
+                  <div class="stat"><label>手续费金额</label><strong id="settlementBillDetailFeeAmount">-</strong></div>
+                  <div class="stat"><label>入账金额</label><strong id="settlementBillDetailIncomeAmount">-</strong></div>
+                </div>
               </div>
-              <div class="search cols-5">
-                <input id="balanceKeyword" placeholder="主体名称 / 主体ID" />
-                <select id="balanceSubjectFilter"><option value="">请选择归属主体</option><option>平台</option><option>租户</option><option>渠道商</option></select>
-                <select id="balanceCurrencyFilter"><option value="">请选择币种</option><option>CNY</option><option>GBP</option><option>TWD</option><option>USD</option></select>
-                <select id="balanceStatusFilter"><option value="">请选择资金状态</option><option>正常</option><option>待结算</option><option>处理失败</option><option>存在冲正</option></select>
-                <div class="search-btns"><button class="btn primary" id="balanceSearch">搜索</button><button class="btn soft" id="balanceReset">重置</button></div>
-              </div>
-              <table data-pagination="none">
-                <thead>
-                  <tr><th>支付渠道</th><th>商户号</th><th>商户号类型</th><th>归属主体</th><th>主体ID</th><th>主体名称</th><th>币种</th><th>可用余额</th><th>冻结金额</th><th>待结算金额</th><th>待分账金额</th><th>累计收款</th><th>累计退款 / 冲正</th><th>最近同步时间</th><th>资金状态</th><th>操作</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>微信支付</td><td>1900000109</td><td>平台商户号</td><td>平台</td><td>PLATFORM</td><td>好饮管理平台</td><td>CNY</td><td class="amount-positive">¥ 126,580.20</td><td>¥ 2,400.00</td><td>¥ 3,260.00</td><td>¥ 0.00</td><td>¥ 482,920.60</td><td class="amount-negative">¥ 38,420.00</td><td>2026-08-17 10:32:18</td><td><span class="tag green">正常</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                  <tr><td>微信支付</td><td>WX-SUB-1900000109</td><td>子商户号</td><td>租户</td><td>T10001</td><td>平台自营租户</td><td>CNY</td><td class="amount-positive">¥ 86,430.00</td><td>¥ 1,200.00</td><td>¥ 5,800.00</td><td>¥ 2,860.00</td><td>¥ 268,300.00</td><td class="amount-negative">¥ 12,800.00</td><td>2026-08-17 10:31:44</td><td><span class="tag warn">待结算</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                  <tr><td>支付宝</td><td>ALIPAY-SUB-2088123456</td><td>子商户号</td><td>租户</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>CNY</td><td class="amount-positive">¥ 42,680.30</td><td>¥ 0.00</td><td>¥ 1,540.20</td><td>¥ 1,920.00</td><td>¥ 128,960.30</td><td class="amount-negative">¥ 8,620.00</td><td>2026-08-17 09:48:03</td><td><span class="tag green">正常</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                  <tr><td>湃卡国际</td><td>PK-UK-SUB-8837201</td><td>子商户号</td><td>租户</td><td>T20001</td><td>英国渠道运营租户</td><td>GBP</td><td class="amount-positive">£ 18,620.00</td><td>£ 820.00</td><td>£ 4,280.00</td><td>£ 2,900.00</td><td>£ 72,440.00</td><td class="amount-negative">£ 3,180.00</td><td>2026-08-16 22:16:50</td><td><span class="tag warn">待结算</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                  <tr><td>摩宝支付</td><td>MB-TW-SUB-1029384</td><td>子商户号</td><td>租户</td><td>T30001</td><td>台湾运营租户</td><td>TWD</td><td class="amount-positive">NT$ 392,600</td><td>NT$ 24,000</td><td>NT$ 128,000</td><td>NT$ 72,000</td><td>NT$ 1,426,800</td><td class="amount-negative">NT$ 86,000</td><td>2026-08-16 20:42:12</td><td><span class="tag warn">存在冲正</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                  <tr><td>湃卡国际</td><td>PK-UK-CH-20001</td><td>子商户号</td><td>渠道商</td><td>CH20001</td><td>伦敦渠道服务商</td><td>GBP</td><td class="amount-positive">£ 6,940.00</td><td>£ 0.00</td><td>£ 0.00</td><td>£ 2,146.00</td><td>£ 28,500.00</td><td class="amount-negative">£ 1,220.00</td><td>2026-08-16 18:20:37</td><td><span class="tag green">正常</span></td><td><div class="row-actions"><button class="link" type="button" data-balance-action="ledger">查看流水</button></div></td></tr>
-                </tbody>
-              </table>
             </div>
-          </div>
-        </section>
-
-        <section class="page" id="account-ledger" data-title="商户号资金流水" data-breadcrumb="支付结算,商户号余额,商户号资金流水" data-menu-page="account-balance">
-          <div class="panel">
-            <div class="panel-body">
-              <div class="panel-head">
-                <button class="btn soft" type="button" data-page-open="account-balance">返回商户号余额</button>
-                <div></div>
+            <div class="panel">
+              <div class="panel-body">
+                <div class="search cols-5">
+                  <div class="filter-field"><label>交易日期：</label><div class="split-date-range"><input id="settlementBillDetailStartDate" type="date" /><span>至</span><input id="settlementBillDetailEndDate" type="date" /></div></div>
+                  <div class="filter-field"><label>门店名称：</label><input id="settlementBillDetailStoreFilter" placeholder="请输入门店名称" /></div>
+                  <div class="filter-field"><label>渠道订单号：</label><input id="settlementBillDetailChannelOrderFilter" placeholder="请输入渠道订单号" /></div>
+                  <div class="filter-field"><label>订单号：</label><input id="settlementBillDetailOrderFilter" placeholder="请输入订单号" /></div>
+                  <select id="settlementBillDetailStatusFilter"><option value="">请选择订单状态</option><option>已支付</option><option>交易成功</option><option>部分退款</option><option>退款中</option><option>退款成功</option></select>
+                  <button class="btn primary" id="settlementBillDetailSearch">搜索</button>
+                </div>
+                <table data-pagination="none">
+                  <thead>
+                    <tr><th>渠道订单号</th><th>订单号</th><th>订单创建时间</th><th>交易成功时间</th><th>门店名称</th><th>所属租户</th><th>订单状态</th><th>订单金额</th><th>手续费金额</th><th>入账金额</th></tr>
+                  </thead>
+                  <tbody id="settlementBillDetailRows"></tbody>
+                </table>
               </div>
-              <div class="ledger-account-card">
-                <div class="stat"><label>商户号</label><strong id="ledgerAccountId">-</strong></div>
-                <div class="stat"><label>支付渠道</label><strong id="ledgerChannel">-</strong></div>
-                <div class="stat"><label>主体名称</label><strong id="ledgerSubjectName">-</strong></div>
-                <div class="stat"><label>归属主体</label><strong id="ledgerSubjectType">-</strong></div>
-                <div class="stat"><label>币种</label><strong id="ledgerCurrency">-</strong></div>
-                <div class="stat"><label>商户号可用余额</label><strong id="ledgerAvailableBalance">-</strong></div>
-              </div>
-              <table data-pagination="none">
-                <thead>
-                  <tr><th>三方资金流水号</th><th>流水类型</th><th>支付渠道</th><th>商户号</th><th>关联订单号</th><th>关联分账流水</th><th>资金方向</th><th>发生金额</th><th>发生后余额</th><th>三方处理状态</th><th>发生时间</th><th>业务说明</th></tr>
-                </thead>
-                <tbody id="accountLedgerBody"></tbody>
-              </table>
             </div>
           </div>
         </section>
@@ -4622,7 +4686,7 @@
 
         <section class="modal-seg" data-seg="payment-channel">
           <div class="modal-grid">
-            <div class="field"><label><span class="required-mark">*</span>支付渠道配置ID</label><input id="paymentFormConfigCode" placeholder="如 3000" inputmode="numeric" /></div>
+            <input id="paymentFormConfigCode" type="hidden" />
             <div class="field"><label><span class="required-mark">*</span>渠道名称</label><input id="paymentFormName" placeholder="请输入渠道名称" /></div>
             <div class="field"><label><span class="required-mark">*</span>渠道编码</label><input id="paymentFormCode" placeholder="请输入渠道编码" /></div>
             <div class="field"><label><span class="required-mark">*</span>适用地区</label>
@@ -4644,40 +4708,6 @@
               <div class="choice-grid" data-choice-for="paymentFormStatus">
                 <label class="choice-option" data-value="启用"><input type="radio" name="paymentStatusRadio" />启用</label>
                 <label class="choice-option" data-value="停用"><input type="radio" name="paymentStatusRadio" />停用</label>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="modal-seg" data-seg="split-config">
-          <div class="modal-grid">
-            <div class="field"><label><span class="required-mark">*</span>分账配置ID</label><input id="splitFormConfigCode" placeholder="如 1000" inputmode="numeric" /></div>
-            <div class="field"><label><span class="required-mark">*</span>租户</label>
-              <select id="splitFormTenant">
-                <option value="">请选择租户</option>
-                <option value="T10001">平台自营租户（T10001）</option>
-                <option value="T10002">深圳好饮科技有限公司（T10002）</option>
-                <option value="T20001">英国渠道运营租户（T20001）</option>
-                <option value="T30001">台湾运营租户（T30001）</option>
-              </select>
-            </div>
-            <div class="field"><label><span class="required-mark">*</span>支付渠道</label>
-              <select id="splitFormChannel"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
-            </div>
-            <div class="field"><label>平台商户号</label><input id="splitFormPlatformMerchantNo" placeholder="选择支付渠道后自动带出" readonly /></div>
-            <div class="field"><label><span class="required-mark">*</span>子商户号</label><input id="splitFormSubNo" placeholder="请输入子商户号" /></div>
-            <div class="field"><label><span class="required-mark">*</span>分账方式</label>
-              <select id="splitFormMethod"><option value="">请选择分账方式</option><option>自动分账</option><option>手动分账</option></select>
-              <div class="hint" style="color:#8c95a6;font-size:12px">自动＝支付后自动划转；手动＝对账后人工发起</div>
-            </div>
-            <div class="field"><label><span class="required-mark">*</span>平台比例（%）</label><input id="splitFormPlatformRatio" placeholder="如 15" inputmode="decimal" /></div>
-            <div class="field"><label><span class="required-mark">*</span>租户比例（%）</label><input id="splitFormTenantRatio" placeholder="如 85" inputmode="decimal" /></div>
-            <div class="field"><label>分账手续费（%）</label><input id="splitFormFee" placeholder="如 0.1，可留空" inputmode="decimal" /></div>
-            <div class="field full status-inline"><label><span class="required-mark">*</span>状态</label>
-              <select id="splitFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
-              <div class="choice-grid" data-choice-for="splitFormStatus">
-                <label class="choice-option" data-value="启用"><input type="radio" name="splitStatusRadio" />启用</label>
-                <label class="choice-option" data-value="停用"><input type="radio" name="splitStatusRadio" />停用</label>
               </div>
             </div>
           </div>
@@ -6045,23 +6075,39 @@
       }
     ];
     const splitConfigAdd = document.getElementById('splitConfigAdd');
-    const splitKeyword = document.getElementById('splitKeyword');
+    const splitTenantKeyword = document.getElementById('splitTenantKeyword');
+    const splitMerchantKeyword = document.getElementById('splitMerchantKeyword');
     const splitChannelFilter = document.getElementById('splitChannelFilter');
-    const splitMethodFilter = document.getElementById('splitMethodFilter');
     const splitStatusFilter = document.getElementById('splitStatusFilter');
     const splitSearch = document.getElementById('splitSearch');
-    const splitReset = document.getElementById('splitReset');
     const splitFormConfigCode = document.getElementById('splitFormConfigCode');
     const splitFormTenant = document.getElementById('splitFormTenant');
     const splitFormChannel = document.getElementById('splitFormChannel');
-    const splitFormPlatformMerchantNo = document.getElementById('splitFormPlatformMerchantNo');
     const splitFormSubNo = document.getElementById('splitFormSubNo');
-    const splitFormMethod = document.getElementById('splitFormMethod');
-    const splitFormPlatformRatio = document.getElementById('splitFormPlatformRatio');
-    const splitFormTenantRatio = document.getElementById('splitFormTenantRatio');
-    const splitFormFee = document.getElementById('splitFormFee');
+    const splitFormStartDate = document.getElementById('splitFormStartDate');
+    const splitFormEndDate = document.getElementById('splitFormEndDate');
     const splitFormStatus = document.getElementById('splitFormStatus');
+    const splitStorePicker = document.getElementById('splitStorePicker');
+    const splitStoreTrigger = document.getElementById('splitStoreTrigger');
+    const splitStoreDropdown = document.getElementById('splitStoreDropdown');
+    const splitFormBack = document.getElementById('splitFormBack');
+    const splitFormSave = document.getElementById('splitFormSave');
+    const splitParticipantBody = document.getElementById('splitParticipantBody');
+    const splitParticipantSection = document.getElementById('splitParticipantSection');
     let splitContext = { mode: 'create', row: null };
+    let splitSelectedStores = [];
+    const settlementBillConfigFilter = document.getElementById('settlementBillConfigFilter');
+    const settlementBillTenantFilter = document.getElementById('settlementBillTenantFilter');
+    const settlementBillMerchantFilter = document.getElementById('settlementBillMerchantFilter');
+    const settlementBillSearch = document.getElementById('settlementBillSearch');
+    const settlementBillDetailStartDate = document.getElementById('settlementBillDetailStartDate');
+    const settlementBillDetailEndDate = document.getElementById('settlementBillDetailEndDate');
+    const settlementBillDetailStoreFilter = document.getElementById('settlementBillDetailStoreFilter');
+    const settlementBillDetailChannelOrderFilter = document.getElementById('settlementBillDetailChannelOrderFilter');
+    const settlementBillDetailOrderFilter = document.getElementById('settlementBillDetailOrderFilter');
+    const settlementBillDetailStatusFilter = document.getElementById('settlementBillDetailStatusFilter');
+    const settlementBillDetailSearch = document.getElementById('settlementBillDetailSearch');
+    const settlementBillDetailRows = document.getElementById('settlementBillDetailRows');
     const splitDetailKeyword = document.getElementById('splitDetailKeyword');
     const splitDetailChannelFilter = document.getElementById('splitDetailChannelFilter');
     const splitDetailReceiverFilter = document.getElementById('splitDetailReceiverFilter');
@@ -6370,7 +6416,7 @@
       location.hash = pageId;
       window.scrollTo({ top: 0, behavior: 'auto' });
       if (pageId === 'goods-list') buildGoodsList();
-      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping' || pageId === 'goods-list' || pageId === 'merchant-create') {
+      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'split-config' || pageId === 'split-config-form' || pageId === 'settlement-bills' || pageId === 'settlement-bill-detail' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping' || pageId === 'goods-list' || pageId === 'merchant-create') {
         refreshCustomSelects(page);
       }
       if (pageId === 'tenant-create') {
@@ -8483,7 +8529,14 @@
       if (control.dataset.queryLabel) return control.dataset.queryLabel;
       if (control.tagName === 'INPUT') {
         const placeholder = control.getAttribute('placeholder') || '';
-        return /时间|日期/.test(placeholder) ? '时间' : '关键词';
+        const label = placeholder
+          .replace(/^请输入/, '')
+          .replace(/^请选择/, '')
+          .replace(/^输入/, '')
+          .replace(/^选择/, '')
+          .replace(/查询$/, '')
+          .trim();
+        return label || (/时间|日期/.test(placeholder) ? '时间' : '查询字段');
       }
       const firstOption = control.options?.[0]?.textContent.trim() || '';
       return firstOption
@@ -10526,7 +10579,9 @@
     renderUnitDemo(unitDemoCountry?.value || 'CN');
 
     function savePaymentChannel(){
-      if (!paymentFormConfigCode.value.trim()) { paymentFormConfigCode.focus(); return false; }
+      if (!paymentFormConfigCode.value.trim()) {
+        paymentFormConfigCode.value = nextNumericConfigId('#payment-channel-config', 3000);
+      }
       if (!paymentFormName.value.trim()) { paymentFormName.focus(); return false; }
       if (!paymentFormCode.value.trim()) { paymentFormCode.focus(); return false; }
       if (!paymentFormRegion.value) { paymentFormRegion.focus(); return false; }
@@ -10585,15 +10640,119 @@
       return merchantNoMap[channel] || '-';
     }
 
-    function updateSplitPlatformMerchantNo(){
-      if (!splitFormPlatformMerchantNo) return;
-      const channel = splitFormChannel?.value || '';
-      splitFormPlatformMerchantNo.value = channel ? platformMerchantNoByChannel(channel) : '';
+    function splitStoreOptions(){
+      return tenantMerchantOptions[splitFormTenant?.value || ''] || [];
+    }
+
+    function updateSplitStoreTrigger(){
+      if (!splitStoreTrigger) return;
+      const count = splitSelectedStores.length;
+      splitStoreTrigger.classList.toggle('placeholder', count === 0);
+      splitStoreTrigger.textContent = count
+        ? `${splitSelectedStores.slice(0, 3).join('、')}${count > 3 ? ` 等 ${count} 家门店` : ''}`
+        : (splitFormTenant?.value ? '请选择结算门店' : '请先选择租户');
+    }
+
+    function renderSplitStoreOptions(selected){
+      if (!splitStoreDropdown) return;
+      const stores = splitStoreOptions();
+      const selectedSet = new Set(selected || splitSelectedStores);
+      splitSelectedStores = stores.map(store => store.name).filter(name => selectedSet.has(name));
+      if (!stores.length) {
+        splitStoreDropdown.innerHTML = '<div class="split-store-empty">请先选择租户</div>';
+        updateSplitStoreTrigger();
+        return;
+      }
+      splitStoreDropdown.innerHTML = stores.map(store => {
+        const checked = splitSelectedStores.includes(store.name) ? ' checked' : '';
+        return `
+          <label class="split-store-option" data-value="${escapeHtml(store.name)}">
+            <input type="checkbox"${checked} />
+            <span>${escapeHtml(store.id)} - ${escapeHtml(store.name)} - ${escapeHtml(store.city)}</span>
+          </label>
+        `;
+      }).join('');
+      updateSplitStoreTrigger();
+    }
+
+    function defaultSplitStores(){
+      return splitStoreOptions().map(store => store.name);
+    }
+
+    function storesFromSummary(summary){
+      return (summary || '')
+        .replace(/，共\s*\d+\s*家门店$/, '')
+        .split('、')
+        .map(item => item.trim())
+        .filter(Boolean);
+    }
+
+    function updateSplitStoresByTenant(selected){
+      splitSelectedStores = selected || defaultSplitStores();
+      renderSplitStoreOptions(splitSelectedStores);
+    }
+
+    function settlementNameWithNo(item){
+      const name = item.name || '';
+      return item.merchantNo ? `${name}（${item.merchantNo}）` : name;
+    }
+
+    function settlementMerchantNoFromName(inputValue){
+      const matched = (inputValue || '').match(/（([^（）]+)）\s*$/);
+      return matched ? matched[1].trim() : inputValue.trim();
+    }
+
+    function renderSplitParticipants(items){
+      if (!splitParticipantBody) return;
+      splitParticipantBody.innerHTML = items.map((item, index) => `
+        <tr>
+          <td><input ${index === (items.length > 1 ? 1 : 0) ? 'id="splitFormSubNo"' : ''} value="${escapeHtml(settlementNameWithNo(item))}" placeholder="请输入商户名称" /></td>
+          <td><input value="${escapeHtml(item.bankName || '')}" placeholder="请输入银行名称" /></td>
+          <td><input value="${escapeHtml(item.bankNo || '')}" placeholder="请输入银行卡号" /></td>
+          <td><div class="split-percent-field"><input class="split-income-rate" value="${escapeHtml(item.ratio || '')}" inputmode="decimal" /><span>%</span></div></td>
+          <td><div class="split-percent-field"><input class="split-fee-rate" value="${escapeHtml(item.feeRate || '')}" inputmode="decimal" /><span>%</span></div></td>
+        </tr>
+      `).join('');
+    }
+
+    function renumberSplitParticipants(){
+    }
+
+    function splitParticipantRatio(index){
+      const row = Array.from(splitParticipantBody?.querySelectorAll('tr') || [])[index];
+      return row?.cells[3]?.querySelector('input')?.value.trim().replace('%', '') || '0';
+    }
+
+    function splitParticipantFeeRate(index){
+      const row = Array.from(splitParticipantBody?.querySelectorAll('tr') || [])[index];
+      return row?.cells[4]?.querySelector('input')?.value.trim().replace('%', '') || '0';
+    }
+
+    function formatSettlementRate(value){
+      const rounded = Math.round(value * 10000) / 10000;
+      return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace(/0+$/, '').replace(/\.$/, '');
+    }
+
+    function syncSettlementRateComplement(input){
+      const row = input.closest('tr');
+      if (!row) return;
+      const incomeInput = row.querySelector('.split-income-rate');
+      const feeInput = row.querySelector('.split-fee-rate');
+      if (!incomeInput || !feeInput) return;
+      const rawValue = parseFloat(input.value);
+      if (Number.isNaN(rawValue)) return;
+      const total = rawValue > 1 ? 100 : 1;
+      const complement = Math.max(0, total - rawValue);
+      if (input === incomeInput) {
+        feeInput.value = formatSettlementRate(complement);
+      } else {
+        incomeInput.value = formatSettlementRate(complement);
+      }
     }
 
     function renderSplitActions(row){
-      const statusCell = row.cells[10];
-      const actionCell = row.cells[13];
+      const statusCell = row.cells[11];
+      const actionCell = row.cells[14];
       if (!statusCell || !actionCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       actionCell.innerHTML = `
@@ -10610,7 +10769,7 @@
     }
 
     function toggleSplitStatus(row){
-      const statusCell = row.cells[10];
+      const statusCell = row.cells[11];
       if (!statusCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
@@ -10621,25 +10780,173 @@
     }
 
     function applySplitFilters(){
-      const keyword = (splitKeyword?.value || '').trim().toLowerCase();
+      const tenantKeyword = (splitTenantKeyword?.value || '').trim().toLowerCase();
+      const merchantKeyword = (splitMerchantKeyword?.value || '').trim().toLowerCase();
       const channel = splitChannelFilter?.value || '';
-      const method = splitMethodFilter?.value || '';
       const status = splitStatusFilter?.value || '';
       document.querySelectorAll('#split-config tbody tr').forEach(row => {
-        const matchedKeyword = !keyword || row.cells[0].textContent.trim().toLowerCase().includes(keyword) || row.cells[2].textContent.trim().toLowerCase().includes(keyword) || row.cells[1].textContent.trim().toLowerCase().includes(keyword);
+        const matchedTenant = !tenantKeyword || row.cells[2]?.textContent.trim().toLowerCase().includes(tenantKeyword);
+        const matchedMerchant = !merchantKeyword || row.cells[5]?.textContent.trim().toLowerCase().includes(merchantKeyword);
         const matchedChannel = !channel || row.cells[3].textContent.trim() === channel;
-        const matchedMethod = !method || row.cells[6].textContent.trim() === method;
-        const matchedStatus = !status || row.cells[10].textContent.includes(status);
-        row.classList.toggle('filtered-out', !(matchedKeyword && matchedChannel && matchedMethod && matchedStatus));
+        const matchedStatus = !status || row.cells[11].textContent.includes(status);
+        row.classList.toggle('filtered-out', !(matchedTenant && matchedMerchant && matchedChannel && matchedStatus));
       });
     }
 
-    function resetSplitFilters(){
-      splitKeyword.value = '';
-      splitChannelFilter.value = '';
-      splitMethodFilter.value = '';
-      splitStatusFilter.value = '';
-      applySplitFilters();
+    function applySettlementBillFilters(){
+      const configId = (settlementBillConfigFilter?.value || '').trim().toLowerCase();
+      const tenant = (settlementBillTenantFilter?.value || '').trim().toLowerCase();
+      const merchant = (settlementBillMerchantFilter?.value || '').trim().toLowerCase();
+      document.querySelectorAll('#settlement-bills tbody tr').forEach(row => {
+        const matchedConfigId = !configId || row.cells[1]?.textContent.trim().toLowerCase().includes(configId);
+        const matchedTenant = !tenant || row.cells[3]?.textContent.trim().toLowerCase().includes(tenant);
+        const matchedMerchant = !merchant || row.cells[5]?.textContent.trim().toLowerCase().includes(merchant);
+        row.classList.toggle('filtered-out', !(matchedConfigId && matchedTenant && matchedMerchant));
+      });
+    }
+
+    const settlementBillDetailData = {
+      SETT202608170001: {
+        positive: [
+          ['WX2026081700019001', 'ORD202608170901', '2026-08-17 09:42:10', '2026-08-17 09:42:26', '好饮自营商户', '平台自营租户', '交易成功', '¥ 12.80', '¥ 0.04', '¥ 12.76'],
+          ['WX2026081700019002', 'ORD202608170902', '2026-08-17 10:05:18', '2026-08-17 10:05:31', '好饮机场店', '平台自营租户', '交易成功', '¥ 9.90', '¥ 0.03', '¥ 9.87'],
+          ['WX2026081700019003', 'ORD202608170903', '2026-08-17 10:22:40', '2026-08-17 10:22:55', '好饮自营商户', '平台自营租户', '交易成功', '¥ 15.80', '¥ 0.05', '¥ 15.75'],
+          ['WX2026081700019004', 'ORD202608170904', '2026-08-17 10:28:06', '2026-08-17 10:28:18', '好饮机场店', '平台自营租户', '已支付', '¥ 14.90', '¥ 0.04', '¥ 14.86']
+        ],
+        refund: [
+          ['WX2026081600007841', 'ORD202608160784', '2026-08-16 20:58:33', '2026-08-17 10:18:20', '好饮机场店', '平台自营租户', '退款成功', '-¥ 9.90', '-¥ 0.03', '-¥ 9.87'],
+          ['WX2026081700019005', 'ORD202608170905', '2026-08-17 10:31:12', '2026-08-17 10:36:20', '好饮自营商户', '平台自营租户', '部分退款', '-¥ 5.00', '-¥ 0.01', '-¥ 4.99'],
+          ['WX2026081700019006', 'ORD202608170906', '2026-08-17 10:34:45', '2026-08-17 10:39:02', '好饮机场店', '平台自营租户', '退款中', '-¥ 12.80', '-¥ 0.04', '-¥ 12.76']
+        ]
+      },
+      SETT202608170002: {
+        positive: [
+          ['ALI2026081700022001', 'ORD202608172201', '2026-08-17 09:48:10', '2026-08-17 09:48:22', '好饮高铁店', '平台自营租户', '交易成功', '¥ 12.90', '¥ 0.02', '¥ 12.88'],
+          ['ALI2026081700022002', 'ORD202608172202', '2026-08-17 10:12:44', '2026-08-17 10:12:58', '好饮太空舱店', '平台自营租户', '交易成功', '¥ 17.00', '¥ 0.02', '¥ 16.98']
+        ],
+        refund: []
+      },
+      SETT202608160001: {
+        positive: [
+          ['PK2026081600018101', 'ORD202608168101', '2026-08-16 18:20:10', '2026-08-16 18:20:37', 'London Central Store', '英国渠道运营租户', '交易成功', '£ 2.80', '£ 0.04', '£ 2.76'],
+          ['PK2026081600018102', 'ORD202608168102', '2026-08-16 21:05:12', '2026-08-16 21:05:31', 'Manchester Store', '英国渠道运营租户', '交易成功', '£ 3.20', '£ 0.05', '£ 3.15']
+        ],
+        refund: [
+          ['PK2026081500004140', 'ORD202608154140', '2026-08-15 18:16:20', '2026-08-16 22:18:10', 'London Central Store', '英国渠道运营租户', '退款成功', '-£ 2.36', '-£ 0.04', '-£ 2.32']
+        ]
+      },
+      SETT202608160002: {
+        positive: [
+          ['MB2026081600029101', 'ORD202608169101', '2026-08-16 19:42:11', '2026-08-16 19:42:26', '台北信义店', '台湾运营租户', '交易成功', 'NT$ 65', 'NT$ 1', 'NT$ 64'],
+          ['MB2026081600029102', 'ORD202608169102', '2026-08-16 20:10:03', '2026-08-16 20:10:18', '台中公益店', '台湾运营租户', '交易成功', 'NT$ 75', 'NT$ 1', 'NT$ 74']
+        ],
+        refund: [
+          ['MB2026081500008812', 'ORD202608158812', '2026-08-15 22:18:52', '2026-08-16 20:42:12', '台北信义店', '台湾运营租户', '退款成功', '-NT$ 65', '-NT$ 1', '-NT$ 64'],
+          ['MB2026081500008813', 'ORD202608158813', '2026-08-15 22:21:30', '2026-08-16 20:44:09', '台中公益店', '台湾运营租户', '退款成功', '-NT$ 63', '-NT$ 1', '-NT$ 62']
+        ]
+      },
+      SETT202608150001: {
+        positive: [
+          ['ALI2026081500015601', 'ORD202608155601', '2026-08-15 19:12:08', '2026-08-15 19:12:21', '深圳好饮科技旗舰店', '深圳好饮科技有限公司', '交易成功', '¥ 13.90', '¥ 0.02', '¥ 13.88'],
+          ['ALI2026081500015602', 'ORD202608155602', '2026-08-15 20:33:10', '2026-08-15 20:33:26', '深圳好饮科技旗舰店', '深圳好饮科技有限公司', '交易成功', '¥ 12.40', '¥ 0.00', '¥ 12.40']
+        ],
+        refund: []
+      }
+    };
+
+    function settlementBillRowsHtml(rows){
+      if (!rows?.length) {
+        return '<tr><td colspan="10" class="empty-cell">暂无数据</td></tr>';
+      }
+      return rows.map(item => `
+        <tr>
+          <td>${escapeHtml(item[0])}</td>
+          <td>${escapeHtml(item[1])}</td>
+          <td>${escapeHtml(item[2])}</td>
+          <td>${escapeHtml(item[3])}</td>
+          <td>${escapeHtml(item[4])}</td>
+          <td>${escapeHtml(item[5])}</td>
+          <td>${escapeHtml(item[6])}</td>
+          <td class="${String(item[7]).trim().startsWith('-') ? 'amount-negative' : 'amount-positive'}">${escapeHtml(item[7])}</td>
+          <td class="${String(item[8]).trim().startsWith('-') ? 'amount-negative' : 'amount-muted'}">${escapeHtml(item[8])}</td>
+          <td class="${String(item[9]).trim().startsWith('-') ? 'amount-negative' : 'amount-positive'}">${escapeHtml(item[9])}</td>
+        </tr>
+      `).join('');
+    }
+
+    function parseSettlementAmount(value){
+      const text = String(value || '').trim();
+      const currency = (text.match(/^[^\d.-]+/) || [''])[0].trim();
+      const amount = parseFloat(text.replace(/[^\d.-]/g, ''));
+      return { currency, amount: Number.isNaN(amount) ? 0 : amount };
+    }
+
+    function formatSettlementAmount(total, currency){
+      const absTotal = Math.abs(total);
+      const decimals = currency === 'NT$' ? 0 : 2;
+      const formatted = absTotal.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+      return `${total < 0 ? '-' : ''}${currency ? currency + ' ' : ''}${formatted}`;
+    }
+
+    function updateSettlementBillDetailSummary(){
+      const visibleRows = Array.from(document.querySelectorAll('#settlementBillDetailRows tr'))
+        .filter(row => !row.classList.contains('filtered-out') && !row.querySelector('.empty-cell'));
+      const fallbackCurrency = parseSettlementAmount(document.querySelector('#settlementBillDetailRows tr:not(.filtered-out) td:nth-child(8), #settlementBillDetailRows tr td:nth-child(8)')?.textContent).currency;
+      const totals = visibleRows.reduce((acc, row) => {
+        const order = parseSettlementAmount(row.cells[7]?.textContent);
+        const fee = parseSettlementAmount(row.cells[8]?.textContent);
+        const income = parseSettlementAmount(row.cells[9]?.textContent);
+        acc.currency ||= order.currency || fee.currency || income.currency || fallbackCurrency;
+        acc.order += order.amount;
+        acc.fee += fee.amount;
+        acc.income += income.amount;
+        return acc;
+      }, { currency: fallbackCurrency, order: 0, fee: 0, income: 0 });
+      const values = {
+        settlementBillDetailOrderAmount: formatSettlementAmount(totals.order, totals.currency),
+        settlementBillDetailFeeAmount: formatSettlementAmount(totals.fee, totals.currency),
+        settlementBillDetailIncomeAmount: formatSettlementAmount(totals.income, totals.currency)
+      };
+      Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      });
+    }
+
+    function applySettlementBillDetailFilters(){
+      const startDate = settlementBillDetailStartDate?.value || '';
+      const endDate = settlementBillDetailEndDate?.value || '';
+      const store = (settlementBillDetailStoreFilter?.value || '').trim().toLowerCase();
+      const channelOrder = (settlementBillDetailChannelOrderFilter?.value || '').trim().toLowerCase();
+      const orderNo = (settlementBillDetailOrderFilter?.value || '').trim().toLowerCase();
+      const status = settlementBillDetailStatusFilter?.value || '';
+      document.querySelectorAll('#settlementBillDetailRows tr').forEach(row => {
+        if (row.querySelector('.empty-cell')) return;
+        const createdDate = (row.cells[2]?.textContent.trim() || '').slice(0, 10);
+        const matchedStart = !startDate || createdDate >= startDate;
+        const matchedEnd = !endDate || createdDate <= endDate;
+        const matchedStore = !store || row.cells[4]?.textContent.trim().toLowerCase().includes(store);
+        const matchedChannelOrder = !channelOrder || row.cells[0]?.textContent.trim().toLowerCase().includes(channelOrder);
+        const matchedOrderNo = !orderNo || row.cells[1]?.textContent.trim().toLowerCase().includes(orderNo);
+        const matchedStatus = !status || row.cells[6]?.textContent.trim() === status;
+        row.classList.toggle('filtered-out', !(matchedStart && matchedEnd && matchedStore && matchedChannelOrder && matchedOrderNo && matchedStatus));
+      });
+      updateSettlementBillDetailSummary();
+    }
+
+    function openSettlementBillDetail(row){
+      if (!row) return;
+      const billId = row.cells[0]?.textContent.trim() || '-';
+      const rows = settlementBillDetailData[billId] || { positive: [], refund: [] };
+      [settlementBillDetailStartDate, settlementBillDetailEndDate, settlementBillDetailStoreFilter, settlementBillDetailChannelOrderFilter, settlementBillDetailOrderFilter, settlementBillDetailStatusFilter].forEach(control => {
+        if (control) control.value = '';
+      });
+      if (settlementBillDetailRows) settlementBillDetailRows.innerHTML = settlementBillRowsHtml([...(rows.positive || []), ...(rows.refund || [])]);
+      updateSettlementBillDetailSummary();
+      activate('settlement-bill-detail');
     }
 
     function applySplitDetailFilters(){
@@ -10747,80 +11054,85 @@
 
     function openSplitConfigModal(context = { mode: 'create', row: null }){
       splitContext = context;
-      modal.classList.remove('menu-mode');
-      modal.classList.remove('role-mode');
-      modal.classList.remove('tenant-mode');
-      modal.classList.remove('permission-mode');
-      modal.classList.remove('qualification-mode');
-      modal.classList.remove('assign-role-mode');
-      modal.classList.remove('tenant-cashier-mode');
-      modal.classList.remove('payment-mode');
-      modal.classList.remove('region-mode');
-      modal.classList.remove('product-mode');
-      modal.classList.remove('material-mode');
-      modal.classList.remove('spec-mode');
-      modal.classList.add('split-mode');
-      modalTitle.textContent = context.mode === 'edit' ? '编辑分账配置' : '新增分账配置';
-      segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'split-config'));
+      const splitFormPage = document.getElementById('split-config-form');
+      const pageTitle = context.mode === 'edit' ? '编辑结算配置' : '新增结算配置';
+      if (splitFormPage) {
+        splitFormPage.dataset.title = pageTitle;
+        splitFormPage.dataset.breadcrumb = `支付结算,结算配置,${pageTitle}`;
+      }
 
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         splitFormConfigCode.value = row.cells[0].textContent.trim();
         splitFormTenant.value = row.cells[1].textContent.trim();
         splitFormChannel.value = row.cells[3].textContent.trim();
-        splitFormSubNo.value = row.cells[5].textContent.trim();
-        splitFormMethod.value = row.cells[6].textContent.trim();
-        splitFormPlatformRatio.value = row.cells[7].textContent.trim().replace('%', '');
-        splitFormTenantRatio.value = row.cells[8].textContent.trim().replace('%', '');
-        splitFormFee.value = row.cells[9].textContent.trim() === '-' ? '' : row.cells[9].textContent.trim().replace('%', '');
-        splitFormStatus.value = row.cells[10].textContent.includes('停用') ? '停用' : '启用';
+        const validDates = row.cells[10].textContent.trim().split(' 至 ').map(item => item.trim());
+        splitFormStartDate.value = validDates[0] || '2026-08-01';
+        splitFormEndDate.value = validDates[1] || '2027-07-31';
+        splitFormStatus.value = row.cells[11].textContent.includes('停用') ? '停用' : '启用';
+        updateSplitStoresByTenant(storesFromSummary(row.cells[4].textContent.trim()));
+        renderSplitParticipants([
+          { merchantNo: settlementMerchantNoFromName(row.cells[5].textContent.trim()), name: row.cells[5].textContent.trim().replace(/（[^（）]+）\s*$/, ''), bankName: row.cells[6].textContent.trim(), bankNo: row.cells[7].textContent.trim(), ratio: row.cells[8].textContent.trim().replace('%', '') || '0.9', feeRate: row.cells[9].textContent.trim().replace('%', '') || '0.1' }
+        ]);
       } else {
         splitFormConfigCode.value = nextNumericConfigId('#split-config', 1000);
         splitFormTenant.value = '';
         splitFormChannel.value = '';
-        splitFormSubNo.value = '';
-        splitFormMethod.value = '';
-        splitFormPlatformRatio.value = '';
-        splitFormTenantRatio.value = '';
-        splitFormFee.value = '';
+        splitFormStartDate.value = '2026-08-01';
+        splitFormEndDate.value = '2027-07-31';
         splitFormStatus.value = '启用';
+        updateSplitStoresByTenant([]);
+        renderSplitParticipants([
+          { merchantNo: '', name: '请选择结算商户', bankName: '', bankNo: '', ratio: '0.9', feeRate: '0.1' }
+        ]);
       }
       syncChoiceGroup(splitFormStatus);
-      updateSplitPlatformMerchantNo();
-      refreshCustomSelects(modal);
-      modal.classList.add('show');
+      activate('split-config-form');
     }
 
     function saveSplitConfig(){
-      if (!splitFormConfigCode.value.trim()) { splitFormConfigCode.focus(); return false; }
+      const currentSubNo = document.getElementById('splitFormSubNo');
+      if (!splitFormConfigCode.value.trim()) {
+        splitFormConfigCode.value = nextNumericConfigId('#split-config', 1000);
+      }
       if (!splitFormTenant.value) { splitFormTenant.focus(); return false; }
       if (!splitFormChannel.value) { splitFormChannel.focus(); return false; }
-      if (!splitFormSubNo.value.trim()) { splitFormSubNo.focus(); return false; }
-      if (!splitFormMethod.value) { splitFormMethod.focus(); return false; }
-      if (!splitFormPlatformRatio.value.trim()) { splitFormPlatformRatio.focus(); return false; }
-      if (!splitFormTenantRatio.value.trim()) { splitFormTenantRatio.focus(); return false; }
+      if (!splitFormStartDate.value) { splitFormStartDate.focus(); return false; }
+      if (!splitFormEndDate.value) { splitFormEndDate.focus(); return false; }
+      if (!splitSelectedStores.length) { splitStoreTrigger?.focus(); return false; }
+      if (!currentSubNo?.value.trim()) { currentSubNo?.focus(); return false; }
 
       const tenantOption = splitFormTenant.selectedOptions[0];
       const tenantName = (tenantOption?.textContent || '').replace(/（T\d+）$/, '').trim();
-      const platformRatio = splitFormPlatformRatio.value.trim().replace('%', '');
-      const tenantRatio = splitFormTenantRatio.value.trim().replace('%', '');
+      const incomeRatio = splitParticipantRatio(0) || '0.9';
+      const feeRate = splitParticipantFeeRate(0) || '0.1';
+      const settlementMerchantNo = settlementMerchantNoFromName(currentSubNo.value);
+      const settlementMerchantName = currentSubNo.value.trim();
+      const participantRow = currentSubNo.closest('tr');
+      const bankName = participantRow?.cells[1]?.querySelector('input')?.value.trim() || '-';
+      const bankNo = participantRow?.cells[2]?.querySelector('input')?.value.trim() || '-';
+      const storeSummary = splitSelectedStores.length
+        ? `${splitSelectedStores.slice(0, 3).join('、')}${splitSelectedStores.length > 3 ? `，共 ${splitSelectedStores.length} 家门店` : `，共 ${splitSelectedStores.length} 家门店`}`
+        : '-';
+      const validPeriod = `${splitFormStartDate.value} 至 ${splitFormEndDate.value}`;
 
       const row = splitContext.mode === 'edit' && splitContext.row ? splitContext.row : document.createElement('tr');
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
       const createTime = splitContext.mode === 'edit' && splitContext.row
-        ? (splitContext.row.cells[11]?.textContent.trim() || now)
+        ? (splitContext.row.cells[12]?.textContent.trim() || now)
         : now;
       row.innerHTML = `
         <td>${escapeHtml(splitFormConfigCode.value.trim())}</td>
         <td>${escapeHtml(splitFormTenant.value)}</td>
         <td>${escapeHtml(tenantName)}</td>
         <td>${escapeHtml(splitFormChannel.value)}</td>
-        <td>${escapeHtml(platformMerchantNoByChannel(splitFormChannel.value))}</td>
-        <td>${escapeHtml(splitFormSubNo.value.trim())}</td>
-        <td>${escapeHtml(splitFormMethod.value)}</td>
-        <td>${escapeHtml(platformRatio)}%</td>
-        <td>${escapeHtml(tenantRatio)}%</td>
-        <td>${splitFormFee.value.trim() ? `${escapeHtml(splitFormFee.value.trim())}%` : '-'}</td>
+        <td>${escapeHtml(storeSummary)}</td>
+        <td>${escapeHtml(settlementMerchantName)}</td>
+        <td>${escapeHtml(bankName)}</td>
+        <td>${escapeHtml(bankNo)}</td>
+        <td>${escapeHtml(incomeRatio)}%</td>
+        <td>${escapeHtml(feeRate)}%</td>
+        <td>${escapeHtml(validPeriod)}</td>
         <td>${splitStatusHtml(splitFormStatus.value)}</td>
         <td>${escapeHtml(createTime)}</td>
         <td>${now}</td>
@@ -11834,10 +12146,10 @@
       }
 
       if (action.dataset.splitAction === 'status') {
-        const isDisabled = row.cells[10]?.textContent.includes('停用');
+        const isDisabled = row.cells[11]?.textContent.includes('停用');
         openConfirm(
-          isDisabled ? '确认启用分账配置' : '确认停用分账配置',
-          `是否确认${isDisabled ? '启用' : '停用'}「${name}」的分账配置？`,
+          isDisabled ? '确认启用结算配置' : '确认停用结算配置',
+          `是否确认${isDisabled ? '启用' : '停用'}「${name}」的结算配置？`,
           () => toggleSplitStatus(row)
         );
         return;
@@ -11845,8 +12157,8 @@
 
       if (action.dataset.splitAction === 'delete') {
         openConfirm(
-          '确认删除分账配置',
-          `是否确认删除「${name}」的分账配置？删除后该租户将不再自动分账。`,
+          '确认删除结算配置',
+          `是否确认删除「${name}」的结算配置？删除后相关门店将不再使用该结算规则。`,
           () => {
             const table = row.closest('table');
             row.remove();
@@ -12458,13 +12770,59 @@
       control?.addEventListener('change', applyPaymentFilters);
     });
     splitConfigAdd?.addEventListener('click', () => openSplitConfigModal());
+    splitFormTenant?.addEventListener('change', () => updateSplitStoresByTenant(defaultSplitStores()));
+    splitStoreTrigger?.addEventListener('click', event => {
+      event.stopPropagation();
+      splitStorePicker?.classList.toggle('open');
+    });
+    splitStoreDropdown?.addEventListener('click', event => {
+      event.stopPropagation();
+      const option = event.target.closest('.split-store-option');
+      if (!option) return;
+      const input = option.querySelector('input');
+      if (event.target !== input && input) input.checked = !input.checked;
+      splitSelectedStores = Array.from(splitStoreDropdown.querySelectorAll('.split-store-option input:checked'))
+        .map(item => item.closest('.split-store-option')?.dataset.value || '')
+        .filter(Boolean);
+      updateSplitStoreTrigger();
+    });
+    document.addEventListener('click', event => {
+      if (!event.target.closest('#splitStorePicker')) splitStorePicker?.classList.remove('open');
+    });
+    splitFormBack?.addEventListener('click', () => activate('split-config'));
+    splitFormSave?.addEventListener('click', () => {
+      if (saveSplitConfig()) activate('split-config');
+    });
+    splitParticipantBody?.addEventListener('input', event => {
+      const rateInput = event.target.closest('.split-income-rate,.split-fee-rate');
+      if (rateInput) syncSettlementRateComplement(rateInput);
+    });
     splitSearch?.addEventListener('click', applySplitFilters);
-    splitReset?.addEventListener('click', resetSplitFilters);
-    [splitKeyword, splitChannelFilter, splitMethodFilter, splitStatusFilter].forEach(control => {
+    [splitTenantKeyword, splitMerchantKeyword, splitChannelFilter, splitStatusFilter].forEach(control => {
       control?.addEventListener('keydown', event => {
         if (event.key === 'Enter') applySplitFilters();
       });
       control?.addEventListener('change', applySplitFilters);
+    });
+    settlementBillSearch?.addEventListener('click', applySettlementBillFilters);
+    [settlementBillConfigFilter, settlementBillTenantFilter, settlementBillMerchantFilter].forEach(control => {
+      control?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') applySettlementBillFilters();
+      });
+      control?.addEventListener('change', applySettlementBillFilters);
+    });
+    document.querySelector('#settlement-bills table')?.addEventListener('click', event => {
+      const action = event.target.closest('[data-bill-action="detail"]');
+      if (!action) return;
+      openSettlementBillDetail(action.closest('tr'));
+    });
+    settlementBillDetailSearch?.addEventListener('click', applySettlementBillDetailFilters);
+    [settlementBillDetailStartDate, settlementBillDetailEndDate, settlementBillDetailStoreFilter, settlementBillDetailChannelOrderFilter, settlementBillDetailOrderFilter, settlementBillDetailStatusFilter].forEach(control => {
+      control?.addEventListener('keydown', event => {
+        if (event.key === 'Enter') applySettlementBillDetailFilters();
+      });
+      control?.addEventListener('input', applySettlementBillDetailFilters);
+      control?.addEventListener('change', applySettlementBillDetailFilters);
     });
     splitDetailSearch?.addEventListener('click', applySplitDetailFilters);
     splitDetailReset?.addEventListener('click', resetSplitDetailFilters);
@@ -12494,13 +12852,6 @@
         if (event.key === 'Enter') applyCountryUnitFilters();
       });
       control?.addEventListener('change', applyCountryUnitFilters);
-    });
-    splitFormChannel?.addEventListener('change', updateSplitPlatformMerchantNo);
-    splitFormPlatformRatio?.addEventListener('input', () => {
-      const platform = parseFloat(splitFormPlatformRatio.value);
-      if (!Number.isNaN(platform) && platform >= 0 && platform <= 100) {
-        splitFormTenantRatio.value = String(Math.round((100 - platform) * 100) / 100);
-      }
     });
     closeModal.addEventListener('click', hideModal);
     cancelModal.addEventListener('click', hideModal);
