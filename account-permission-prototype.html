@@ -1775,53 +1775,88 @@
       padding:0 0 48px;
     }
     #personnel .summary{
-      gap:16px;
-      margin-bottom:24px;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:8px;
+      margin-bottom:8px;
     }
     #personnel .stat{
-      min-height:88px;
-      padding:16px;
+      min-height:42px;
+      padding:8px 14px;
+      border-radius:6px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
     }
+    #personnel .stat label{margin:0;color:#667085;font-size:13px;font-weight:600;white-space:nowrap}
+    #personnel .stat strong{font-size:20px;line-height:1.2}
     #personnel .panel-body{
+      padding:12px 0 0;
+    }
+    #personnel .account-list-toolbar{
+      display:block;
+      align-items:center;
+      padding:0 0 10px;
+    }
+    #personnel .account-list-toolbar .filter-bar{
+      flex:1 1 auto;
+      gap:12px;
       padding:0;
+      flex-wrap:nowrap;
     }
-    #personnel .filter-bar{
-      gap:16px 24px;
-      padding:0 0 20px;
+    #personnel .account-list-toolbar .search{
+      flex:1 1 auto;
+      gap:12px;
+      margin:0;
+      align-items:center;
     }
-    #personnel .filter-field{
+    #personnel .account-list-toolbar .filter-field{
       min-width:0;
+      flex:0 1 260px;
     }
-    #personnel .filter-field label{
-      flex:0 0 72px;
+    #personnel .account-list-toolbar .filter-field label{
+      flex:0 0 auto;
+      text-align:left;
     }
-    #personnel .filter-field input,
-    #personnel .filter-field select,
-    #personnel .filter-field .custom-select{
-      width:200px;
-      flex:0 0 200px;
-    }
-    #personnel .filter-actions{
-      gap:10px;
-    }
-    #personnel .filter-actions .btn{
-      width:88px;
-      height:40px;
-    }
-    #personnel .list-region{
+    #personnel .account-list-toolbar .filter-field input,
+    #personnel .account-list-toolbar .filter-field select,
+    #personnel .account-list-toolbar .filter-field .custom-select{
       width:100%;
-      margin-left:0;
+      flex:1 1 auto;
+      min-width:0;
+      height:36px;
     }
-    #personnel .panel-head.no-title{
-      padding:0 0 12px;
+    #personnel .account-list-toolbar .filter-actions{
+      gap:10px;
+      flex:0 0 auto;
+    }
+    #personnel .account-list-toolbar .filter-actions .btn{
+      width:78px;
+      height:36px;
+      border-radius:6px;
+    }
+    #personnel .account-toolbar-actions{
+      flex:0 0 auto;
+      display:flex;
+      justify-content:flex-end;
+      padding:0 0 10px;
+    }
+    #personnel .account-table-region{
+      min-height:calc(100vh - 286px);
+      overflow:auto;
+      border-top:1px solid #edf0f4;
     }
     #personnel table th,
     #personnel table td{
-      height:52px;
-      padding:14px 16px;
+      height:46px;
+      padding:10px 16px;
     }
     #personnel table th{
-      height:48px;
+      height:44px;
+      position:sticky;
+      top:0;
+      z-index:1;
     }
     #personnel .row-actions{
       gap:16px;
@@ -2200,55 +2235,57 @@
           <div class="grid-2">
             <div class="panel">
               <div class="panel-body">
-                <div class="search cols-4">
-                  <input id="personnelAccountQuery" data-query-label="账号或姓名" placeholder="请输入账号或姓名" />
-                  <select id="personnelRoleFilter"><option>全部角色</option><option>运营商</option><option>渠道商</option></select>
-                  <select id="personnelStatusFilter"><option>全部状态</option><option>启用</option><option>停用</option></select>
-                  <button class="btn primary" id="personnelSearch">搜索</button>
-                </div>
-                <div class="panel-head no-title">
-                  <div></div>
-                  <div class="actions">
-                    <button class="btn primary" data-open="personnel">+ 新增平台账号</button>
+                <div class="account-list-toolbar">
+                  <div class="search cols-4">
+                    <input id="personnelAccountQuery" data-query-label="账号" placeholder="请输入账号" />
+                    <input id="personnelNameQuery" data-query-label="姓名" placeholder="请输入姓名" />
+                    <select id="personnelRoleFilter"><option>全部角色</option><option>运营商</option><option>渠道商</option></select>
+                    <select id="personnelStatusFilter"><option>全部状态</option><option>启用</option><option>停用</option></select>
+                    <button class="btn primary" id="personnelSearch">搜索</button>
                   </div>
                 </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>账号</th><th>姓名</th><th>角色</th><th>状态</th><th>操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><span class="link">chenjing@platform.com</span></td>
-                      <td>陈静</td>
-                      <td>运营商</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="link">alex.wang@platform.com</span></td>
-                      <td>王磊</td>
-                      <td>渠道商</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="link">finance@platform.com</span></td>
-                      <td>林雪</td>
-                      <td>运营商</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="link">ops@platform.com</span></td>
-                      <td>张锐</td>
-                      <td>渠道商</td>
-                      <td><span class="tag red">停用</span></td>
-                      <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">启用</span></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="account-toolbar-actions">
+                  <button class="btn primary" data-open="personnel">+ 新增平台账号</button>
+                </div>
+                <div class="account-table-region">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>账号</th><th>姓名</th><th>角色</th><th>状态</th><th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="link">chenjing@platform.com</span></td>
+                        <td>陈静</td>
+                        <td>运营商</td>
+                        <td><span class="tag green">启用</span></td>
+                        <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="link">alex.wang@platform.com</span></td>
+                        <td>王磊</td>
+                        <td>渠道商</td>
+                        <td><span class="tag green">启用</span></td>
+                        <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="link">finance@platform.com</span></td>
+                        <td>林雪</td>
+                        <td>运营商</td>
+                        <td><span class="tag green">启用</span></td>
+                        <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">停用</span></td>
+                      </tr>
+                      <tr>
+                        <td><span class="link">ops@platform.com</span></td>
+                        <td>张锐</td>
+                        <td>渠道商</td>
+                        <td><span class="tag red">停用</span></td>
+                        <td><span class="link">编辑</span>　<span class="link">修改密码</span>　<span class="link">启用</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
@@ -6747,6 +6784,7 @@
     const accountConfirmPassword = document.getElementById('accountConfirmPassword');
     const accountPasswordHelp = document.getElementById('accountPasswordHelp');
     const personnelAccountQuery = document.getElementById('personnelAccountQuery');
+    const personnelNameQuery = document.getElementById('personnelNameQuery');
     const personnelRoleFilter = document.getElementById('personnelRoleFilter');
     const personnelStatusFilter = document.getElementById('personnelStatusFilter');
     const personnelSearch = document.getElementById('personnelSearch');
@@ -6987,6 +7025,7 @@
 
     function applyPersonnelFilters(){
       const accountKeyword = personnelAccountQuery?.value.trim().toLowerCase() || '';
+      const nameKeyword = personnelNameQuery?.value.trim().toLowerCase() || '';
       const role = filterText(personnelRoleFilter);
       const status = filterText(personnelStatusFilter);
       document.querySelectorAll('#personnel table tbody tr').forEach(row => {
@@ -6994,7 +7033,8 @@
         const name = row.cells[1]?.textContent.trim().toLowerCase() || '';
         const rowRole = row.cells[2]?.textContent.trim() || '';
         const rowStatus = row.cells[3]?.textContent.trim() || '';
-        const matched = (!accountKeyword || account.includes(accountKeyword) || name.includes(accountKeyword))
+        const matched = (!accountKeyword || account.includes(accountKeyword))
+          && (!nameKeyword || name.includes(nameKeyword))
           && (isAllFilter(role) || rowRole.includes(role))
           && (isAllFilter(status) || rowStatus.includes(status));
         row.style.display = matched ? '' : 'none';
@@ -7004,6 +7044,7 @@
     function bindPersonnelFilters(){
       [
         personnelAccountQuery,
+        personnelNameQuery,
         personnelRoleFilter,
         personnelStatusFilter
       ].forEach(control => {
