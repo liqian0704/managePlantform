@@ -652,6 +652,7 @@
     .merchant-create-page .tenant-form-field.span-2{grid-column:span 2}
     .merchant-create-page .tenant-form-field.span-3{grid-column:span 3}
     .merchant-create-page .tenant-form-field.wide-label{grid-template-columns:160px minmax(0,1fr)}
+    .merchant-secret-help{grid-column:2;color:#98a2b3;font-size:12px;line-height:18px;margin-top:-3px}
     .merchant-create-page .tenant-form-field[data-merchant-region],
     .merchant-create-page .tenant-form-field[data-merchant-channel],
     .merchant-create-page .merchant-channel-fields[data-merchant-channel],
@@ -1214,6 +1215,9 @@
     .modal.payment-mode .field.full{grid-column:1/-1}
     .modal.payment-mode .field label{margin-bottom:8px;font-size:14px;line-height:20px;color:#344054}
     .modal.payment-mode .choice-grid{gap:24px}
+    #paymentFormFixedFeeField[hidden]{display:none!important}
+    .payment-fixed-fee-row{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:8px}
+    .payment-fixed-fee-row input,.payment-fixed-fee-row select,.payment-fixed-fee-row .custom-select{width:100%;min-width:0}
     .modal.split-mode .modal-panel{width:min(720px,calc(100vw - 48px))}
     .modal.split-mode .modal-body{padding:22px 24px 20px}
     .modal.split-mode .modal-grid{grid-template-columns:1fr 1fr;gap:14px 18px}
@@ -1594,6 +1598,8 @@
       font-size:12px;
       line-height:1.4;
     }
+    .field-error-message{display:none;margin-top:6px;color:#dc2626;font-size:12px;line-height:1.4}
+    .field-error-message.show{display:block}
     .password-help{
       margin-top:6px;
       color:#98a2b3;
@@ -2290,6 +2296,18 @@
             </div>
 
           </div>
+          <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+            <b style="display:block;margin-bottom:6px">需求描述：账号管理</b>
+            <b>顶部统计卡片</b>：展示当前账号列表的账号及角色统计信息，统计结果应随列表数据变化同步更新。<br />
+            <b>账号</b>：统计当前列表中的全部账号数量，包含“启用”和“停用”两种状态的账号。<br />
+            <b>启用账号</b>：统计当前列表中状态为“启用”的账号数量。<br />
+            <b>停用账号</b>：统计当前列表中状态为“停用”的账号数量。<br />
+            <b>角色</b>：统计当前账号下的角色数量。<br />
+            <b>新增与编辑校验</b>：点击“确定”时校验表单必填项；未填写的内容项应在对应输入框下方以红色文字提示“请输入＋内容项名称”，用户完成输入或选择后清除对应提示。<br />
+            <b>编辑账号</b>：支持修改账号姓名和角色，保存后同步更新账号列表中的姓名与角色信息。<br />
+            <b>修改密码</b>：弹窗只读回显当前账号；新密码要求为8-20位，且至少包含字母和数字。新密码为空或不符合规则时点击“确认”，提示“密码需为8-20位，且至少包含字母和数字”；新密码与确认密码不一致时，提示“两次输入密码不一致”。<br />
+            <b>状态与删除操作</b>：停用、启用和删除账号均需弹出二次确认弹窗，用户确认后才执行对应操作；取消确认不改变账号数据及状态。
+          </div>
         </section>
 
         <section class="page" id="roles">
@@ -2332,6 +2350,14 @@
               </div>
             </div>
 
+          </div>
+          <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+            <b style="display:block;margin-bottom:6px">需求描述：角色管理</b>
+            <b>功能定位</b>：角色管理用于维护好饮平台的角色及其权限配置。<br />
+            <b>角色名称</b>：新增和编辑角色时均为必填项，最多输入15个字符；角色名称为空时点击“确定”，应在输入框下方以红色文字提示“请输入角色名称”，输入后清除提示。<br />
+            <b>账号数</b>：展示已授权当前角色的账号数量。<br />
+            <b>权限数</b>：展示当前角色拥有的权限数量，并随角色权限配置同步更新。<br />
+            <b>状态与删除操作</b>：启用、停用和删除角色均需弹出二次确认弹窗，用户确认后才执行对应操作；取消确认不改变角色数据及状态。
           </div>
         </section>
 
@@ -2419,7 +2445,7 @@
                   <label>租户状态：</label>
                   <select>
                     <option>请选择</option>
-                    <option>已生效</option>
+                    <option>启用</option>
                     <option>停用</option>
                   </select>
                 </div>
@@ -2449,7 +2475,7 @@
                       </div>
                     </td>
                     <td>运营商</td>
-                    <td><span class="tag green">已生效</span></td>
+                    <td><span class="tag green">启用</span></td>
                     <td>2026-04-22 10:20:01</td>
                     <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
@@ -2463,7 +2489,7 @@
                       </div>
                     </td>
                     <td>渠道商</td>
-                    <td><span class="tag green">已生效</span></td>
+                    <td><span class="tag green">启用</span></td>
                     <td>2026-04-22 10:20:01</td>
                     <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
@@ -2477,7 +2503,7 @@
                       </div>
                     </td>
                     <td>渠道商</td>
-                    <td><span class="tag green">已生效</span></td>
+                    <td><span class="tag green">启用</span></td>
                     <td>2026-05-22 10:20:01</td>
                     <td><div class="tenant-actions"><button class="link" type="button" data-tenant-action="detail">详情</button><button class="link" type="button" data-tenant-action="edit">编辑</button><button class="link" type="button" data-tenant-action="status">停用</button></div></td>
                   </tr>
@@ -2921,7 +2947,7 @@
                 <div class="tenant-form-field"><label><span class="required-star">*</span>所在地区</label><select id="tenantEditRegion"><option>中国大陆（CN）</option><option>中国香港（HK）</option><option>英国（UK）</option><option>新加坡（SG）</option></select></div>
                 <div class="tenant-form-field"><label>时区</label><input id="tenantEditTimezone" /></div>
                 <div class="tenant-form-field"><label>语言</label><input id="tenantEditLanguage" /></div>
-                <div class="tenant-form-field"><label>租户状态</label><select id="tenantEditStatus"><option>已生效</option><option>停用</option></select></div>
+                <div class="tenant-form-field"><label>租户状态</label><select id="tenantEditStatus"><option>启用</option><option>停用</option></select></div>
                 <div class="tenant-form-field"><label><span class="required-star">*</span>租户名称</label><input id="tenantEditName" /></div>
                 <div class="tenant-form-field"><label>内部负责人</label><input id="tenantEditOwner" placeholder="请输入内部负责人" /></div>
                 <div class="tenant-form-field"><label>创建时间</label><input id="tenantEditCreatedAt" disabled /></div>
@@ -2991,7 +3017,7 @@
               <div class="filter-bar" id="tenantMenuFilters">
                 <div class="filter-field"><label>菜单名称：</label><input id="tenantMenuKeyword" placeholder="请输入菜单名称" /></div>
                 <div class="filter-field"><label>所属系统：</label><select id="tenantMenuSystem"><option value="">请选择所属系统</option><option>客户管理平台</option><option>运营助手</option></select></div>
-                <div class="filter-field"><label>状态：</label><select id="tenantMenuStatus"><option value="">请选择状态</option><option>正常</option><option>停用</option></select></div>
+                <div class="filter-field"><label>状态：</label><select id="tenantMenuStatus"><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
                 <div class="filter-actions">
                   <button class="btn primary">搜索</button>
                   <button class="btn">重置</button>
@@ -3009,13 +3035,13 @@
                     <tr><th>菜单名称</th><th>所属系统</th><th>路由 / 组件</th><th>类型</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr class="tree-row" data-node="merchant-workbench"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-workbench">⌄</button>工作台</div></td><td>客户管理平台</td><td>merchant/dashboard</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="merchant-workbench"><td class="tree-indent-1">经营概览</td><td>客户管理平台</td><td>merchant/dashboard/overview</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="merchant-order"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-order">⌄</button>订单管理</div></td><td>客户管理平台</td><td>merchant/order</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="merchant-order" data-shared-menu-key="merchant-order"><td class="tree-indent-1">订单列表</td><td>客户管理平台</td><td>merchant/order/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="merchant-order"><td class="tree-indent-1">退款列表</td><td>客户管理平台</td><td>merchant/order/refund</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="assistant-check"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="assistant-check">⌄</button>巡检任务</div></td><td>运营助手</td><td>assistant/task</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="assistant-check" data-shared-menu-key="assistant-device"><td class="tree-indent-1">设备巡检</td><td>运营助手</td><td>assistant/task/device-check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="merchant-workbench"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-workbench">⌄</button>工作台</div></td><td>客户管理平台</td><td>merchant/dashboard</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="merchant-workbench"><td class="tree-indent-1">经营概览</td><td>客户管理平台</td><td>merchant/dashboard/overview</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="merchant-order"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="merchant-order">⌄</button>订单管理</div></td><td>客户管理平台</td><td>merchant/order</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="merchant-order" data-shared-menu-key="merchant-order"><td class="tree-indent-1">订单列表</td><td>客户管理平台</td><td>merchant/order/list</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="merchant-order"><td class="tree-indent-1">退款列表</td><td>客户管理平台</td><td>merchant/order/refund</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="assistant-check"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="assistant-check">⌄</button>巡检任务</div></td><td>运营助手</td><td>assistant/task</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="assistant-check" data-shared-menu-key="assistant-device"><td class="tree-indent-1">设备巡检</td><td>运营助手</td><td>assistant/task/device-check</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -3667,6 +3693,26 @@
               </div>
             </section>
 
+            <section class="tenant-form-section tenant-form-panel" data-merchant-channel="支付宝">
+              <h2 class="tenant-section-title">支付参数配置</h2>
+              <div class="tenant-form-grid">
+                <div class="tenant-form-field">
+                  <label>AppID<span class="required-star">*</span></label>
+                  <input id="merchantCreateAlipayAppId" placeholder="请输入支付宝应用 AppID" />
+                </div>
+                <div class="tenant-form-field">
+                  <label>支付宝公钥<span class="required-star">*</span></label>
+                  <input id="merchantCreateAlipayPublicKey" autocomplete="off" placeholder="请输入支付宝公钥" />
+                  <div class="merchant-secret-help">录入时明文展示，保存后不回显</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>商家应用公钥<span class="required-star">*</span></label>
+                  <input id="merchantCreateAlipayMerchantPublicKey" autocomplete="off" placeholder="请输入商家应用公钥" />
+                  <div class="merchant-secret-help">录入时明文展示，保存后不回显</div>
+                </div>
+              </div>
+            </section>
+
             <section class="tenant-form-section">
               <div class="tenant-section-heading">
                 <h2 class="tenant-section-title">主体资质信息</h2>
@@ -4205,7 +4251,7 @@
 
             <div class="tenant-create-actions">
               <button class="btn soft" type="button" data-page-open="merchant-management">取消</button>
-              <button class="btn primary" type="button" data-page-open="merchant-management">确定</button>
+              <button class="btn primary" id="merchantCreateConfirm" type="button">确定</button>
             </div>
           </div>
         </section>
@@ -4559,30 +4605,33 @@
                 <input id="taxRegionFilter" placeholder="国家/地区" />
                 <select id="taxTypeFilter"><option value="">全部税种</option><option>增值税</option><option>VAT</option><option>无税</option></select>
                 <select id="taxTierFilter"><option value="">全部档位</option><option>标准税率</option><option>低税率</option><option>零税率</option><option>阶梯税率</option></select>
-                <select id="taxStatusFilter"><option value="">全部状态</option><option>启用</option><option>停用</option></select>
+                <select id="taxStatusFilter"><option value="">全部状态</option><option>待生效</option><option>生效中</option><option>已失效</option><option>已停用</option></select>
                 <div class="search-btns"><button class="btn primary" id="taxSearch">搜索</button><button class="btn soft" id="taxReset">重置</button></div>
               </div>
               <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
                 <button class="btn primary" id="taxConfigAdd" type="button">+ 新增税率</button>
               </div>
               <table class="tax-config-table" data-pagination="none">
-                <thead><tr><th>国家/地区</th><th>国家代码</th><th>税种</th><th>税率档位</th><th>适用品类</th><th>税率</th><th>生效日期</th><th>失效日期</th><th>状态</th><th>操作</th></tr></thead>
+                <thead><tr><th>国家/地区</th><th>国家代码</th><th>税种</th><th>税率档位</th><th>适用品类</th><th>税率</th><th>生效日期</th><th>失效日期</th><th>创建时间</th><th>状态</th><th>操作</th></tr></thead>
                 <tbody>
-                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>13%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>低税率</td><td>预包装商品</td><td>9%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国香港</td><td>HK</td><td>无税</td><td>零税率</td><td>全部</td><td>0%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>5%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>预包装商品</td><td>5%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2024-01-01</td><td>2026-09-30</td><td><span class="tag red">停用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">启用</button><button class="link" type="button" data-tax-action="delete">删除</button></div></td></tr>
-                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>22%</td><td>2026-10-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>零税率</td><td>预包装商品</td><td>0%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>低税率</td><td>预包装商品</td><td>5.5%</td><td>2025-01-01</td><td>—</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>13%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:26:35</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>低税率</td><td>预包装商品</td><td>9%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:32:08</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国香港</td><td>HK</td><td>无税</td><td>零税率</td><td>全部</td><td>0%</td><td>2025-01-01</td><td>—</td><td>2024-12-20 14:08:51</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:16:42</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>预包装商品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:21:17</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr data-tax-manual-status="启用"><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>18%</td><td>2023-01-01</td><td>2023-12-31</td><td>2022-12-15 16:40:23</td><td><span class="tag gray">已失效</span></td><td><span class="amount-muted">—</span></td></tr>
+                  <tr data-tax-manual-status="启用"><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2024-01-01</td><td>2026-09-30</td><td>2023-12-12 11:05:09</td><td><span class="tag green">生效中</span></td><td></td></tr>
+                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>22%</td><td>2026-10-01</td><td>—</td><td>2026-08-20 15:18:46</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>零税率</td><td>预包装商品</td><td>0%</td><td>2025-01-01</td><td>—</td><td>2024-12-16 13:37:54</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:24:30</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>低税率</td><td>预包装商品</td><td>5.5%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:31:12</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
                 <b style="display:block;margin-bottom:6px">备注：税率生效与存量业务处理</b>
                 税率按「国家/地区 × 税种 × 档位 × 适用品类 × 生效日期」维护，同一地区可存在多个档位与历史记录（如上「英国 GB 现制饮品」由 2024-01-01 至 2026-09-30 的 20% 切到 2026-10-01 生效的 22%）。<br />
+                <b>状态计算</b>：启用的税率在生效日期前显示“待生效”，有效期内显示“生效中”，超过失效日期后自动显示“已失效”；有效期内被人工停用时显示“已停用”。失效日期包含当天，次日零点起转为“已失效”。<br />
+                <b>列表与操作</b>：税率记录按创建时间倒序排列，最新创建的记录优先展示；已失效记录作为历史依据只读保留，不可编辑、启用、停用或删除。<br />
                 <b>存量业务锁定</b>：订单在「下单/审批通过」时快照当时的税率，之后税率调整只影响新订单，在途订单不重算、不打回。
               </div>
             </div>
@@ -4732,7 +4781,8 @@
                 <b style="display:block;margin-bottom:6px">备注：收单模式说明</b>
                 <b>直连</b>：直接接入微信支付、支付宝等官方渠道接口。<br />
                 <b>聚合收银</b>：通过聚合服务商统一接入多种支付方式。<br />
-                <b>跨境服务商</b>：用于英国、中国台湾等海外或跨境支付场景，支持当地币种及跨境支付能力。具体商户号、收款主体和结算账户请在商户收单配置中维护。
+                <b>跨境服务商</b>：用于英国、中国台湾等海外或跨境支付场景，支持当地币种及跨境支付能力。具体商户号、收款主体和结算账户请在商户收单配置中维护。<br />
+                <b>配置唯一性</b>：渠道编码＋适用国家/地区决定一条支付渠道配置的业务唯一性；同一渠道编码在同一国家/地区下不可重复新增，如需调整收单模式、支持币种、计费方式或费率，请直接编辑原配置。
               </div>
             </div>
           </div>
@@ -4948,11 +4998,12 @@
       <div class="modal-body">
         <section class="modal-seg active" data-seg="personnel">
           <div class="modal-grid">
-            <div class="field full"><label><span class="required-mark">*</span>姓名</label><input id="personName" type="text" placeholder="请输入姓名" autocomplete="name" /></div>
+            <div class="field full"><label><span class="required-mark">*</span>姓名</label><input id="personName" type="text" placeholder="请输入姓名" autocomplete="name" /><div class="field-error-message" id="personNameError">请输入姓名</div></div>
             <div class="field">
               <label id="personContactLabel"><span class="required-mark">*</span>手机号</label>
               <input id="personContact" type="tel" placeholder="请输入手机号" autocomplete="tel" inputmode="numeric" />
-              <div class="field-help" id="personContactHelp">请输入 11 位手机号</div>
+              <div class="field-help" id="personContactHelp" style="display:none"></div>
+              <div class="field-error-message" id="personContactRequiredError">请输入手机号</div>
             </div>
             <div class="field full" style="display:none"><label><span class="required-mark">*</span>账号类型</label>
               <select id="personType" class="hidden-control"><option value="platform" selected>平台账号</option><option value="tenant">租户账号</option></select>
@@ -4962,6 +5013,7 @@
                 <option value="">请选择租户ID</option>
               </select>
               <div class="field-help" id="personTenantHelp">每个租户仅可创建一个管理员账号，已被占用的租户ID不可再次选择</div>
+              <div class="field-error-message" id="personTenantError">请输入所属租户</div>
             </div>
             <div class="field full"><label id="personRoleLabel"><span class="required-mark">*</span>平台角色</label>
               <select id="personRole" class="hidden-control"><option value="">请选择</option><option>运营商</option><option>渠道商</option></select>
@@ -4969,8 +5021,9 @@
                 <label class="choice-option" data-value="运营商"><input type="radio" name="personRoleRadio" />运营商</label>
                 <label class="choice-option" data-value="渠道商"><input type="radio" name="personRoleRadio" />渠道商</label>
               </div>
+              <div class="field-error-message" id="personRoleError">请输入平台角色</div>
             </div>
-            <div class="field" id="personInitialPasswordField"><label><span class="required-mark">*</span>初始密码</label><div style="display:flex; gap:8px;"><input id="personInitialPassword" type="text" placeholder="请输入或生成初始密码" autocomplete="new-password" style="flex:1;" /><button type="button" class="btn" id="genPasswordBtn" style="white-space:nowrap;">生成初始密码</button></div><div class="password-help" id="personInitialPasswordHelp">8-20位，至少包含字母和数字</div></div>
+            <div class="field" id="personInitialPasswordField"><label><span class="required-mark">*</span>初始密码</label><div style="display:flex; gap:8px;"><input id="personInitialPassword" type="text" placeholder="请输入或生成初始密码" autocomplete="new-password" style="flex:1;" /><button type="button" class="btn" id="genPasswordBtn" style="white-space:nowrap;">生成初始密码</button></div><div class="password-help" id="personInitialPasswordHelp">8-20位，至少包含字母和数字</div><div class="field-error-message" id="personInitialPasswordError">请输入初始密码</div></div>
           </div>
         </section>
 
@@ -5030,7 +5083,7 @@
 
         <section class="modal-seg" data-seg="role">
           <div class="modal-grid">
-            <div class="field"><label><span class="required-mark">*</span>角色名称</label><input id="roleName" placeholder="请输入角色名称" /></div>
+            <div class="field"><label><span class="required-mark">*</span>角色名称</label><input id="roleName" placeholder="请输入角色名称" maxlength="15" /><div class="field-error-message" id="roleNameError">请输入角色名称</div></div>
             <select id="roleTarget" class="hidden-control"><option value="platform">平台用户</option><option value="tenant">租户用户</option></select>
             
             <div class="field full"><label><span class="required-mark">*</span>状态</label>
@@ -5149,7 +5202,16 @@
               <select id="paymentFormMode"><option value="">请选择收单模式</option><option>直连</option><option>聚合收银</option><option>跨境服务商</option></select>
             </div>
             <div class="field"><label><span class="required-mark">*</span>支持币种</label><input id="paymentFormSupportedCurrencies" placeholder="如 CNY，多个币种用顿号分隔" /></div>
-            <div class="field"><label><span class="required-mark">*</span>渠道费率（%）</label><input id="paymentFormFee" placeholder="如 0.6" inputmode="decimal" /></div>
+            <div class="field"><label><span class="required-mark">*</span>计费方式</label>
+              <select id="paymentFormBillingType"><option value="">请选择计费方式</option><option value="按比例">按比例</option><option value="按比例 + 固定金额">按比例 + 固定金额</option></select>
+            </div>
+            <div class="field"><label><span class="required-mark">*</span>比例费率（%）</label><input id="paymentFormFee" placeholder="如 0.6" inputmode="decimal" /></div>
+            <div class="field full" id="paymentFormFixedFeeField" hidden><label><span class="required-mark">*</span>固定金额</label>
+              <div class="payment-fixed-fee-row">
+                <input id="paymentFormFixedAmount" placeholder="如 0.04" inputmode="decimal" />
+                <select id="paymentFormFixedCurrency"><option value="">币种</option><option>CNY</option><option>GBP</option><option>HKD</option><option>TWD</option><option>EUR</option><option>USD</option></select>
+              </div>
+            </div>
             <div class="field full status-inline"><label><span class="required-mark">*</span>状态</label>
               <select id="paymentFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
               <div class="choice-grid" data-choice-for="paymentFormStatus">
@@ -5381,10 +5443,10 @@
             </div>
             <div class="field"><label><span class="required-mark">*</span>适用品类</label><input id="taxFormCategory" placeholder="如 现制饮品 / 预包装商品" /></div>
             <div class="field"><label><span class="required-mark">*</span>税率</label><input id="taxFormRate" placeholder="如 20% 或 0%~10%" /></div>
-            <div class="field"><label><span class="required-mark">*</span>生效日期</label><input id="taxFormEffective" placeholder="如 2026-10-01" /></div>
-            <div class="field"><label>失效日期</label><input id="taxFormExpiry" placeholder="留空表示长期有效" /></div>
+            <div class="field"><label><span class="required-mark">*</span>生效日期</label><input id="taxFormEffective" type="date" /></div>
+            <div class="field"><label>失效日期</label><input id="taxFormExpiry" type="date" /></div>
             <div class="field"><label><span class="required-mark">*</span>状态</label>
-              <select id="taxFormStatus"><option>启用</option><option>停用</option></select>
+              <select id="taxFormStatus"><option value="">请选择</option><option value="启用">启用</option><option value="停用">停用</option></select>
             </div>
           </div>
         </section>
@@ -5421,7 +5483,7 @@
             <div class="field" id="tenantStatusField"><label><span class="required-mark">*</span>租户状态</label>
               <select id="tenantStatusSelect">
                 <option>请选择租户状态</option>
-                <option>已生效</option>
+                <option>启用</option>
                 <option>停用</option>
               </select>
             </div>
@@ -6107,6 +6169,7 @@
     const roleTarget = document.getElementById('roleTarget');
     const roleStatus = document.getElementById('roleStatus');
     const roleName = document.getElementById('roleName');
+    const roleNameError = document.getElementById('roleNameError');
     let roleContext = { mode: 'create', row: null };
     const tenantRoleAdd = document.getElementById('tenantRoleAdd');
     const tenantMenuAdd = document.getElementById('tenantMenuAdd');
@@ -6470,7 +6533,11 @@
     const paymentFormMerchantNo = document.getElementById('paymentFormMerchantNo');
     const paymentFormSettleAccount = document.getElementById('paymentFormSettleAccount');
     const paymentFormCurrency = document.getElementById('paymentFormCurrency');
+    const paymentFormBillingType = document.getElementById('paymentFormBillingType');
     const paymentFormFee = document.getElementById('paymentFormFee');
+    const paymentFormFixedFeeField = document.getElementById('paymentFormFixedFeeField');
+    const paymentFormFixedAmount = document.getElementById('paymentFormFixedAmount');
+    const paymentFormFixedCurrency = document.getElementById('paymentFormFixedCurrency');
     let paymentContext = { mode: 'create', row: null };
     const paymentMerchantProfiles = [
       {
@@ -6778,6 +6845,11 @@
     const personInitialPasswordField = document.getElementById('personInitialPasswordField');
     const personInitialPassword = document.getElementById('personInitialPassword');
     const personInitialPasswordHelp = document.getElementById('personInitialPasswordHelp');
+    const personNameError = document.getElementById('personNameError');
+    const personContactRequiredError = document.getElementById('personContactRequiredError');
+    const personTenantError = document.getElementById('personTenantError');
+    const personRoleError = document.getElementById('personRoleError');
+    const personInitialPasswordError = document.getElementById('personInitialPasswordError');
     const genPasswordBtn = document.getElementById('genPasswordBtn');
     const passwordAccountName = document.getElementById('passwordAccountName');
     const accountNewPassword = document.getElementById('accountNewPassword');
@@ -7001,7 +7073,7 @@
       personTenantId.value = selectedId;
       personTenantHelp.textContent = personTenantId.value
         ? `当前租户：${findTenantOptionById(personTenantId.value)?.name || '-'}`
-        : '租户账号必须绑定一个已生效租户';
+        : '租户账号必须绑定一个启用状态的租户';
     }
 
     function updatePersonnelSummary(){
@@ -7179,6 +7251,7 @@
         ? (scope === 'tenantAccount' ? '编辑租户账号' : '编辑平台账号')
         : (scope === 'tenantAccount' ? '新增租户账号' : '新增平台账号');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'personnel'));
+      clearPersonnelRequiredErrors();
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         const accountValue = row.cells[0]?.textContent.trim() || '';
@@ -7239,6 +7312,7 @@
         : (isTenantRole ? '新增租户角色' : '新增角色');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'role'));
       resetRolePermissionChecks();
+      setPersonnelRequiredError(roleNameError, false);
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         roleName.value = row.cells[0]?.textContent.trim() || '';
@@ -7841,7 +7915,7 @@
         tenantName.value = '';
         tenantTypeSelect.value = '运营商';
         tenantEnterpriseTypeSelect.value = '请选择租户类型';
-        tenantStatusSelect.value = '已生效';
+        tenantStatusSelect.value = '启用';
         tenantStatusField.style.display = 'none';
         tenantStoreNote.value = '';
       }
@@ -7900,6 +7974,14 @@
       menuContext = context;
       const isEdit = context.mode === 'edit';
       const isTenantMenu = context.scope === 'tenantMenu';
+      const enabledStatusValue = isTenantMenu ? '启用' : '正常';
+      menuFormStatus.options[0].value = enabledStatusValue;
+      menuFormStatus.options[0].textContent = enabledStatusValue;
+      const enabledStatusChoice = document.querySelector('[data-choice-for="menuFormStatus"] .choice-option:first-child');
+      if (enabledStatusChoice) {
+        enabledStatusChoice.dataset.value = enabledStatusValue;
+        enabledStatusChoice.lastChild.textContent = enabledStatusValue;
+      }
       modalTitle.textContent = isEdit ? (context.scope === 'tenantMenu' ? '编辑租户菜单' : '编辑菜单') : (context.scope === 'tenantMenu' ? '新增租户菜单' : '新增菜单');
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'menu'));
       menuFormSystem.value = context.system || (isTenantMenu ? '' : menuScopeConfig(context.scope).defaultSystem);
@@ -7926,7 +8008,8 @@
       menuFormName.value = isEdit ? context.row.cells[0].textContent.trim().replace(/^⌄\s*/, '') : '';
       menuFormRoute.value = isEdit ? context.row.cells[3].textContent.trim() : '';
       menuFormPermission.value = isEdit ? context.row.cells[2].textContent.trim() : '';
-      menuFormStatus.value = isEdit && context.row.cells[5].textContent.includes('停用') ? '停用' : '正常';
+      const menuStatusIndex = menuColumnIndex(context.scope || 'platformMenu', 'status');
+      menuFormStatus.value = isEdit && context.row.cells[menuStatusIndex].textContent.includes('停用') ? '停用' : enabledStatusValue;
       syncChoiceGroup(menuFormStatus);
       updateMenuFormFields();
       modal.classList.add('show');
@@ -8164,7 +8247,7 @@
     }
 
     function contactHelpText(){
-      return '请输入 11 位手机号';
+      return '';
     }
 
     function currentAccountValue(){
@@ -8173,6 +8256,7 @@
 
     function updateContactField(){
       personContactHelp.textContent = contactHelpText();
+      personContactHelp.style.display = 'none';
     }
 
     function validateContact(){
@@ -8265,8 +8349,20 @@
 
     function setContactError(active){
       personContact.classList.toggle('contact-error', active);
+      personContactHelp.style.display = active ? 'block' : 'none';
       personContactHelp.style.color = active ? '#dc2626' : '#98a2b3';
       personContactHelp.textContent = active ? '请输入正确的 11 位手机号' : contactHelpText();
+    }
+
+    function setPersonnelRequiredError(element, active, text){
+      if (!element) return;
+      if (text) element.textContent = text;
+      element.classList.toggle('show', active);
+    }
+
+    function clearPersonnelRequiredErrors(){
+      [personNameError, personContactRequiredError, personTenantError, personRoleError, personInitialPasswordError]
+        .forEach(element => setPersonnelRequiredError(element, false));
     }
 
     function passwordValid(value){
@@ -8291,7 +8387,7 @@
         return false;
       }
       if (password !== confirm) {
-        setPasswordError(true, passwordInput, confirmInput, helpEl, '两次输入的密码不一致');
+        setPasswordError(true, passwordInput, confirmInput, helpEl, '两次输入密码不一致');
         confirmInput.focus();
         return false;
       }
@@ -8344,24 +8440,27 @@
     function savePersonnel(){
       const scope = currentPersonScope();
       personType.value = scope === 'tenantAccount' ? 'tenant' : 'platform';
-      if (!personName.value.trim()) {
-        personName.focus();
+      clearPersonnelRequiredErrors();
+      const missingName = !personName.value.trim();
+      const missingContact = !personContact.value.trim();
+      const missingTenant = scope === 'tenantAccount' && !personTenantId.value;
+      const missingRole = !personRole.value;
+      const missingPassword = personContext.mode !== 'edit' && !personInitialPassword.value.trim();
+      setPersonnelRequiredError(personNameError, missingName, '请输入姓名');
+      setPersonnelRequiredError(personContactRequiredError, missingContact, '请输入手机号');
+      setPersonnelRequiredError(personTenantError, missingTenant, '请输入所属租户');
+      setPersonnelRequiredError(personRoleError, missingRole, scope === 'tenantAccount' ? '请输入租户角色' : '请输入平台角色');
+      setPersonnelRequiredError(personInitialPasswordError, missingPassword, '请输入初始密码');
+      if (missingName || missingContact || missingTenant || missingRole || missingPassword) {
+        (missingName ? personName : missingContact ? personContact : missingTenant ? personTenantId : missingRole ? personRole : personInitialPassword)?.focus();
         return false;
       }
-      if (!personContact.value.trim() || !validateContact()) {
+      if (!validateContact()) {
         personContact.focus();
         setContactError(true);
         return false;
       }
       setContactError(false);
-      if (scope === 'tenantAccount' && !personTenantId.value) {
-        personTenantId.focus();
-        return false;
-      }
-      if (!personRole.value) {
-        personRole.focus();
-        return false;
-      }
       if (personContext.mode !== 'edit' && !passwordValid(personInitialPassword.value.trim())) {
         setPasswordError(true, personInitialPassword, null, personInitialPasswordHelp, '密码需为8-20位，且至少包含字母和数字');
         personInitialPassword.focus();
@@ -8474,7 +8573,7 @@
 
     function tenantStatusHtml(status){
       if (status === '停用') return '<span class="tag red">停用</span>';
-      return '<span class="tag green">已生效</span>';
+      return '<span class="tag green">启用</span>';
     }
 
     function splitTenantStores(text){
@@ -8506,8 +8605,8 @@
       const status = row.cells[4]?.textContent.trim() || '';
       const actionCell = row.cells[row.cells.length - 1];
       if (!actionCell) return;
-      const statusActionText = status === '已生效' ? '停用' : '启用';
-      const allowDelete = status !== '已生效';
+      const statusActionText = status === '启用' ? '停用' : '启用';
+      const allowDelete = status !== '启用';
       actionCell.innerHTML = `
         <div class="tenant-actions">
           <button class="link" type="button" data-tenant-action="detail">详情</button>
@@ -8603,7 +8702,7 @@
         <td>${escapeHtml(name)}</td>
         <td>${tenantStoreCellHtml('')}</td>
         <td>${escapeHtml(type)}</td>
-        <td>${tenantStatusHtml('已生效')}</td>
+        <td>${tenantStatusHtml('启用')}</td>
         <td>${createdAt}</td>
         <td></td>
       `;
@@ -8632,7 +8731,7 @@
       const name = tenantName.value.trim();
       const type = defaultTenantRole;
       const enterpriseType = tenantEnterpriseTypeSelect.value;
-      const status = tenantContext.mode === 'edit' ? tenantStatusSelect.value : '已生效';
+      const status = tenantContext.mode === 'edit' ? tenantStatusSelect.value : '启用';
       if (!id) {
         tenantId.focus();
         return false;
@@ -8701,7 +8800,7 @@
 
     function setTenantStatus(row, enabled){
       row.cells[4].innerHTML = enabled
-        ? tenantStatusHtml('已生效')
+        ? tenantStatusHtml('启用')
         : tenantStatusHtml('停用');
       renderTenantActions(row);
     }
@@ -8725,7 +8824,7 @@
           return;
         }
         if (action.dataset.tenantAction === 'status') {
-          const isEnabled = row.cells[4].textContent.includes('已生效');
+          const isEnabled = row.cells[4].textContent.includes('启用');
           openConfirm(
             isEnabled ? '确认停用租户' : '确认启用租户',
             `是否确认${isEnabled ? '停用' : '启用'}「${data.shortName || data.id}」？`,
@@ -8798,7 +8897,9 @@
 
     function saveRole(){
       roleTarget.value = (roleContext.scope || 'platformRole') === 'tenantRole' ? 'tenant' : 'platform';
-      if (!roleName.value.trim() || !roleStatus.value) {
+      const missingRoleName = !roleName.value.trim();
+      setPersonnelRequiredError(roleNameError, missingRoleName, '请输入角色名称');
+      if (missingRoleName || !roleStatus.value) {
         roleName.focus();
         return false;
       }
@@ -8815,12 +8916,9 @@
           row.cells[1].textContent = selectedRoleSystems(row.cells[1].textContent.trim() || '客户管理平台');
           row.cells[3].innerHTML = roleStatusHtml(roleStatus.value);
         } else {
-          row.cells[1].innerHTML = renderRoleTenantTypeTags();
-          row.cells[2].textContent = selectedManagedMenus(row.cells[2].textContent.trim() || '未配置');
-          row.cells[2].className = 'role-menu-cell';
           const permissionCount = selectedPermissionCount();
-          if (permissionCount > 0) row.cells[4].textContent = String(permissionCount);
-          row.cells[5].innerHTML = roleStatusHtml(roleStatus.value);
+          if (permissionCount > 0) row.cells[2].textContent = String(permissionCount);
+          row.cells[3].innerHTML = roleStatusHtml(roleStatus.value);
         }
         renderRoleActions(row);
       } else {
@@ -8837,8 +8935,6 @@
         } else {
           row.innerHTML = `
             <td>${escapeHtml(roleName.value.trim())}</td>
-            <td>${renderRoleTenantTypeTags()}</td>
-            <td class="role-menu-cell">${escapeHtml(selectedManagedMenus('未配置'))}</td>
             <td>0</td>
             <td>${selectedPermissionCount()}</td>
             <td>${roleStatusHtml(roleStatus.value)}</td>
@@ -9541,7 +9637,7 @@
       const statusCell = row.cells[menuColumnIndex(scope, 'status')];
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
-        ? '<span class="tag green">正常</span>'
+        ? `<span class="tag green">${scope === 'tenantMenu' ? '启用' : '正常'}</span>`
         : '<span class="tag red">停用</span>';
       renderMenuActions(row);
       if (scope === 'platformMenu') applyMenuFilters();
@@ -9706,6 +9802,11 @@
       return String(Math.max(start - 1, ...ids) + 1);
     }
 
+    function updatePaymentBillingFields(){
+      if (!paymentFormFixedFeeField) return;
+      paymentFormFixedFeeField.hidden = paymentFormBillingType?.value !== '按比例 + 固定金额';
+    }
+
     function openPaymentChannelModal(context = { mode: 'create', row: null }){
       paymentContext = context;
       modal.classList.remove('menu-mode');
@@ -9727,7 +9828,13 @@
         paymentFormRegion.value = row.cells[3].textContent.trim();
         paymentFormMode.value = row.cells[4].textContent.trim();
         paymentFormSupportedCurrencies.value = row.cells[5].textContent.trim();
-        paymentFormFee.value = row.cells[6].textContent.trim().replace('%', '');
+        const feeText = row.cells[6].textContent.trim();
+        const rateMatch = feeText.match(/([\d.]+)\s*%/);
+        const fixedMatch = feeText.match(/\+\s*([\d.]+)\s*([A-Z]{3})/i);
+        paymentFormBillingType.value = row.dataset.billingType || (fixedMatch ? '按比例 + 固定金额' : '按比例');
+        paymentFormFee.value = row.dataset.percentageFee || rateMatch?.[1] || '';
+        paymentFormFixedAmount.value = row.dataset.fixedAmount || fixedMatch?.[1] || '';
+        paymentFormFixedCurrency.value = row.dataset.fixedCurrency || fixedMatch?.[2]?.toUpperCase() || '';
         paymentFormStatus.value = row.cells[7].textContent.includes('停用') ? '停用' : '启用';
       } else {
         paymentFormConfigCode.value = nextNumericConfigId('#payment-channel-config', 3000);
@@ -9736,9 +9843,13 @@
         paymentFormRegion.value = '';
         paymentFormMode.value = '';
         paymentFormSupportedCurrencies.value = '';
+        paymentFormBillingType.value = '';
         paymentFormFee.value = '';
+        paymentFormFixedAmount.value = '';
+        paymentFormFixedCurrency.value = '';
         paymentFormStatus.value = '启用';
       }
+      updatePaymentBillingFields();
       [paymentFormRegion, paymentFormStatus].forEach(syncChoiceGroup);
       refreshCustomSelects(modal);
       modal.classList.add('show');
@@ -11068,13 +11179,24 @@
       if (!paymentFormRegion.value) { paymentFormRegion.focus(); return false; }
       if (!paymentFormMode.value) { paymentFormMode.focus(); return false; }
       if (!paymentFormSupportedCurrencies.value.trim()) { paymentFormSupportedCurrencies.focus(); return false; }
+      if (!paymentFormBillingType.value) { paymentFormBillingType.focus(); return false; }
       if (!paymentFormFee.value.trim()) { paymentFormFee.focus(); return false; }
+      const isCompoundBilling = paymentFormBillingType.value === '按比例 + 固定金额';
+      if (isCompoundBilling && !paymentFormFixedAmount.value.trim()) { paymentFormFixedAmount.focus(); return false; }
+      if (isCompoundBilling && !paymentFormFixedCurrency.value) { paymentFormFixedCurrency.focus(); return false; }
 
       const row = paymentContext.mode === 'edit' && paymentContext.row ? paymentContext.row : document.createElement('tr');
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
       const createTime = paymentContext.mode === 'edit' && paymentContext.row
         ? (paymentContext.row.cells[8]?.textContent.trim() || now)
         : now;
+      const feeDisplay = isCompoundBilling
+        ? `${paymentFormFee.value.trim()}% + ${paymentFormFixedAmount.value.trim()} ${paymentFormFixedCurrency.value}`
+        : `${paymentFormFee.value.trim()}%`;
+      row.dataset.billingType = paymentFormBillingType.value;
+      row.dataset.percentageFee = paymentFormFee.value.trim();
+      row.dataset.fixedAmount = isCompoundBilling ? paymentFormFixedAmount.value.trim() : '';
+      row.dataset.fixedCurrency = isCompoundBilling ? paymentFormFixedCurrency.value : '';
       row.innerHTML = `
         <td>${escapeHtml(paymentFormConfigCode.value.trim())}</td>
         <td>${escapeHtml(paymentFormName.value.trim())}</td>
@@ -11082,7 +11204,7 @@
         <td>${escapeHtml(paymentFormRegion.value)}</td>
         <td>${escapeHtml(paymentFormMode.value)}</td>
         <td>${escapeHtml(paymentFormSupportedCurrencies.value.trim())}</td>
-        <td>${escapeHtml(paymentFormFee.value.trim())}%</td>
+        <td>${escapeHtml(feeDisplay)}</td>
         <td>${paymentStatusHtml(paymentFormStatus.value)}</td>
         <td>${escapeHtml(createTime)}</td>
         <td>${now}</td>
@@ -11858,6 +11980,7 @@
     }
 
     function openTaxConfigModal(context = { mode: 'create', row: null }){
+      if (context.mode === 'edit' && context.row && taxComputedStatus(context.row) === '已失效') return;
       taxContext = context;
       modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode');
       modal.classList.add('tax-mode');
@@ -11865,6 +11988,7 @@
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'tax-config'));
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
+        taxFormExpiry.removeAttribute('min');
         taxFormRegion.value = row.cells[0].textContent.trim();
         taxFormRegionCode.value = row.cells[1].textContent.trim();
         taxFormType.value = row.cells[2].textContent.trim();
@@ -11873,7 +11997,7 @@
         taxFormRate.value = row.cells[5].textContent.trim();
         taxFormEffective.value = row.cells[6].textContent.trim();
         taxFormExpiry.value = row.cells[7].textContent.trim() === '—' ? '' : row.cells[7].textContent.trim();
-        taxFormStatus.value = row.cells[8].textContent.includes('停用') ? '停用' : '启用';
+        taxFormStatus.value = row.dataset.taxManualStatus || (row.cells[9].textContent.includes('停用') ? '停用' : '启用');
       } else {
         taxFormRegion.value = '';
         taxFormRegionCode.value = '';
@@ -11881,9 +12005,13 @@
         taxFormTier.value = '标准税率';
         taxFormCategory.value = '';
         taxFormRate.value = '';
-        taxFormEffective.value = '';
+        taxFormEffective.value = taxTodayString();
         taxFormExpiry.value = '';
-        taxFormStatus.value = '启用';
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowValue = `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`;
+        taxFormExpiry.min = tomorrowValue;
+        taxFormStatus.value = '';
       }
       modal.classList.add('show');
     }
@@ -11895,8 +12023,15 @@
       if (!taxFormCategory.value.trim()) { taxFormCategory.focus(); return false; }
       if (!taxFormRate.value.trim()) { taxFormRate.focus(); return false; }
       if (!taxFormEffective.value.trim()) { taxFormEffective.focus(); return false; }
+      if (!taxFormStatus.value) { taxFormStatus.focus(); return false; }
       const expiry = taxFormExpiry.value.trim() || '—';
+      if (expiry !== '—' && expiry < taxFormEffective.value.trim()) { taxFormExpiry.focus(); return false; }
+      if (taxContext.mode !== 'edit' && expiry !== '—' && expiry <= taxTodayString()) { taxFormExpiry.focus(); return false; }
       const row = taxContext.mode === 'edit' && taxContext.row ? taxContext.row : document.createElement('tr');
+      const createdAt = taxContext.mode === 'edit' && taxContext.row
+        ? (taxContext.row.cells[8]?.textContent.trim() || productDateTimeNow())
+        : productDateTimeNow();
+      row.dataset.taxManualStatus = taxFormStatus.value;
       row.innerHTML = `
         <td>${escapeHtml(taxFormRegion.value.trim())}</td>
         <td>${escapeHtml(taxFormRegionCode.value.trim())}</td>
@@ -11906,7 +12041,8 @@
         <td>${escapeHtml(taxFormRate.value.trim())}</td>
         <td>${escapeHtml(taxFormEffective.value.trim())}</td>
         <td>${escapeHtml(expiry)}</td>
-        <td>${taxFormStatus.value === '停用' ? '<span class="tag red">停用</span>' : '<span class="tag green">启用</span>'}</td>
+        <td>${escapeHtml(createdAt)}</td>
+        <td></td>
         <td></td>
       `;
       if (taxContext.mode !== 'edit') {
@@ -11914,14 +12050,48 @@
         updatePaginationTotal(row.closest('table'));
       }
       renderTaxActions(row);
+      sortTaxRowsByCreatedTime();
       return true;
     }
 
+    function taxTodayString(){
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function taxComputedStatus(row){
+      const manualStatus = row.dataset.taxManualStatus || (row.cells[9]?.textContent.includes('停用') ? '停用' : '启用');
+      row.dataset.taxManualStatus = manualStatus;
+      if (manualStatus === '停用') return '已停用';
+      const today = taxTodayString();
+      const effective = row.cells[6]?.textContent.trim() || '';
+      const expiry = row.cells[7]?.textContent.trim() || '—';
+      if (effective && today < effective) return '待生效';
+      if (expiry !== '—' && today > expiry) return '已失效';
+      return '生效中';
+    }
+
+    function taxStatusTagHtml(status){
+      if (status === '生效中') return '<span class="tag green">生效中</span>';
+      if (status === '待生效') return '<span class="tag warn">待生效</span>';
+      if (status === '已失效') return '<span class="tag gray">已失效</span>';
+      return '<span class="tag red">已停用</span>';
+    }
+
     function renderTaxActions(row){
-      const statusCell = row.cells[8];
-      const actionCell = row.cells[9];
+      const statusCell = row.cells[9];
+      const actionCell = row.cells[10];
       if (!statusCell || !actionCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
+      const status = taxComputedStatus(row);
+      const isDisabled = status === '已停用';
+      statusCell.innerHTML = taxStatusTagHtml(status);
+      if (status === '已失效') {
+        actionCell.innerHTML = '<span class="amount-muted">—</span>';
+        return;
+      }
       actionCell.innerHTML = `
         <div class="row-actions">
           <button class="link" type="button" data-tax-action="edit">编辑</button>
@@ -11932,16 +12102,25 @@
     }
 
     function toggleTaxStatus(row){
-      const statusCell = row.cells[8];
-      if (!statusCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      statusCell.innerHTML = isDisabled ? '<span class="tag green">启用</span>' : '<span class="tag red">停用</span>';
+      if (taxComputedStatus(row) === '已失效') return;
+      const isDisabled = row.dataset.taxManualStatus === '停用';
+      row.dataset.taxManualStatus = isDisabled ? '启用' : '停用';
       renderTaxActions(row);
+      applyTaxFilters();
     }
 
     function deleteTax(row){
+      if (taxComputedStatus(row) === '已失效') return;
       row.remove();
       updatePaginationTotal(row.closest('table'));
+    }
+
+    function sortTaxRowsByCreatedTime(){
+      const tbody = document.querySelector('#tax-config tbody');
+      if (!tbody) return;
+      Array.from(tbody.rows)
+        .sort((a, b) => (b.cells[8]?.textContent.trim() || '').localeCompare(a.cells[8]?.textContent.trim() || ''))
+        .forEach(row => tbody.appendChild(row));
     }
 
     function applyTaxFilters(){
@@ -11953,7 +12132,7 @@
         const matchedRegion = !region || row.cells[0].textContent.trim().toLowerCase().includes(region) || row.cells[1].textContent.trim().toLowerCase().includes(region);
         const matchedType = !type || row.cells[2].textContent.trim() === type;
         const matchedTier = !tier || row.cells[3].textContent.trim() === tier;
-        const matchedStatus = !status || row.cells[8].textContent.includes(status);
+        const matchedStatus = !status || row.cells[9].textContent.includes(status);
         row.classList.toggle('filtered-out', !(matchedRegion && matchedType && matchedTier && matchedStatus));
       });
     }
@@ -12160,6 +12339,8 @@
       });
       control?.addEventListener('change', applyAddressLevelFilters);
     });
+    document.querySelectorAll('#tax-config tbody tr').forEach(renderTaxActions);
+    sortTaxRowsByCreatedTime();
     taxConfigAdd?.addEventListener('click', () => openTaxConfigModal());
     taxSearch?.addEventListener('click', applyTaxFilters);
     taxReset?.addEventListener('click', resetTaxFilters);
@@ -12845,7 +13026,7 @@
       const statusCell = document.createElement('td');
       statusCell.innerHTML = status === '停用'
         ? '<span class="tag red">停用</span>'
-        : '<span class="tag green">正常</span>';
+        : `<span class="tag green">${scope === 'tenantMenu' ? '启用' : '正常'}</span>`;
       const actionCell = document.createElement('td');
       const edit = document.createElement('button');
       edit.type = 'button';
@@ -12932,7 +13113,7 @@
         const sourceSystem = source.cells[1]?.textContent.trim() || '';
         const sourceRoute = source.cells[3]?.textContent.trim() || '';
         const sourceType = normalizedMenuType(source, 'platformMenu');
-        const sourceStatus = source.cells[5]?.textContent.includes('停用') ? '停用' : '正常';
+        const sourceStatus = source.cells[5]?.textContent.includes('停用') ? '停用' : '启用';
         let target = tenantBody.querySelector(`[data-shared-menu-key="${key}"]`);
 
         if (!target) {
@@ -12958,7 +13139,7 @@
           target.cells[3].textContent = sourceType;
           target.cells[4].innerHTML = sourceStatus === '停用'
             ? '<span class="tag red">停用</span>'
-            : '<span class="tag green">正常</span>';
+            : '<span class="tag green">启用</span>';
           renderMenuActions(target);
         }
       });
@@ -12996,7 +13177,7 @@
           row.cells[3].textContent = type;
           row.cells[4].innerHTML = status === '停用'
             ? '<span class="tag red">停用</span>'
-            : '<span class="tag green">正常</span>';
+            : '<span class="tag green">启用</span>';
           renderMenuActions(row);
         } else {
           row.cells[2].textContent = permission;
@@ -13286,16 +13467,22 @@
     personType.addEventListener('change', updatePersonnelFields);
     personTenantId.addEventListener('change', () => {
       renderTenantIdOptions(personTenantId.value);
+      setPersonnelRequiredError(personTenantError, false);
     });
+    personName.addEventListener('input', () => setPersonnelRequiredError(personNameError, false));
     personContact.addEventListener('input', () => {
+      setPersonnelRequiredError(personContactRequiredError, false);
       setContactError(false);
       updateContactField();
     });
+    personRole.addEventListener('change', () => setPersonnelRequiredError(personRoleError, false));
     personInitialPassword.addEventListener('input', () => {
+      setPersonnelRequiredError(personInitialPasswordError, false);
       setPasswordError(false, personInitialPassword, null, personInitialPasswordHelp, '8-20位，至少包含字母和数字');
     });
     genPasswordBtn.addEventListener('click', () => {
       personInitialPassword.value = randomInitialPassword();
+      setPersonnelRequiredError(personInitialPasswordError, false);
       setPasswordError(false, personInitialPassword, null, personInitialPasswordHelp, '8-20位，至少包含字母和数字');
     });
     [accountNewPassword, accountConfirmPassword].forEach(input => {
@@ -13304,6 +13491,7 @@
       });
     });
     roleTarget.addEventListener('change', updateRoleFields);
+    roleName.addEventListener('input', () => setPersonnelRequiredError(roleNameError, false));
     tenantCreateEnterpriseType?.addEventListener('change', updateTenantComplianceFields);
     tenantRegion?.addEventListener('change', updateTenantRegionFields);
     tenantCreateAccountMethod?.addEventListener('change', () => {
@@ -13345,6 +13533,7 @@
     paymentChannelAdd?.addEventListener('click', () => openPaymentChannelModal());
     paymentFormSubject?.addEventListener('change', () => syncPaymentMerchantProfile());
     paymentFormSettleAccount?.addEventListener('change', syncPaymentSettlementCurrency);
+    paymentFormBillingType?.addEventListener('change', updatePaymentBillingFields);
     paymentSearch?.addEventListener('click', applyPaymentFilters);
     paymentReset?.addEventListener('click', resetPaymentFilters);
     [paymentChannelKeyword, paymentMethodFilter, paymentRegionFilter, paymentStatusFilter].forEach(control => {
@@ -13621,6 +13810,9 @@
         wechatApiV3Key: cells[3]?.textContent.trim() === '微信支付' ? '已配置' : '',
         wechatCertFile: cells[3]?.textContent.trim() === '微信支付' ? 'apiclient_cert.pem' : '',
         wechatKeyFile: cells[3]?.textContent.trim() === '微信支付' ? 'apiclient_key.pem' : '',
+        alipayAppId: cells[3]?.textContent.trim() === '支付宝' ? '2021002189697856' : '',
+        alipayPublicKeyConfigured: cells[3]?.textContent.trim() === '支付宝',
+        alipayMerchantPublicKeyConfigured: cells[3]?.textContent.trim() === '支付宝',
         yabandMerchantName: 'Good Drink UK Ltd',
         yabandTradeName: 'Good Drink',
         yabandLegalForm: 'Private limited company',
@@ -13742,6 +13934,22 @@
       ].join(''));
     }
 
+    function merchantSecretConfigField(label, configured, readonly = false){
+      if (readonly) {
+        return `<div class="merchant-modal-field" data-merchant-field="${escapeHtml(label)}"><label>${escapeHtml(label)}</label><div class="merchant-modal-readonly">${configured ? '••••••••（已配置）' : '未配置'}</div></div>`;
+      }
+      return `<div class="merchant-modal-field" data-merchant-field="${escapeHtml(label)}"><label>${escapeHtml(label)}</label><input autocomplete="off" placeholder="${configured ? '已配置，如需更换请重新输入' : `请输入${escapeHtml(label)}`}" /><div class="merchant-field-help">${configured ? '重新输入时明文展示；留空表示不修改，保存后不回显' : '录入时明文展示，保存后不回显'}</div></div>`;
+    }
+
+    function merchantAlipaySection(data, readonly){
+      if (data.channel !== '支付宝') return '';
+      return merchantSection('支付参数配置', [
+        merchantField('AppID', data.alipayAppId || '', readonly),
+        merchantSecretConfigField('支付宝公钥', data.alipayPublicKeyConfigured, readonly),
+        merchantSecretConfigField('商家应用公钥', data.alipayMerchantPublicKeyConfigured, readonly)
+      ].join(''));
+    }
+
     function merchantYabandSections(data, readonly){
       if (data.channel !== 'yabandpay' || data.region !== '英国' || data.type !== '企业') return '';
       return [
@@ -13860,6 +14068,7 @@
           merchantBaofooFields(data, readonly)
         ].join('')),
         merchantWechatPaySection(data, readonly),
+        merchantAlipaySection(data, readonly),
         merchantSection('主体资质信息', [
           merchantField(data.region === '英国' ? '公司法定名称' : '企业法定名称', data.qualificationName, readonly),
           merchantField(data.region === '英国' ? '注册号码' : (isIndividualBusiness ? '营业执照号' : '统一社会信用代码'), data.qualificationNo, readonly),
@@ -14101,6 +14310,22 @@
     document.getElementById('merchantCreatePaymentChannel')?.addEventListener('change', updateMerchantCreateType);
     document.getElementById('merchantCreateRegion')?.addEventListener('change', updateMerchantCreateType);
     document.getElementById('merchantCreateType')?.addEventListener('change', updateMerchantCreateType);
+    document.getElementById('merchantCreateConfirm')?.addEventListener('click', () => {
+      const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
+      if (channel === '支付宝') {
+        const requiredFields = [
+          document.getElementById('merchantCreateAlipayAppId'),
+          document.getElementById('merchantCreateAlipayPublicKey'),
+          document.getElementById('merchantCreateAlipayMerchantPublicKey')
+        ];
+        const missingField = requiredFields.find(field => !field?.value.trim());
+        if (missingField) {
+          missingField.focus();
+          return;
+        }
+      }
+      activate('merchant-management');
+    });
     document.querySelectorAll('input[name="merchantCreateYabandSaleChannel"], [data-yaband-online-toggle]').forEach(control => {
       control.addEventListener('change', updateYabandSaleChannelFields);
     });
