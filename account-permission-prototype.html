@@ -1601,6 +1601,11 @@
     }
     .field-error-message{display:none;margin-top:6px;color:#dc2626;font-size:12px;line-height:1.4}
     .field-error-message.show{display:block}
+    .tenant-form-field > .field-error-message{grid-column:2 / 3}
+    .product-form-module-grid .field > .field-error-message,
+    .modal.tenant-cashier-mode .field > .field-error-message{grid-column:2 / 3}
+    .modal.material-mode .field > .field-error-message{grid-column:2 / 3;margin-top:-16px}
+    .spec-name-row > .field-error-message{grid-column:2 / 3;margin-top:-4px}
     .password-help{
       margin-top:6px;
       color:#98a2b3;
@@ -3220,6 +3225,13 @@
                   <tr><td>小呼噜001019912365478</td><td>19912365478</td><td>103</td><td>1418</td><td>2</td><td>47.5</td><td>2026-08-11 10:42:51</td><td>2026-07-24 18:46:13</td><td>小程序</td><td><button class="link" type="button" data-user-detail>历史订单</button></td></tr>
                 </tbody>
               </table>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：用户列表</b>
+                <b>查询条件</b>：支持按用户ID、手机号/邮箱、注册日期、购买记录、国家/地区、租户名称筛选用户数据；购买记录包含有购买、无购买、有复购。<br />
+                <b>列表展示</b>：每行展示单个用户的用户信息，并展示订单数量、订单总金额、退款数量、退款金额、最近订单时间；最近订单时间仅统计实际支付成功的订单，下单未支付订单不纳入口径。<br />
+                <b>历史订单</b>：点击“历史订单”后进入或展开用户信息，同时展示该用户历史正常订单和退款订单记录，便于查看用户完整交易轨迹。<br />
+                <b>订单详情</b>：点击订单详情后展示订单信息和订单日志；订单日志需展示订单创建、支付、支付完成等节点信息，节点包含状态、操作、时间、操作人和内容。
+              </div>
             </div>
           </div>
         </section>
@@ -3363,6 +3375,15 @@
                   </tbody>
                 </table>
               </div>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：标品管理</b>
+                <b>查询条件</b>：支持按标品ID、标品名称、标品类型、标品状态查询；标品类型包含现制饮品、预包装商品。<br />
+                <b>列表操作</b>：标品列表展示平台维护的标品信息；标品类型为现制饮品时展示“配方”操作按钮，标品类型为预包装商品时不展示“配方”操作。<br />
+                <b>编辑标品</b>：编辑标品时支持对已有标品信息进行修改；“已上架商品数”字段不可编辑，该字段根据当前标品创建并上架的商品数量反查展示。<br />
+                <b>必填校验</b>：新增和编辑标品时，商品名称、商品类型、原售价、选择规格等必填项为空时点击“保存”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
+                <b>选择规格</b>：编辑标品时，点击选择规格弹窗，弹窗展示当前系统已维护的标品规格数据，选择后生成规格SKU列表。<br />
+                <b>图片维护</b>：编辑标品页面中，标品详情图片支持点击预览，图片支持重新上传。
+              </div>
             </div>
           </div>
         </section>
@@ -3386,6 +3407,12 @@
                   <thead><tr><th>商品ID</th><th>商品名称</th><th>缩略图</th><th>商品类型</th><th>原售价</th><th>创建时间</th><th>更新时间</th><th>商品状态</th><th>国家/地区</th><th>门店类型</th><th id="goodsAreaColHeader">区域</th><th>门店名称</th><th>租户名称</th><th>操作</th></tr></thead>
                   <tbody id="goodsListRows"></tbody>
                 </table>
+              </div>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：商品列表</b>
+                <b>功能定位</b>：商品列表用于查询客户管理平台的商品信息，商品信息归属于租户下的具体门店。<br />
+                <b>查询条件</b>：支持按商品名称、商品状态、商品类型、国家/地区、区域、租户名称、门店名称、门店类型查询；国家/地区和区域联动，选择国家/地区后展示对应区域选项。<br />
+                <b>列表操作</b>：商品列表操作仅展示当前商品的“详情”操作；好饮管理平台没有对租户门店商品进行上架、下架、编辑、删除的管理功能。
               </div>
             </div>
           </div>
@@ -3488,6 +3515,14 @@
                   </tbody>
                 </table>
               </div>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：标品规格</b>
+                <b>查询条件</b>：支持按规格ID、规格名称、规格状态查询标品规格数据。<br />
+                <b>新增规格</b>：新增规格时规格ID由系统自增生成，新增弹窗输入规格名称、规格选项和备注；一个规格名称可以维护多个规格选项，备注文案最多支持输入50个字符。<br />
+                <b>必填校验</b>：新增和编辑规格时，规格名称、规格选项等必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”，用户完成输入后清除提示。<br />
+                <b>操作规则</b>：标品规格支持编辑、删除、启用、停用功能。<br />
+                <b>二次确认</b>：点击启用、停用、删除时均需要弹出二次确认弹窗，用户确认后才执行对应操作。
+              </div>
             </div>
           </div>
         </section>
@@ -3542,8 +3577,16 @@
                     <tr><td>RM404</td><td><span class="product-material-name">淡奶油</span></td><td>牛奶</td><td>克</td><td>用于标品配方制作消耗</td><td><span class="tag green">启用</span></td><td>2026-08-13 09:31:00</td><td>2026-08-11 10:12:24</td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
                     <tr><td>RM501</td><td><span class="product-material-name">纯净水</span></td><td>水</td><td>克</td><td>用于标品配方制作消耗</td><td><span class="tag green">启用</span></td><td>2026-08-13 09:34:00</td><td>2026-08-11 10:14:24</td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
                     <tr><td>RM502</td><td><span class="product-material-name">冰块</span></td><td>冰</td><td>克</td><td>用于标品配方制作消耗</td><td><span class="tag green">启用</span></td><td>2026-08-13 09:37:00</td><td>2026-08-11 10:16:24</td><td><div class="row-actions"><button class="link" type="button">删除</button><button class="link" type="button">停用</button></div></td></tr>
-                                                          </tbody>
+                  </tbody>
                 </table>
+              </div>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：标品原料</b>
+                <b>查询条件</b>：支持按原料名称、原料类型查询标品原料数据；原料类型枚举值为牛奶、咖啡类、糖浆、液体、冰、水。<br />
+                <b>新增原料</b>：新增原料时维护原料名称、原料类型、计量单位、备注；原料名称最多支持输入15个字符，原料类型为牛奶、咖啡类、糖浆、液体、冰、水，计量单位默认为克，备注最多支持输入50个字符。<br />
+                <b>必填校验</b>：新增原料时，原料名称、原料类型、计量单位等必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
+                <b>操作规则</b>：标品原料支持编辑、删除、启用、停用功能。<br />
+                <b>二次确认</b>：点击启用、停用、删除时均需要弹出二次确认弹窗，用户确认后才执行对应操作。
               </div>
             </div>
           </div>
@@ -4863,6 +4906,7 @@
                 <b>新增默认值</b>：新增租户收单配置时，租户字段默认为“请选择”；选择租户后，配置门店默认勾选该租户下的所有门店。<br />
                 <b>地区与渠道联动</b>：新增租户收单配置时，适用地区和支付渠道联动；选择适用地区后，自动带出该地区下已启用的支付渠道。<br />
                 <b>渠道与商户号联动</b>：支付渠道和收款商户号联动；勾选支付渠道后，展示该租户在该支付方式下可用的收款商户号。<br />
+                <b>必填校验</b>：新增和编辑租户收单配置时，租户、适用地区、支付渠道、收款商户号、配置门店等必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请选择＋内容项名称”，用户完成选择后清除提示。<br />
                 <b>编辑规则</b>：编辑配置时，页面反显收单配置编号，编号不可编辑；除编号外，其他信息均支持修改。<br />
                 <b>操作确认</b>：启用、停用和删除租户收单配置均需弹出二次确认弹窗，用户确认后才执行对应操作。
               </div>
@@ -5355,7 +5399,7 @@
           <div class="modal-grid">
             <div class="field">
               <label><span class="required-mark">*</span>原料名称</label>
-              <input id="materialFormName" placeholder="请输入原料名称" />
+              <input id="materialFormName" maxlength="15" placeholder="请输入原料名称" />
             </div>
             <div class="field">
               <label><span class="required-mark">*</span>原料类型</label>
@@ -5371,8 +5415,8 @@
             <div class="field">
               <label>备注</label>
               <div class="material-remark-wrap">
-                <textarea id="materialFormRemark" maxlength="500" placeholder="请输入内容"></textarea>
-                <span class="material-remark-count" id="materialRemarkCount">0/500</span>
+                <textarea id="materialFormRemark" maxlength="50" placeholder="请输入内容"></textarea>
+                <span class="material-remark-count" id="materialRemarkCount">0/50</span>
               </div>
             </div>
           </div>
@@ -7681,28 +7725,28 @@
       if (!tbody) return;
       const logs = [
         {
-          status: '已创建',
-          action: '创建订单',
+          status: '待支付',
+          action: '用户下单',
           time: data.createdAt || '-',
           operator: data.userName || '用户',
-          content: `订单创建成功，订单编号：${data.orderNo || '-'}`
+          content: `用户下单，订单编号：${data.orderNo || '-'}`
         }
       ];
       if (data.paidAt && data.paidAt !== '-') {
         logs.push(
           {
-            status: '待支付',
-            action: '付款',
+            status: '支付中',
+            action: '用户去支付',
             time: data.paidAt,
             operator: data.userName || '用户',
-            content: `用户发起付款，应付金额 ${data.paidAmount || data.amount || '-'}`
+            content: `用户发起支付，应付金额 ${data.paidAmount || data.amount || '-'}`
           },
           {
-            status: '已付款',
-            action: '完成支付',
+            status: '支付成功',
+            action: '支付回调完成',
             time: offsetLogTime(data.paidAt, 2),
-            operator: data.userName || '用户',
-            content: `用户支付成功，实付金额 ${data.paidAmount || data.amount || '-'}`
+            operator: '支付渠道',
+            content: `支付渠道回调成功，实付金额 ${data.paidAmount || data.amount || '-'}`
           }
         );
       }
@@ -7725,7 +7769,12 @@
           }
         );
       }
-      tbody.innerHTML = logs.map(log => `
+      const sortedLogs = logs.slice().sort((a, b) => {
+        const timeA = Date.parse(String(a.time || '').replace(' ', 'T'));
+        const timeB = Date.parse(String(b.time || '').replace(' ', 'T'));
+        return (Number.isNaN(timeB) ? 0 : timeB) - (Number.isNaN(timeA) ? 0 : timeA);
+      });
+      tbody.innerHTML = sortedLogs.map(log => `
         <tr>
           <td>${escapeHtml(log.status)}</td>
           <td>${escapeHtml(log.action)}</td>
@@ -7791,7 +7840,7 @@
         };
       }
       const createdAt = row.cells[6]?.textContent.trim() || '-';
-      const paidAt = normalizeLogTime(createdAt, '2026-08-11 16:08:34');
+      const paidAt = createdAt === '-' ? '-' : offsetLogTime(createdAt, 8);
       const status = row.cells[7]?.textContent.trim() || '-';
       const isRefunded = status.includes('退款');
       return {
@@ -8721,6 +8770,9 @@
       const region = tenantRegion?.value || '';
       const haoyinOwner = tenantCreateHaoyinOwner?.value.trim() || '';
       const haoyinOwnerPhone = tenantCreateHaoyinOwnerPhone?.value.trim() || '';
+      const contactName = tenantCreateContactName?.value.trim() || '';
+      const contactPhone = tenantCreateContactPhone?.value.trim() || '';
+      const contactEmail = tenantCreateContactEmail?.value.trim() || '';
       const account = currentTenantCreateAccountValue();
       const initialPassword = randomInitialPassword();
       const type = role;
@@ -8730,7 +8782,10 @@
         { control: tenantCreateEnterpriseType, message: '请选择租户类型' },
         { control: tenantRegion, message: '请选择所在地区' },
         { control: tenantCreateHaoyinOwner, message: '请输入好饮负责人' },
-        { control: tenantCreateHaoyinOwnerPhone, message: '请输入好饮负责人联系方式' }
+        { control: tenantCreateHaoyinOwnerPhone, message: '请输入好饮负责人联系方式' },
+        { control: tenantCreateContactName, message: '请输入联系人姓名' },
+        { control: tenantCreateContactPhone, message: '请输入联系人手机号' },
+        { control: tenantCreateContactEmail, message: '请输入联系人邮箱' }
       ]);
       if (!valid) {
         return false;
@@ -10078,22 +10133,19 @@
       }
       syncProductTypeFields();
       refreshCustomSelects(productFormPageBody);
+      [productFormName, productFormType, productFormSpecDisplay, productFormOriginalPrice].forEach(control => setInlineRequiredError(control, false));
       activate('product-form-page');
       productFormName?.focus();
     }
 
     function saveProductForm(){
       const requiredFields = [
-        productFormName,
-        productFormType,
-        productFormSpec,
-        productFormOriginalPrice
+        { control: productFormName, message: '请输入商品名称' },
+        { control: productFormType, message: '请选择商品类型' },
+        { control: productFormSpecDisplay, getValue: () => productFormSpec?.value || '', message: '请选择规格' },
+        { control: productFormOriginalPrice, message: '请输入原售价' }
       ];
-      const emptyField = requiredFields.find(field => !field?.value?.trim());
-      if (emptyField) {
-        emptyField.focus();
-        return false;
-      }
+      if (!validateInlineRequired(requiredFields)) return false;
       const table = document.querySelector('#product-list .product-table');
       const tbody = table?.querySelector('tbody');
       if (!tbody) return true;
@@ -10139,7 +10191,7 @@
 
     function updateMaterialRemarkCount(){
       if (!materialFormRemark || !materialRemarkCount) return;
-      materialRemarkCount.textContent = `${materialFormRemark.value.length}/500`;
+      materialRemarkCount.textContent = `${materialFormRemark.value.length}/50`;
     }
 
     function updateSpecTextCounts(){
@@ -10388,6 +10440,7 @@
       modal.classList.add('spec-mode');
       modalTitle.textContent = context.mode === 'edit' ? '编辑规格' : '新增规格';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'product-spec-form'));
+      [specFormType, specItemConfigRows].forEach(control => setInlineRequiredError(control, false));
       if (context.mode === 'edit' && context.row) {
         specFormType.value = context.row.cells[1].textContent.trim();
         const optionItems = context.row.cells[2].textContent.trim().split('、').map(item => item.trim()).filter(Boolean);
@@ -10407,15 +10460,16 @@
     }
 
     function saveProductSpec(){
-      if (!specFormType.value) {
-        specFormType.focus();
+      const requiredFields = [
+        { control: specFormType, message: '请输入规格名称' },
+        { control: specItemConfigRows, getValue: () => collectSpecConfigRows().join('、'), message: '请输入规格选项' }
+      ];
+      if (!validateInlineRequired(requiredFields)) {
+        if (!specFormType.value.trim()) specFormType.focus();
+        else specItemConfigRows?.querySelector('.spec-option-input')?.focus();
         return false;
       }
       const specRows = collectSpecConfigRows();
-      if (!specRows.length) {
-        specItemConfigRows?.querySelector('.spec-option-input')?.focus();
-        return false;
-      }
       const table = document.querySelector('#product-specs .product-spec-table');
       const tbody = table?.querySelector('tbody');
       if (!tbody) return true;
@@ -10461,6 +10515,7 @@
       modal.classList.add('material-mode');
       modalTitle.textContent = context.mode === 'edit' ? '编辑原料' : '添加原料';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'product-material-form'));
+      [materialFormName, materialFormType, materialFormUnit].forEach(control => setInlineRequiredError(control, false));
       if (context.mode === 'edit' && context.row) {
         materialFormName.value = context.row.cells[1].textContent.trim();
         materialFormType.value = context.row.cells[2].textContent.trim();
@@ -10476,12 +10531,12 @@
     }
 
     function saveProductMaterial(){
-      const requiredFields = [materialFormName, materialFormType, materialFormUnit];
-      const emptyField = requiredFields.find(field => !field?.value?.trim());
-      if (emptyField) {
-        emptyField.focus();
-        return false;
-      }
+      const requiredFields = [
+        { control: materialFormName, message: '请输入原料名称' },
+        { control: materialFormType, message: '请选择原料类型' },
+        { control: materialFormUnit, message: '请选择计量单位' }
+      ];
+      if (!validateInlineRequired(requiredFields)) return false;
       const table = document.querySelector('#product-materials .product-material-table');
       const tbody = table?.querySelector('tbody');
       if (!tbody) return true;
@@ -10617,6 +10672,9 @@
       }
       actionBtn.closest('.spec-option-row')?.remove();
       updateSpecOptionActions();
+    });
+    specItemConfigRows?.addEventListener('input', event => {
+      if (event.target.closest('.spec-option-input')) setInlineRequiredError(specItemConfigRows, false);
     });
     materialPickerSearch?.addEventListener('click', renderMaterialPickerRows);
     materialPickerTypeFilter?.addEventListener('change', renderMaterialPickerRows);
@@ -10807,11 +10865,13 @@
       const item = tr.dataset.specItem || '';
       if (productFormSpec) productFormSpec.value = item ? `${type}：${item}` : type;
       renderProductSkuRows();
+      setInlineRequiredError(productFormSpecDisplay, false);
       closeSpecPicker();
     });
     specPickerConfirm?.addEventListener('click', () => {
       if (productFormSpec) productFormSpec.value = getSelectedSpecNames();
       renderProductSkuRows();
+      setInlineRequiredError(productFormSpecDisplay, false);
       closeSpecPicker();
     });
     const specPickerAll = document.getElementById('specPickerAll');
@@ -12879,18 +12939,19 @@
       } else {
         if (tenantCashierCodeField) tenantCashierCodeField.style.display = 'none';
         if (tenantCashierCode) tenantCashierCode.value = '';
-        tenantCashierTenant.value = 'T10001';
+        tenantCashierTenant.value = '';
         tenantCashierStatus.value = '启用';
         tenantCashierStoreNameSearch.value = '';
         tenantCashierStoreIdSearch.value = '';
         tenantCashierStoreCitySearch.value = '';
-        populateTenantCashierRegions(tenantCashierTenantMeta().region || '');
+        populateTenantCashierRegions('');
         updateTenantCashierChannels([]);
         tenantCashierAccountSelections = {};
         renderTenantCashierAccountBindings();
-        renderTenantCashierMerchants(defaultTenantCashierMerchantValues());
+        renderTenantCashierMerchants([]);
       }
       syncChoiceGroup(tenantCashierStatus);
+      [tenantCashierTenant, tenantCashierRegion, tenantCashierChannelChoices, tenantCashierAccountBindings, tenantCashierMerchantChoices].forEach(control => setInlineRequiredError(control, false));
       modal.classList.add('show');
     }
 
@@ -12909,15 +12970,24 @@
       );
       updateTenantCashierSelectedMerchantsFromList();
       const merchants = tenantCashierSelectedMerchants;
-      if (!meta.id) { tenantCashierTenant.focus(); return false; }
-      if (!tenantCashierRegion.value) { tenantCashierRegion.focus(); return false; }
-      if (!channels.length) return false;
+      const baseValid = validateInlineRequired([
+        { control: tenantCashierTenant, getValue: () => meta.id, message: '请选择租户' },
+        { control: tenantCashierRegion, message: '请选择适用地区' },
+        { control: tenantCashierChannelChoices, getValue: () => channels.join('、'), message: '请选择支付渠道' }
+      ]);
+      if (!baseValid) return false;
       const missingAccountChannel = channels.find(channel => !merchantAccountBindings[channel]);
       if (missingAccountChannel) {
+        setInlineRequiredError(tenantCashierAccountBindings, true, '请选择收款商户号');
         tenantCashierAccountBindings?.querySelector(`.tenant-cashier-account-row[data-channel="${missingAccountChannel}"] .tenant-cashier-account-select`)?.focus();
         return false;
       }
-      if (!merchants.length) return false;
+      setInlineRequiredError(tenantCashierAccountBindings, false);
+      if (!merchants.length) {
+        setInlineRequiredError(tenantCashierMerchantChoices, true, '请选择配置门店');
+        return false;
+      }
+      setInlineRequiredError(tenantCashierMerchantChoices, false);
 
       const row = tenantCashierContext.mode === 'edit' && tenantCashierContext.row
         ? tenantCashierContext.row
@@ -13604,18 +13674,31 @@
       menuFormType,
       menuFormRoute,
       menuFormPermission,
+      specFormType,
+      productFormName,
+      productFormType,
+      productFormOriginalPrice,
+      productFormSpecDisplay,
+      tenantCashierTenant,
+      tenantCashierRegion,
       tenantCreateName,
       tenantCreateRole,
       tenantCreateEnterpriseType,
       tenantRegion,
       tenantCreateHaoyinOwner,
       tenantCreateHaoyinOwnerPhone,
+      tenantCreateContactName,
+      tenantCreateContactPhone,
+      tenantCreateContactEmail,
       tenantCreateAccount,
       tenantEditName,
       tenantEditRole,
       tenantEditEnterpriseType,
       tenantEditRegion,
-      tenantEditAccountValue
+      tenantEditAccountValue,
+      materialFormName,
+      materialFormType,
+      materialFormUnit
     ].forEach(control => {
       const eventName = control?.tagName === 'SELECT' ? 'change' : 'input';
       control?.addEventListener(eventName, () => setInlineRequiredError(control, false));
@@ -13835,6 +13918,7 @@
     });
     tenantCashierAdd?.addEventListener('click', () => openTenantCashierModal());
     tenantCashierTenant?.addEventListener('change', () => {
+      setInlineRequiredError(tenantCashierTenant, false);
       const meta = tenantCashierTenantMeta();
       populateTenantCashierRegions(meta.region || '');
       updateTenantCashierChannels([]);
@@ -13846,6 +13930,7 @@
       renderTenantCashierMerchants(defaultTenantCashierMerchantValues());
     });
     tenantCashierRegion?.addEventListener('change', () => {
+      setInlineRequiredError(tenantCashierRegion, false);
       tenantCashierAccountSelections = {};
       updateTenantCashierChannels([]);
       renderTenantCashierAccountBindings();
@@ -13855,8 +13940,14 @@
         const option = event.target.closest('.choice-option,.store-auth-row');
         if (!option) return;
         option.classList.toggle('active', Boolean(event.target.checked));
-        if (group === tenantCashierChannelChoices) renderTenantCashierAccountBindings();
-        if (group === tenantCashierMerchantChoices) updateTenantCashierSelectedMerchantsFromList();
+        if (group === tenantCashierChannelChoices) {
+          setInlineRequiredError(tenantCashierChannelChoices, false);
+          renderTenantCashierAccountBindings();
+        }
+        if (group === tenantCashierMerchantChoices) {
+          setInlineRequiredError(tenantCashierMerchantChoices, false);
+          updateTenantCashierSelectedMerchantsFromList();
+        }
       });
     });
     tenantCashierAccountBindings?.addEventListener('change', event => {
@@ -13866,6 +13957,7 @@
       if (!channel) return;
       if (select.value) tenantCashierAccountSelections[channel] = select.value;
       else delete tenantCashierAccountSelections[channel];
+      setInlineRequiredError(tenantCashierAccountBindings, false);
     });
     [tenantCashierStoreNameSearch, tenantCashierStoreIdSearch, tenantCashierStoreCitySearch].forEach(input => {
       input?.addEventListener('input', () => {
