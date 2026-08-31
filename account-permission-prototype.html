@@ -119,6 +119,7 @@
     .search{display:grid;gap:24px 30px;margin-bottom:34px}
     .search.cols-5{grid-template-columns:1.3fr 1fr 1fr 1fr auto}
     .search.cols-6{grid-template-columns:1.2fr 1fr 1fr 1fr 1fr auto}
+    .search.cols-7{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr auto}
     .search.cols-3{grid-template-columns:1fr 1fr auto}
     .search.cols-4{grid-template-columns:1fr 1fr 1fr auto}
     .search-btns{display:flex;gap:8px}
@@ -1997,7 +1998,7 @@
       .shell{grid-template-columns:1fr}
       .sidebar{display:none}
       .grid-2,.summary{grid-template-columns:1fr 1fr}
-      .search.cols-5,.search.cols-6,.search.cols-4,.search.cols-3{grid-template-columns:1fr 1fr}
+      .search.cols-5,.search.cols-6,.search.cols-7,.search.cols-4,.search.cols-3{grid-template-columns:1fr 1fr}
       .store-filter-bar{grid-template-columns:1fr 1fr}
       .form,.sub-grid{grid-template-columns:1fr 1fr}
       .tenant-form-grid{grid-template-columns:1fr}
@@ -2010,7 +2011,7 @@
     @media (max-width:760px){
       .content{padding:18px}
       .grid-2,.summary,.form,.sub-grid{grid-template-columns:1fr}
-      .search.cols-5,.search.cols-6,.search.cols-4,.search.cols-3{grid-template-columns:1fr}
+      .search.cols-5,.search.cols-6,.search.cols-7,.search.cols-4,.search.cols-3{grid-template-columns:1fr}
       .store-filter-bar{grid-template-columns:1fr}
       .filter-bar{align-items:stretch;gap:10px}
       .filter-field{min-width:100%;justify-content:space-between}
@@ -3037,7 +3038,6 @@
             <div class="panel-body">
               <div class="filter-bar" id="tenantMenuFilters">
                 <div class="filter-field"><label>菜单名称：</label><input id="tenantMenuKeyword" placeholder="请输入菜单名称" /></div>
-                <div class="filter-field"><label>所属系统：</label><select id="tenantMenuSystem"><option value="">请选择所属系统</option><option>客户管理平台</option><option>运营助手</option></select></div>
                 <div class="filter-field"><label>状态：</label><select id="tenantMenuStatus"><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
                 <div class="filter-actions">
                   <button class="btn primary">搜索</button>
@@ -4770,7 +4770,7 @@
         <section class="page" id="payment-channel-config" data-title="支付渠道配置" data-breadcrumb="支付结算,支付渠道配置">
           <div class="panel">
             <div class="panel-body">
-              <div class="search cols-5">
+              <div class="search cols-6">
                 <input id="paymentChannelKeyword" placeholder="配置ID / 渠道名称" />
                 <select id="paymentMethodFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option><option>yabandpay</option></select>
                 <select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆 CN</option><option>英国 GB</option><option>中国香港 HK</option><option>中国台湾 TW</option></select>
@@ -4812,9 +4812,11 @@
         <section class="page" id="tenant-cashier-config" data-title="租户收单配置" data-breadcrumb="租户管理,租户收单配置">
           <div class="panel">
             <div class="panel-body">
-              <div class="search cols-5">
-                <input placeholder="租户名称 / 租户ID" />
-                <select><option>租户类型</option><option>运营商</option><option>渠道商</option></select>
+              <div class="search cols-7">
+                <input placeholder="请输入租户名称" />
+                <input placeholder="请输入租户ID" />
+                <select><option>租户角色</option><option>运营商</option><option>渠道商</option></select>
+                <select><option>租户类型</option><option>企业</option><option>个体工商户</option><option>个人</option></select>
                 <select><option>适用地区</option><option>中国大陆</option><option>海外</option><option>中国台湾</option></select>
                 <select><option>状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary">搜索</button>
@@ -4827,13 +4829,13 @@
               </div>
               <table>
                 <thead>
-                  <tr><th>收单配置编号</th><th>租户ID</th><th>租户名称</th><th>租户类型</th><th>适用地区</th><th>支付渠道</th><th>已配置门店名称</th><th>状态</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>收单配置编号</th><th>租户ID</th><th>租户名称</th><th>租户角色</th><th>租户类型</th><th>适用地区</th><th>支付渠道</th><th>已配置门店名称</th><th>状态</th><th>更新时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr data-tenant-cashier-id="ACQ202608110001" data-tenant-id="T10001" data-channels="微信支付,支付宝,宝付" data-merchant-account-bindings='{"微信支付":"1900000109","支付宝":"2088123456789012","宝付":"BF-1002837465"}' data-merchants="好饮自营商户,好饮机场店"><td>ACQ202608110001</td><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>好饮自营商户、好饮机场店</td><td><span class="tag green">启用</span></td><td>2026-08-11 17:22:10</td><td></td></tr>
-                  <tr data-tenant-cashier-id="ACQ202608100002" data-tenant-id="T10002" data-channels="微信支付,支付宝" data-merchant-account-bindings='{"微信支付":"1900000118","支付宝":"2088123456789028"}' data-merchants="深圳好饮科技旗舰店"><td>ACQ202608100002</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>中国大陆</td><td>微信支付、支付宝</td><td>深圳好饮科技旗舰店</td><td><span class="tag green">启用</span></td><td>2026-08-10 15:06:33</td><td></td></tr>
-                  <tr data-tenant-cashier-id="ACQ202608080003" data-tenant-id="T20001" data-channels="湃卡国际" data-merchant-account-bindings='{"湃卡国际":"PK-UK-8837258"}' data-merchants="London Central Store、Manchester Store"><td>ACQ202608080003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>海外</td><td>湃卡国际</td><td>London Central Store、Manchester Store</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
-                  <tr data-tenant-cashier-id="ACQ202608060004" data-tenant-id="T30001" data-channels="摩宝支付" data-merchant-account-bindings='{"摩宝支付":"MB-TW-1029412"}' data-merchants="台北信义店"><td>ACQ202608060004</td><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>中国台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0001" data-tenant-id="T10001" data-channels="微信支付,支付宝,宝付" data-merchant-account-bindings='{"微信支付":"1900000109","支付宝":"2088123456789012","宝付":"BF-1002837465"}' data-merchants="好饮自营商户,好饮机场店"><td>0001</td><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>好饮自营商户、好饮机场店</td><td><span class="tag green">启用</span></td><td>2026-08-11 17:22:10</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0002" data-tenant-id="T10002" data-channels="微信支付,支付宝" data-merchant-account-bindings='{"微信支付":"1900000118","支付宝":"2088123456789028"}' data-merchants="深圳好饮科技旗舰店"><td>0002</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝</td><td>深圳好饮科技旗舰店</td><td><span class="tag green">启用</span></td><td>2026-08-10 15:06:33</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0003" data-tenant-id="T20001" data-channels="湃卡国际" data-merchant-account-bindings='{"湃卡国际":"PK-UK-8837258"}' data-merchants="London Central Store、Manchester Store"><td>0003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>企业</td><td>海外</td><td>湃卡国际</td><td>London Central Store、Manchester Store</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0004" data-tenant-id="T30001" data-channels="摩宝支付" data-merchant-account-bindings='{"摩宝支付":"MB-TW-1029412"}' data-merchants="台北信义店"><td>0004</td><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>个体工商户</td><td>中国台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
                 </tbody>
               </table>
             </div>
@@ -5164,10 +5166,10 @@
               <div class="field full"><label><span class="required-mark">*</span>租户</label>
                 <select id="tenantCashierTenant">
                   <option value="">请选择租户</option>
-                  <option value="T10001" data-name="平台自营租户" data-type="运营商" data-region="中国大陆">平台自营租户（T10001）</option>
-                  <option value="T10002" data-name="深圳好饮科技有限公司" data-type="运营商" data-region="中国大陆">深圳好饮科技有限公司（T10002）</option>
-                  <option value="T20001" data-name="英国渠道运营租户" data-type="渠道商" data-region="海外">英国渠道运营租户（T20001）</option>
-                  <option value="T30001" data-name="台湾运营租户" data-type="运营商" data-region="中国台湾">台湾运营租户（T30001）</option>
+                  <option value="T10001" data-name="平台自营租户" data-type="运营商" data-enterprise-type="企业" data-region="中国大陆">平台自营租户（T10001）</option>
+                  <option value="T10002" data-name="深圳好饮科技有限公司" data-type="运营商" data-enterprise-type="企业" data-region="中国大陆">深圳好饮科技有限公司（T10002）</option>
+                  <option value="T20001" data-name="英国渠道运营租户" data-type="渠道商" data-enterprise-type="企业" data-region="海外">英国渠道运营租户（T20001）</option>
+                  <option value="T30001" data-name="台湾运营租户" data-type="运营商" data-enterprise-type="个体工商户" data-region="中国台湾">台湾运营租户（T30001）</option>
                 </select>
               </div>
               <div class="field"><label><span class="required-mark">*</span>适用地区</label>
@@ -12624,6 +12626,7 @@
         id: tenantCashierTenant?.value || '',
         name: option?.dataset.name || '',
         type: option?.dataset.type || '',
+        enterpriseType: option?.dataset.enterpriseType || '',
         region: option?.dataset.region || ''
       };
     }
@@ -12774,14 +12777,16 @@
     }
 
     function generateTenantCashierCode(){
-      const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-      const count = document.querySelectorAll('#tenant-cashier-config tbody tr').length + 1;
-      return `ACQ${today}${String(count).padStart(4, '0')}`;
+      const codes = Array.from(document.querySelectorAll('#tenant-cashier-config tbody tr'))
+        .map(row => Number(row.dataset.tenantCashierId || row.cells[0]?.textContent.trim()))
+        .filter(Number.isFinite);
+      const next = codes.length ? Math.max(...codes) + 1 : 1;
+      return String(next).padStart(4, '0');
     }
 
     function renderTenantCashierActions(row){
-      const statusCell = row.cells[7];
-      const actionCell = row.cells[9];
+      const statusCell = row.cells[8];
+      const actionCell = row.cells[10];
       if (!statusCell || !actionCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       actionCell.innerHTML = `
@@ -12815,11 +12820,11 @@
         if (tenantCashierCodeField) tenantCashierCodeField.style.display = '';
         if (tenantCashierCode) tenantCashierCode.value = row.dataset.tenantCashierId || row.cells[0].textContent.trim();
         tenantCashierTenant.value = row.dataset.tenantId || '';
-        tenantCashierStatus.value = row.cells[7].textContent.includes('停用') ? '停用' : '启用';
+        tenantCashierStatus.value = row.cells[8].textContent.includes('停用') ? '停用' : '启用';
         tenantCashierStoreNameSearch.value = '';
         tenantCashierStoreIdSearch.value = '';
         tenantCashierStoreCitySearch.value = '';
-        populateTenantCashierRegions(row.cells[4].textContent.trim());
+        populateTenantCashierRegions(row.cells[5].textContent.trim());
         updateTenantCashierChannels((row.dataset.channels || '').split(',').filter(Boolean));
         try {
           tenantCashierAccountSelections = JSON.parse(row.dataset.merchantAccountBindings || '{}');
@@ -12887,6 +12892,7 @@
         <td>${escapeHtml(meta.id)}</td>
         <td>${escapeHtml(meta.name)}</td>
         <td>${escapeHtml(meta.type)}</td>
+        <td>${escapeHtml(meta.enterpriseType)}</td>
         <td>${escapeHtml(tenantCashierRegion.value)}</td>
         <td>${escapeHtml(channels.join('、'))}</td>
         <td>${escapeHtml(merchants.join('、'))}</td>
@@ -13798,7 +13804,7 @@
       const row = action.closest('tr');
       if (!row) return;
       const name = `${row.cells[0]?.textContent.trim() || '当前配置'} ${row.cells[2]?.textContent.trim() || ''}`.trim();
-      const statusCell = row.cells[7];
+      const statusCell = row.cells[8];
       if (action.dataset.tenantCashierAction === 'edit') {
         openTenantCashierModal({ mode: 'edit', row });
         return;
