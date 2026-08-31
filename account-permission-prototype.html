@@ -2430,6 +2430,7 @@
           <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
             <b style="display:block;margin-bottom:6px">需求描述：菜单管理</b>
             菜单管理用于维护好饮管理平台的目录页面及功能权限。菜单按照当前系统菜单层级展示。<br />
+            <b>新增与编辑校验</b>：新增和编辑菜单时，菜单名称、菜单类型、路由 / 组件为必填项；必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
             启用状态的菜单点击“停用”时，需要弹出二次确认弹窗；已停用的菜单展示“删除”操作，点击删除时同样需要弹出二次确认弹窗。
           </div>
         </section>
@@ -2535,6 +2536,7 @@
             <b style="display:block;margin-bottom:6px">需求描述：租户列表</b>
             <b>查询条件</b>：支持按租户ID、租户角色、租户状态查询租户数据。<br />
             <b>列表展示</b>：展示租户基础信息、租户管理的门店信息、租户角色、租户状态；租户状态统一为启用、停用。<br />
+            <b>新增与编辑校验</b>：新增和编辑租户时，租户名称、租户角色、租户类型、所在地区等必填项为空时点击“保存”或“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
             <b>停用规则</b>：已停用的租户不能继续使用客户管理平台。未登录状态登录时提示租户已停用；已登录状态下也需要检查当前租户状态，若已停用则不允许继续使用客户管理平台。<br />
             <b>删除规则</b>：已删除的租户不能再登录客户管理平台；已登录状态下同样需要检查当前租户状态，若已删除则不允许继续使用客户管理平台。<br />
             <b>操作规则</b>：停用状态下的租户展示删除按钮；删除和停用操作均需要弹出二次确认弹窗，用户确认后才执行。
@@ -3026,6 +3028,7 @@
                 <b>查询条件</b>：租户角色支持按租户名称、状态查询。<br />
                 <b>列表展示</b>：展示当前租户名称、授权系统、角色关联的全部账号数及角色状态。<br />
                 <b>新增租户角色</b>：新增租户角色时，菜单权限展示客户管理平台的权限树。<br />
+                <b>新增与编辑校验</b>：新增和编辑租户角色时，角色名称、权限配置等必填项为空时点击“确定”，应在对应输入框或选择区域下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
                 <b>操作规则</b>：租户角色支持编辑、停用和删除；停用状态下的角色展示删除按钮。<br />
                 <b>二次确认</b>：点击停用和删除时均需要弹出二次确认弹窗，用户确认后才执行。
               </div>
@@ -3068,6 +3071,14 @@
               </div>
             </div>
           </div>
+          <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+            <b style="display:block;margin-bottom:6px">需求描述：租户菜单</b>
+            <b>查询条件</b>：支持按菜单名称、状态查询租户菜单数据。<br />
+            <b>功能定位</b>：租户菜单用于管理客户管理平台的菜单权限，菜单列表按照客户管理平台的系统菜单层级展示。<br />
+            <b>新增与编辑校验</b>：新增和编辑租户菜单时，菜单名称、菜单类型、路由 / 组件为必填项；必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
+            <b>操作规则</b>：菜单支持编辑、启用、停用、删除和新增下级。<br />
+            <b>二次确认</b>：启用状态的菜单点击“停用”时，需要弹出二次确认弹窗；已停用的菜单展示“删除”按钮，点击删除时同样需要弹出二次确认弹窗。
+          </div>
         </section>
 
         <section class="page" id="store-list">
@@ -3080,7 +3091,7 @@
                 <div class="filter-field"><label>状态：</label><select><option value="">请选择状态</option><option>正常营业</option><option>暂停营业</option><option>闭店</option></select></div>
                 <div class="filter-field"><label>租户名称：</label><input placeholder="请输入租户名称" /></div>
                 <div class="filter-field"><label>国家/地区：</label><select id="filterStoreRegion"><option value="">请选择国家/地区</option><option>中国大陆</option><option>中国香港</option><option>中国台湾</option><option>新加坡</option><option>英国</option></select></div>
-                <div class="filter-field"><label id="filterStoreAreaLabel">行政区划：</label><select id="filterStoreArea"><option value="">请先选择国家/地区</option></select></div>
+                <div class="filter-field"><label id="filterStoreAreaLabel">区域：</label><select id="filterStoreArea"><option value="">请先选择国家/地区</option></select></div>
                 <div class="filter-actions">
                   <button class="btn primary">搜索</button>
                   <button class="btn">重置</button>
@@ -3103,6 +3114,13 @@
                   <tr><td>447</td><td>深圳前海石渡艺公园咖啡亭</td><td>渠道加盟租户</td><td>咖啡亭</td><td>广东省/深圳市/南山区</td><td>1</td><td>前海石渡艺公园</td><td>2026-07-24 19:36:58</td><td>06:00<br>~<br>23:59</td><td>正常营业</td><td><button class="link" type="button" data-store-detail>详情</button></td></tr>
                 </tbody>
               </table>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：门店列表</b>
+                <b>查询条件</b>：支持按门店名称、门店类型、机器编码、状态、租户名称、国家/地区、区域查询；国家/地区和区域联动，选择国家/地区后展示对应地区层级。<br>
+                <b>列表权限</b>：平台端仅查看门店信息，列表操作只展示“详情”，不提供新增、编辑、删除等门店管理操作。<br>
+                <b>门店详情</b>：点击“详情”进入门店详情页，展示门店基础信息、绑定的机器信息，机器信息区分当前绑定机器和历史绑定过的机器。<br>
+                <b>商品信息</b>：门店详情展示当前门店已上架商品，并按照当前门店的商品分类切换展示该分类下的商品。
+              </div>
             </div>
           </div>
         </section>
@@ -4838,6 +4856,16 @@
                   <tr data-tenant-cashier-id="0004" data-tenant-id="T30001" data-channels="摩宝支付" data-merchant-account-bindings='{"摩宝支付":"MB-TW-1029412"}' data-merchants="台北信义店"><td>0004</td><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>个体工商户</td><td>中国台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
                 </tbody>
               </table>
+              <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+                <b style="display:block;margin-bottom:6px">需求描述：租户收单配置</b>
+                <b>查询条件</b>：支持按租户名称、租户ID、租户角色、租户类型、适用地区、状态查询租户收单配置。<br />
+                <b>功能定位</b>：租户收单配置用于为每一个租户配置该租户下门店可使用的支付渠道和收款商户号。<br />
+                <b>新增默认值</b>：新增租户收单配置时，租户字段默认为“请选择”；选择租户后，配置门店默认勾选该租户下的所有门店。<br />
+                <b>地区与渠道联动</b>：新增租户收单配置时，适用地区和支付渠道联动；选择适用地区后，自动带出该地区下已启用的支付渠道。<br />
+                <b>渠道与商户号联动</b>：支付渠道和收款商户号联动；勾选支付渠道后，展示该租户在该支付方式下可用的收款商户号。<br />
+                <b>编辑规则</b>：编辑配置时，页面反显收单配置编号，编号不可编辑；除编号外，其他信息均支持修改。<br />
+                <b>操作确认</b>：启用、停用和删除租户收单配置均需弹出二次确认弹窗，用户确认后才执行对应操作。
+              </div>
             </div>
           </div>
         </section>
@@ -6051,22 +6079,22 @@
     const tenantRegionMeta = {
       '中国大陆（CN）': {
         timezone: '北京时间（UTC+08:00）（Asia/Shanghai）',
-        language: '简体中文（zh-CN）',
+        language: 'zh-CN',
         currency: 'CNY（¥）'
       },
       '中国香港（HK）': {
         timezone: '香港时间（UTC+08:00）（Asia/Hong_Kong）',
-        language: '繁体中文（zh-HK）',
+        language: 'zh-HK',
         currency: 'HKD（HK$）'
       },
       '英国（UK）': {
         timezone: '伦敦时间（UTC+00:00）（Europe/London）',
-        language: 'English（en-GB）',
+        language: 'en-GB',
         currency: 'GBP（£）'
       },
       '新加坡（SG）': {
         timezone: '新加坡时间（UTC+08:00）（Asia/Singapore）',
-        language: 'English（en-SG）',
+        language: 'en-SG',
         currency: 'SGD（S$）'
       }
     };
@@ -6074,7 +6102,7 @@
       '1001': {
         region: '中国大陆（CN）',
         timezone: '北京时间（UTC+08:00）（Asia/Shanghai）',
-        language: '简体中文（zh-CN）',
+        language: 'zh-CN',
         level: '重点',
         channel: '内部开通',
         owner: '陈静',
@@ -6103,7 +6131,7 @@
       '1002': {
         region: '中国大陆（CN）',
         timezone: '北京时间（UTC+08:00）（Asia/Shanghai）',
-        language: '简体中文（zh-CN）',
+        language: 'zh-CN',
         level: '普通',
         channel: '渠道推荐',
         owner: '林岚',
@@ -6132,7 +6160,7 @@
       '1003': {
         region: '中国大陆（CN）',
         timezone: '北京时间（UTC+08:00）（Asia/Shanghai）',
-        language: '简体中文（zh-CN）',
+        language: 'zh-CN',
         level: '战略',
         channel: '平台招商',
         owner: '赵然',
@@ -6161,7 +6189,7 @@
       '1004': {
         region: '中国大陆（CN）',
         timezone: '北京时间（UTC+08:00）（Asia/Shanghai）',
-        language: '简体中文（zh-CN）',
+        language: 'zh-CN',
         level: '普通',
         channel: '内部开通',
         owner: '许安',
@@ -7336,6 +7364,7 @@
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'role'));
       resetRolePermissionChecks();
       setPersonnelRequiredError(roleNameError, false);
+      setInlineRequiredError(document.querySelector('.modal-seg[data-seg="role"] .permission-picker'), false);
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         roleName.value = row.cells[0]?.textContent.trim() || '';
@@ -7449,24 +7478,14 @@
       const enterpriseType = tenantEditEnterpriseType.value;
       const region = tenantEditRegion.value;
       const accountValue = tenantEditAccountValue.value.trim();
-      if (!name) {
-        tenantEditName.focus();
-        return false;
-      }
-      if (!role) {
-        tenantEditRole.focus();
-        return false;
-      }
-      if (!enterpriseType) {
-        tenantEditEnterpriseType.focus();
-        return false;
-      }
-      if (!region) {
-        tenantEditRegion.focus();
-        return false;
-      }
-      if (accountRecord && !accountValue) {
-        tenantEditAccountValue.focus();
+      const valid = validateInlineRequired([
+        { control: tenantEditName, message: '请输入租户名称' },
+        { control: tenantEditRole, message: '请选择租户角色' },
+        { control: tenantEditEnterpriseType, message: '请选择租户类型' },
+        { control: tenantEditRegion, message: '请选择所在地区' },
+        ...(accountRecord ? [{ control: tenantEditAccountValue, message: '请输入账号' }] : [])
+      ]);
+      if (!valid) {
         return false;
       }
       const oldName = row.cells[1]?.textContent.trim() || '';
@@ -7523,7 +7542,7 @@
         tenantDetailStoresPage: data.stores || '-',
         tenantDetailRegionPage: profile.region || row.dataset.tenantRegion || '中国大陆（CN）',
         tenantDetailTimezonePage: profile.timezone || row.dataset.tenantTimezone || '北京时间（UTC+08:00）（Asia/Shanghai）',
-        tenantDetailLanguagePage: profile.language || row.dataset.tenantLanguage || '简体中文（zh-CN）',
+        tenantDetailLanguagePage: profile.language || row.dataset.tenantLanguage || 'zh-CN',
         tenantDetailOwnerPage: profile.owner || row.dataset.tenantOwner || '未分配',
         tenantDetailCreditCodePage: profile.creditCode || row.dataset.tenantCreditCode || '未配置',
         tenantDetailLegalNamePage: profile.legalName || row.dataset.tenantLegalName || '未配置',
@@ -7561,13 +7580,12 @@
         name: row.cells[1]?.textContent.trim() || '-',
         tenant: row.cells[2]?.textContent.trim() || '-',
         type: row.cells[3]?.textContent.trim() || '-',
-        country: row.cells[4]?.textContent.trim() || '-',
-        city: row.cells[5]?.textContent.trim() || '-',
-        deviceCount: row.cells[6]?.textContent.trim() || '0',
-        address: row.cells[7]?.textContent.trim() || '-',
-        createdAt: row.cells[8]?.textContent.trim() || '-',
-        hours: row.cells[9]?.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim() || '-',
-        status: row.cells[10]?.textContent.trim() || '-'
+        area: row.cells[4]?.textContent.trim() || '-',
+        deviceCount: row.cells[5]?.textContent.trim() || '0',
+        address: row.cells[6]?.textContent.trim() || '-',
+        createdAt: row.cells[7]?.textContent.trim() || '-',
+        hours: row.cells[8]?.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim() || '-',
+        status: row.cells[9]?.textContent.trim() || '-'
       };
     }
 
@@ -7578,7 +7596,7 @@
         storeDetailCode: data.id,
         storeDetailType: data.type,
         storeDetailTenant: data.tenant,
-        storeDetailCity: `${data.country} / ${data.city}`,
+        storeDetailCity: data.area,
         storeDetailAddress: data.address,
         storeDetailHours: data.hours,
         storeDetailStatus: data.status,
@@ -7600,7 +7618,8 @@
           宜宾: '104.6432, 28.7513',
           深圳: '114.0579, 22.5431'
         };
-        lngLat.textContent = lngLatMap[data.city] || '116.4074, 39.9042';
+        const matchedCity = Object.keys(lngLatMap).find(city => data.area.includes(city) || data.name.includes(city));
+        lngLat.textContent = matchedCity ? lngLatMap[matchedCity] : '116.4074, 39.9042';
       }
       activate('store-detail-page');
     }
@@ -7995,6 +8014,7 @@
       modal.classList.remove('qualification-mode');
       modal.classList.add('menu-mode');
       menuContext = context;
+      [menuFormName, menuFormType, menuFormRoute, menuFormPermission].forEach(control => setInlineRequiredError(control, false));
       const isEdit = context.mode === 'edit';
       const isTenantMenu = context.scope === 'tenantMenu';
       const enabledStatusValue = '启用';
@@ -8390,6 +8410,39 @@
       element.classList.toggle('show', active);
     }
 
+    function inlineErrorFor(control){
+      if (!control) return null;
+      const field = control.closest('.field,.tenant-form-field,.permission-field') || control.parentElement;
+      if (!field) return null;
+      let error = field.querySelector(':scope > .field-error-message');
+      if (!error) {
+        error = document.createElement('div');
+        error.className = 'field-error-message';
+        field.appendChild(error);
+      }
+      return error;
+    }
+
+    function setInlineRequiredError(control, active, text){
+      const error = inlineErrorFor(control);
+      if (!error) return;
+      error.textContent = text || '请输入必填项';
+      error.classList.toggle('show', active);
+    }
+
+    function validateInlineRequired(fields){
+      let firstMissing = null;
+      fields.forEach(item => {
+        const control = item.control;
+        const value = item.getValue ? item.getValue() : (control?.value || '');
+        const active = !String(value || '').trim();
+        setInlineRequiredError(control, active, item.message);
+        if (active && !firstMissing) firstMissing = item;
+      });
+      if (firstMissing?.control?.focus) firstMissing.control.focus();
+      return !firstMissing;
+    }
+
     function clearPersonnelRequiredErrors(){
       [personNameError, personContactRequiredError, personTenantError, personRoleError, personInitialPasswordError]
         .forEach(element => setPersonnelRequiredError(element, false));
@@ -8671,32 +8724,20 @@
       const account = currentTenantCreateAccountValue();
       const initialPassword = randomInitialPassword();
       const type = role;
-      if (!name) {
-        tenantCreateName?.focus();
-        return false;
-      }
-      if (!role) {
-        tenantCreateRole?.focus();
-        return false;
-      }
-      if (!enterpriseType) {
-        tenantCreateEnterpriseType?.focus();
-        return false;
-      }
-      if (!region) {
-        tenantRegion?.focus();
-        return false;
-      }
-      if (!haoyinOwner) {
-        tenantCreateHaoyinOwner?.focus();
-        return false;
-      }
-      if (!haoyinOwnerPhone) {
-        tenantCreateHaoyinOwnerPhone?.focus();
+      const valid = validateInlineRequired([
+        { control: tenantCreateName, message: '请输入租户名称' },
+        { control: tenantCreateRole, message: '请选择租户角色' },
+        { control: tenantCreateEnterpriseType, message: '请选择租户类型' },
+        { control: tenantRegion, message: '请选择所在地区' },
+        { control: tenantCreateHaoyinOwner, message: '请输入好饮负责人' },
+        { control: tenantCreateHaoyinOwnerPhone, message: '请输入好饮负责人联系方式' }
+      ]);
+      if (!valid) {
         return false;
       }
       if (!tenantCreateAccountMethod?.value || !tenantCreateAccount?.value.trim() || !validateTenantCreateAccount()) {
         setTenantCreateAccountError(true);
+        setInlineRequiredError(tenantCreateAccount, true, tenantCreateAccountMethod?.value === '手机号' ? '请输入正确的手机号' : '请输入正确的邮箱');
         tenantCreateAccount?.focus();
         return false;
       }
@@ -8928,9 +8969,11 @@
     function saveRole(){
       roleTarget.value = (roleContext.scope || 'platformRole') === 'tenantRole' ? 'tenant' : 'platform';
       const missingRoleName = !roleName.value.trim();
+      const missingPermissions = selectedPermissionCount() === 0;
       setPersonnelRequiredError(roleNameError, missingRoleName, '请输入角色名称');
-      if (missingRoleName || !roleStatus.value) {
-        roleName.focus();
+      setInlineRequiredError(document.querySelector('.modal-seg[data-seg="role"] .permission-picker'), missingPermissions, '请选择菜单权限');
+      if (missingRoleName || missingPermissions || !roleStatus.value) {
+        (missingRoleName ? roleName : document.querySelector('.modal-seg[data-seg="role"] .permission-picker'))?.focus?.();
         return false;
       }
       const scope = roleContext.scope || 'platformRole';
@@ -13205,15 +13248,18 @@
 
     function saveMenu(){
       const name = menuFormName.value.trim();
-      if (!name) {
-        menuFormName.focus();
-        return false;
-      }
-
       const scope = menuContext.scope || 'platformMenu';
       const type = menuFormType.value;
       const system = menuFormSystem.value;
       const parentId = menuContext.parentId || '';
+      const requiredFields = [
+        { control: menuFormName, message: '请输入菜单名称' },
+        { control: menuFormType, message: '请选择菜单类型' }
+      ];
+      if (type !== '按钮') {
+        requiredFields.push({ control: menuFormRoute, message: '请输入路由 / 组件' });
+      }
+      if (!validateInlineRequired(requiredFields)) return false;
       const permission = scope === 'platformMenu'
         ? (menuContext.mode === 'edit' && menuContext.row
             ? (type === '按钮' ? menuFormPermission.value.trim() : menuContext.row.cells[menuColumnIndex(scope, 'permission')].textContent.trim())
@@ -13520,7 +13566,10 @@
       if (!hasChildren) toggle.remove();
     });
     document.querySelectorAll('.permission-picker input[type="checkbox"]').forEach(input => {
-      input.addEventListener('change', () => toggleChildPermissions(input.closest('label'), input.checked));
+      input.addEventListener('change', () => {
+        toggleChildPermissions(input.closest('label'), input.checked);
+        setInlineRequiredError(document.querySelector('.modal-seg[data-seg="role"] .permission-picker'), false);
+      });
     });
     personType.addEventListener('change', updatePersonnelFields);
     personTenantId.addEventListener('change', () => {
@@ -13550,11 +13599,33 @@
     });
     roleTarget.addEventListener('change', updateRoleFields);
     roleName.addEventListener('input', () => setPersonnelRequiredError(roleNameError, false));
+    [
+      menuFormName,
+      menuFormType,
+      menuFormRoute,
+      menuFormPermission,
+      tenantCreateName,
+      tenantCreateRole,
+      tenantCreateEnterpriseType,
+      tenantRegion,
+      tenantCreateHaoyinOwner,
+      tenantCreateHaoyinOwnerPhone,
+      tenantCreateAccount,
+      tenantEditName,
+      tenantEditRole,
+      tenantEditEnterpriseType,
+      tenantEditRegion,
+      tenantEditAccountValue
+    ].forEach(control => {
+      const eventName = control?.tagName === 'SELECT' ? 'change' : 'input';
+      control?.addEventListener(eventName, () => setInlineRequiredError(control, false));
+    });
     tenantCreateEnterpriseType?.addEventListener('change', updateTenantComplianceFields);
     tenantRegion?.addEventListener('change', updateTenantRegionFields);
     tenantCreateAccountMethod?.addEventListener('change', () => {
       tenantCreateAccount.value = '';
       setTenantCreateAccountError(false);
+      setInlineRequiredError(tenantCreateAccount, false);
       updateTenantCreateAccountField();
     });
     tenantCreateRole?.addEventListener('change', updateTenantCreateAccountAuthorization);
@@ -13563,18 +13634,22 @@
         tenantCreateAccount.value = tenantCreateAccount.value.split('@')[0];
       }
       setTenantCreateAccountError(false);
+      setInlineRequiredError(tenantCreateAccount, false);
       updateTenantCreateAccountField();
     });
     tenantCreateCustomEmailSuffix?.addEventListener('input', () => {
       setTenantCreateAccountError(false);
+      setInlineRequiredError(tenantCreateAccount, false);
       updateTenantCreateAccountField();
     });
     tenantCreatePhoneRegion?.addEventListener('change', () => {
       setTenantCreateAccountError(false);
+      setInlineRequiredError(tenantCreateAccount, false);
       updateTenantCreateAccountField();
     });
     tenantCreateAccount?.addEventListener('input', () => {
       setTenantCreateAccountError(false);
+      setInlineRequiredError(tenantCreateAccount, false);
       updateTenantCreateAccountField();
     });
     tenantEditRegion?.addEventListener('change', updateTenantEditRegionFields);
