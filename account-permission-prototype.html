@@ -2368,7 +2368,7 @@
                 <div class="filter-bar" id="menuFilters">
                   <div class="filter-field"><label>菜单名称：</label><input id="menuKeyword" placeholder="请输入菜单名称" /></div>
                   <select id="menuType" class="hidden-control"><option value="">请选择菜单类型</option><option>目录</option><option>菜单</option><option>按钮</option></select>
-                  <div class="filter-field"><label>状态：</label><select id="menuStatus"><option value="">请选择</option><option>正常</option><option>停用</option></select></div>
+                  <div class="filter-field"><label>状态：</label><select id="menuStatus"><option value="">请选择</option><option>启用</option><option>停用</option></select></div>
                   <div class="filter-actions">
                     <button class="btn primary" id="menuSearch">搜索</button>
                     <button class="btn" id="menuReset">重置</button>
@@ -2386,38 +2386,38 @@
                     <tr><th>菜单名称</th><th>所属系统</th><th>权限标识</th><th>路由 / 组件</th><th>类型</th><th>状态</th><th>操作</th></tr>
                   </thead>
                   <tbody>
-                    <tr class="tree-row" data-node="access"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="access">⌄</button>角色与权限</div></td><td>运营管理平台</td><td>system:access</td><td>system/access/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="person" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="person">⌄</button>账号管理</div></td><td>运营管理平台</td><td>system:person:list</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="person-list" data-parent="person"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="person-list">⌄</button>账号列表</div></td><td>运营管理平台</td><td>system:person:list:view</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">新增账号</td><td>运营管理平台</td><td>system:person:add</td><td>system/person/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">编辑账号</td><td>运营管理平台</td><td>system:person:edit</td><td>system/person/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">停用账号</td><td>运营管理平台</td><td>system:person:disable</td><td>system/person/disable</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="role-menu" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-menu">⌄</button>角色管理</div></td><td>运营管理平台</td><td>system:role:list</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="role-list" data-parent="role-menu"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-list">⌄</button>角色列表</div></td><td>运营管理平台</td><td>system:role:list:view</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="role-list"><td class="tree-indent-3">新增角色</td><td>运营管理平台</td><td>system:role:add</td><td>system/role/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="role-list"><td class="tree-indent-3">编辑角色</td><td>运营管理平台</td><td>system:role:edit</td><td>system/role/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="order-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="order-menu">⌄</button>订单管理</div></td><td>运营管理平台</td><td>order:manage</td><td>order/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="order-list" data-parent="order-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="order-list">⌄</button>订单列表</div></td><td>运营管理平台</td><td>order:list</td><td>order/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="order-list"><td class="tree-indent-2">导出订单</td><td>运营管理平台</td><td>order:export</td><td>order/export</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="tenant-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-menu">⌄</button>租户管理</div></td><td>运营管理平台</td><td>tenant:manage</td><td>tenant/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="tenant-list-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-list-page">⌄</button>租户列表</div></td><td>运营管理平台</td><td>tenant:list</td><td>tenant/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">新增租户</td><td>运营管理平台</td><td>tenant:add</td><td>tenant/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">停用租户</td><td>运营管理平台</td><td>tenant:disable</td><td>tenant/disable</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="tenant-role-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-role-page">⌄</button>租户角色</div></td><td>运营管理平台</td><td>tenant:role</td><td>tenant/role</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">新增租户角色</td><td>运营管理平台</td><td>tenant:role:add</td><td>tenant/role/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">编辑租户角色</td><td>运营管理平台</td><td>tenant:role:edit</td><td>tenant/role/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="tenant-menu-config-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-menu-config-page">⌄</button>租户菜单</div></td><td>运营管理平台</td><td>tenant:menu</td><td>tenant/menu</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">新增租户菜单</td><td>运营管理平台</td><td>tenant:menu:add</td><td>tenant/menu/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">编辑租户菜单</td><td>运营管理平台</td><td>tenant:menu:edit</td><td>tenant/menu/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="store-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="store-menu">⌄</button>门店管理</div></td><td>运营管理平台</td><td>store:manage</td><td>store/index</td><td>目录</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-node="store-list-page" data-parent="store-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="store-list-page">⌄</button>门店列表</div></td><td>运营管理平台</td><td>store:list</td><td>store/list</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="store-list-page"><td class="tree-indent-2">新增门店</td><td>运营管理平台</td><td>store:add</td><td>store/add</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="store-list-page"><td class="tree-indent-2">编辑门店</td><td>运营管理平台</td><td>store:edit</td><td>store/edit</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="device-page"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="device-page">⌄</button>设备管理</div></td><td>运营管理平台</td><td>device:list</td><td>device/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="device-page"><td class="tree-indent-2">绑定设备</td><td>运营管理平台</td><td>device:bind</td><td>device/bind</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row hidden" data-parent="device-page"><td class="tree-indent-2">远程重启</td><td>运营管理平台</td><td>device:restart</td><td>device/restart</td><td>按钮</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="merchant-order" data-shared-menu-key="merchant-order"><td><div class="tree-name">订单列表</div></td><td>客户管理平台</td><td>merchant:order:list</td><td>order/index</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
-                    <tr class="tree-row" data-node="assistant-device" data-shared-menu-key="assistant-device"><td><div class="tree-name">设备巡检</div></td><td>运营助手</td><td>assistant:device:check</td><td>device/check</td><td>菜单</td><td><span class="tag green">正常</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="access"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="access">⌄</button>角色与权限</div></td><td>运营管理平台</td><td>system:access</td><td>system/access/index</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="person" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="person">⌄</button>账号管理</div></td><td>运营管理平台</td><td>system:person:list</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="person-list" data-parent="person"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="person-list">⌄</button>账号列表</div></td><td>运营管理平台</td><td>system:person:list:view</td><td>system/person/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">新增账号</td><td>运营管理平台</td><td>system:person:add</td><td>system/person/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">编辑账号</td><td>运营管理平台</td><td>system:person:edit</td><td>system/person/edit</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="person-list"><td class="tree-indent-3">停用账号</td><td>运营管理平台</td><td>system:person:disable</td><td>system/person/disable</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="role-menu" data-parent="access"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-menu">⌄</button>角色管理</div></td><td>运营管理平台</td><td>system:role:list</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="role-list" data-parent="role-menu"><td class="tree-indent-2"><div class="tree-name"><button class="tree-toggle" data-tree-target="role-list">⌄</button>角色列表</div></td><td>运营管理平台</td><td>system:role:list:view</td><td>system/role/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="role-list"><td class="tree-indent-3">新增角色</td><td>运营管理平台</td><td>system:role:add</td><td>system/role/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="role-list"><td class="tree-indent-3">编辑角色</td><td>运营管理平台</td><td>system:role:edit</td><td>system/role/edit</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="order-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="order-menu">⌄</button>订单管理</div></td><td>运营管理平台</td><td>order:manage</td><td>order/index</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="order-list" data-parent="order-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="order-list">⌄</button>订单列表</div></td><td>运营管理平台</td><td>order:list</td><td>order/list</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="order-list"><td class="tree-indent-2">导出订单</td><td>运营管理平台</td><td>order:export</td><td>order/export</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="tenant-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-menu">⌄</button>租户管理</div></td><td>运营管理平台</td><td>tenant:manage</td><td>tenant/index</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="tenant-list-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-list-page">⌄</button>租户列表</div></td><td>运营管理平台</td><td>tenant:list</td><td>tenant/list</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">新增租户</td><td>运营管理平台</td><td>tenant:add</td><td>tenant/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-list-page"><td class="tree-indent-2">停用租户</td><td>运营管理平台</td><td>tenant:disable</td><td>tenant/disable</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="tenant-role-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-role-page">⌄</button>租户角色</div></td><td>运营管理平台</td><td>tenant:role</td><td>tenant/role</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">新增租户角色</td><td>运营管理平台</td><td>tenant:role:add</td><td>tenant/role/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-role-page"><td class="tree-indent-2">编辑租户角色</td><td>运营管理平台</td><td>tenant:role:edit</td><td>tenant/role/edit</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="tenant-menu-config-page" data-parent="tenant-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="tenant-menu-config-page">⌄</button>租户菜单</div></td><td>运营管理平台</td><td>tenant:menu</td><td>tenant/menu</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">新增租户菜单</td><td>运营管理平台</td><td>tenant:menu:add</td><td>tenant/menu/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="tenant-menu-config-page"><td class="tree-indent-2">编辑租户菜单</td><td>运营管理平台</td><td>tenant:menu:edit</td><td>tenant/menu/edit</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="store-menu"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="store-menu">⌄</button>门店管理</div></td><td>运营管理平台</td><td>store:manage</td><td>store/index</td><td>目录</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-node="store-list-page" data-parent="store-menu"><td class="tree-indent-1"><div class="tree-name"><button class="tree-toggle" data-tree-target="store-list-page">⌄</button>门店列表</div></td><td>运营管理平台</td><td>store:list</td><td>store/list</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="store-list-page"><td class="tree-indent-2">新增门店</td><td>运营管理平台</td><td>store:add</td><td>store/add</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="store-list-page"><td class="tree-indent-2">编辑门店</td><td>运营管理平台</td><td>store:edit</td><td>store/edit</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="device-page"><td><div class="tree-name"><button class="tree-toggle" data-tree-target="device-page">⌄</button>设备管理</div></td><td>运营管理平台</td><td>device:list</td><td>device/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="device-page"><td class="tree-indent-2">绑定设备</td><td>运营管理平台</td><td>device:bind</td><td>device/bind</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row hidden" data-parent="device-page"><td class="tree-indent-2">远程重启</td><td>运营管理平台</td><td>device:restart</td><td>device/restart</td><td>按钮</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="merchant-order" data-shared-menu-key="merchant-order"><td><div class="tree-name">订单列表</div></td><td>客户管理平台</td><td>merchant:order:list</td><td>order/index</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
+                    <tr class="tree-row" data-node="assistant-device" data-shared-menu-key="assistant-device"><td><div class="tree-name">设备巡检</div></td><td>运营助手</td><td>assistant:device:check</td><td>device/check</td><td>菜单</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span></td></tr>
                     <tr class="tree-row" data-node="center-dashboard" data-shared-menu-key="center-dashboard"><td><div class="tree-name">运营看板</div></td><td>运营中心</td><td>center:dashboard</td><td>dashboard/index</td><td>菜单</td><td><span class="tag red">停用</span></td><td><span class="link">编辑</span></td></tr>
                   </tbody>
                   </table>
@@ -2425,6 +2425,11 @@
               </div>
             </div>
 
+          </div>
+          <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
+            <b style="display:block;margin-bottom:6px">需求描述：菜单管理</b>
+            菜单管理用于维护好饮管理平台的目录页面及功能权限。菜单按照当前系统菜单层级展示。<br />
+            启用状态的菜单点击“停用”时，需要弹出二次确认弹窗；已停用的菜单展示“删除”操作，点击删除时同样需要弹出二次确认弹窗。
           </div>
         </section>
 
@@ -5042,7 +5047,7 @@
 
         <section class="modal-seg" data-seg="menu">
           <div class="modal-grid">
-            <div class="field"><label>菜单名称</label><input id="menuFormName" placeholder="请输入菜单名称" /></div>
+            <div class="field"><label><span class="required-mark">*</span>菜单名称</label><input id="menuFormName" placeholder="请输入菜单名称" /></div>
             <select id="menuFormSystem" class="hidden-control">
               <option value="">请选择所属系统</option>
               <option value="运营管理平台">运营管理平台</option>
@@ -5057,7 +5062,7 @@
                 <div class="tree-select-panel" id="menuParentPanel"></div>
               </div>
             </div>
-            <div class="field full"><label>菜单类型</label>
+            <div class="field full"><label><span class="required-mark">*</span>菜单类型</label>
               <select id="menuFormType" class="hidden-control">
                 <option>目录</option>
                 <option>菜单</option>
@@ -5069,12 +5074,12 @@
                 <label class="choice-option" data-value="按钮"><input type="radio" name="menuTypeRadio" />按钮</label>
               </div>
             </div>
-            <div class="field" id="menuRouteField"><label>路由 / 组件</label><input id="menuFormRoute" placeholder="请输入路由或组件" /></div>
+            <div class="field" id="menuRouteField"><label><span class="required-mark">*</span>路由 / 组件</label><input id="menuFormRoute" placeholder="请输入路由或组件" /></div>
             <div class="field" id="menuPermissionField"><label>权限标识</label><input id="menuFormPermission" placeholder="如：order:refund" /></div>
             <div class="field status-inline"><label>状态</label>
-              <select id="menuFormStatus" class="hidden-control"><option>正常</option><option>停用</option></select>
+              <select id="menuFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
               <div class="choice-grid" data-choice-for="menuFormStatus">
-                <label class="choice-option" data-value="正常"><input type="radio" name="menuStatusRadio" />正常</label>
+                <label class="choice-option" data-value="启用"><input type="radio" name="menuStatusRadio" />启用</label>
                 <label class="choice-option" data-value="停用"><input type="radio" name="menuStatusRadio" />停用</label>
               </div>
             </div>
@@ -7974,7 +7979,7 @@
       menuContext = context;
       const isEdit = context.mode === 'edit';
       const isTenantMenu = context.scope === 'tenantMenu';
-      const enabledStatusValue = isTenantMenu ? '启用' : '正常';
+      const enabledStatusValue = '启用';
       menuFormStatus.options[0].value = enabledStatusValue;
       menuFormStatus.options[0].textContent = enabledStatusValue;
       const enabledStatusChoice = document.querySelector('[data-choice-for="menuFormStatus"] .choice-option:first-child');
@@ -7986,8 +7991,8 @@
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'menu'));
       menuFormSystem.value = context.system || (isTenantMenu ? '' : menuScopeConfig(context.scope).defaultSystem);
       menuFormType.value = context.type === '页面' ? '菜单' : (context.type || '目录');
-      menuFormType.disabled = isEdit || context.lockType === true;
-      menuFormSystem.disabled = Boolean(context.parentId) || isEdit;
+      menuFormType.disabled = !isEdit && context.lockType === true;
+      menuFormSystem.disabled = !isEdit && Boolean(context.parentId);
       syncChoiceGroup(menuFormType);
       menuParentSelect.value = '';
       updateMenuParentOptions(context.parentId || '');
@@ -8001,7 +8006,7 @@
         option.textContent = context.parentName;
         menuParentSelect.value = context.parentId || '';
       }
-      menuParentSelect.disabled = Boolean(context.parentId) || isEdit || !menuFormSystem.value;
+      menuParentSelect.disabled = !isEdit && (Boolean(context.parentId) || !menuFormSystem.value);
       menuParentTree.classList.toggle('disabled', menuParentSelect.disabled);
       setParentTriggerText();
       renderParentTree();
@@ -8020,7 +8025,7 @@
       menuRouteField.style.display = type === '按钮' ? 'none' : '';
       menuPermissionField.style.display = type === '按钮' ? '' : 'none';
       updateMenuParentOptions(menuContext.parentId || '');
-      menuParentSelect.disabled = Boolean(menuContext.parentId) || menuContext.mode === 'edit' || !menuFormSystem.value;
+      menuParentSelect.disabled = menuContext.mode !== 'edit' && (Boolean(menuContext.parentId) || !menuFormSystem.value);
       menuParentTree.classList.toggle('disabled', menuParentSelect.disabled);
     }
 
@@ -8101,7 +8106,10 @@
       const system = menuFormSystem.value;
       const parentType = parentTypeFor(menuFormType.value);
       const selectableTypes = parentType === '菜单' ? ['菜单', '页面'] : parentType ? [parentType] : [];
-      const rows = menuRowsForScope(menuContext.scope).filter(row => row.cells[1].textContent.trim() === system && row.dataset.node);
+      const blockedNodes = menuContext.mode === 'edit' && menuContext.row
+        ? new Set(collectMenuBranch(menuContext.row).map(row => row.dataset.node).filter(Boolean))
+        : new Set();
+      const rows = menuRowsForScope(menuContext.scope).filter(row => row.cells[1].textContent.trim() === system && row.dataset.node && !blockedNodes.has(row.dataset.node));
       menuParentPanel.innerHTML = '';
 
       const placeholder = document.createElement('div');
@@ -8137,6 +8145,9 @@
       const system = menuFormSystem.value;
       const parentType = parentTypeFor(menuFormType.value);
       const rows = menuRowsForScope(menuContext.scope);
+      const blockedNodes = menuContext.mode === 'edit' && menuContext.row
+        ? new Set(collectMenuBranch(menuContext.row).map(row => row.dataset.node).filter(Boolean))
+        : new Set();
       menuParentSelect.innerHTML = '';
 
       const root = document.createElement('option');
@@ -8149,6 +8160,7 @@
           .filter(row => {
             const type = normalizedMenuType(row);
             return row.cells[1].textContent.trim() === system
+              && !blockedNodes.has(row.dataset.node)
               && (parentType === '菜单' ? ['菜单', '页面'].includes(type) : type === parentType);
           })
           .forEach(row => {
@@ -9637,7 +9649,7 @@
       const statusCell = row.cells[menuColumnIndex(scope, 'status')];
       const isDisabled = statusCell.textContent.includes('停用');
       statusCell.innerHTML = isDisabled
-        ? `<span class="tag green">${scope === 'tenantMenu' ? '启用' : '正常'}</span>`
+        ? '<span class="tag green">启用</span>'
         : '<span class="tag red">停用</span>';
       renderMenuActions(row);
       if (scope === 'platformMenu') applyMenuFilters();
@@ -12948,6 +12960,27 @@
       return row.cells[0].textContent.trim().replace(/^⌄\s*/, '').replace(/^›\s*/, '');
     }
 
+    function setMenuName(row, name){
+      const nameWrap = row.cells[0].querySelector('.tree-name');
+      if (nameWrap) {
+        const textNode = Array.from(nameWrap.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+        if (textNode) textNode.textContent = name;
+        else nameWrap.appendChild(document.createTextNode(name));
+        return;
+      }
+      row.cells[0].textContent = name;
+    }
+
+    function updateMenuRowPlacement(row, parentId, scope){
+      if (parentId) row.dataset.parent = parentId;
+      else delete row.dataset.parent;
+      row.cells[0].classList.remove('tree-indent-1','tree-indent-2','tree-indent-3');
+      const parentRow = parentId ? document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`) : null;
+      const indent = parentRow ? Math.min(rowLevel(parentRow) + 1, 3) : 0;
+      if (indent) row.cells[0].classList.add(`tree-indent-${indent}`);
+      insertMenuRow(row, parentId, scope);
+    }
+
     function parentMenuName(parentId, scope = menuContext.scope || 'platformMenu'){
       if (!parentId) return '无上级菜单 / 根目录';
       const parent = document.querySelector(`${menuScopeConfig(scope).table} tbody [data-node="${parentId}"]`);
@@ -13026,7 +13059,7 @@
       const statusCell = document.createElement('td');
       statusCell.innerHTML = status === '停用'
         ? '<span class="tag red">停用</span>'
-        : `<span class="tag green">${scope === 'tenantMenu' ? '启用' : '正常'}</span>`;
+        : '<span class="tag green">启用</span>';
       const actionCell = document.createElement('td');
       const edit = document.createElement('button');
       edit.type = 'button';
@@ -13171,8 +13204,10 @@
 
       if (menuContext.mode === 'edit' && menuContext.row) {
         const row = menuContext.row;
-        row.cells[0].querySelector('.tree-name')?.lastChild && (row.cells[0].querySelector('.tree-name').lastChild.textContent = name);
+        setMenuName(row, name);
+        updateMenuRowPlacement(row, parentId, scope);
         if (scope === 'tenantMenu') {
+          row.cells[1].textContent = system;
           row.cells[2].textContent = route;
           row.cells[3].textContent = type;
           row.cells[4].innerHTML = status === '停用'
@@ -13180,12 +13215,13 @@
             : '<span class="tag green">启用</span>';
           renderMenuActions(row);
         } else {
+          row.cells[1].textContent = system;
           row.cells[2].textContent = permission;
           row.cells[3].textContent = route;
           row.cells[4].textContent = type;
           row.cells[5].innerHTML = status === '停用'
             ? '<span class="tag red">停用</span>'
-            : '<span class="tag green">正常</span>';
+            : '<span class="tag green">启用</span>';
           renderMenuActions(row);
         }
         if (scope === 'platformMenu') {
