@@ -653,6 +653,12 @@
     .merchant-create-page .tenant-form-field.span-2{grid-column:span 2}
     .merchant-create-page .tenant-form-field.span-3{grid-column:span 3}
     .merchant-create-page .tenant-form-field.wide-label{grid-template-columns:160px minmax(0,1fr)}
+    .merchant-create-page .tenant-form-field.alipay-cert-number-field,
+    .merchant-create-page .tenant-form-field.baofoo-cert-number-field,
+    .merchant-create-page .tenant-form-field.wechat-cert-number-field{grid-template-columns:110px minmax(0,1fr)}
+    .merchant-create-page .tenant-form-field.alipay-cert-number-field > label,
+    .merchant-create-page .tenant-form-field.baofoo-cert-number-field > label,
+    .merchant-create-page .tenant-form-field.wechat-cert-number-field > label{white-space:normal;word-break:break-word;font-size:13px;line-height:18px}
     .merchant-secret-help{grid-column:2;color:#98a2b3;font-size:12px;line-height:18px;margin-top:-3px}
     .merchant-create-page .tenant-form-field[data-merchant-region],
     .merchant-create-page .tenant-form-field[data-merchant-channel],
@@ -661,11 +667,11 @@
     .merchant-create-page .tenant-form-section[data-merchant-channel]{display:none}
     .merchant-create-page .tenant-form-field[data-merchant-region].merchant-visible,
     .merchant-create-page .tenant-form-field[data-merchant-channel].merchant-visible{display:grid}
-    .merchant-create-page .merchant-channel-fields[data-merchant-channel].merchant-visible{display:grid}
+    .merchant-create-page .merchant-channel-fields[data-merchant-channel].merchant-visible{display:contents}
     .merchant-create-page .tenant-form-section[data-merchant-channel].merchant-visible,
     .merchant-create-page .tenant-form-section[data-merchant-hide-channel].merchant-visible{display:block}
     .merchant-create-page .tenant-form-panel[hidden]{display:none!important}
-    .merchant-channel-fields{grid-column:2/3;gap:12px;padding:10px 0 2px}
+    .merchant-channel-fields{gap:12px;padding:0}
     .merchant-channel-fields .tenant-form-field{grid-template-columns:110px minmax(0,1fr)}
     .merchant-create-page textarea{width:100%;max-width:320px;min-height:72px;border:1px solid #d6dbe3;border-radius:6px;padding:9px 11px;resize:vertical;color:#344054}
     .merchant-upload-control{height:38px;display:inline-flex;align-items:center;gap:8px;width:100%;max-width:320px}
@@ -699,6 +705,13 @@
     .merchant-radio-row label{display:inline-flex!important;align-items:center;gap:8px;margin:0!important;color:#344054;font-size:14px;text-align:left;white-space:nowrap}
     .merchant-radio-row input{width:16px!important;height:16px!important;accent-color:var(--primary)}
     .merchant-address-row{display:grid;grid-template-columns:132px 132px 132px minmax(260px,1fr);gap:8px;width:100%;max-width:880px}
+    .yaband-ubo-section .tenant-form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+    .yaband-ubo-section .tenant-form-field{grid-template-columns:148px minmax(0,1fr);align-items:start}
+    .yaband-ubo-section .tenant-form-field > label{padding-top:9px;line-height:20px}
+    .yaband-ubo-section .tenant-form-field.span-2{grid-column:1/-1}
+    .yaband-ubo-section .merchant-contract-date-range.with-permanent{grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr) auto;width:100%;max-width:720px}
+    .yaband-ubo-section .merchant-radio-row{gap:28px;min-height:38px;height:auto;align-items:center;flex-wrap:wrap}
+    .yaband-ubo-section .merchant-field-help{grid-column:2;margin-top:-2px;line-height:18px}
     .merchant-empty-row{color:#98a2b3;height:52px}
     .tenant-detail-page{display:grid;gap:18px}
     .tenant-detail-section{
@@ -2445,6 +2458,7 @@
             <div class="panel-body">
               <div class="filter-bar unified-search">
                 <div class="filter-field"><label>租户ID：</label><input placeholder="请输入租户ID" /></div>
+                <div class="filter-field"><label>租户名称：</label><input placeholder="请输入租户名称" /></div>
                 <div class="filter-field">
                   <label>租户角色：</label>
                   <select>
@@ -2539,7 +2553,7 @@
           </div>
           <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
             <b style="display:block;margin-bottom:6px">需求描述：租户列表</b>
-            <b>查询条件</b>：支持按租户ID、租户角色、租户状态查询租户数据。<br />
+            <b>查询条件</b>：支持按租户ID、租户名称、租户角色、租户状态查询租户数据。<br />
             <b>列表展示</b>：展示租户基础信息、租户管理的门店信息、租户角色、租户状态；租户状态统一为启用、停用。<br />
             <b>新增与编辑校验</b>：新增和编辑租户时，租户名称、租户角色、租户类型、所在地区等必填项为空时点击“保存”或“确定”，应在对应输入框或选择项下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
             <b>停用规则</b>：已停用的租户不能继续使用客户管理平台。未登录状态登录时提示租户已停用；已登录状态下也需要检查当前租户状态，若已停用则不允许继续使用客户管理平台。<br />
@@ -3671,9 +3685,9 @@
                 <div class="filter-field"><label>收款商户号：</label><input id="merchantNoFilter" placeholder="请输入收款商户号" /></div>
                 <div class="filter-field"><label>收款主体：</label><input id="merchantSubjectFilter" placeholder="请输入收款主体" /></div>
                 <div class="filter-field"><label>租户名称：</label><input id="merchantTenantFilter" placeholder="请输入租户名称" /></div>
-                <div class="filter-field"><label>渠道名称：</label><select id="merchantChannelFilter"><option value="">请选择渠道名称</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option><option>PayPal</option><option>yabandpay</option></select></div>
+                <div class="filter-field"><label>渠道名称：</label><select id="merchantChannelFilter"><option value="">请选择渠道名称</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select></div>
                 <div class="filter-field"><label>国家/地区：</label><select id="merchantRegionFilter"><option value="">请选择国家/地区</option><option>中国大陆</option><option>中国香港</option><option>中国台湾</option><option>英国</option></select></div>
-                <div class="filter-field"><label>商户类型：</label><select id="merchantTypeFilter"><option value="">请选择商户类型</option><option>企业</option><option>个体户</option><option>个人</option></select></div>
+                <div class="filter-field"><label>主体类型：</label><select id="merchantTypeFilter"><option value="">请选择主体类型</option><option>企业</option><option>个体户</option><option>个人</option><option>普通企业</option><option>个体工商户</option><option>党政机关</option><option>事业单位</option><option>社会组织</option></select></div>
                 <div class="filter-field"><label>商户状态：</label><select id="merchantStatusFilter"><option value="">请选择商户状态</option><option>启用</option><option>停用</option></select></div>
                 <div class="filter-actions"><button class="btn primary" id="merchantSearch" type="button">搜索</button><button class="btn soft" id="merchantReset" type="button">重置</button></div>
               </div>
@@ -3682,12 +3696,11 @@
               </div>
               <div class="table-scroll"><table class="merchant-table" data-total="271" data-page-size="50" data-pagination="compact">
                 <thead>
-                  <tr><th>收款商户号</th><th>收款主体</th><th>租户名称</th><th>渠道名称</th><th>国家/地区</th><th>商户类型</th><th>商户状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>收款商户号</th><th>收款主体</th><th>租户名称</th><th>渠道名称</th><th>国家/地区</th><th>主体类型</th><th>商户状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
                   <tr><td>1900000109</td><td>深圳好饮科技有限公司</td><td>深圳好饮科技有限公司</td><td>微信支付</td><td>中国大陆</td><td>企业</td><td><span class="tag red">停用</span></td><td>2026-04-22 10:20:01</td><td>2026-08-15 16:42:18</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">启用</button><button class="link" type="button" data-merchant-action="delete">删除</button></div></td></tr>
-                  <tr><td>2088123456789012</td><td>深圳好饮科技有限公司</td><td>银河太空舱运营有限公司</td><td>支付宝</td><td>中国大陆</td><td>企业</td><td><span class="tag green">启用</span></td><td>2026-04-21 09:30:33</td><td>2026-08-14 11:08:26</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">停用</button></div></td></tr>
-                  <tr><td>PK-UK-8837201</td><td>PayKKa（湃卡国际）</td><td>深圳大铲湾商业运营有限公司</td><td>湃卡国际</td><td>英国</td><td>企业</td><td><span class="tag red">停用</span></td><td>2026-04-21 09:25:05</td><td>2026-08-10 14:30:12</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">启用</button></div></td></tr>
+                  <tr><td>2088123456789012</td><td>深圳好饮科技有限公司</td><td>银河太空舱运营有限公司</td><td>支付宝</td><td>中国大陆</td><td>普通企业</td><td><span class="tag green">启用</span></td><td>2026-04-21 09:30:33</td><td>2026-08-14 11:08:26</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">停用</button></div></td></tr>
                   <tr><td>YB-UK-102676687</td><td>Good Drink UK Ltd</td><td>英国渠道运营租户</td><td>yabandpay</td><td>英国</td><td>企业</td><td><span class="tag green">启用</span></td><td>2026-08-18 10:26:00</td><td>2026-08-20 17:18:42</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">停用</button></div></td></tr>
                   <tr><td>BF-1002837465</td><td>深圳好饮科技有限公司</td><td>上海城市空间运营有限公司</td><td>宝付</td><td>中国大陆</td><td>企业</td><td><span class="tag green">启用</span></td><td>2026-04-21 09:20:01</td><td>2026-08-12 09:15:44</td><td><div class="row-actions"><button class="link" type="button" data-merchant-action="detail">详情</button><button class="link" type="button" data-merchant-action="edit">编辑</button><button class="link" type="button" data-merchant-action="status">停用</button></div></td></tr>
                 </tbody>
@@ -3706,19 +3719,24 @@
                 <div class="tenant-form-field">
                   <label>国家/地区<span class="required-star">*</span></label>
                   <select id="merchantCreateRegion" data-keep-options>
+                    <option value="">请选择国家/地区</option>
                     <option value="中国大陆">中国大陆</option>
-                    <option value="中国香港">中国香港</option>
-                    <option value="中国台湾">中国台湾</option>
-                    <option value="新加坡">新加坡</option>
                     <option value="英国">英国</option>
-                    <option value="法国">法国</option>
-                    <option value="德国">德国</option>
                   </select>
                 </div>
                 <div class="tenant-form-field">
                   <label>渠道名称<span class="required-star">*</span></label>
                   <select id="merchantCreatePaymentChannel" data-keep-options>
                     <option value="">请选择支付渠道</option>
+                  </select>
+                </div>
+                <div class="tenant-form-field">
+                  <label>主体类型<span class="required-star">*</span></label>
+                  <select id="merchantCreateType" data-keep-options>
+                    <option value="">请选择主体类型</option>
+                    <option value="企业">企业</option>
+                    <option value="个体户">个体户</option>
+                    <option value="个人">个人</option>
                   </select>
                 </div>
                 <div class="merchant-channel-fields tenant-form-panel" data-merchant-channel="宝付" data-merchant-type="企业 个体户">
@@ -3734,18 +3752,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="tenant-form-field tenant-form-panel" data-merchant-hide-channel="微信支付">
-                  <label>收款商户号<span class="required-star">*</span></label>
-                  <input id="merchantCreateNo" placeholder="请输入收款商户号" />
-                </div>
-                <div class="tenant-form-field">
-                  <label>商户类型<span class="required-star">*</span></label>
-                  <select id="merchantCreateType" data-keep-options>
-                    <option value="企业">企业</option>
-                    <option value="个体户">个体户</option>
-                    <option value="个人">个人</option>
-                  </select>
-                </div>
               </div>
             </section>
 
@@ -3753,8 +3759,8 @@
               <h2 class="tenant-section-title">支付参数配置</h2>
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
-                  <label>商户ID<span class="required-star">*</span></label>
-                  <input placeholder="请输入微信支付商户ID" />
+                  <label>收款商户号<span class="required-star">*</span></label>
+                  <input placeholder="请输入微信支付收款商户号" />
                 </div>
                 <div class="tenant-form-field">
                   <label>api_v2 秘钥<span class="required-star">*</span></label>
@@ -3775,9 +3781,23 @@
               </div>
             </section>
 
+            <section class="tenant-form-section tenant-form-panel" data-merchant-channel="宝付">
+              <h2 class="tenant-section-title">支付参数配置</h2>
+              <div class="tenant-form-grid">
+                <div class="tenant-form-field">
+                  <label>收款商户号<span class="required-star">*</span></label>
+                  <input data-merchant-no-input placeholder="新增后系统反显" disabled />
+                </div>
+              </div>
+            </section>
+
             <section class="tenant-form-section tenant-form-panel" data-merchant-channel="支付宝">
               <h2 class="tenant-section-title">支付参数配置</h2>
               <div class="tenant-form-grid">
+                <div class="tenant-form-field">
+                  <label>收款商户号<span class="required-star">*</span></label>
+                  <input data-merchant-no-input placeholder="请输入收款商户号" />
+                </div>
                 <div class="tenant-form-field">
                   <label>AppID<span class="required-star">*</span></label>
                   <input id="merchantCreateAlipayAppId" placeholder="请输入支付宝应用 AppID" />
@@ -3805,15 +3825,67 @@
                   <label>企业法定名称<span class="required-star">*</span></label>
                   <input placeholder="请输入营业执照上的企业法定名称" />
                 </div>
-                <div class="tenant-form-field tenant-form-panel" data-merchant-region="中国大陆" data-merchant-type="企业">
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="企业" data-merchant-strict-type="true">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select data-wechat-cert-type-select><option value="">请选择商户证件类型</option><option>营业执照</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="个体工商户 个体户" data-merchant-strict-type="true">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select data-wechat-cert-type-select><option value="">请选择商户证件类型</option><option>营业执照</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="政府机关" data-merchant-strict-type="true">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select data-wechat-cert-type-select><option value="">请选择商户证件类型</option><option>统一社会信用代码证书</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="事业单位" data-merchant-strict-type="true">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select data-wechat-cert-type-select><option value="">请选择商户证件类型</option><option>统一社会信用代码证书</option><option>事业单位法人证书</option><option>政府部门下发的其他有效证明文件</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="社会组织" data-merchant-strict-type="true">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select data-wechat-cert-type-select><option value="">请选择商户证件类型</option><option>统一社会信用代码证书</option><option>社会团体法人登记证书</option><option>民办非企业单位登记证书</option><option>基金会法人登记证书</option><option>执业许可证/执业证</option><option>基层群众性自治组织特别法人统一社会信用代码证</option><option>农村集体经济组织登记证</option><option>宗教活动场所登记证</option><option>政府部门下发的其他有效证明文件</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel wechat-cert-number-field" data-merchant-channel="微信支付" data-merchant-region="中国大陆" data-merchant-type="企业 个体户 政府机关 事业单位 社会组织">
+                  <label data-wechat-cert-no-label>证件号码<span class="required-star">*</span></label>
+                  <input data-wechat-cert-no-input placeholder="请先选择商户证件类型" />
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="普通企业">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select><option value="">请选择商户证件类型</option><option>营业执照</option><option>外国企业常驻代表机构登记证</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="个体工商户">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select><option value="">请选择商户证件类型</option><option>营业执照</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="党政机关">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select><option value="">请选择商户证件类型</option><option>统一社会信用代码证</option><option>军队单位对外有偿服务许可证</option><option>武警部队单位对外有偿服务许可证</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="事业单位">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select><option value="">请选择商户证件类型</option><option>事业单位法人证书</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="社会组织">
+                  <label>商户证件类型<span class="required-star">*</span></label>
+                  <select><option value="">请选择商户证件类型</option><option>社会团体法人登记证书</option><option>民办非企业单位登记证书</option><option>基金会法人登记证书</option><option>外国常驻新闻机构证</option><option>律师事务所执业许可证</option><option>公证机构执业证</option><option>基层法律服务所执业证</option><option>司法鉴定许可证</option><option>仲裁委员会登记证</option><option>宗教活动场所登记证</option><option>宗教院校许可证</option><option>工会法人资格证书</option><option>农村集体经济组织登记证</option><option>基层群众性自治组织特别法人统一社会信用代码证</option><option>外国在华文化中心登记证</option><option>外国政府旅游部门常驻代表机构批准登记证</option><option>港、澳、台地区旅游部门常驻代表机构批准登记证</option></select>
+                </div>
+                <div class="tenant-form-field tenant-form-panel alipay-cert-number-field" data-merchant-channel="支付宝" data-merchant-region="中国大陆" data-merchant-type="普通企业 个体工商户 党政机关 事业单位 社会组织">
+                  <label data-alipay-cert-no-label>证件号码<span class="required-star">*</span></label>
+                  <input data-alipay-cert-no-input placeholder="请先选择商户证件类型" />
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-region="中国大陆" data-merchant-type="企业" data-merchant-hide-channel="微信支付 支付宝 宝付">
                   <label>统一社会信用代码<span class="required-star">*</span></label>
                   <input placeholder="请输入统一社会信用代码" />
                 </div>
                 <div class="tenant-form-field tenant-form-panel" data-merchant-channel="宝付" data-merchant-region="中国大陆" data-merchant-type="企业 个体户">
                   <label>商户证件类型<span class="required-star">*</span></label>
-                  <select><option value="">请选择商户证件类型</option><option>营业执照</option><option>统一社会信用代码证</option></select>
+                  <select data-baofoo-cert-type-select><option value="">请选择商户证件类型</option><option>营业执照</option><option>统一社会信用代码证</option></select>
                 </div>
-                <div class="tenant-form-field tenant-form-panel" data-merchant-region="中国大陆" data-merchant-type="个体户">
+                <div class="tenant-form-field tenant-form-panel baofoo-cert-number-field" data-merchant-channel="宝付" data-merchant-region="中国大陆" data-merchant-type="企业 个体户">
+                  <label data-baofoo-cert-no-label>证件号码<span class="required-star">*</span></label>
+                  <input data-baofoo-cert-no-input placeholder="请先选择商户证件类型" />
+                </div>
+                <div class="tenant-form-field tenant-form-panel" data-merchant-region="中国大陆" data-merchant-type="个体户" data-merchant-hide-channel="宝付">
                   <label>营业执照号<span class="required-star">*</span></label>
                   <input placeholder="请输入营业执照号" />
                 </div>
@@ -3962,10 +4034,6 @@
                 <div class="tenant-form-field tenant-form-panel" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业" data-yaband-business-address="other">
                   <label>城市<span class="required-star">*</span></label>
                   <input placeholder="请输入城市" />
-                </div>
-                <div class="tenant-form-field tenant-form-panel" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业" data-yaband-business-address="other">
-                  <label>国家/地区<span class="required-star">*</span></label>
-                  <select><option value="">请选择国家/地区</option><option>United Kingdom</option><option>France</option><option>Germany</option><option>Netherlands</option></select>
                 </div>
                 <div class="tenant-form-field tenant-form-panel" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业" data-yaband-business-address="other">
                   <label>地址证明<span class="required-star">*</span></label>
@@ -4141,7 +4209,7 @@
               </div>
             </section>
 
-            <section class="tenant-form-section tenant-form-panel" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业">
+            <section class="tenant-form-section tenant-form-panel yaband-ubo-section" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业">
               <h2 class="tenant-section-title">最终受益人</h2>
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
@@ -4175,10 +4243,6 @@
                 <div class="tenant-form-field">
                   <label>城市<span class="required-star">*</span></label>
                   <input placeholder="请输入城市" />
-                </div>
-                <div class="tenant-form-field">
-                  <label>国家/地区<span class="required-star">*</span></label>
-                  <select><option value="">请选择国家/地区</option><option>United Kingdom</option><option>China</option><option>France</option><option>Germany</option></select>
                 </div>
                 <div class="tenant-form-field">
                   <label>证件类型<span class="required-star">*</span></label>
@@ -4263,7 +4327,6 @@
 
             <section class="tenant-form-section tenant-form-panel" data-merchant-channel="yabandpay" data-merchant-region="英国" data-merchant-type="企业">
               <h2 class="tenant-section-title">银行账号</h2>
-              <div class="note" style="margin:0 0 16px">银行账户持有人必须为公司法定名称（或商标名称），对账户信息的任何修改都需要经过审核以后方可生效。</div>
               <div class="tenant-form-grid">
                 <div class="tenant-form-field">
                   <label>账户持有人<span class="required-star">*</span></label>
@@ -4274,11 +4337,6 @@
                   <label>银行名称<span class="required-star">*</span></label>
                   <input placeholder="请输入银行名称" />
                   <div class="merchant-field-help">银行名称是必需的</div>
-                </div>
-                <div class="tenant-form-field">
-                  <label>国家/地区<span class="required-star">*</span></label>
-                  <select><option>United Kingdom</option><option>France</option><option>Germany</option></select>
-                  <div class="merchant-field-help">您的银行所在的国家或地区</div>
                 </div>
                 <div class="tenant-form-field">
                   <label>货币<span class="required-star">*</span></label>
@@ -4446,7 +4504,6 @@
                     <option>点单屏</option>
                     <option>H5</option>
                     <option>小程序</option>
-                    <option>NEXGO 终端</option>
                   </select>
                 </div>
                 <div class="order-filter-field"><label>门店名称</label>
@@ -4833,8 +4890,8 @@
             <div class="panel-body">
               <div class="search cols-6">
                 <input id="paymentChannelKeyword" placeholder="配置ID / 渠道名称" />
-                <select id="paymentMethodFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option><option>yabandpay</option></select>
-                <select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆 CN</option><option>英国 GB</option><option>中国香港 HK</option><option>中国台湾 TW</option></select>
+                <select id="paymentMethodFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select>
+                <select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆 CN</option><option>英国 GB</option></select>
                 <select id="paymentStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary" id="paymentSearch">搜索</button>
                 <button class="btn soft" id="paymentReset">重置</button>
@@ -4853,10 +4910,7 @@
                   <tr><td>3000</td><td>微信支付</td><td>WECHAT_PAY</td><td>中国大陆 CN</td><td>直连</td><td>CNY</td><td>0.6%</td><td><span class="tag green">启用</span></td><td>2026-07-02 09:30:00</td><td>2026-08-11 10:20:35</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                   <tr><td>3001</td><td>支付宝</td><td>ALIPAY</td><td>中国大陆 CN</td><td>直连</td><td>CNY</td><td>0.6%</td><td><span class="tag green">启用</span></td><td>2026-07-03 10:15:00</td><td>2026-08-10 16:42:18</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                   <tr><td>3002</td><td>宝付</td><td>BAOFOO_PAY</td><td>中国大陆 CN</td><td>聚合收银</td><td>CNY</td><td>0.38%</td><td><span class="tag green">启用</span></td><td>2026-07-05 14:00:00</td><td>2026-08-09 11:18:26</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr><td>3003</td><td>湃卡国际</td><td>PAYKKA</td><td>英国 GB</td><td>跨境服务商</td><td>GBP、EUR、USD</td><td>2.5%</td><td><span class="tag green">启用</span></td><td>2026-07-10 09:00:00</td><td>2026-08-08 09:15:44</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                   <tr><td>3006</td><td>yabandpay</td><td>YABANDPAY</td><td>英国 GB</td><td>跨境服务商</td><td>EUR、GBP</td><td>2.3%</td><td><span class="tag green">启用</span></td><td>2026-08-18 10:00:00</td><td>2026-08-20 17:18:42</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr><td>3004</td><td>摩宝支付</td><td>MOBAO_PAY</td><td>中国台湾 TW</td><td>跨境服务商</td><td>TWD、USD</td><td>2.0%</td><td><span class="tag green">启用</span></td><td>2026-07-12 11:20:00</td><td>2026-08-06 14:30:12</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr><td>3005</td><td>PayPal</td><td>PAYPAL</td><td>英国 GB</td><td>跨境服务商</td><td>GBP、EUR、USD</td><td>2.9%</td><td><span class="tag red">停用</span></td><td>2026-07-08 15:45:00</td><td>2026-08-02 13:04:28</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">启用</button></div></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
@@ -4895,8 +4949,7 @@
                 <tbody>
                   <tr data-tenant-cashier-id="0001" data-tenant-id="T10001" data-channels="微信支付,支付宝,宝付" data-merchant-account-bindings='{"微信支付":"1900000109","支付宝":"2088123456789012","宝付":"BF-1002837465"}' data-merchants="好饮自营商户,好饮机场店"><td>0001</td><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>好饮自营商户、好饮机场店</td><td><span class="tag green">启用</span></td><td>2026-08-11 17:22:10</td><td></td></tr>
                   <tr data-tenant-cashier-id="0002" data-tenant-id="T10002" data-channels="微信支付,支付宝" data-merchant-account-bindings='{"微信支付":"1900000118","支付宝":"2088123456789028"}' data-merchants="深圳好饮科技旗舰店"><td>0002</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝</td><td>深圳好饮科技旗舰店</td><td><span class="tag green">启用</span></td><td>2026-08-10 15:06:33</td><td></td></tr>
-                  <tr data-tenant-cashier-id="0003" data-tenant-id="T20001" data-channels="湃卡国际" data-merchant-account-bindings='{"湃卡国际":"PK-UK-8837258"}' data-merchants="London Central Store、Manchester Store"><td>0003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>企业</td><td>海外</td><td>湃卡国际</td><td>London Central Store、Manchester Store</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
-                  <tr data-tenant-cashier-id="0004" data-tenant-id="T30001" data-channels="摩宝支付" data-merchant-account-bindings='{"摩宝支付":"MB-TW-1029412"}' data-merchants="台北信义店"><td>0004</td><td>T30001</td><td>台湾运营租户</td><td>运营商</td><td>个体工商户</td><td>中国台湾</td><td>摩宝支付</td><td>台北信义店</td><td><span class="tag green">启用</span></td><td>2026-08-06 18:20:41</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0003" data-tenant-id="T20001" data-channels="yabandpay" data-merchant-account-bindings='{"yabandpay":"YB-UK-102676687"}' data-merchants="London Central Store、Manchester Store"><td>0003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>企业</td><td>英国 GB</td><td>yabandpay</td><td>London Central Store、Manchester Store</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
@@ -4905,7 +4958,7 @@
                 <b>功能定位</b>：租户收单配置用于为每一个租户配置该租户下门店可使用的支付渠道和收款商户号。<br />
                 <b>新增默认值</b>：新增租户收单配置时，租户字段默认为“请选择”；选择租户后，配置门店默认勾选该租户下的所有门店。<br />
                 <b>地区与渠道联动</b>：新增租户收单配置时，适用地区和支付渠道联动；选择适用地区后，自动带出该地区下已启用的支付渠道。<br />
-                <b>渠道与商户号联动</b>：支付渠道和收款商户号联动；勾选支付渠道后，展示该租户在该支付方式下可用的收款商户号。<br />
+                <b>租户支付渠道与商户号联动</b>：收款商户号需同时受租户和支付渠道约束；选择租户并勾选该租户的支付渠道后，仅展示该租户在对应支付方式下可用的收款商户号。<br />
                 <b>必填校验</b>：新增和编辑租户收单配置时，租户、适用地区、支付渠道、收款商户号、配置门店等必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请选择＋内容项名称”，用户完成选择后清除提示。<br />
                 <b>编辑规则</b>：编辑配置时，页面反显收单配置编号，编号不可编辑；除编号外，其他信息均支持修改。<br />
                 <b>操作确认</b>：启用、停用和删除租户收单配置均需弹出二次确认弹窗，用户确认后才执行对应操作。
@@ -4920,7 +4973,7 @@
               <div class="search cols-5">
                 <input id="splitTenantKeyword" placeholder="请输入租户名称" />
                 <input id="splitMerchantKeyword" placeholder="请输入商户名称" />
-                <select id="splitChannelFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
+                <select id="splitChannelFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select>
                 <select id="splitStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary" id="splitSearch">搜索</button>
               </div>
@@ -4938,8 +4991,6 @@
                   <tr><td>1000</td><td>T10001</td><td>平台自营租户</td><td>微信支付</td><td>好饮自营商户、好饮机场店，共 2 家门店</td><td>平台自营租户（WX-SUB-1900000109）</td><td>中国银行</td><td>6222601200008801</td><td>0.9%</td><td>0.1%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:00:00</td><td>2026-08-12 09:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
                   <tr><td>1001</td><td>T10001</td><td>平台自营租户</td><td>宝付</td><td>好饮自营商户、好饮机场店，共 2 家门店</td><td>平台自营租户（BF-SUB-1002837465）</td><td>中国银行</td><td>6222601200008801</td><td>0.95%</td><td>0.05%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-20 10:05:00</td><td>2026-08-12 09:05:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
                   <tr><td>1002</td><td>T10001</td><td>平台自营租户</td><td>支付宝</td><td>好饮高铁店、好饮太空舱店，共 2 家门店</td><td>平台自营租户（ALIPAY-SUB-1900000109）</td><td>招商银行</td><td>6225887559001028</td><td>1%</td><td>0%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-21 09:30:00</td><td>2026-08-13 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1003</td><td>T20001</td><td>英国渠道运营租户</td><td>湃卡国际</td><td>London Central Store、Manchester Store，共 2 家门店</td><td>英国渠道运营租户（PK-UK-SUB-8837201）</td><td>HSBC UK</td><td>5520174098121208</td><td>0.85%</td><td>0.15%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-22 11:00:00</td><td>2026-08-10 14:30:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
-                  <tr><td>1004</td><td>T30001</td><td>台湾运营租户</td><td>摩宝支付</td><td>台北信义店、台中公益店，共 2 家门店</td><td>台湾运营租户（MB-TW-SUB-1029384）</td><td>台湾合作银行</td><td>8220102938400911</td><td>0.9%</td><td>0.1%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag green">启用</span></td><td>2026-07-25 15:00:00</td><td>2026-08-08 16:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">停用</button></div></td></tr>
                   <tr><td>1005</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>支付宝</td><td>深圳好饮科技旗舰店，共 1 家门店</td><td>深圳好饮科技有限公司（ALIPAY-SUB-2088123456）</td><td>建设银行</td><td>6227002088122088</td><td>0.95%</td><td>0.05%</td><td>2026-08-01 至 2027-07-31</td><td><span class="tag red">停用</span></td><td>2026-07-18 09:00:00</td><td>2026-08-05 10:00:00</td><td><div class="row-actions"><button class="link" type="button" data-split-action="edit">编辑</button><button class="link" type="button" data-split-action="status">启用</button><button class="link" type="button" data-split-action="delete">删除</button></div></td></tr>
                 </tbody>
               </table>
@@ -4965,7 +5016,7 @@
                       </select>
                     </div>
                     <div class="field"><label><span class="required-mark">*</span>支付渠道</label>
-                      <select id="splitFormChannel"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>湃卡国际</option><option>摩宝支付</option></select>
+                      <select id="splitFormChannel"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select>
                     </div>
                     <div class="field"><label><span class="required-mark">*</span>结算有效期</label>
                       <div class="split-date-range"><input id="splitFormStartDate" type="date" value="2026-08-01" /><span>至</span><input id="splitFormEndDate" type="date" value="2027-07-31" /></div>
@@ -5026,8 +5077,6 @@
                 <tbody>
                   <tr data-bill-detail="微信支付订单 4 笔，退款扣减 3 笔，结算门店：好饮自营商户、好饮机场店"><td>SETT202608170001</td><td>1000</td><td>T10001</td><td>平台自营租户</td><td>微信支付</td><td>平台自营租户（WX-SUB-1900000109）</td><td class="amount-positive">¥ 25.62</td><td><button class="link" type="button" data-bill-action="detail">7 笔订单</button></td><td>2026-08-17 10:40:00</td></tr>
                   <tr data-bill-detail="支付宝订单 2 笔，退款扣减 0 笔，结算门店：好饮高铁店、好饮太空舱店"><td>SETT202608170002</td><td>1002</td><td>T10001</td><td>平台自营租户</td><td>支付宝</td><td>平台自营租户（ALIPAY-SUB-1900000109）</td><td class="amount-positive">¥ 29.86</td><td><button class="link" type="button" data-bill-action="detail">2 笔订单</button></td><td>2026-08-17 10:45:00</td></tr>
-                  <tr data-bill-detail="湃卡国际订单 2 笔，退款扣减 1 笔，结算门店：London Central Store、Manchester Store"><td>SETT202608160001</td><td>1003</td><td>T20001</td><td>英国渠道运营租户</td><td>湃卡国际</td><td>英国渠道运营租户（PK-UK-SUB-8837201）</td><td class="amount-positive">£ 3.59</td><td><button class="link" type="button" data-bill-action="detail">3 笔订单</button></td><td>2026-08-16 22:30:00</td></tr>
-                  <tr data-bill-detail="摩宝支付订单 2 笔，退款扣减 2 笔，结算门店：台北信义店、台中公益店"><td>SETT202608160002</td><td>1004</td><td>T30001</td><td>台湾运营租户</td><td>摩宝支付</td><td>台湾运营租户（MB-TW-SUB-1029384）</td><td class="amount-positive">NT$ 12</td><td><button class="link" type="button" data-bill-action="detail">4 笔订单</button></td><td>2026-08-16 20:55:00</td></tr>
                   <tr data-bill-detail="支付宝订单 2 笔，退款扣减 0 笔，结算门店：深圳好饮科技旗舰店"><td>SETT202608150001</td><td>1005</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>支付宝</td><td>深圳好饮科技有限公司（ALIPAY-SUB-2088123456）</td><td class="amount-positive">¥ 26.28</td><td><button class="link" type="button" data-bill-action="detail">2 笔订单</button></td><td>2026-08-15 21:10:00</td></tr>
                 </tbody>
               </table>
@@ -6659,33 +6708,6 @@
           { name: '招商银行深圳分行 7559000012341028', currency: 'CNY' }
         ]
       },
-      {
-        subject: 'PayKKa（湃卡国际）',
-        merchantNo: 'PK-UK-8837201',
-        region: '英国 GB',
-        accounts: [
-          { name: 'HSBC UK Business 5520174098121208', currency: 'GBP' },
-          { name: '香港汇丰多币种账户 0041288837201', currency: 'GBP' }
-        ]
-      },
-      {
-        subject: '摩宝支付',
-        merchantNo: 'MB-TW-1029384',
-        region: '中国台湾 TW',
-        accounts: [
-          { name: '台湾合作银行 8220102938400911', currency: 'TWD' },
-          { name: '香港汇丰多币种账户 0041281029384', currency: 'USD' }
-        ]
-      },
-      {
-        subject: 'PayPal',
-        merchantNo: 'PP-UK-5520174',
-        region: '英国 GB',
-        accounts: [
-          { name: 'HSBC UK Business 5520174098121208', currency: 'GBP' },
-          { name: '香港汇丰多币种账户 0041288837201', currency: 'GBP' }
-        ]
-      }
     ];
     const splitConfigAdd = document.getElementById('splitConfigAdd');
     const splitTenantKeyword = document.getElementById('splitTenantKeyword');
@@ -6756,20 +6778,9 @@
         ['TPF202608160038', '退款扣减', '支付宝', 'ALIPAY-SUB-2088123456', 'ORD202608160061', 'SPL202608160061-T', '支出', '-¥ 36.00', '¥ 42,637.80', '处理成功', '2026-08-16 18:14:22', '退款订单扣减子商户号余额'],
         ['TPF202608150044', '分账入账', '支付宝', 'ALIPAY-SUB-2088123456', 'ORD202608150096', 'SPL202608150096-T', '收入', '+¥ 91.80', '¥ 42,673.80', '处理成功', '2026-08-15 20:33:10', '订单分账进入子商户号']
       ],
-      'PK-UK-SUB-8837201': [
-        ['TPF202608160080', '分账入账', '湃卡国际', 'PK-UK-SUB-8837201', 'ORD202608160078', 'SPL202608160078-T', '收入', '+£ 42.00', '£ 18,620.00', '待结算', '2026-08-16 22:16:50', 'PayKKa 已返回分账成功，等待可结算'],
-        ['TPF202608160079', '分账入账', '湃卡国际', 'PK-UK-SUB-8837201', 'ORD202608160074', 'SPL202608160074-T', '收入', '+£ 31.50', '£ 18,578.00', '处理成功', '2026-08-16 21:05:31', '英国门店订单分账进入子商户号'],
-        ['TPF202608150073', '退款扣减', '湃卡国际', 'PK-UK-SUB-8837201', 'ORD202608150041', 'SPL202608150041-T', '支出', '-£ 16.80', '£ 18,546.50', '处理成功', '2026-08-15 18:28:40', '退款后扣减租户子商户号余额']
-      ],
-      'MB-TW-SUB-1029384': [
-        ['TPF202608160120', '退款扣减', '摩宝支付', 'MB-TW-SUB-1029384', 'ORD202608160099', 'SPL202608160099-T', '支出', '-NT$ 1,200', 'NT$ 392,600', '处理成功', '2026-08-16 20:42:12', '台湾退款订单扣减子商户号余额'],
-        ['TPF202608160119', '分账入账', '摩宝支付', 'MB-TW-SUB-1029384', 'ORD202608160099', 'SPL202608160099-T', '收入', '+NT$ 1,200', 'NT$ 393,800', '处理成功', '2026-08-16 20:10:03', '摩宝支付分账进入子商户号'],
-        ['TPF202608150112', '分账入账', '摩宝支付', 'MB-TW-SUB-1029384', 'ORD202608150088', 'SPL202608150088-T', '收入', '+NT$ 680', 'NT$ 392,600', '待结算', '2026-08-15 22:18:52', '三方分账成功，等待结算为可用余额']
-      ],
-      'PK-UK-CH-20001': [
-        ['TPF202608160150', '分账入账', '湃卡国际', 'PK-UK-CH-20001', 'ORD202608160078', 'SPL202608160078-C', '收入', '+£ 7.40', '£ 6,940.00', '处理成功', '2026-08-16 18:20:37', '渠道商佣金进入三方子商户号'],
-        ['TPF202608150151', '分账入账', '湃卡国际', 'PK-UK-CH-20001', 'ORD202608150091', 'SPL202608150091-C', '收入', '+£ 5.90', '£ 6,932.60', '待结算', '2026-08-15 19:42:02', '等待三方结算为可用余额'],
-        ['TPF202608140138', '退款扣减', '湃卡国际', 'PK-UK-CH-20001', 'ORD202608140062', 'SPL202608140062-C', '支出', '-£ 3.20', '£ 6,926.70', '处理成功', '2026-08-14 20:16:18', '退款后扣减渠道商佣金']
+      'YB-UK-SUB-102676687': [
+        ['TPF202608160080', '结算入账', 'yabandpay', 'YB-UK-SUB-102676687', 'ORD202608160078', 'SETT202608160078-T', '收入', '+£ 4.20', '£ 1,862.00', '处理成功', '2026-08-16 22:16:50', '英国门店订单结算进入租户商户号'],
+        ['TPF202608150073', '退款扣减', 'yabandpay', 'YB-UK-SUB-102676687', 'ORD202608150041', 'SETT202608150041-T', '支出', '-£ 1.68', '£ 1,857.80', '处理成功', '2026-08-15 18:28:40', '退款后扣减租户商户号余额']
       ]
     };
     const countryUnitRegionFilter = document.getElementById('countryUnitRegionFilter');
@@ -7735,39 +7746,23 @@
       if (data.paidAt && data.paidAt !== '-') {
         logs.push(
           {
-            status: '支付中',
-            action: '用户去支付',
+            status: '支付成功',
+            action: '付款',
             time: data.paidAt,
             operator: data.userName || '用户',
-            content: `用户发起支付，应付金额 ${data.paidAmount || data.amount || '-'}`
-          },
-          {
-            status: '支付成功',
-            action: '支付回调完成',
-            time: offsetLogTime(data.paidAt, 2),
-            operator: '支付渠道',
-            content: `支付渠道回调成功，实付金额 ${data.paidAmount || data.amount || '-'}`
+            content: `用户付款成功，实付金额 ${data.paidAmount || data.amount || '-'}`
           }
         );
       }
       if (data.isRefunded) {
         const refundOperator = data.refundOperator || data.refundApplicant || '平台运营';
-        logs.push(
-          {
-            status: '退款申请',
-            action: '申请退款',
-            time: data.refundApplyAt || offsetLogTime(data.paidAt || data.createdAt, 420),
-            operator: refundOperator,
-            content: data.refundRemark || `${refundOperator}申请退款，退款金额 ${data.refundAmount || data.paidAmount || data.amount || '-'}`
-          },
-          {
-            status: data.status || '已退款',
-            action: '操作退款',
-            time: data.refundCompletedAt || data.refundApplyAt || offsetLogTime(data.paidAt || data.createdAt, 480),
-            operator: refundOperator,
-            content: `${refundOperator}完成退款处理，退款状态：${data.refundStatus || '退款成功'}`
-          }
-        );
+        logs.push({
+          status: data.refundStatus || '退款成功',
+          action: '退款',
+          time: data.refundCompletedAt || data.refundApplyAt || offsetLogTime(data.paidAt || data.createdAt, 480),
+          operator: refundOperator,
+          content: `${refundOperator}完成退款处理，退款状态：${data.refundStatus || '退款成功'}`
+        });
       }
       const sortedLogs = logs.slice().sort((a, b) => {
         const timeA = Date.parse(String(a.time || '').replace(' ', 'T'));
@@ -9321,8 +9316,9 @@
       if (!wrapper || !wrapper.classList.contains('custom-select')) return;
       const normalizedKeyword = keyword.trim().toLowerCase();
       let visibleCount = 0;
-      wrapper.querySelectorAll('.custom-select-option').forEach(optionEl => {
-        const match = !normalizedKeyword || optionEl.textContent.trim().toLowerCase().includes(normalizedKeyword);
+      wrapper.querySelectorAll('.custom-select-option').forEach((optionEl, index) => {
+        const hideSelected = select.dataset.hideSelectedOption === 'true' && select.selectedIndex > 0 && index === select.selectedIndex;
+        const match = !hideSelected && (!normalizedKeyword || optionEl.textContent.trim().toLowerCase().includes(normalizedKeyword));
         optionEl.classList.toggle('hidden', !match);
         if (match) visibleCount += 1;
       });
@@ -9825,6 +9821,8 @@
       populateTenantCashierRegions(tenantCashierRegion?.value || '');
       updateTenantCashierChannels();
       renderTenantCashierAccountBindings();
+      updatePaymentRegionFilterOptions();
+      updateMerchantCreateRegionOptions();
       applyPaymentFilters();
     }
 
@@ -9840,6 +9838,22 @@
         .map(row => row.cells[2]?.textContent.trim())
         .filter(Boolean);
       return tenants.length ? `当前渠道已配置给${Array.from(new Set(tenants)).join('、')}。` : '';
+    }
+
+    function updatePaymentRegionFilterOptions(){
+      if (!paymentRegionFilter) return;
+      const method = paymentMethodFilter?.value || '';
+      const current = paymentRegionFilter.value;
+      const regions = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
+        .filter(row => !method || row.cells[1]?.textContent.trim() === method)
+        .map(row => row.cells[3]?.textContent.trim() || '')
+        .filter(Boolean)
+        .filter((region, index, list) => list.indexOf(region) === index);
+      paymentRegionFilter.innerHTML = '<option value="">请选择适用地区</option>' + regions
+        .map(region => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`)
+        .join('');
+      paymentRegionFilter.value = regions.includes(current) ? current : '';
+      rebuildCustomSelectOptions(paymentRegionFilter);
     }
 
     function applyPaymentFilters(){
@@ -9861,6 +9875,7 @@
       paymentMethodFilter.value = '';
       paymentRegionFilter.value = '';
       paymentStatusFilter.value = '';
+      updatePaymentRegionFilterOptions();
       applyPaymentFilters();
     }
 
@@ -11351,6 +11366,8 @@
       populateTenantCashierRegions(tenantCashierRegion?.value || '');
       updateTenantCashierChannels();
       renderTenantCashierAccountBindings();
+      updatePaymentRegionFilterOptions();
+      updateMerchantCreateRegionOptions();
       applyPaymentFilters();
       return true;
     }
@@ -11371,9 +11388,7 @@
         '微信支付': '1900000109',
         '支付宝': '2088123456789012',
         '宝付': 'BF-1002837465',
-        '湃卡国际': 'PK-UK-8837201',
-        '摩宝支付': 'MB-TW-1029384',
-        'PayPal': 'PP-UK-5520174'
+        'yabandpay': 'YB-UK-102676687'
       };
       return merchantNoMap[channel] || '-';
     }
@@ -12747,25 +12762,40 @@
         { no: 'BF-1002837465', subject: '深圳好饮科技有限公司' },
         { no: 'BF-1002837499', subject: '上海城市空间运营有限公司' }
       ],
-      '湃卡国际': [
-        { no: 'PK-UK-8837201', subject: 'PayKKa（湃卡国际）' },
-        { no: 'PK-UK-8837258', subject: '英国渠道运营租户' }
-      ],
-      '摩宝支付': [
-        { no: 'MB-TW-1029384', subject: '摩宝支付' },
-        { no: 'MB-TW-1029412', subject: '台湾运营租户' }
+      'yabandpay': [
+        { no: 'YB-UK-102676687', subject: '英国渠道运营租户' }
       ]
     };
 
-    function tenantCashierMerchantAccounts(channel){
+    const tenantCashierTenantChannelAccounts = {
+      T10001: {
+        '微信支付': [{ no: '1900000109', subject: '平台自营租户' }],
+        '支付宝': [{ no: '2088123456789012', subject: '平台自营租户' }],
+        '宝付': [{ no: 'BF-1002837465', subject: '平台自营租户' }]
+      },
+      T10002: {
+        '微信支付': [{ no: '1900000118', subject: '深圳好饮科技有限公司' }],
+        '支付宝': [{ no: '2088123456789028', subject: '深圳好饮科技有限公司' }]
+      },
+      T20001: {
+        'yabandpay': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }]
+      }
+    };
+
+    function tenantCashierMerchantAccounts(channel, tenantId = tenantCashierTenant?.value || ''){
+      const tenantMeta = tenantCashierTenantMeta();
+      const tenantBoundAccounts = tenantCashierTenantChannelAccounts[tenantId]?.[channel] || [];
       const tableAccounts = Array.from(document.querySelectorAll('#merchant-management tbody tr'))
         .filter(row => row.cells[3]?.textContent.trim() === channel)
+        .filter(row => !tenantMeta.name || row.cells[2]?.textContent.trim() === tenantMeta.name)
+        .filter(row => row.cells[6]?.textContent.includes('启用'))
         .map(row => ({
           no: row.cells[0]?.textContent.trim() || '',
           subject: row.cells[1]?.textContent.trim() || ''
         }));
       const seen = new Set();
-      return [...tableAccounts, ...(tenantCashierMerchantAccountFallbacks[channel] || [])]
+      const channelFallbacks = tenantId ? [] : (tenantCashierMerchantAccountFallbacks[channel] || []);
+      return [...tenantBoundAccounts, ...tableAccounts, ...channelFallbacks]
         .filter(item => item.no && !seen.has(item.no) && seen.add(item.no));
     }
 
@@ -13756,8 +13786,12 @@
       control?.addEventListener('keydown', event => {
         if (event.key === 'Enter') applyPaymentFilters();
       });
-      control?.addEventListener('change', applyPaymentFilters);
+      control?.addEventListener('change', () => {
+        if (control === paymentMethodFilter) updatePaymentRegionFilterOptions();
+        applyPaymentFilters();
+      });
     });
+    updatePaymentRegionFilterOptions();
     splitConfigAdd?.addEventListener('click', () => openSplitConfigModal());
     splitFormTenant?.addEventListener('change', () => updateSplitStoresByTenant(defaultSplitStores()));
     splitStoreTrigger?.addEventListener('click', event => {
@@ -14028,6 +14062,28 @@
         email: region === '英国' ? 'finance@paykka.uk' : 'finance@haoyin.example',
         merchantAlias: cells[3]?.textContent.trim() === '宝付' ? '好饮宝付自营商户' : '',
         merchantCertType: cells[3]?.textContent.trim() === '宝付' ? (cells[5]?.textContent.trim() === '个体户' ? '营业执照' : '统一社会信用代码证') : '',
+        wechatCertType: cells[3]?.textContent.trim() === '微信支付'
+          ? (cells[5]?.textContent.trim() === '个体工商户'
+            ? '营业执照'
+            : cells[5]?.textContent.trim() === '政府机关'
+              ? '统一社会信用代码证书'
+              : cells[5]?.textContent.trim() === '事业单位'
+                ? '统一社会信用代码证书'
+                : cells[5]?.textContent.trim() === '社会组织'
+                  ? '统一社会信用代码证书'
+                  : '营业执照')
+          : '',
+        alipayCertType: cells[3]?.textContent.trim() === '支付宝'
+          ? (cells[5]?.textContent.trim() === '个体工商户'
+            ? '营业执照'
+            : cells[5]?.textContent.trim() === '事业单位'
+              ? '事业单位法人证书'
+              : cells[5]?.textContent.trim() === '社会组织'
+                ? '社会团体法人登记证书'
+                : cells[5]?.textContent.trim() === '党政机关'
+                  ? '统一社会信用代码证'
+                  : '营业执照')
+          : '',
         industry: cells[3]?.textContent.trim() === '宝付' ? '无人零售' : '',
         subType: cells[3]?.textContent.trim() === '宝付' ? '客户' : '',
         wechatMerchantId: cells[3]?.textContent.trim() === '微信支付' ? '1900000109' : '',
@@ -14142,16 +14198,87 @@
     function merchantBaofooQualificationFields(data, readonly){
       if (data.channel !== '宝付' || data.region !== '中国大陆' || !['企业', '个体户'].includes(data.type)) return '';
       const defaultCertType = data.type === '个体户' ? '营业执照' : '统一社会信用代码证';
+      const certType = data.merchantCertType || defaultCertType;
       return [
-        merchantField('商户证件类型', data.merchantCertType || defaultCertType, readonly, ['营业执照', '统一社会信用代码证']),
+        merchantField('商户证件类型', certType, readonly, ['营业执照', '统一社会信用代码证']),
+        merchantField(`${certType}号`, data.qualificationNo, readonly),
         merchantField('所属行业', data.industry || '无人零售', readonly, ['餐饮服务', '无人零售', '咖啡饮品', '便利零售'])
       ].join('');
+    }
+
+    function merchantWechatCertTypes(type){
+      const map = {
+        '企业': ['营业执照'],
+        '个体工商户': ['营业执照'],
+        '个体户': ['营业执照'],
+        '政府机关': ['统一社会信用代码证书'],
+        '事业单位': ['统一社会信用代码证书', '事业单位法人证书', '政府部门下发的其他有效证明文件'],
+        '社会组织': ['统一社会信用代码证书', '社会团体法人登记证书', '民办非企业单位登记证书', '基金会法人登记证书', '执业许可证/执业证', '基层群众性自治组织特别法人统一社会信用代码证', '农村集体经济组织登记证', '宗教活动场所登记证', '政府部门下发的其他有效证明文件']
+      };
+      return map[type] || [];
+    }
+
+    function syncWechatCertTypeOptions(){
+      const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
+      if (channel !== '微信支付') return;
+      const type = document.getElementById('merchantCreateType')?.value || '';
+      const visibleCertSelect = Array.from(document.querySelectorAll('[data-wechat-cert-type-select]'))
+        .find(select => !select.closest('.tenant-form-field')?.hidden);
+      if (!visibleCertSelect) return;
+      const current = visibleCertSelect.value;
+      const options = merchantWechatCertTypes(type);
+      const prompt = '请选择商户证件类型';
+      visibleCertSelect.innerHTML = `<option value="">${escapeHtml(prompt)}</option>` + options.map(option => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`).join('');
+      visibleCertSelect.value = options.includes(current) ? current : '';
+      visibleCertSelect.dataset.hideSelectedOption = 'true';
+      rebuildCustomSelectOptions(visibleCertSelect);
+    }
+
+    function merchantWechatQualificationFields(data, readonly){
+      if (data.channel !== '微信支付') return '';
+      const options = merchantWechatCertTypes(data.type);
+      const certType = data.wechatCertType || options[0] || '';
+      return [
+        merchantField('商户证件类型', certType, readonly, options),
+        merchantField(`${certType || '证件'}号`, data.qualificationNo, readonly)
+      ].join('');
+    }
+
+    function merchantAlipayCertTypes(type){
+      const map = {
+        '普通企业': ['营业执照', '外国企业常驻代表机构登记证'],
+        '个体工商户': ['营业执照'],
+        '党政机关': ['统一社会信用代码证', '军队单位对外有偿服务许可证', '武警部队单位对外有偿服务许可证'],
+        '事业单位': ['事业单位法人证书'],
+        '社会组织': ['社会团体法人登记证书', '民办非企业单位登记证书', '基金会法人登记证书', '外国常驻新闻机构证', '律师事务所执业许可证', '公证机构执业证', '基层法律服务所执业证', '司法鉴定许可证', '仲裁委员会登记证', '宗教活动场所登记证', '宗教院校许可证', '工会法人资格证书', '农村集体经济组织登记证', '基层群众性自治组织特别法人统一社会信用代码证', '外国在华文化中心登记证', '外国政府旅游部门常驻代表机构批准登记证', '港、澳、台地区旅游部门常驻代表机构批准登记证']
+      };
+      return map[type] || [];
+    }
+
+    function merchantAlipayQualificationFields(data, readonly){
+      if (data.channel !== '支付宝') return '';
+      const options = merchantAlipayCertTypes(data.type);
+      return merchantField('商户证件类型', data.alipayCertType || options[0] || '', readonly, options);
+    }
+
+    function merchantAlipayCertNoLabel(data, isIndividualBusiness){
+      if (data.channel !== '支付宝') return data.region === '英国' ? '注册号码' : (isIndividualBusiness ? '营业执照号' : '统一社会信用代码');
+      const options = merchantAlipayCertTypes(data.type);
+      const certType = data.alipayCertType || options[0] || '证件';
+      return `${certType}号码`;
+    }
+
+    function merchantBaofooPaySection(data, readonly){
+      if (data.channel !== '宝付') return '';
+      return merchantSection('支付参数配置', [
+        merchantField('收款商户号', data.id || '创建后系统生成', true)
+      ].join(''));
     }
 
     function merchantWechatPaySection(data, readonly){
       if (data.channel !== '微信支付') return '';
       return merchantSection('支付参数配置', [
-        merchantField('商户ID', data.wechatMerchantId, readonly),
+        merchantField('收款商户号', data.wechatMerchantId, readonly),
         merchantField('api_v2 秘钥', data.wechatApiV2Key, readonly),
         merchantField('api_v3 秘钥', data.wechatApiV3Key, readonly),
         merchantFileField('公钥证书', data.wechatCertFile, readonly),
@@ -14169,6 +14296,7 @@
     function merchantAlipaySection(data, readonly){
       if (data.channel !== '支付宝') return '';
       return merchantSection('支付参数配置', [
+        merchantField('收款商户号', data.id || '', readonly),
         merchantField('AppID', data.alipayAppId || '', readonly),
         merchantSecretConfigField('支付宝公钥', data.alipayPublicKeyConfigured, readonly),
         merchantSecretConfigField('商家应用公钥', data.alipayMerchantPublicKeyConfigured, readonly)
@@ -14191,7 +14319,6 @@
           data.yabandBusinessAddress === 'Other address' ? merchantField('其它地址', data.yabandOtherAddress, readonly) : '',
           data.yabandBusinessAddress === 'Other address' ? merchantField('邮政编码', data.yabandOtherPostCode, readonly) : '',
           data.yabandBusinessAddress === 'Other address' ? merchantField('城市', data.yabandOtherCity, readonly) : '',
-          data.yabandBusinessAddress === 'Other address' ? merchantField('国家/地区', data.yabandOtherCountry, readonly, ['United Kingdom', 'France', 'Germany', 'Netherlands']) : '',
           merchantFileField('地址证明', data.yabandAddressProof, readonly, '最近3个月的行政事务账单（如水电费、电话费账单）、银行对账单或政府信函，文件类型为png/jpeg/pdf，且大小不超过5MB。'),
           merchantField('行业（MCC）', data.yabandMcc, readonly, ['5813-Drinking places', '5812-Eating places and restaurants', '5499-Misc. food stores', '5999-Misc. retail stores']),
           merchantField('主营产品/服务', data.yabandProductService, readonly),
@@ -14220,7 +14347,6 @@
           merchantField('居住地址', data.yabandUboAddress, readonly),
           merchantField('邮政编码', data.yabandUboPostCode, readonly),
           merchantField('城市', data.yabandUboCity, readonly),
-          merchantField('国家/地区', data.yabandUboCountry, readonly, ['United Kingdom', 'China', 'France', 'Germany']),
           merchantField('证件类型', data.yabandUboCertType, readonly, ['Passport', 'National ID']),
           merchantField('证件有效期', data.yabandUboCertPeriod, readonly),
           merchantFileField('上传身份证件', data.yabandUboIdentityFile, readonly, '文件类型为png/jpeg/jpg/pdf，且大小不超过5MB。'),
@@ -14239,7 +14365,6 @@
         merchantSection('银行账号', [
           merchantField('账户持有人', data.yabandAccountHolder, readonly),
           merchantField('银行名称', data.bankName, readonly),
-          merchantField('国家/地区', data.region, readonly, ['英国', '法国', '德国']),
           merchantField('货币', data.yabandCurrency, readonly, ['EUR', 'HUF', 'SEK', 'ZAR', 'RON', 'PLN', 'NOK', 'NZD', 'GBP']),
           merchantField('IBAN/Account', data.yabandIban, readonly),
           merchantField('BIC/SWIFT/Sort Code', data.yabandSwift, readonly),
@@ -14271,11 +14396,13 @@
     }
 
     function isMerchantIndividualBusiness(channel, type){
-      return type === '个体户' || (channel === '微信支付' && type === '个体工商户');
+      return type === '个体户' || (['微信支付', '支付宝'].includes(channel) && type === '个体工商户');
     }
 
     function isMerchantEnterpriseQualification(channel, type){
-      return type === '企业' || (channel === '微信支付' && ['政府机关', '事业单位', '社会组织'].includes(type));
+      return type === '企业'
+        || (channel === '微信支付' && ['政府机关', '事业单位', '社会组织'].includes(type))
+        || (channel === '支付宝' && ['普通企业', '党政机关', '事业单位', '社会组织'].includes(type));
     }
 
     function merchantContentHtml(mode, data){
@@ -14285,18 +14412,20 @@
         merchantSection('基础信息', [
           merchantField('国家/地区', data.region, readonly, ['中国大陆', '中国香港', '中国台湾', '新加坡', '英国', '法国', '德国']),
           merchantField('渠道名称', data.channel, readonly, merchantChannelsForRegion(data.region, true)),
-          data.channel === '微信支付' ? '' : merchantField('收款商户号', data.id || '创建后系统生成', true),
-          merchantField('商户类型', data.type || '企业', readonly, data.channel === '微信支付' ? ['个体工商户', '企业', '政府机关', '事业单位', '社会组织'] : ['企业', '个体户', '个人']),
+          merchantField('主体类型', data.type || '企业', readonly, data.channel === '微信支付' ? ['个体工商户', '企业', '政府机关', '事业单位', '社会组织'] : data.channel === '支付宝' ? ['普通企业', '个体工商户', '党政机关', '事业单位', '社会组织'] : ['企业', '个体户', '个人']),
           readonly ? merchantReadonlyTag('商户状态', data.status || '启用', data.status.includes('停用') ? 'red' : 'green') : merchantField('商户状态', data.status || '启用', false, ['启用', '停用']),
           merchantField('创建时间', data.createdAt, true),
           merchantField('更新时间', data.updatedAt, true),
           merchantBaofooFields(data, readonly)
         ].join('')),
+        merchantBaofooPaySection(data, readonly),
         merchantWechatPaySection(data, readonly),
         merchantAlipaySection(data, readonly),
         merchantSection('主体资质信息', [
           merchantField(data.region === '英国' ? '公司法定名称' : '企业法定名称', data.qualificationName, readonly),
-          merchantField(data.region === '英国' ? '注册号码' : (isIndividualBusiness ? '营业执照号' : '统一社会信用代码'), data.qualificationNo, readonly),
+          merchantWechatQualificationFields(data, readonly),
+          merchantAlipayQualificationFields(data, readonly),
+          ['微信支付', '宝付'].includes(data.channel) ? '' : merchantField(merchantAlipayCertNoLabel(data, isIndividualBusiness), data.qualificationNo, readonly),
           merchantBaofooQualificationFields(data, readonly),
           merchantField(data.region === '英国' ? '董事 / 授权代表' : '法人姓名', data.legalPerson, readonly),
           merchantField('法人证件类型', data.legalCertType, readonly, data.region === '英国' ? ['Passport', 'Driving Licence'] : ['居民身份证', '护照', '港澳居民来往内地通行证']),
@@ -14346,27 +14475,64 @@
       activate(pageId);
     }
 
+    function paymentConfigRegionName(regionText){
+      return String(regionText || '').replace(/\s+[A-Z]{2}$/, '').trim();
+    }
+
+    function merchantCreateRegionsFromPaymentConfig(includeDisabled = false){
+      return Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
+        .filter(row => includeDisabled || row.cells[7]?.textContent.includes('启用'))
+        .map(row => paymentConfigRegionName(row.cells[3]?.textContent.trim()))
+        .filter(Boolean)
+        .filter((region, index, list) => list.indexOf(region) === index);
+    }
+
+    function updateMerchantCreateRegionOptions(preferred = ''){
+      const select = document.getElementById('merchantCreateRegion');
+      if (!select) return '';
+      const current = preferred || select.value;
+      const regions = merchantCreateRegionsFromPaymentConfig();
+      select.innerHTML = '<option value="">请选择国家/地区</option>' + (
+        regions.length
+          ? regions.map(region => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`).join('')
+          : '<option value="" disabled>暂无可用国家/地区</option>'
+      );
+      select.value = regions.includes(current) ? current : '';
+      rebuildCustomSelectOptions(select);
+      return select.value;
+    }
+
     function merchantChannelsForRegion(region, includeDisabled = false){
       const rows = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'));
       const channels = rows.reduce((list, row) => {
         const channelName = row.cells[1]?.textContent.trim() || '';
         const regionText = row.cells[3]?.textContent.trim() || '';
         const status = row.cells[7]?.textContent.trim() || '';
-        const regionName = regionText.replace(/\s+[A-Z]{2}$/, '').trim();
+        const regionName = paymentConfigRegionName(regionText);
         if (channelName && regionName === region && (includeDisabled || status.includes('启用')) && !list.includes(channelName)) {
           list.push(channelName);
         }
         return list;
       }, []);
-      return channels.length ? channels : ['微信支付', '支付宝', '宝付', '湃卡国际', '摩宝支付', 'PayPal'];
+      return channels;
     }
 
     function updateMerchantCreateChannelOptions(region){
       const select = document.getElementById('merchantCreatePaymentChannel');
       if (!select) return;
       const current = select.value;
+      if (!region) {
+        select.innerHTML = '<option value="">请先选择国家/地区</option>';
+        select.value = '';
+        rebuildCustomSelectOptions(select);
+        return;
+      }
       const channels = merchantChannelsForRegion(region);
-      select.innerHTML = '<option value="">请选择支付渠道</option>' + channels.map(channel => `<option>${escapeHtml(channel)}</option>`).join('');
+      select.innerHTML = '<option value="">请选择支付渠道</option>' + (
+        channels.length
+          ? channels.map(channel => `<option>${escapeHtml(channel)}</option>`).join('')
+          : '<option value="" disabled>该国家/地区暂无可用支付渠道</option>'
+      );
       select.value = channels.includes(current) ? current : '';
       rebuildCustomSelectOptions(select);
     }
@@ -14388,10 +14554,51 @@
       const current = typeSelect.value;
       const options = channel === '微信支付'
         ? ['个体工商户', '企业', '政府机关', '事业单位', '社会组织']
+        : channel === '支付宝'
+          ? ['普通企业', '个体工商户', '党政机关', '事业单位', '社会组织']
         : ['企业', '个体户', '个人'];
-      typeSelect.innerHTML = options.map(option => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`).join('');
-      typeSelect.value = options.includes(current) ? current : options[0];
+      typeSelect.innerHTML = '<option value="">请选择主体类型</option>' + options.map(option => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`).join('');
+      typeSelect.value = options.includes(current) ? current : '';
       rebuildCustomSelectOptions(typeSelect);
+    }
+
+    function updateAlipayCertNumberField(){
+      const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
+      const label = document.querySelector('[data-alipay-cert-no-label]');
+      const input = document.querySelector('[data-alipay-cert-no-input]');
+      if (!label || !input || channel !== '支付宝') return;
+      const visibleCertSelect = Array.from(document.querySelectorAll('[data-merchant-channel="支付宝"][data-merchant-type] select'))
+        .find(select => !select.closest('.tenant-form-field')?.hidden);
+      const certType = visibleCertSelect?.value || '';
+      const fieldName = certType ? `${certType}号码` : '证件号码';
+      label.innerHTML = `${escapeHtml(fieldName)}<span class="required-star">*</span>`;
+      input.placeholder = certType ? `请输入${fieldName}` : '请先选择商户证件类型';
+    }
+
+    function updateBaofooCertNumberField(){
+      const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
+      const label = document.querySelector('[data-baofoo-cert-no-label]');
+      const input = document.querySelector('[data-baofoo-cert-no-input]');
+      if (!label || !input || channel !== '宝付') return;
+      const certType = document.querySelector('[data-baofoo-cert-type-select]')?.value || '';
+      const fieldName = certType ? `${certType}号` : '证件号码';
+      label.innerHTML = `${escapeHtml(fieldName)}<span class="required-star">*</span>`;
+      input.placeholder = certType ? `请输入${fieldName}` : '请先选择商户证件类型';
+    }
+
+    function updateWechatCertNumberField(){
+      const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
+      const label = document.querySelector('[data-wechat-cert-no-label]');
+      const input = document.querySelector('[data-wechat-cert-no-input]');
+      if (!label || !input || channel !== '微信支付') return;
+      syncWechatCertTypeOptions();
+      const visibleCertSelect = Array.from(document.querySelectorAll('[data-wechat-cert-type-select]'))
+        .find(select => !select.closest('.tenant-form-field')?.hidden);
+      const certType = visibleCertSelect?.value || '';
+      const fieldName = certType ? `${certType}号` : '证件号码';
+      const type = document.getElementById('merchantCreateType')?.value || '';
+      label.innerHTML = `${escapeHtml(fieldName)}<span class="required-star">*</span>`;
+      input.placeholder = certType ? `请输入${fieldName}` : '请先选择商户证件类型';
     }
 
     function updateYabandSaleChannelFields(){
@@ -14425,32 +14632,43 @@
         if (isMerchantIndividualBusiness(channel, type)) values.push('个体户');
         if (isMerchantEnterpriseQualification(channel, type)) values.push('企业');
       }
+      if (channel === '支付宝') {
+        if (type === '个体工商户') values.push('个体户');
+        if (['普通企业', '党政机关', '事业单位', '社会组织'].includes(type)) values.push('企业');
+      }
       return values;
     }
 
-    function updateMerchantCreateType(){
-      const region = document.getElementById('merchantCreateRegion')?.value || '中国大陆';
-      updateMerchantCreateChannelOptions(region);
+    function updateMerchantCreateType(event){
+      if (!event) updateMerchantCreateRegionOptions();
+      const region = document.getElementById('merchantCreateRegion')?.value || '';
+      if (!event || event.currentTarget?.id === 'merchantCreateRegion') {
+        updateMerchantCreateChannelOptions(region);
+      }
       const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
       updateMerchantCreateTypeOptions(channel);
-      const type = document.getElementById('merchantCreateType')?.value || '企业';
-      const merchantNo = document.getElementById('merchantCreateNo');
-      if (merchantNo) {
-        const generatedMerchantNo = channel === '宝付' || channel === 'yabandpay';
+      const merchantTypeSelect = document.getElementById('merchantCreateType');
+      const merchantTypeField = merchantTypeSelect?.closest('.tenant-form-field');
+      if (channel === 'yabandpay' && merchantTypeSelect) merchantTypeSelect.value = '企业';
+      if (merchantTypeField) merchantTypeField.hidden = channel === 'yabandpay';
+      const type = merchantTypeSelect?.value || '';
+      document.querySelectorAll('[data-merchant-no-input]').forEach(merchantNo => {
+        const generatedMerchantNo = channel === '宝付';
         merchantNo.disabled = generatedMerchantNo;
         merchantNo.value = generatedMerchantNo ? '' : merchantNo.value;
         merchantNo.placeholder = generatedMerchantNo ? '新增后系统反显' : '请输入收款商户号';
-      }
+      });
       document.querySelectorAll('[data-merchant-channel],[data-merchant-region],[data-merchant-panel],[data-merchant-hide-channel]').forEach(field => {
         const channels = (field.dataset.merchantChannel || '').split(/\s+/).filter(Boolean);
         const hiddenChannels = (field.dataset.merchantHideChannel || '').split(/\s+/).filter(Boolean);
         const regions = (field.dataset.merchantRegion || '').split(/\s+/).filter(Boolean);
         const types = (field.dataset.merchantType || field.dataset.merchantPanel || '').split(/\s+/).filter(Boolean);
         const typeValues = merchantTypeMatchValues(channel, type);
+        const matchValues = field.dataset.merchantStrictType === 'true' ? [type] : typeValues;
         const channelMatched = !channels.length || channels.includes(channel);
         const channelVisible = !hiddenChannels.includes(channel);
         const regionMatched = !regions.length || regions.includes(region);
-        const typeMatched = !types.length || typeValues.some(value => types.includes(value));
+        const typeMatched = !types.length || matchValues.some(value => types.includes(value));
         const visible = channelMatched && channelVisible && regionMatched && typeMatched;
         field.hidden = !visible;
         field.classList.toggle('merchant-visible', visible);
@@ -14458,6 +14676,9 @@
       updateYabandSaleChannelFields();
       updateYabandBusinessAddressFields();
       updateMerchantBankAddressFields(region);
+      updateAlipayCertNumberField();
+      updateBaofooCertNumberField();
+      updateWechatCertNumberField();
     }
 
     function merchantAddressSelectHtml(placeholder, options){
@@ -14535,6 +14756,13 @@
     document.getElementById('merchantCreatePaymentChannel')?.addEventListener('change', updateMerchantCreateType);
     document.getElementById('merchantCreateRegion')?.addEventListener('change', updateMerchantCreateType);
     document.getElementById('merchantCreateType')?.addEventListener('change', updateMerchantCreateType);
+    document.querySelectorAll('[data-merchant-channel="支付宝"][data-merchant-type] select').forEach(select => {
+      select.addEventListener('change', updateAlipayCertNumberField);
+    });
+    document.querySelector('[data-baofoo-cert-type-select]')?.addEventListener('change', updateBaofooCertNumberField);
+    document.querySelectorAll('[data-wechat-cert-type-select]').forEach(select => {
+      select.addEventListener('change', updateWechatCertNumberField);
+    });
     document.getElementById('merchantCreateConfirm')?.addEventListener('click', () => {
       const channel = document.getElementById('merchantCreatePaymentChannel')?.value || '';
       if (channel === '支付宝') {
