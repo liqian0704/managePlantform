@@ -3681,7 +3681,7 @@
         <section class="page" id="merchant-management" data-title="商户管理" data-breadcrumb="支付结算,商户管理">
           <div class="panel">
             <div class="panel-body">
-              <div class="filter-bar unified-search merchant-filter-bar">
+              <div class="filter-bar unified-search">
                 <div class="filter-field"><label>收款商户号：</label><input id="merchantNoFilter" placeholder="请输入收款商户号" /></div>
                 <div class="filter-field"><label>收款主体：</label><input id="merchantSubjectFilter" placeholder="请输入收款主体" /></div>
                 <div class="filter-field"><label>租户名称：</label><input id="merchantTenantFilter" placeholder="请输入租户名称" /></div>
@@ -3818,7 +3818,6 @@
             <section class="tenant-form-section">
               <div class="tenant-section-heading">
                 <h2 class="tenant-section-title">主体资质信息</h2>
-                <button class="tenant-template-link" type="button" data-open="tenant-qualification">主体资质模版</button>
               </div>
               <div class="tenant-form-grid">
                 <div class="tenant-form-field tenant-form-panel" data-merchant-region="中国大陆" data-merchant-type="企业 个体户">
@@ -4888,13 +4887,12 @@
         <section class="page" id="payment-channel-config" data-title="支付渠道配置" data-breadcrumb="支付结算,支付渠道配置">
           <div class="panel">
             <div class="panel-body">
-              <div class="search cols-6">
-                <input id="paymentChannelKeyword" placeholder="配置ID / 渠道名称" />
-                <select id="paymentMethodFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select>
-                <select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆 CN</option><option>英国 GB</option></select>
-                <select id="paymentStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select>
-                <button class="btn primary" id="paymentSearch">搜索</button>
-                <button class="btn soft" id="paymentReset">重置</button>
+              <div class="filter-bar unified-search">
+                <div class="filter-field"><label>配置ID：</label><input id="paymentChannelKeyword" placeholder="请输入配置ID / 渠道名称" /></div>
+                <div class="filter-field"><label>渠道名称：</label><select id="paymentMethodFilter"><option value="">请选择支付渠道</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select></div>
+                <div class="filter-field"><label>适用地区：</label><select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆 CN</option><option>英国 GB</option></select></div>
+                <div class="filter-field"><label>状态：</label><select id="paymentStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
+                <div class="filter-actions"><button class="btn primary" id="paymentSearch">搜索</button><button class="btn soft" id="paymentReset">重置</button></div>
               </div>
               <div class="panel-head no-title">
                 <div></div>
