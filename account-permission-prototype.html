@@ -1230,8 +1230,8 @@
     .modal.payment-mode .field label{margin-bottom:8px;font-size:14px;line-height:20px;color:#344054}
     .modal.payment-mode .choice-grid{gap:24px}
     #paymentFormFixedFeeField[hidden]{display:none!important}
-    .payment-fixed-fee-row{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:8px}
-    .payment-fixed-fee-row input,.payment-fixed-fee-row select,.payment-fixed-fee-row .custom-select{width:100%;min-width:0}
+    .payment-fixed-fee-row{display:block;max-width:240px}
+    .payment-fixed-fee-row input{width:100%;min-width:0}
     .modal.split-mode .modal-panel{width:min(720px,calc(100vw - 48px))}
     .modal.split-mode .modal-body{padding:22px 24px 20px}
     .modal.split-mode .modal-grid{grid-template-columns:1fr 1fr;gap:14px 18px}
@@ -1616,7 +1616,8 @@
     .field-error-message.show{display:block}
     .tenant-form-field > .field-error-message{grid-column:2 / 3}
     .product-form-module-grid .field > .field-error-message,
-    .modal.tenant-cashier-mode .field > .field-error-message{grid-column:2 / 3}
+    .modal.tenant-cashier-mode .field > .field-error-message,
+    .modal.tax-mode .field > .field-error-message{grid-column:1 / -1;margin-left:0}
     .modal.material-mode .field > .field-error-message{grid-column:2 / 3;margin-top:-16px}
     .spec-name-row > .field-error-message{grid-column:2 / 3;margin-top:-4px}
     .password-help{
@@ -4752,25 +4753,25 @@
               <table class="tax-config-table" data-pagination="none">
                 <thead><tr><th>国家/地区</th><th>国家代码</th><th>税种</th><th>税率档位</th><th>适用品类</th><th>税率</th><th>生效日期</th><th>失效日期</th><th>创建时间</th><th>状态</th><th>操作</th></tr></thead>
                 <tbody>
-                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>13%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:26:35</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>低税率</td><td>预包装商品</td><td>9%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:32:08</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国香港</td><td>HK</td><td>无税</td><td>零税率</td><td>全部</td><td>0%</td><td>2025-01-01</td><td>—</td><td>2024-12-20 14:08:51</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:16:42</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>预包装商品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:21:17</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr data-tax-manual-status="启用"><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>18%</td><td>2023-01-01</td><td>2023-12-31</td><td>2022-12-15 16:40:23</td><td><span class="tag gray">已失效</span></td><td><span class="amount-muted">—</span></td></tr>
+                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>22%</td><td>2026-10-01</td><td>—</td><td>2026-08-20 15:18:46</td><td><span class="tag warn">待生效</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>预包装商品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:21:17</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国台湾</td><td>TW</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>5%</td><td>2025-01-01</td><td>—</td><td>2024-12-22 09:16:42</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国香港</td><td>HK</td><td>无税</td><td>零税率</td><td>全部</td><td>0%</td><td>2025-01-01</td><td>—</td><td>2024-12-20 14:08:51</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>低税率</td><td>预包装商品</td><td>5.5%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:31:12</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:24:30</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>低税率</td><td>预包装商品</td><td>9%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:32:08</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr><td>中国大陆</td><td>CN</td><td>增值税</td><td>标准税率</td><td>现制饮品</td><td>13%</td><td>2025-01-01</td><td>—</td><td>2024-12-18 10:26:35</td><td><span class="tag green">生效中</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
                   <tr data-tax-manual-status="启用"><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2024-01-01</td><td>2026-09-30</td><td>2023-12-12 11:05:09</td><td><span class="tag green">生效中</span></td><td></td></tr>
-                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>22%</td><td>2026-10-01</td><td>—</td><td>2026-08-20 15:18:46</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>英国</td><td>GB</td><td>VAT</td><td>零税率</td><td>预包装商品</td><td>0%</td><td>2025-01-01</td><td>—</td><td>2024-12-16 13:37:54</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>20%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:24:30</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
-                  <tr><td>法国</td><td>FR</td><td>VAT</td><td>低税率</td><td>预包装商品</td><td>5.5%</td><td>2025-01-01</td><td>—</td><td>2024-12-19 17:31:12</td><td><span class="tag green">启用</span></td><td><div class="row-actions"><button class="link" type="button" data-tax-action="edit">编辑</button><button class="link" type="button" data-tax-action="status">停用</button></div></td></tr>
+                  <tr data-tax-manual-status="启用"><td>英国</td><td>GB</td><td>VAT</td><td>标准税率</td><td>现制饮品</td><td>18%</td><td>2023-01-01</td><td>2023-12-31</td><td>2022-12-15 16:40:23</td><td><span class="tag gray">已失效</span></td><td><span class="amount-muted">—</span></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
-                <b style="display:block;margin-bottom:6px">备注：税率生效与存量业务处理</b>
-                税率按「国家/地区 × 税种 × 档位 × 适用品类 × 生效日期」维护，同一地区可存在多个档位与历史记录（如上「英国 GB 现制饮品」由 2024-01-01 至 2026-09-30 的 20% 切到 2026-10-01 生效的 22%）。<br />
-                <b>状态计算</b>：启用的税率在生效日期前显示“待生效”，有效期内显示“生效中”，超过失效日期后自动显示“已失效”；有效期内被人工停用时显示“已停用”。失效日期包含当天，次日零点起转为“已失效”。<br />
-                <b>列表与操作</b>：税率记录按创建时间倒序排列，最新创建的记录优先展示；已失效记录作为历史依据只读保留，不可编辑、启用、停用或删除。<br />
-                <b>存量业务锁定</b>：订单在「下单/审批通过」时快照当时的税率，之后税率调整只影响新订单，在途订单不重算、不打回。
+                <b style="display:block;margin-bottom:6px">需求描述：税率配置</b>
+                <b>列表排序</b>：税率列表按创建时间倒序排列，最新创建的记录优先展示。<br />
+                <b>新增税率</b>：新增税率时记录唯一性规则为「国家/地区 + 适用品类」，同一个国家/地区、同一个适用品类在同一时间只能有一条生效记录。失效日期不填写时列表展示“—”，代表长期有效。<br />
+                <b>新增校验</b>：新增税率配置时，国家/地区、国家代码、税种、税率档位、适用品类、税率、生效日期、状态为必填项；必填项为空时点击“确定”，应在当前必填项输入框或选择框下方以红色文字提示“请输入＋字段名称”或“请选择＋字段名称”，用户完成输入或选择后清除提示。<br />
+                <b>税率状态</b>：待生效表示启用状态但未到生效日期；生效中表示启用状态且当前日期在生效日期至失效日期范围内；已失效表示当前日期已超过失效日期；已停用表示记录未到失效日期前，用户点击停用后的状态。<br />
+                <b>历史规则</b>：已失效记录作为历史依据只读保留，不可编辑、启用、停用或删除；订单在下单时快照当时税率，后续税率调整只影响新订单。
               </div>
             </div>
           </div>
@@ -4908,15 +4909,14 @@
                   <tr><td>3000</td><td>微信支付</td><td>WECHAT_PAY</td><td>中国大陆 CN</td><td>直连</td><td>CNY</td><td>0.6%</td><td><span class="tag green">启用</span></td><td>2026-07-02 09:30:00</td><td>2026-08-11 10:20:35</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                   <tr><td>3001</td><td>支付宝</td><td>ALIPAY</td><td>中国大陆 CN</td><td>直连</td><td>CNY</td><td>0.6%</td><td><span class="tag green">启用</span></td><td>2026-07-03 10:15:00</td><td>2026-08-10 16:42:18</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                   <tr><td>3002</td><td>宝付</td><td>BAOFOO_PAY</td><td>中国大陆 CN</td><td>聚合收银</td><td>CNY</td><td>0.38%</td><td><span class="tag green">启用</span></td><td>2026-07-05 14:00:00</td><td>2026-08-09 11:18:26</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr><td>3006</td><td>yabandpay</td><td>YABANDPAY</td><td>英国 GB</td><td>跨境服务商</td><td>EUR、GBP</td><td>2.3%</td><td><span class="tag green">启用</span></td><td>2026-08-18 10:00:00</td><td>2026-08-20 17:18:42</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
+                  <tr><td>3006</td><td>yabandpay</td><td>YABANDPAY</td><td>英国 GB</td><td>聚合收银</td><td>EUR、GBP</td><td>2.3%</td><td><span class="tag green">启用</span></td><td>2026-08-18 10:00:00</td><td>2026-08-20 17:18:42</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
                 <b style="display:block;margin-bottom:6px">备注：收单模式说明</b>
                 <b>直连</b>：直接接入微信支付、支付宝等官方渠道接口。<br />
                 <b>聚合收银</b>：通过聚合服务商统一接入多种支付方式。<br />
-                <b>跨境服务商</b>：用于英国、中国台湾等海外或跨境支付场景，支持当地币种及跨境支付能力。具体商户号、收款主体和结算账户请在商户收单配置中维护。<br />
-                <b>配置唯一性</b>：渠道编码＋适用国家/地区决定一条支付渠道配置的业务唯一性；同一渠道编码在同一国家/地区下不可重复新增，如需调整收单模式、支持币种、计费方式或费率，请直接编辑原配置。
+                <b>配置唯一性</b>：渠道编码＋适用国家/地区决定一条支付渠道配置的业务唯一性；同一渠道编码在同一国家/地区下生效的记录只能有一条，如需调整收单模式、支持币种、计费方式或费率，请直接编辑原配置。
               </div>
             </div>
           </div>
@@ -5341,7 +5341,7 @@
               </div>
             </div>
             <div class="field"><label><span class="required-mark">*</span>收单模式</label>
-              <select id="paymentFormMode"><option value="">请选择收单模式</option><option>直连</option><option>聚合收银</option><option>跨境服务商</option></select>
+              <select id="paymentFormMode"><option value="">请选择收单模式</option><option>直连</option><option>聚合收银</option></select>
             </div>
             <div class="field"><label><span class="required-mark">*</span>支持币种</label><input id="paymentFormSupportedCurrencies" placeholder="如 CNY，多个币种用顿号分隔" /></div>
             <div class="field"><label><span class="required-mark">*</span>计费方式</label>
@@ -5351,7 +5351,6 @@
             <div class="field full" id="paymentFormFixedFeeField" hidden><label><span class="required-mark">*</span>固定金额</label>
               <div class="payment-fixed-fee-row">
                 <input id="paymentFormFixedAmount" placeholder="如 0.04" inputmode="decimal" />
-                <select id="paymentFormFixedCurrency"><option value="">币种</option><option>CNY</option><option>GBP</option><option>HKD</option><option>TWD</option><option>EUR</option><option>USD</option></select>
               </div>
             </div>
             <div class="field full status-inline"><label><span class="required-mark">*</span>状态</label>
@@ -9971,11 +9970,11 @@
         paymentFormSupportedCurrencies.value = row.cells[5].textContent.trim();
         const feeText = row.cells[6].textContent.trim();
         const rateMatch = feeText.match(/([\d.]+)\s*%/);
-        const fixedMatch = feeText.match(/\+\s*([\d.]+)\s*([A-Z]{3})/i);
+        const fixedMatch = feeText.match(/\+\s*([\d.]+)(?:\s*([A-Z]{3}))?/i);
         paymentFormBillingType.value = row.dataset.billingType || (fixedMatch ? '按比例 + 固定金额' : '按比例');
         paymentFormFee.value = row.dataset.percentageFee || rateMatch?.[1] || '';
         paymentFormFixedAmount.value = row.dataset.fixedAmount || fixedMatch?.[1] || '';
-        paymentFormFixedCurrency.value = row.dataset.fixedCurrency || fixedMatch?.[2]?.toUpperCase() || '';
+        if (paymentFormFixedCurrency) paymentFormFixedCurrency.value = row.dataset.fixedCurrency || fixedMatch?.[2]?.toUpperCase() || '';
         paymentFormStatus.value = row.cells[7].textContent.includes('停用') ? '停用' : '启用';
       } else {
         paymentFormConfigCode.value = nextNumericConfigId('#payment-channel-config', 3000);
@@ -9987,7 +9986,7 @@
         paymentFormBillingType.value = '';
         paymentFormFee.value = '';
         paymentFormFixedAmount.value = '';
-        paymentFormFixedCurrency.value = '';
+        if (paymentFormFixedCurrency) paymentFormFixedCurrency.value = '';
         paymentFormStatus.value = '启用';
       }
       updatePaymentBillingFields();
@@ -11329,7 +11328,6 @@
       if (!paymentFormFee.value.trim()) { paymentFormFee.focus(); return false; }
       const isCompoundBilling = paymentFormBillingType.value === '按比例 + 固定金额';
       if (isCompoundBilling && !paymentFormFixedAmount.value.trim()) { paymentFormFixedAmount.focus(); return false; }
-      if (isCompoundBilling && !paymentFormFixedCurrency.value) { paymentFormFixedCurrency.focus(); return false; }
 
       const row = paymentContext.mode === 'edit' && paymentContext.row ? paymentContext.row : document.createElement('tr');
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -11337,12 +11335,12 @@
         ? (paymentContext.row.cells[8]?.textContent.trim() || now)
         : now;
       const feeDisplay = isCompoundBilling
-        ? `${paymentFormFee.value.trim()}% + ${paymentFormFixedAmount.value.trim()} ${paymentFormFixedCurrency.value}`
+        ? `${paymentFormFee.value.trim()}% + ${paymentFormFixedAmount.value.trim()}`
         : `${paymentFormFee.value.trim()}%`;
       row.dataset.billingType = paymentFormBillingType.value;
       row.dataset.percentageFee = paymentFormFee.value.trim();
       row.dataset.fixedAmount = isCompoundBilling ? paymentFormFixedAmount.value.trim() : '';
-      row.dataset.fixedCurrency = isCompoundBilling ? paymentFormFixedCurrency.value : '';
+      row.dataset.fixedCurrency = '';
       row.innerHTML = `
         <td>${escapeHtml(paymentFormConfigCode.value.trim())}</td>
         <td>${escapeHtml(paymentFormName.value.trim())}</td>
@@ -12128,6 +12126,7 @@
     function openTaxConfigModal(context = { mode: 'create', row: null }){
       if (context.mode === 'edit' && context.row && taxComputedStatus(context.row) === '已失效') return;
       taxContext = context;
+      [taxFormRegion, taxFormRegionCode, taxFormType, taxFormTier, taxFormCategory, taxFormRate, taxFormEffective, taxFormStatus].forEach(control => setInlineRequiredError(control, false));
       modal.classList.remove('menu-mode','role-mode','tenant-mode','permission-mode','qualification-mode','assign-role-mode','tenant-cashier-mode','payment-mode','region-mode');
       modal.classList.add('tax-mode');
       modalTitle.textContent = context.mode === 'edit' ? '编辑税率配置' : '新增税率配置';
@@ -12163,13 +12162,17 @@
     }
 
     function saveTaxConfig(){
-      if (!taxFormRegion.value.trim()) { taxFormRegion.focus(); return false; }
-      if (!taxFormRegionCode.value.trim()) { taxFormRegionCode.focus(); return false; }
-      if (!taxFormType.value.trim()) { taxFormType.focus(); return false; }
-      if (!taxFormCategory.value.trim()) { taxFormCategory.focus(); return false; }
-      if (!taxFormRate.value.trim()) { taxFormRate.focus(); return false; }
-      if (!taxFormEffective.value.trim()) { taxFormEffective.focus(); return false; }
-      if (!taxFormStatus.value) { taxFormStatus.focus(); return false; }
+      const valid = validateInlineRequired([
+        { control: taxFormRegion, message: '请输入国家/地区' },
+        { control: taxFormRegionCode, message: '请输入国家代码' },
+        { control: taxFormType, message: '请输入税种' },
+        { control: taxFormTier, message: '请选择税率档位' },
+        { control: taxFormCategory, message: '请输入适用品类' },
+        { control: taxFormRate, message: '请输入税率' },
+        { control: taxFormEffective, message: '请输入生效日期' },
+        { control: taxFormStatus, message: '请选择状态' }
+      ]);
+      if (!valid) return false;
       const expiry = taxFormExpiry.value.trim() || '—';
       if (expiry !== '—' && expiry < taxFormEffective.value.trim()) { taxFormExpiry.focus(); return false; }
       if (taxContext.mode !== 'edit' && expiry !== '—' && expiry <= taxTodayString()) { taxFormExpiry.focus(); return false; }
@@ -13726,7 +13729,15 @@
       tenantEditAccountValue,
       materialFormName,
       materialFormType,
-      materialFormUnit
+      materialFormUnit,
+      taxFormRegion,
+      taxFormRegionCode,
+      taxFormType,
+      taxFormTier,
+      taxFormCategory,
+      taxFormRate,
+      taxFormEffective,
+      taxFormStatus
     ].forEach(control => {
       const eventName = control?.tagName === 'SELECT' ? 'change' : 'input';
       control?.addEventListener(eventName, () => setInlineRequiredError(control, false));
