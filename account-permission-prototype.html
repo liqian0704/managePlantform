@@ -2364,6 +2364,11 @@
                       <td>6</td>
                       <td>22</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
                     </tr>
+                    <tr>
+                      <td>审计查看</td>
+                      <td>0</td>
+                      <td>12</td><td><span class="tag green">启用</span></td><td><span class="link">编辑</span>　<span class="link">停用</span></td>
+                    </tr>
                   </tbody>
                   </table>
                 </div>
@@ -2377,6 +2382,7 @@
             <b>角色名称</b>：新增和编辑角色时均为必填项，最多输入15个字符；角色名称为空时点击“确定”，应在输入框下方以红色文字提示“请输入角色名称”，输入后清除提示。<br />
             <b>账号数</b>：展示已授权当前角色的账号数量。<br />
             <b>权限数</b>：展示当前角色拥有的权限数量，并随角色权限配置同步更新。<br />
+            <b>角色停用规则</b>：点击停用角色时，若该角色存在关联账号且账号状态为启用，弹窗提示当前关联且启用状态的账号数量，并提示需要先停用该角色下的账号；若不存在关联且启用状态的账号，则直接弹出确认停用弹窗。<br />
             <b>状态与删除操作</b>：启用、停用和删除角色均需弹出二次确认弹窗，用户确认后才执行对应操作；取消确认不改变角色数据及状态。
           </div>
         </section>
@@ -3042,6 +3048,7 @@
               <table><thead><tr><th>角色名称</th><th>授权系统</th><th>账号数</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead><tbody>
                 <tr data-role-tenant-type="运营商"><td>运营商</td><td>客户管理平台</td><td>23</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:20</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
                 <tr data-role-tenant-type="渠道商"><td>渠道商</td><td>客户管理平台</td><td>33</td><td><span class="tag green">启用</span></td><td>2026-08-07 09:05</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
+                <tr data-role-tenant-type="门店查看"><td>门店查看</td><td>客户管理平台</td><td>0</td><td><span class="tag green">启用</span></td><td>2026-08-12 10:30</td><td><span class="link">编辑</span>　<span class="link">停用</span></td></tr>
               </tbody></table>
               <div class="note" style="margin-top:12px;font-size:13px;line-height:1.8">
                 <b style="display:block;margin-bottom:6px">需求描述：租户角色</b>
@@ -3049,6 +3056,7 @@
                 <b>列表展示</b>：展示当前租户名称、授权系统、角色关联的全部账号数及角色状态。<br />
                 <b>新增租户角色</b>：新增租户角色时，菜单权限展示客户管理平台的权限树。<br />
                 <b>新增与编辑校验</b>：新增和编辑租户角色时，角色名称、权限配置等必填项为空时点击“确定”，应在对应输入框或选择区域下方以红色文字提示“请输入＋内容项名称”或“请选择＋内容项名称”，用户完成输入或选择后清除提示。<br />
+                <b>角色停用规则</b>：点击停用角色时，若该角色存在关联账号且账号状态为启用，弹窗提示当前关联且启用状态的账号数量，并提示需要先停用该角色下的账号；若不存在关联且启用状态的账号，则直接弹出确认停用弹窗。<br />
                 <b>操作规则</b>：租户角色支持编辑、停用和删除；停用状态下的角色展示删除按钮。<br />
                 <b>二次确认</b>：点击停用和删除时均需要弹出二次确认弹窗，用户确认后才执行。
               </div>
@@ -8540,14 +8548,26 @@
     function openConfirm(title, text, handler){
       confirmTitle.textContent = title;
       confirmText.textContent = text;
+      confirmCancel.hidden = false;
       confirmOk.classList.toggle('danger', String(title).includes('删除'));
       confirmOk.textContent = String(title).includes('删除') ? '确认删除' : '确认';
       confirmHandler = handler;
       confirmModal.classList.add('show');
     }
 
+    function openNotice(title, text){
+      confirmTitle.textContent = title;
+      confirmText.textContent = text;
+      confirmCancel.hidden = true;
+      confirmOk.classList.remove('danger');
+      confirmOk.textContent = '我知道了';
+      confirmHandler = null;
+      confirmModal.classList.add('show');
+    }
+
     function hideConfirm(){
       confirmModal.classList.remove('show');
+      confirmCancel.hidden = false;
       confirmOk.classList.remove('danger');
       confirmOk.textContent = '确认';
       confirmHandler = null;
@@ -9131,8 +9151,25 @@
 
     function tenantAccountsUsingRole(roleName){
       return tenantAccountRecords
-        .filter(record => record.role === roleName)
+        .filter(record => record.role === roleName && record.status === '启用')
         .map(record => `${record.account || '-'}（${record.tenantName || '-'}）`);
+    }
+
+    function platformAccountsUsingRole(roleName){
+      return Array.from(document.querySelectorAll('#personnel tbody tr'))
+        .filter(record => record.cells[2]?.textContent.trim() === roleName)
+        .filter(record => record.cells[3]?.textContent.includes('启用'))
+        .map(record => record.cells[0]?.textContent.trim() || '-');
+    }
+
+    function enabledAccountCountUsingRole(row, scope){
+      const roleName = row.cells[0]?.textContent.trim() || '';
+      const countCellIndex = scope === 'tenantRole' ? 2 : 1;
+      const listedCount = Number(row.cells[countCellIndex]?.textContent.trim()) || 0;
+      const accounts = scope === 'tenantRole'
+        ? tenantAccountsUsingRole(roleName)
+        : platformAccountsUsingRole(roleName);
+      return listedCount || accounts.length;
     }
 
     function bindRoleEditActions(scope = 'platformRole'){
@@ -9152,12 +9189,11 @@
         if (action.dataset.roleAction === 'status') {
           const isDisabled = row.cells[roleScopeConfig(scope).statusCell].textContent.includes('停用');
           const roleName = row.cells[0].textContent.trim();
-          const assignedAccounts = scope === 'tenantRole' && !isDisabled ? tenantAccountsUsingRole(roleName) : [];
-          if (assignedAccounts.length) {
-            openConfirm(
-              '确认停用角色',
-              `角色「${roleName}」已分配给${assignedAccounts.join('、')}。停用后这些租户账号将无法继续使用该角色权限，是否继续？`,
-              () => toggleRoleStatus(row)
+          const enabledAccountCount = !isDisabled ? enabledAccountCountUsingRole(row, scope) : 0;
+          if (enabledAccountCount > 0) {
+            openNotice(
+              '无法停用角色',
+              `角色「${roleName}」存在 ${enabledAccountCount} 个关联且启用状态的账号，需要先停用该角色下的账号后，再停用角色。`
             );
             return;
           }
