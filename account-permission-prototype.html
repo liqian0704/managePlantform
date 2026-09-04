@@ -1238,6 +1238,19 @@
     .payment-token-remove:hover{color:#d92d20}
     .payment-token-input{flex:1 1 240px;min-width:240px;height:28px!important;border:0!important;box-shadow:none!important;padding:0!important}
     .payment-token-input:focus{box-shadow:none!important}
+    .payment-multi-picker{position:relative;width:100%;max-width:760px}
+    .payment-multi-trigger{min-height:40px;width:100%;border:1px solid #d6dbe3;border-radius:6px;background:#fff;padding:7px 34px 7px 10px;color:#344054;text-align:left;cursor:pointer;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .payment-multi-trigger:after{content:"⌄";position:absolute;right:12px;top:10px;color:#98a2b3;font-size:14px}
+    .payment-multi-picker.open .payment-multi-trigger{border-color:#2f3bdc;box-shadow:0 0 0 3px rgba(47,59,220,.08)}
+    .payment-multi-picker.open .payment-multi-trigger:after{transform:rotate(180deg)}
+    .payment-multi-placeholder{color:#98a2b3}
+    .payment-multi-tag{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;background:#eef2ff;color:#344054;font-size:12px;font-weight:600;line-height:24px}
+    .payment-multi-panel{display:none;position:absolute;z-index:35;left:0;right:0;top:44px;border:1px solid #d6dbe3;border-radius:6px;background:#fff;box-shadow:0 10px 24px rgba(15,23,42,.12);padding:8px;max-height:220px;overflow:auto}
+    .payment-multi-picker.open .payment-multi-panel{display:grid;gap:4px}
+    .payment-multi-option{display:flex;align-items:center;gap:8px;min-height:32px;padding:6px 8px;border-radius:4px;color:#344054;font-size:13px;cursor:pointer}
+    .payment-multi-option:hover{background:#f5f7ff}
+    .payment-multi-option input{width:14px!important;height:14px!important;accent-color:var(--primary)}
+    .payment-multi-empty{padding:8px;color:#98a2b3;font-size:13px;text-align:center}
     .payment-field-help{margin-top:6px;color:#98a2b3;font-size:12px;line-height:18px}
     .payment-method-fee-table{width:100%;table-layout:fixed;border:1px solid #eef0f5}
     .payment-method-fee-table th,.payment-method-fee-table td{height:42px;vertical-align:middle}
@@ -1432,8 +1445,8 @@
     .material-remark-wrap{position:relative}
     .material-remark-count{position:absolute;right:10px;bottom:6px;color:#98a2b3;font-size:12px;line-height:16px}
     .store-auth-box{border:1px solid #d0d5dd;border-radius:4px;background:#f8fafc;padding:10px}
-    .store-auth-search{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:10px}
-    .store-auth-search input{height:38px;background:#fff}
+    .store-auth-search{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:10px}
+    .store-auth-search input,.store-auth-search select{height:38px;background:#fff}
     .store-auth-list{min-height:220px;max-height:280px;overflow:auto;background:#f8fafc}
     .store-auth-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px;padding:6px 8px;color:#344054;font-size:13px}
     .store-auth-main{display:flex;align-items:center;gap:10px;min-width:0}
@@ -1637,13 +1650,16 @@
     .tenant-form-field > .field-error-message{grid-column:2 / 3}
     .tenant-cashier-form-page .tenant-form-field > .field-error-message{grid-column:1 / -1}
     .cashier-form-module{background:#fff;border:1px solid #e4e7ec;border-radius:0;padding:18px 20px;margin-bottom:14px}
+    .page-section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+    .page-section-head .tenant-section-title{margin-bottom:0}
     .cashier-form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 18px}
     .cashier-form-grid .tenant-form-field input,
     .cashier-form-grid .tenant-form-field select,
     .cashier-form-grid .tenant-form-field .custom-select{width:100%;max-width:none}
     .cashier-readonly{height:38px;display:flex;align-items:center;border:1px solid #dfe3ea;border-radius:6px;background:#f8fafc;padding:0 12px;color:#344054;font-size:14px}
-    .cashier-store-toolbar{display:grid;grid-template-columns:repeat(3,220px);gap:12px;margin-bottom:14px;max-width:696px}
-    .cashier-store-toolbar input{width:100%;height:36px}
+    .cashier-readonly .tag{margin:0}
+    .cashier-store-toolbar{display:grid;grid-template-columns:repeat(4,200px);gap:12px;margin-bottom:14px;max-width:848px}
+    .cashier-store-toolbar input,.cashier-store-toolbar select{width:100%;height:36px}
     .cashier-store-list{display:block}
     .cashier-store-table{width:100%;table-layout:fixed;border:1px solid #eef0f5}
     .cashier-store-table th,.cashier-store-table td{text-align:left!important;vertical-align:middle;padding:12px 14px}
@@ -1678,9 +1694,15 @@
     .cashier-method-product{display:inline-flex;align-items:center;gap:6px;color:#344054;font-size:13px;line-height:22px;cursor:pointer}
     .cashier-method-product input{width:14px!important;height:14px!important;accent-color:var(--primary)}
     .cashier-method-product.disabled{color:#98a2b3;cursor:not-allowed}
-    .cashier-account-list{display:grid;gap:10px}
+    .cashier-method-product-readonly{display:inline-flex;align-items:center;gap:6px;color:#344054;font-size:13px;line-height:22px}
+    .cashier-method-product-readonly.disabled{color:#98a2b3}
+    .cashier-product-rate{color:#667085;font-size:12px}
+    .cashier-account-list{display:grid;gap:0}
     .cashier-account-list > .field-error-message{grid-column:1 / -1}
-    .cashier-account-row{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:12px}
+    .cashier-account-table{border:1px solid #eef0f5}
+    .cashier-account-head,.cashier-account-row{display:grid;grid-template-columns:180px minmax(0,360px);align-items:center;gap:14px}
+    .cashier-account-head{height:42px;background:#f2f4f7;padding:0 14px;color:#1d2939;font-size:13px;font-weight:700}
+    .cashier-account-row{min-height:50px;padding:8px 14px;border-top:1px solid #eef0f5}
     .cashier-account-products{display:block;margin-top:4px;color:#667085;font-size:12px;font-weight:400;line-height:18px}
     .cashier-account-row select,.cashier-account-row .custom-select{width:100%;max-width:360px}
     .cashier-form-actions{display:flex;justify-content:flex-end;gap:10px;padding:6px 0 0}
@@ -1814,29 +1836,69 @@
     .tree-row.hidden{display:none}
     .tree-row.filtered-out{display:none}
     .page table tbody tr.filtered-out{display:none}
-    #payment-channel-config .panel-body{overflow-x:auto}
-    #payment-channel-config table{min-width:1420px;table-layout:fixed}
-    #payment-channel-config table th:nth-child(1),#payment-channel-config table td:nth-child(1){width:96px;min-width:96px}
-    #payment-channel-config table th:nth-child(2),#payment-channel-config table td:nth-child(2){width:100px;min-width:100px}
-    #payment-channel-config table th:nth-child(3),#payment-channel-config table td:nth-child(3){width:120px;min-width:120px}
+    #tenant-cashier-config .panel-body{overflow-x:visible}
+    #tenant-cashier-config table{width:100%;min-width:0;table-layout:fixed}
+    #tenant-cashier-config table th,#tenant-cashier-config table td{padding:10px 6px;white-space:normal;line-height:18px;font-size:12px;word-break:break-word}
+    #tenant-cashier-config table th:nth-child(1),#tenant-cashier-config table td:nth-child(1){width:8%}
+    #tenant-cashier-config table th:nth-child(2),#tenant-cashier-config table td:nth-child(2){width:7%}
+    #tenant-cashier-config table th:nth-child(3),#tenant-cashier-config table td:nth-child(3){width:13%;text-align:left}
+    #tenant-cashier-config table th:nth-child(4),#tenant-cashier-config table td:nth-child(4){width:7%}
+    #tenant-cashier-config table th:nth-child(5),#tenant-cashier-config table td:nth-child(5){width:7%}
+    #tenant-cashier-config table th:nth-child(6),#tenant-cashier-config table td:nth-child(6){width:18%}
+    #tenant-cashier-config table th:nth-child(7),#tenant-cashier-config table td:nth-child(7){width:10%}
+    #tenant-cashier-config table th:nth-child(8),#tenant-cashier-config table td:nth-child(8){width:6%}
+    #tenant-cashier-config table th:nth-child(9),#tenant-cashier-config table td:nth-child(9){width:9%}
+    #tenant-cashier-config table th:nth-child(10),#tenant-cashier-config table td:nth-child(10){width:9%}
+    #tenant-cashier-config table th:nth-child(11),#tenant-cashier-config table td:nth-child(11){width:6%}
+    #tenant-cashier-config .row-actions{gap:6px;flex-wrap:wrap}
+    #payment-channel-config .panel-body{overflow-x:visible}
+    #payment-channel-config table{width:100%;min-width:0;table-layout:fixed}
+    #payment-channel-config table th,#payment-channel-config table td{padding:10px 6px;white-space:normal;line-height:18px;font-size:12px;word-break:break-word;vertical-align:middle}
+    #payment-channel-config table th:nth-child(1),#payment-channel-config table td:nth-child(1){width:6%}
+    #payment-channel-config table th:nth-child(2),#payment-channel-config table td:nth-child(2){width:8%}
+    #payment-channel-config table th:nth-child(3),#payment-channel-config table td:nth-child(3){width:6%}
     #payment-channel-config table th:nth-child(4),#payment-channel-config table td:nth-child(4),
     #payment-channel-config table th:nth-child(5),#payment-channel-config table td:nth-child(5),
     #payment-channel-config table th:nth-child(6),#payment-channel-config table td:nth-child(6){
-      white-space:normal;text-align:center
+      white-space:normal
     }
-    #payment-channel-config table th:nth-child(4),#payment-channel-config table td:nth-child(4){width:170px;min-width:170px}
-    #payment-channel-config table th:nth-child(5),#payment-channel-config table td:nth-child(5){width:130px;min-width:130px}
-    #payment-channel-config table th:nth-child(6),#payment-channel-config table td:nth-child(6){width:360px;min-width:360px}
-    #payment-channel-config table th:nth-child(7),#payment-channel-config table td:nth-child(7){width:72px;min-width:72px;max-width:72px;white-space:normal}
+    #payment-channel-config table td:nth-child(4),
+    #payment-channel-config table td:nth-child(5),
+    #payment-channel-config table td:nth-child(6){text-align:center}
+    #payment-channel-config table th:nth-child(4),#payment-channel-config table td:nth-child(4){width:11%}
+    #payment-channel-config table th:nth-child(5),#payment-channel-config table td:nth-child(5){width:15%}
+    #payment-channel-config table th:nth-child(6),#payment-channel-config table td:nth-child(6){width:16%}
+    #payment-channel-config table th:nth-child(7),#payment-channel-config table td:nth-child(7){width:6%;white-space:normal}
     #payment-channel-config table th:nth-child(8),#payment-channel-config table td:nth-child(8),
-    #payment-channel-config table th:nth-child(9),#payment-channel-config table td:nth-child(9){
-      width:118px;min-width:118px;max-width:118px;white-space:normal;line-height:18px
+    #payment-channel-config table th:nth-child(9),#payment-channel-config table td:nth-child(9),
+    #payment-channel-config table th:nth-child(10),#payment-channel-config table td:nth-child(10){
+      width:8%;white-space:normal;line-height:18px
     }
-    #payment-channel-config table th:nth-child(10),#payment-channel-config table td:nth-child(10){width:80px;min-width:80px}
-    #payment-channel-config table td:nth-child(6) .tenant-store-list{max-width:340px;margin:0 auto;text-align:left}
+    #payment-channel-config table th:nth-child(11),#payment-channel-config table td:nth-child(11){width:6%;white-space:nowrap;word-break:keep-all}
+    #payment-channel-config table td:nth-child(4) .tenant-store-list,
+    #payment-channel-config table td:nth-child(6) .tenant-store-list{max-width:none;margin:0;text-align:left}
     #payment-channel-config table td:nth-child(6) .tenant-store-summary,
     #payment-channel-config table td:nth-child(6) .tenant-store-full{word-break:break-word;overflow-wrap:anywhere}
     #payment-channel-config table td:nth-child(6) .tenant-store-list.expanded .tenant-store-full{display:block;padding-right:4px}
+    #payment-channel-config .payment-inline-list,
+    #payment-channel-config .payment-product-list,
+    #payment-channel-config .payment-fee-list{display:block;text-align:center;word-break:normal;overflow-wrap:break-word}
+    #payment-channel-config .payment-product-item,
+    #payment-channel-config .payment-fee-item{display:inline;line-height:20px}
+    #payment-channel-config .payment-product-toggle-wrap,
+    #payment-channel-config .payment-fee-toggle-wrap{display:inline;margin-left:6px}
+    #payment-channel-config .payment-product-list .tenant-store-summary,
+    #payment-channel-config .payment-inline-list .tenant-store-summary,
+    #payment-channel-config .payment-fee-list .tenant-store-summary{display:block}
+    #payment-channel-config .payment-product-list .tenant-store-full,
+    #payment-channel-config .payment-inline-list .tenant-store-full,
+    #payment-channel-config .payment-fee-list .tenant-store-full{display:none}
+    #payment-channel-config .payment-product-list.expanded .tenant-store-summary,
+    #payment-channel-config .payment-inline-list.expanded .tenant-store-summary,
+    #payment-channel-config .payment-fee-list.expanded .tenant-store-summary{display:none}
+    #payment-channel-config .payment-product-list.expanded .tenant-store-full,
+    #payment-channel-config .payment-inline-list.expanded .tenant-store-full,
+    #payment-channel-config .payment-fee-list.expanded .tenant-store-full{display:block}
     .support-country-cell{display:inline-flex;align-items:center;justify-content:center;gap:6px;position:relative}
     .support-country-hint{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid #98a2b3;color:#667085;background:#fff;font-size:12px;line-height:1;cursor:help;position:relative}
     .support-country-tooltip{display:none;position:absolute;left:50%;top:24px;transform:translateX(-50%);z-index:20;width:max-content;max-width:360px;padding:8px 10px;border-radius:4px;background:#1f2937;color:#fff;font-size:12px;line-height:18px;text-align:left;white-space:normal;box-shadow:0 8px 20px rgba(15,23,42,.18)}
@@ -2309,7 +2371,7 @@
         </div>
         <div class="submenu" id="settlementSubmenu">
           <div class="menu-item sub" data-page="merchant-management">商户管理</div>
-          <div class="menu-item sub" data-page="payment-channel-config">支付方式配置</div>
+          <div class="menu-item sub" data-page="payment-channel-config">支付配置</div>
           <!-- <div class="menu-item sub" data-page="split-config">结算配置</div> -->
           <!-- <div class="menu-item sub" data-page="settlement-bills">结算记录</div> -->
         </div>
@@ -3225,7 +3287,7 @@
                 <div class="filter-field"><label>门店名称：</label><input placeholder="请输入门店名称" /></div>
                 <div class="filter-field"><label>门店类型：</label><select><option value="">请选择门店类型</option><option>太空舱</option><option>咖啡亭</option></select></div>
                 <div class="filter-field"><label>机器编码：</label><input placeholder="请输入机器编码" /></div>
-                <div class="filter-field"><label>状态：</label><select><option value="">请选择状态</option><option>正常营业</option><option>暂停营业</option><option>闭店</option></select></div>
+                <div class="filter-field"><label>状态：</label><select><option value="">请选择状态</option><option>正常营业</option><option>暂停营业</option><option>已闭店</option></select></div>
                 <div class="filter-field"><label>租户名称：</label><input placeholder="请输入租户名称" /></div>
                 <div class="filter-field"><label>国家/地区：</label><select id="filterStoreRegion"><option value="">请选择国家/地区</option><option>中国大陆</option><option>中国香港</option><option>中国台湾</option><option>新加坡</option><option>英国</option></select></div>
                 <div class="filter-field"><label id="filterStoreAreaLabel">区域：</label><select id="filterStoreArea"><option value="">请先选择国家/地区</option></select></div>
@@ -5010,37 +5072,39 @@
           </div>
         </section>
 
-        <section class="page" id="payment-channel-config" data-title="支付方式配置" data-breadcrumb="支付结算,支付方式配置">
+        <section class="page" id="payment-channel-config" data-title="支付配置" data-breadcrumb="支付结算,支付配置">
           <div class="panel">
             <div class="panel-body">
               <div class="filter-bar unified-search">
-                <div class="filter-field"><label>支付方式ID：</label><input id="paymentChannelKeyword" placeholder="请输入支付方式ID / 支付平台" /></div>
+                <div class="filter-field"><label>支付配置ID：</label><input id="paymentChannelKeyword" placeholder="请输入支付配置ID" /></div>
                 <div class="filter-field"><label>支付平台：</label><select id="paymentMethodFilter"><option value="">请选择支付平台</option><option>微信支付</option><option>支付宝</option><option>宝付</option><option>yabandpay</option></select></div>
                 <div class="filter-field"><label>适用地区：</label><select id="paymentRegionFilter"><option value="">请选择适用地区</option><option>中国大陆</option><option>英国</option></select></div>
-                <div class="filter-field"><label>状态：</label><select id="paymentStatusFilter"><option value="">请选择状态</option><option>启用</option><option>停用</option></select></div>
+                <div class="filter-field"><label>状态：</label><select id="paymentStatusFilter"><option value="">请选择状态</option><option>待生效</option><option>生效中</option><option>已失效</option><option>已停用</option></select></div>
                 <div class="filter-actions"><button class="btn primary" id="paymentSearch">搜索</button><button class="btn soft" id="paymentReset">重置</button></div>
               </div>
               <div class="panel-head no-title">
                 <div></div>
                 <div class="actions">
-                  <button class="btn primary" id="paymentChannelAdd">+ 新增支付方式</button>
+                  <button class="btn primary" id="paymentChannelAdd">+ 新增支付配置</button>
                 </div>
               </div>
               <table data-pagination="none">
                 <thead>
-                  <tr><th>支付方式ID</th><th>支付平台</th><th>适用地区</th><th>支付方式</th><th>支付产品</th><th>支付产品费率</th><th>状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>支付配置ID</th><th>支付平台</th><th>适用地区</th><th>支付方式</th><th>支付产品</th><th>支付产品费率</th><th>状态</th><th>生效时间</th><th>失效时间</th><th>设置时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr data-support-countries="中国大陆" data-usage-scenarios="微信扫码支付,微信小程序支付" data-method-fees='{"微信支付 / 微信扫码支付":"0.6","微信支付 / 微信小程序支付":"0.6"}'><td>3000</td><td>微信支付</td><td><span class="support-country-cell">中国大陆<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td><div class="tenant-store-list">微信支付</div></td><td><div class="tenant-store-list">微信扫码支付、微信小程序支付</div></td><td><div class="tenant-store-list">微信支付 / 微信扫码支付：0.6%、微信支付 / 微信小程序支付：0.6%</div></td><td><span class="tag green">启用</span></td><td>2026-07-02 09:30:00</td><td>2026-08-11 10:20:35</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr data-support-countries="中国大陆" data-usage-scenarios="支付宝扫码支付" data-method-fees='{"支付宝 / 支付宝扫码支付":"0.6"}'><td>3001</td><td>支付宝</td><td><span class="support-country-cell">中国大陆<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td><div class="tenant-store-list">支付宝</div></td><td><div class="tenant-store-list">支付宝扫码支付</div></td><td><div class="tenant-store-list">支付宝 / 支付宝扫码支付：0.6%</div></td><td><span class="tag green">启用</span></td><td>2026-07-03 10:15:00</td><td>2026-08-10 16:42:18</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr data-support-countries="中国大陆" data-usage-scenarios="微信扫码支付,微信小程序支付,支付宝扫码支付" data-method-fees='{"微信支付 / 微信扫码支付":"0.38","微信支付 / 微信小程序支付":"0.42","支付宝 / 支付宝扫码支付":"0.39"}'><td>3002</td><td>宝付</td><td><span class="support-country-cell">中国大陆<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td><div class="tenant-store-list">微信支付、支付宝</div></td><td><div class="tenant-store-list">微信扫码支付、微信小程序支付、支付宝扫码支付</div></td><td><div class="tenant-store-list">微信支付 / 微信扫码支付：0.38%、微信支付 / 微信小程序支付：0.42%、支付宝 / 支付宝扫码支付：0.39%</div></td><td><span class="tag green">启用</span></td><td>2026-07-05 14:00:00</td><td>2026-08-09 11:18:26</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
-                  <tr data-support-countries="奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国" data-usage-scenarios="Apple Pay,Google Pay,信用卡 Visa / Mastercard" data-method-fees='{"Apple Pay / 线下pos":"2.3","Apple Pay / 线上H5":"2.3","Google Pay / 线下pos":"2.3","Google Pay / 线上H5":"2.3","信用卡 Visa / Mastercard / 线下pos":"2.2","信用卡 Visa / Mastercard / 线上H5":"2.2"}'><td>3006</td><td>yabandpay</td><td><span class="support-country-cell">英国<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国</span></span></span></td><td><div class="tenant-store-list">Apple Pay、Google Pay、信用卡 Visa / Mastercard</div></td><td><div class="tenant-store-list">Apple Pay、Google Pay、信用卡 Visa / Mastercard</div></td><td><div class="tenant-store-list"><span class="tenant-store-summary">Apple Pay / 线下pos：2.3%、Apple Pay / 线上H5：2.3%、<button class="tenant-store-toggle" type="button" data-store-toggle>等6项▼</button></span><span class="tenant-store-full">Apple Pay / 线下pos：2.3%、Apple Pay / 线上H5：2.3%、Google Pay / 线下pos：2.3%、Google Pay / 线上H5：2.3%、信用卡 Visa / Mastercard / 线下pos：2.2%、信用卡 Visa / Mastercard / 线上H5：2.2% <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span></div></td><td><span class="tag green">启用</span></td><td>2026-08-18 10:00:00</td><td>2026-08-20 17:18:42</td><td><div class="row-actions"><button class="link" type="button" data-payment-action="edit">编辑</button><button class="link" type="button" data-payment-action="status">停用</button></div></td></tr>
+                  <tr data-support-countries="中国大陆" data-usage-scenarios="微信扫码支付,微信小程序支付" data-method-fees='{"微信支付 / 微信扫码支付":"0.6","微信支付 / 微信小程序支付":"0.6"}'><td>3000</td><td><span class="support-country-cell">微信支付<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td>中国大陆</td><td><div class="tenant-store-list">微信支付</div></td><td><div class="payment-product-list"><span class="payment-product-item">微信扫码支付</span><span class="payment-product-item">微信小程序支付</span></div></td><td><div class="payment-fee-list"><span class="payment-fee-item">微信扫码支付：0.6%</span><span class="payment-fee-item">微信小程序支付：0.6%</span></div></td><td><span class="tag green">生效中</span></td><td>2026-07-02 09:30:00</td><td>—</td><td>2026-08-11 10:20:35</td><td></td></tr>
+                  <tr data-support-countries="中国大陆" data-usage-scenarios="支付宝扫码支付" data-method-fees='{"支付宝 / 支付宝扫码支付":"0.6"}'><td>3001</td><td><span class="support-country-cell">支付宝<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td>中国大陆</td><td><div class="tenant-store-list">支付宝</div></td><td><div class="payment-product-list"><span class="payment-product-item">支付宝扫码支付</span></div></td><td><div class="payment-fee-list"><span class="payment-fee-item">支付宝扫码支付：0.6%</span></div></td><td><span class="tag green">生效中</span></td><td>2026-07-03 10:15:00</td><td>—</td><td>2026-08-10 16:42:18</td><td></td></tr>
+                  <tr data-support-countries="中国大陆" data-usage-scenarios="微信扫码支付,微信小程序支付,支付宝扫码支付" data-method-fees='{"微信支付 / 微信扫码支付":"0.38","微信支付 / 微信小程序支付":"0.42","支付宝 / 支付宝扫码支付":"0.39"}'><td>3002</td><td><span class="support-country-cell">宝付<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：中国大陆</span></span></span></td><td>中国大陆</td><td><div class="tenant-store-list">微信支付、支付宝</div></td><td><div class="payment-product-list"><span class="tenant-store-summary"><span class="payment-product-item">微信扫码支付</span><span class="payment-product-item">微信小程序支付</span><span class="payment-product-toggle-wrap"><button class="tenant-store-toggle" type="button" data-store-toggle>等3项▼</button></span></span><span class="tenant-store-full"><span class="payment-product-item">微信扫码支付</span><span class="payment-product-item">微信小程序支付</span><span class="payment-product-item">支付宝扫码支付</span><span class="payment-product-toggle-wrap"><button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span></span></div></td><td><div class="payment-fee-list"><span class="tenant-store-summary"><span class="payment-fee-item">微信扫码支付：0.38%</span><span class="payment-fee-item">微信小程序支付：0.42%</span><span class="payment-fee-toggle-wrap"><button class="tenant-store-toggle" type="button" data-store-toggle>等3项▼</button></span></span><span class="tenant-store-full"><span class="payment-fee-item">微信扫码支付：0.38%</span><span class="payment-fee-item">微信小程序支付：0.42%</span><span class="payment-fee-item">支付宝扫码支付：0.39%</span><span class="payment-fee-toggle-wrap"><button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span></span></div></td><td><span class="tag green">生效中</span></td><td>2026-07-05 14:00:00</td><td>—</td><td>2026-08-09 11:18:26</td><td></td></tr>
+                  <tr data-support-countries="奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国" data-usage-scenarios="Visa线上,Visa线下,Mastercard线上,Mastercard线下" data-method-fees='{"Visa / Visa线上":"2.4","Visa / Visa线下":"2.1","Mastercard / Mastercard线上":"2.5","Mastercard / Mastercard线下":"2.2"}'><td>3006</td><td><span class="support-country-cell">yabandpay<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国</span></span></span></td><td>英国</td><td>Apple Pay、Google Pay、Visa、Mastercard</td><td>Visa线上、Visa线下、Mastercard线上、Mastercard线下</td><td>Visa线上：2.4%、Visa线下：2.1%、Mastercard线上：2.5%、Mastercard线下：2.2%</td><td><span class="tag green">生效中</span></td><td>2026-08-18 10:00:00</td><td>—</td><td>2026-08-20 17:18:42</td><td></td></tr>
+                  <tr data-support-countries="奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国" data-usage-scenarios="Visa线上,Visa线下,Mastercard线上,Mastercard线下" data-method-fees='{"Visa / Visa线上":"2.35","Visa / Visa线下":"2.05","Mastercard / Mastercard线上":"2.45","Mastercard / Mastercard线下":"2.15"}'><td>3007</td><td><span class="support-country-cell">yabandpay<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：奥地利、比利时、保加利亚、克罗地亚、塞浦路斯共和国、捷克共和国、丹麦、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、意大利、拉脱维亚、列支敦士登、立陶宛、卢森堡、马耳他、荷兰、挪威、波兰、葡萄牙、罗马尼亚、斯洛伐克、斯洛文尼亚、西班牙、瑞典、英国</span></span></span></td><td>英国</td><td>Apple Pay、Google Pay、Visa、Mastercard</td><td>Visa线上、Visa线下、Mastercard线上、Mastercard线下</td><td>Visa线上：2.35%、Visa线下：2.05%、Mastercard线上：2.45%、Mastercard线下：2.15%</td><td><span class="tag warn">待生效</span></td><td>2026-09-15 00:00:00</td><td>—</td><td>2026-09-01 11:30:00</td><td></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
                 <b style="display:block;margin-bottom:6px">备注：支付方式说明</b>
-                <b>配置唯一性</b>：支付平台＋适用地区决定一条支付方式配置的业务唯一性；同一支付平台在同一适用地区下生效的记录只能有一条，如需调整支付方式、支付产品或支付产品费率，请直接编辑原配置。<br />
-                <b>费率规则</b>：支付方式字段展示支付方式大类，支付产品字段展示微信扫码支付、微信小程序支付、支付宝扫码支付等具体产品；费率按“支付方式＋支付产品”维护。
+                <b>配置唯一性</b>：支付平台＋适用地区决定一条支付配置的业务唯一性；同一支付平台在同一适用地区下生效的记录只能有一条，如需调整支付方式、支付产品或支付产品费率，请直接编辑原配置。<br />
+                <b>费率规则</b>：支付方式字段展示支付方式大类，支付产品字段展示微信扫码支付、微信小程序支付、支付宝扫码支付等具体产品；费率按“支付方式＋支付产品”维护。<br />
+                <b>状态规则</b>：未到生效时间展示待生效；到达生效时间展示生效中；到达失效时间或生效中停用展示已失效；待生效停用展示已停用。待生效可编辑、停用，已停用可删除，生效中可停用且停用后自动写入失效时间。
               </div>
             </div>
           </div>
@@ -5049,11 +5113,10 @@
         <section class="page" id="tenant-cashier-config" data-title="租户收单配置" data-breadcrumb="租户管理,租户收单配置">
           <div class="panel">
             <div class="panel-body">
-              <div class="search cols-7">
+              <div class="search cols-6">
                 <input placeholder="请输入租户名称" />
                 <input placeholder="请输入租户ID" />
                 <select><option>租户角色</option><option>运营商</option><option>渠道商</option></select>
-                <select><option>租户类型</option><option>企业</option><option>个体工商户</option><option>个人</option></select>
                 <select><option>适用地区</option><option>中国大陆</option><option>海外</option><option>中国台湾</option></select>
                 <select><option>状态</option><option>启用</option><option>停用</option></select>
                 <button class="btn primary">搜索</button>
@@ -5066,25 +5129,27 @@
               </div>
               <table>
                 <thead>
-                  <tr><th>收单配置编号</th><th>租户ID</th><th>租户名称</th><th>租户角色</th><th>租户类型</th><th>适用地区</th><th>支付方式</th><th>已配置门店/下单途径</th><th>状态</th><th>更新时间</th><th>操作</th></tr>
+                  <tr><th>租户收单配置ID</th><th>租户ID</th><th>租户名称</th><th>租户角色</th><th>适用地区</th><th>配置门店</th><th>支付方式</th><th>状态</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr>
                 </thead>
                 <tbody>
-                  <tr data-tenant-cashier-id="0001" data-tenant-id="T10001" data-channels="微信扫码支付,微信小程序支付,支付宝扫码支付,宝付 / 微信扫码支付,宝付 / 微信小程序支付,宝付 / 支付宝扫码支付" data-merchant-account-bindings='{"微信支付":"1900000109","支付宝":"2088123456789012","宝付":"BF-1002837465"}' data-merchants="好饮自营商户,好饮机场店" data-order-path-methods='{"点单屏":["微信扫码支付","支付宝扫码支付","宝付 / 微信扫码支付","宝付 / 支付宝扫码支付"],"微信小程序":["微信小程序支付","宝付 / 微信小程序支付"],"H5":["支付宝扫码支付","宝付 / 支付宝扫码支付"]}'><td>0001</td><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>好饮自营商户（点单屏）、好饮机场店（点单屏）</td><td><span class="tag green">启用</span></td><td>2026-08-11 17:22:10</td><td></td></tr>
-                  <tr data-tenant-cashier-id="0002" data-tenant-id="T10002" data-channels="微信扫码支付,微信小程序支付,支付宝扫码支付,宝付 / 微信扫码支付,宝付 / 微信小程序支付,宝付 / 支付宝扫码支付" data-merchant-account-bindings='{"微信支付":"1900000118","支付宝":"2088123456789028","宝付":"BF-1002837499"}' data-merchants="深圳好饮科技旗舰店" data-order-path-methods='{"H5":["支付宝扫码支付","宝付 / 支付宝扫码支付"],"点单屏":["微信扫码支付","支付宝扫码支付","宝付 / 微信扫码支付","宝付 / 支付宝扫码支付"],"微信小程序":["微信小程序支付","宝付 / 微信小程序支付"]}'><td>0002</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>企业</td><td>中国大陆</td><td>微信支付、支付宝、宝付</td><td>深圳好饮科技旗舰店（H5）</td><td><span class="tag green">启用</span></td><td>2026-08-10 15:06:33</td><td></td></tr>
-                  <tr data-tenant-cashier-id="0003" data-tenant-id="T20001" data-channels="Apple Pay,Google Pay,信用卡 Visa / Mastercard" data-merchant-account-bindings='{"yabandpay":"YB-UK-102676687"}' data-merchants="London Central Store,Manchester Store" data-order-path-methods='{"点单屏":["Apple Pay","Google Pay","信用卡 Visa / Mastercard"],"H5":["Apple Pay","Google Pay","信用卡 Visa / Mastercard"]}'><td>0003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>企业</td><td>英国</td><td>yabandpay</td><td>London Central Store（点单屏）、Manchester Store（点单屏）</td><td><span class="tag green">启用</span></td><td>2026-08-08 11:42:09</td><td></td></tr>
-                  <tr data-tenant-cashier-id="0004" data-tenant-id="T20002" data-channels="Apple Pay,Google Pay,信用卡 Visa / Mastercard" data-merchant-account-bindings='{"yabandpay":"YB-UK-204860128"}' data-merchants="London Canary Wharf Coffee Pod,London King Street Coffee Kiosk,Manchester Piccadilly Coffee Kiosk" data-order-path-methods='{"H5":["Apple Pay","Google Pay","信用卡 Visa / Mastercard"],"点单屏":["Apple Pay","Google Pay","信用卡 Visa / Mastercard"]}'><td>0004</td><td>T20002</td><td>伦敦好饮运营租户</td><td>运营商</td><td>企业</td><td>英国</td><td>yabandpay</td><td>London Canary Wharf Coffee Pod（H5）、London King Street Coffee Kiosk（H5）、Manchester Piccadilly Coffee Kiosk（点单屏）</td><td><span class="tag green">启用</span></td><td>2026-08-18 10:16:24</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0001" data-tenant-id="T10001" data-tenant-type="企业" data-channels="微信扫码支付,微信小程序支付,支付宝扫码支付" data-merchant-account-bindings='{"微信支付":"1900000109","支付宝":"2088123456789012"}' data-merchants="好饮自营商户,好饮机场店" data-order-path-methods='{"点单屏":["微信扫码支付","支付宝扫码支付"],"微信小程序":["微信小程序支付"]}'><td>0001</td><td>T10001</td><td>平台自营租户</td><td>运营商</td><td>中国大陆</td><td><div class="tenant-store-list">好饮自营商户、好饮机场店</div></td><td>微信支付、支付宝</td><td><span class="tag green">启用</span></td><td>2026-08-01 09:18:20</td><td>2026-08-11 17:22:10</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0002" data-tenant-id="T10002" data-tenant-type="企业" data-channels="微信小程序支付,宝付 / 微信扫码支付,宝付 / 支付宝扫码支付" data-merchant-account-bindings='{"微信支付":"1900000118","宝付":"BF-1002837499"}' data-merchants="深圳好饮科技旗舰店" data-order-path-methods='{"点单屏":["宝付 / 微信扫码支付","宝付 / 支付宝扫码支付"],"微信小程序":["微信小程序支付"]}'><td>0002</td><td>T10002</td><td>深圳好饮科技有限公司</td><td>运营商</td><td>中国大陆</td><td><div class="tenant-store-list">深圳好饮科技旗舰店</div></td><td>微信支付、宝付</td><td><span class="tag green">启用</span></td><td>2026-08-03 10:08:16</td><td>2026-08-10 15:06:33</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0003" data-tenant-id="T20001" data-tenant-type="企业" data-channels="yabandpay" data-merchant-account-bindings='{"yabandpay":"YB-UK-102676687"}' data-merchants="London Central Store,Manchester Store" data-order-path-methods='{"点单屏":["Visa线下","Mastercard线下"],"H5":["Visa线上","Mastercard线上"]}'><td>0003</td><td>T20001</td><td>英国渠道运营租户</td><td>渠道商</td><td>英国</td><td><div class="tenant-store-list">London Central Store、Manchester Store</div></td><td>yabandpay</td><td><span class="tag green">启用</span></td><td>2026-08-05 14:20:12</td><td>2026-08-08 11:42:09</td><td></td></tr>
+                  <tr data-tenant-cashier-id="0004" data-tenant-id="T20002" data-tenant-type="企业" data-channels="yabandpay" data-merchant-account-bindings='{"yabandpay":"YB-UK-204860128"}' data-merchants="London Canary Wharf Coffee Pod,London King Street Coffee Kiosk,Manchester Piccadilly Coffee Kiosk" data-order-path-methods='{"H5":["Visa线上","Mastercard线上"],"点单屏":["Visa线下","Mastercard线下"]}'><td>0004</td><td>T20002</td><td>伦敦好饮运营租户</td><td>运营商</td><td>英国</td><td><div class="tenant-store-list"><span class="tenant-store-summary">London Canary Wharf Coffee Pod、London King Street Coffee Kiosk、<button class="tenant-store-toggle" type="button" data-store-toggle>等3个▼</button></span><span class="tenant-store-full">London Canary Wharf Coffee Pod、London King Street Coffee Kiosk、Manchester Piccadilly Coffee Kiosk <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button></span></div></td><td>yabandpay</td><td><span class="tag green">启用</span></td><td>2026-08-14 09:42:30</td><td>2026-08-18 10:16:24</td><td></td></tr>
                 </tbody>
               </table>
               <div class="note" style="margin-top:16px;font-size:13px;line-height:1.8">
                 <b style="display:block;margin-bottom:6px">需求描述：租户收单配置</b>
-                <b>查询条件</b>：支持按租户名称、租户ID、租户角色、租户类型、适用地区、状态查询租户收单配置。<br />
+                <b>查询条件</b>：支持按租户名称、租户ID、租户角色、适用地区、状态查询租户收单配置。<br />
                 <b>功能定位</b>：租户收单配置用于为每一个租户配置该租户下门店在不同下单途径可使用的支付产品，以及每一个支付平台对应的收款商户号；同一支付平台下的不同支付产品共用同一个收款商户号。<br />
+                <b>列表展示</b>：列表展示租户收单配置ID、租户ID、租户名称、租户角色、适用地区、配置门店、支付方式、状态、创建时间、更新时间和操作；配置门店较多时展示前几个门店名称，并通过“等N个”展开查看完整门店；操作支持详情、编辑、启用、停用、删除。<br />
+                <b>详情查看</b>：点击详情进入租户收单配置详情页，按编辑页结构展示基础信息、配置门店、下单途径支付方式和收款商户号配置。<br />
                 <b>新增默认值</b>：新增租户收单配置做成独立页面；租户名称默认为“请选择”，选择租户后，配置门店默认勾选该租户下的所有门店。<br />
-                <b>地区与支付方式联动</b>：选择租户后，根据租户归属地区从支付方式配置中自动带出该地区已启用的支付产品。<br />
-                <b>下单途径配置</b>：租户门店支持微信小程序、点单屏、H5 等下单途径；每一种下单途径可分别勾选当前地区支持的支付产品。<br />
-                <b>收款商户号联动</b>：收款商户号需同时受租户和支付平台约束；选择租户并勾选支付产品后，系统按支付产品所属支付平台分组展示收款商户号选择项。<br />
+                <b>地区与支付方式联动</b>：选择租户后，根据租户归属地区从支付配置中自动带出该地区生效中的支付产品。<br />
+                <b>下单途径配置</b>：不同地区支持的下单途径不同，中国大陆支持微信小程序、点单屏，英国支持点单屏、H5；下单途径支持勾选启用，支付方式支持勾选配置，支付产品根据下单途径和支付方式自动展示，不再单独勾选。中国大陆微信小程序仅支持微信支付，支付产品为微信小程序支付；点单屏支付方式在“微信支付＋支付宝”和“宝付”之间互斥选择，微信支付仅对应微信扫码支付，支付宝仅对应支付宝扫码支付，宝付仅对应微信扫码支付和支付宝扫码支付。<br />
+                <b>收款商户号联动</b>：收款商户号需同时受租户和支付平台约束；选择租户并勾选支付方式后，系统按支付产品所属支付平台分组展示收款商户号选择项。<br />
                 <b>必填校验</b>：新增和编辑租户收单配置时，租户名称、配置门店、下单途径支付方式、收款商户号等必填项为空时点击“确定”，应在对应输入框或选择项下方以红色文字提示“请选择＋内容项名称”，用户完成选择后清除提示。<br />
-                <b>编辑规则</b>：编辑配置时，页面反显收单配置编号，编号不可编辑；除编号外，其他信息均支持修改。<br />
+                <b>编辑规则</b>：编辑配置时，页面反显租户收单配置ID，ID不可编辑；除ID外，其他信息均支持修改。<br />
                 <b>操作确认</b>：启用、停用和删除租户收单配置均需弹出二次确认弹窗，用户确认后才执行对应操作。
               </div>
             </div>
@@ -5097,7 +5162,7 @@
               <h2 class="tenant-section-title">基础信息</h2>
               <div class="cashier-form-grid">
                 <div class="tenant-form-field" id="tenantCashierFormCodeField" hidden>
-                  <label>收单配置编号</label>
+                  <label>租户收单配置ID</label>
                   <input id="tenantCashierFormCode" readonly />
                 </div>
                 <div class="tenant-form-field">
@@ -5140,6 +5205,7 @@
                 <input id="tenantCashierFormStoreName" placeholder="搜索门店名称" />
                 <input id="tenantCashierFormStoreId" placeholder="搜索门店ID" />
                 <input id="tenantCashierFormStoreCity" placeholder="搜索城市" />
+                <select id="tenantCashierFormStoreType"><option value="">全部店铺类型</option><option>咖啡亭</option><option>太空舱</option></select>
               </div>
               <div class="cashier-store-list" id="tenantCashierFormStores"></div>
             </section>
@@ -5162,6 +5228,73 @@
               <button class="btn soft" type="button" id="tenantCashierFormCancel">取消</button>
               <button class="btn primary" type="button" id="tenantCashierFormSave">确定</button>
             </div>
+          </div>
+        </section>
+
+        <section class="page" id="tenant-cashier-detail" data-title="租户收单配置详情" data-breadcrumb="租户管理,租户收单配置,租户收单配置详情" data-menu-page="tenant-cashier-config">
+          <div class="tenant-form-page tenant-cashier-form-page">
+            <section class="cashier-form-module">
+              <div class="page-section-head">
+                <h2 class="tenant-section-title">基础信息</h2>
+                <button class="btn soft" type="button" data-page-open="tenant-cashier-config">返回列表</button>
+              </div>
+              <div class="cashier-form-grid">
+                <div class="tenant-form-field">
+                  <label>租户收单配置ID</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailCode">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>租户名称</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailTenantName">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>租户ID</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailTenantId">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>租户角色</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailTenantRole">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>租户类型</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailTenantType">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>适用地区</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailRegion">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>状态</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailStatus">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>创建时间</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailCreatedAt">-</div>
+                </div>
+                <div class="tenant-form-field">
+                  <label>更新时间</label>
+                  <div class="cashier-readonly" id="tenantCashierDetailUpdatedAt">-</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="cashier-form-module">
+              <h2 class="tenant-section-title">配置门店</h2>
+              <div class="cashier-store-list" id="tenantCashierDetailStores"></div>
+            </section>
+
+            <section class="cashier-form-module">
+              <h2 class="tenant-section-title">下单途径支付方式</h2>
+              <table class="cashier-path-table" data-pagination="none">
+                <thead><tr><th>下单途径</th><th>支付方式</th><th>支付产品</th></tr></thead>
+                <tbody id="tenantCashierDetailPathMethods"></tbody>
+              </table>
+            </section>
+
+            <section class="cashier-form-module">
+              <h2 class="tenant-section-title">收款商户号配置</h2>
+              <div class="cashier-account-list" id="tenantCashierDetailAccounts"></div>
+            </section>
           </div>
         </section>
 
@@ -5481,7 +5614,7 @@
         <section class="modal-seg" data-seg="tenant-cashier">
           <div class="modal-grid">
             <div class="tenant-cashier-left">
-              <div class="field full" id="tenantCashierCodeField" style="display:none"><label>收单配置编号</label><input id="tenantCashierCode" readonly /></div>
+              <div class="field full" id="tenantCashierCodeField" style="display:none"><label>租户收单配置ID</label><input id="tenantCashierCode" readonly /></div>
               <div class="field full"><label><span class="required-mark">*</span>租户</label>
                 <select id="tenantCashierTenant">
                   <option value="">请选择租户</option>
@@ -5510,6 +5643,7 @@
                     <input id="tenantCashierStoreNameSearch" placeholder="搜索门店名称" />
                     <input id="tenantCashierStoreIdSearch" placeholder="搜索门店ID" />
                     <input id="tenantCashierStoreCitySearch" placeholder="搜索城市" />
+                    <select id="tenantCashierStoreTypeSearch"><option value="">全部店铺类型</option><option>咖啡亭</option><option>太空舱</option></select>
                   </div>
                   <div class="store-auth-list" id="tenantCashierMerchantChoices"></div>
                   <div class="store-auth-count" id="tenantCashierMerchantCount">共 0 家门店</div>
@@ -5529,7 +5663,15 @@
         <section class="modal-seg" data-seg="payment-channel">
           <div class="modal-grid">
             <input id="paymentFormConfigCode" type="hidden" />
-            <div class="field"><label><span class="required-mark">*</span>支付平台</label><input id="paymentFormName" placeholder="请输入支付平台" /></div>
+            <div class="field"><label><span class="required-mark">*</span>支付平台</label>
+              <select id="paymentFormName">
+                <option value="">请选择支付平台</option>
+                <option>微信支付</option>
+                <option>支付宝</option>
+                <option>宝付</option>
+                <option>yabandpay</option>
+              </select>
+            </div>
             <div class="field"><label><span class="required-mark">*</span>适用地区</label>
               <select id="paymentFormRegion" class="hidden-control"><option value="">请选择适用地区</option><option value="中国大陆 CN">中国大陆 CN</option><option value="英国 GB">英国 GB</option><option value="中国香港 HK">中国香港 HK</option><option value="中国台湾 TW">中国台湾 TW</option></select>
               <div class="choice-grid" data-choice-for="paymentFormRegion">
@@ -5540,18 +5682,18 @@
               </div>
             </div>
             <div class="field full payment-token-field" data-token-field="paymentFormMethods"><label><span class="required-mark">*</span>支付方式</label><input id="paymentFormMethods" type="hidden" />
-              <div class="payment-token-box" data-token-box>
-                <div class="payment-token-list" data-token-list></div>
-                <input class="payment-token-input" data-token-input placeholder="请输入支付方式，多个用顿号、逗号分隔" />
+              <div class="payment-multi-picker" id="paymentFormMethodPicker" data-payment-multi="paymentFormMethods">
+                <button class="payment-multi-trigger" type="button" data-payment-multi-trigger><span class="payment-multi-placeholder">请先选择支付平台</span></button>
+                <div class="payment-multi-panel" data-payment-multi-panel></div>
               </div>
-              <div class="payment-field-help">多个支付方式请用顿号、逗号分隔，输入完成后自动生成标签，点击标签右上角 × 可删除。支付方式只维护支付产品，如微信支付、支付宝、Visa、Apple Pay。</div>
+              <div class="payment-field-help">支付方式为支付平台支持的支付大类，可多选。</div>
             </div>
             <div class="field full payment-token-field" data-token-field="paymentFormUsageScenarios"><label><span class="required-mark">*</span>支付产品</label><input id="paymentFormUsageScenarios" type="hidden" />
-              <div class="payment-token-box" data-token-box>
-                <div class="payment-token-list" data-token-list></div>
-                <input class="payment-token-input" data-token-input placeholder="请输入支付产品，多个用顿号、逗号分隔" />
+              <div class="payment-multi-picker" id="paymentFormProductPicker" data-payment-multi="paymentFormUsageScenarios">
+                <button class="payment-multi-trigger" type="button" data-payment-multi-trigger><span class="payment-multi-placeholder">请先选择支付平台</span></button>
+                <div class="payment-multi-panel" data-payment-multi-panel></div>
               </div>
-              <div class="payment-field-help">多个支付产品请用顿号、逗号分隔，如微信扫码支付、微信小程序支付、支付宝扫码支付。</div>
+              <div class="payment-field-help">支付产品为具体计费产品，可多选，选中后自动生成支付产品费率配置。</div>
             </div>
             <div class="field full" id="paymentMethodFeeField"><label><span class="required-mark">*</span>支付产品费率</label>
               <table class="payment-method-fee-table" data-pagination="none">
@@ -5562,13 +5704,9 @@
               </table>
               <div class="payment-field-help">每一种支付方式和支付产品单独维护费率，可选择「比例」或「比例+固定金额」。固定金额币种跟随适用地区。</div>
             </div>
-            <div class="field full status-inline"><label><span class="required-mark">*</span>状态</label>
-              <select id="paymentFormStatus" class="hidden-control"><option>启用</option><option>停用</option></select>
-              <div class="choice-grid" data-choice-for="paymentFormStatus">
-                <label class="choice-option" data-value="启用"><input type="radio" name="paymentStatusRadio" />启用</label>
-                <label class="choice-option" data-value="停用"><input type="radio" name="paymentStatusRadio" />停用</label>
-              </div>
-            </div>
+            <div class="field"><label><span class="required-mark">*</span>生效时间</label><input id="paymentFormEffectiveTime" type="datetime-local" /></div>
+            <div class="field"><label>失效时间</label><input id="paymentFormExpireTime" type="datetime-local" /></div>
+            <input id="paymentFormStatus" type="hidden" value="生效中" />
           </div>
         </section>
 
@@ -6563,6 +6701,7 @@
     const tenantCashierStoreNameSearch = document.getElementById('tenantCashierStoreNameSearch');
     const tenantCashierStoreIdSearch = document.getElementById('tenantCashierStoreIdSearch');
     const tenantCashierStoreCitySearch = document.getElementById('tenantCashierStoreCitySearch');
+    const tenantCashierStoreTypeSearch = document.getElementById('tenantCashierStoreTypeSearch');
     const tenantCashierMerchantCount = document.getElementById('tenantCashierMerchantCount');
     const tenantCashierStatus = document.getElementById('tenantCashierStatus');
     let tenantCashierContext = { mode: 'create', row: null };
@@ -6579,12 +6718,25 @@
     const tenantCashierFormStoreName = document.getElementById('tenantCashierFormStoreName');
     const tenantCashierFormStoreId = document.getElementById('tenantCashierFormStoreId');
     const tenantCashierFormStoreCity = document.getElementById('tenantCashierFormStoreCity');
+    const tenantCashierFormStoreType = document.getElementById('tenantCashierFormStoreType');
     const tenantCashierFormStores = document.getElementById('tenantCashierFormStores');
     const tenantCashierFormPathMethods = document.getElementById('tenantCashierFormPathMethods');
     const tenantCashierFormPathMethodsError = document.getElementById('tenantCashierFormPathMethodsError');
     const tenantCashierFormAccounts = document.getElementById('tenantCashierFormAccounts');
     const tenantCashierFormCancel = document.getElementById('tenantCashierFormCancel');
     const tenantCashierFormSave = document.getElementById('tenantCashierFormSave');
+    const tenantCashierDetailCode = document.getElementById('tenantCashierDetailCode');
+    const tenantCashierDetailTenantName = document.getElementById('tenantCashierDetailTenantName');
+    const tenantCashierDetailTenantId = document.getElementById('tenantCashierDetailTenantId');
+    const tenantCashierDetailTenantRole = document.getElementById('tenantCashierDetailTenantRole');
+    const tenantCashierDetailTenantType = document.getElementById('tenantCashierDetailTenantType');
+    const tenantCashierDetailRegion = document.getElementById('tenantCashierDetailRegion');
+    const tenantCashierDetailStatus = document.getElementById('tenantCashierDetailStatus');
+    const tenantCashierDetailCreatedAt = document.getElementById('tenantCashierDetailCreatedAt');
+    const tenantCashierDetailUpdatedAt = document.getElementById('tenantCashierDetailUpdatedAt');
+    const tenantCashierDetailStores = document.getElementById('tenantCashierDetailStores');
+    const tenantCashierDetailPathMethods = document.getElementById('tenantCashierDetailPathMethods');
+    const tenantCashierDetailAccounts = document.getElementById('tenantCashierDetailAccounts');
     let tenantCashierFormContext = { mode: 'create', row: null };
     let tenantCashierFormStoreSelections = [];
     let tenantCashierFormMethodSelections = {};
@@ -6926,8 +7078,12 @@
     const paymentFormName = document.getElementById('paymentFormName');
     const paymentFormRegion = document.getElementById('paymentFormRegion');
     const paymentFormStatus = document.getElementById('paymentFormStatus');
+    const paymentFormEffectiveTime = document.getElementById('paymentFormEffectiveTime');
+    const paymentFormExpireTime = document.getElementById('paymentFormExpireTime');
     const paymentFormMethods = document.getElementById('paymentFormMethods');
     const paymentFormUsageScenarios = document.getElementById('paymentFormUsageScenarios');
+    const paymentFormMethodPicker = document.getElementById('paymentFormMethodPicker');
+    const paymentFormProductPicker = document.getElementById('paymentFormProductPicker');
     const paymentFormSubject = document.getElementById('paymentFormSubject');
     const paymentFormMerchantNo = document.getElementById('paymentFormMerchantNo');
     const paymentFormSettleAccount = document.getElementById('paymentFormSettleAccount');
@@ -6940,6 +7096,24 @@
     const paymentMethodFeeRows = document.getElementById('paymentMethodFeeRows');
     let paymentContext = { mode: 'create', row: null };
     let paymentMethodFeeValues = {};
+    const paymentPlatformOptions = {
+      '微信支付': {
+        methods: ['微信支付'],
+        products: ['微信扫码支付', '微信小程序支付']
+      },
+      '支付宝': {
+        methods: ['支付宝'],
+        products: ['支付宝扫码支付']
+      },
+      '宝付': {
+        methods: ['微信支付', '支付宝'],
+        products: ['微信扫码支付', '微信小程序支付', '支付宝扫码支付']
+      },
+      'yabandpay': {
+        methods: ['Apple Pay', 'Google Pay', 'Visa', 'Mastercard'],
+        products: ['Visa线上', 'Visa线下', 'Mastercard线上', 'Mastercard线下']
+      }
+    };
     const paymentMerchantProfiles = [
       {
         subject: '深圳好饮科技有限公司',
@@ -7152,31 +7326,31 @@
     };
     const tenantMerchantOptions = {
       T10001: [
-        { id: '392', name: '好饮自营商户', type: '无人咖啡亭', city: '北京', scenario: '点单屏', status: '启用' },
-        { id: '388', name: '好饮机场店', type: '无人咖啡亭', city: '北京', scenario: '点单屏', status: '启用' },
-        { id: '387', name: '好饮高铁店', type: '无人咖啡亭', city: '上海', scenario: 'H5', status: '启用' },
-        { id: '386', name: '好饮太空舱店', type: '无人太空舱', city: '深圳', scenario: '小程序', status: '启用' }
+        { id: '392', name: '好饮自营商户', type: '咖啡亭', city: '北京', scenario: '点单屏', status: '正常营业' },
+        { id: '388', name: '好饮机场店', type: '咖啡亭', city: '北京', scenario: '点单屏', status: '正常营业' },
+        { id: '387', name: '好饮高铁店', type: '咖啡亭', city: '上海', scenario: '点单屏', status: '正常营业' },
+        { id: '386', name: '好饮太空舱店', type: '太空舱', city: '深圳', scenario: '小程序', status: '暂停营业' }
       ],
       T10002: [
-        { id: '501', name: '深圳好饮科技旗舰店', type: '无人咖啡亭', city: '深圳', scenario: 'H5', status: '启用' },
-        { id: '502', name: '深圳科技园店', type: '无人咖啡亭', city: '深圳', scenario: '点单屏', status: '启用' },
-        { id: '503', name: '深圳湾体验店', type: '无人太空舱', city: '深圳', scenario: '小程序', status: '停用' }
+        { id: '501', name: '深圳好饮科技旗舰店', type: '咖啡亭', city: '深圳', scenario: '点单屏', status: '正常营业' },
+        { id: '502', name: '深圳科技园店', type: '咖啡亭', city: '深圳', scenario: '点单屏', status: '正常营业' },
+        { id: '503', name: '深圳湾体验店', type: '太空舱', city: '深圳', scenario: '小程序', status: '已闭店' }
       ],
       T20001: [
-        { id: '701', name: 'London Central Store', type: '无人咖啡亭', city: 'London', scenario: 'NEXGO 终端', status: '启用' },
-        { id: '702', name: 'Manchester Store', type: '无人咖啡亭', city: 'Manchester', scenario: 'NEXGO 终端', status: '启用' },
-        { id: '703', name: 'Birmingham Store', type: '无人太空舱', city: 'Birmingham', scenario: '点单屏', status: '启用' }
+        { id: '701', name: 'London Central Store', type: '咖啡亭', city: 'London', scenario: 'NEXGO 终端', status: '正常营业' },
+        { id: '702', name: 'Manchester Store', type: '咖啡亭', city: 'Manchester', scenario: 'NEXGO 终端', status: '正常营业' },
+        { id: '703', name: 'Birmingham Store', type: '太空舱', city: 'Birmingham', scenario: '点单屏', status: '暂停营业' }
       ],
       T20002: [
-        { id: '721', name: 'London Canary Wharf Coffee Pod', type: '无人咖啡亭', city: 'London', scenario: 'H5', status: '启用' },
-        { id: '722', name: 'London King Street Coffee Kiosk', type: '无人咖啡亭', city: 'London', scenario: '小程序', status: '启用' },
-        { id: '723', name: 'Manchester Piccadilly Coffee Kiosk', type: '无人咖啡亭', city: 'Manchester', scenario: '点单屏', status: '启用' },
-        { id: '724', name: 'Cambridge Science Park Coffee Pod', type: '无人太空舱', city: 'Cambridge', scenario: 'H5', status: '停用' }
+        { id: '721', name: 'London Canary Wharf Coffee Pod', type: '咖啡亭', city: 'London', scenario: 'H5', status: '正常营业' },
+        { id: '722', name: 'London King Street Coffee Kiosk', type: '咖啡亭', city: 'London', scenario: 'H5', status: '正常营业' },
+        { id: '723', name: 'Manchester Piccadilly Coffee Kiosk', type: '咖啡亭', city: 'Manchester', scenario: '点单屏', status: '正常营业' },
+        { id: '724', name: 'Cambridge Science Park Coffee Pod', type: '太空舱', city: 'Cambridge', scenario: 'H5', status: '已闭店' }
       ],
       T30001: [
-        { id: '801', name: '台北信义店', type: '无人咖啡亭', city: '台北', scenario: '点单屏', status: '启用' },
-        { id: '802', name: '台中公益店', type: '无人咖啡亭', city: '台中', scenario: 'H5', status: '启用' },
-        { id: '803', name: '高雄左营店', type: '无人太空舱', city: '高雄', scenario: '小程序', status: '启用' }
+        { id: '801', name: '台北信义店', type: '咖啡亭', city: '台北', scenario: '点单屏', status: '正常营业' },
+        { id: '802', name: '台中公益店', type: '咖啡亭', city: '台中', scenario: 'H5', status: '正常营业' },
+        { id: '803', name: '高雄左营店', type: '太空舱', city: '高雄', scenario: '小程序', status: '暂停营业' }
       ]
     };
     const menuKeyword = document.getElementById('menuKeyword');
@@ -7313,7 +7487,7 @@
       location.hash = pageId;
       window.scrollTo({ top: 0, behavior: 'auto' });
       if (pageId === 'goods-list') buildGoodsList();
-      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'tenant-cashier-form' || pageId === 'split-config' || pageId === 'split-config-form' || pageId === 'settlement-bills' || pageId === 'settlement-bill-detail' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping' || pageId === 'goods-list' || pageId === 'merchant-create') {
+      if (pageId === 'roles' || pageId === 'menus' || pageId === 'tenant-list' || pageId === 'tenant-create' || pageId === 'tenant-edit-page' || pageId === 'tenant-role' || pageId === 'tenant-menu-page' || pageId === 'tenant-cashier-config' || pageId === 'tenant-cashier-form' || pageId === 'tenant-cashier-detail' || pageId === 'split-config' || pageId === 'split-config-form' || pageId === 'settlement-bills' || pageId === 'settlement-bill-detail' || pageId === 'split-detail' || pageId === 'account-balance' || pageId === 'tax-config' || pageId === 'country-unit-mapping' || pageId === 'goods-list' || pageId === 'merchant-create') {
         refreshCustomSelects(page);
       }
       if (pageId === 'tenant-create') {
@@ -9007,10 +9181,39 @@
       `;
     }
 
+    function paymentInlineSummaryCellHtml(text, emptyText = '暂未配置'){
+      const items = splitTenantStores(text);
+      const safeItems = items.map(escapeHtml);
+      if (!safeItems.length) return `<div class="payment-inline-list">${escapeHtml(emptyText)}</div>`;
+      if (safeItems.length <= 2) return `<div class="payment-inline-list">${safeItems.join('、')}</div>`;
+      const summary = `${safeItems.slice(0, 2).join('、')}、<button class="tenant-store-toggle" type="button" data-store-toggle>等${safeItems.length}项▼</button>`;
+      const full = `${safeItems.join('、')} <button class="tenant-store-toggle" type="button" data-store-toggle>▲ 收起</button>`;
+      return `
+        <div class="payment-inline-list">
+          <span class="tenant-store-summary">${summary}</span>
+          <span class="tenant-store-full">${full}</span>
+        </div>
+      `;
+    }
+
+    function paymentProductCellHtml(text){
+      const products = splitTenantStores(text);
+      return paymentInlineSummaryCellHtml(products.join('、'), '暂未配置支付产品');
+    }
+
     function expandableCellText(cell){
+      const structuredItems = cell?.querySelectorAll('.tenant-store-full .payment-product-item,.tenant-store-full .payment-fee-item,.payment-product-list > .payment-product-item,.payment-fee-list > .payment-fee-item');
+      if (structuredItems?.length) {
+        return Array.from(structuredItems)
+          .map(item => item.textContent || '')
+          .map(text => text.replace(/▲\s*收起/g, '').replace(/等\d+项▼/g, '').trim())
+          .filter(Boolean)
+          .join('、');
+      }
       return (cell?.querySelector('.tenant-store-full')?.textContent || cell?.textContent || '')
         .replace(/▲\s*收起/g, '')
         .replace(/等\d+个▼/g, '')
+        .replace(/等\d+项▼/g, '')
         .trim();
     }
 
@@ -10128,20 +10331,65 @@
     }
 
     function paymentChannelName(row){
-      return row.cells[1]?.textContent.trim() || '当前支付方式';
+      const cell = row?.cells?.[1];
+      if (!cell) return '当前支付方式';
+      const clone = cell.cloneNode(true);
+      clone.querySelectorAll('.support-country-hint,.support-country-tooltip').forEach(node => node.remove());
+      return clone.textContent.trim() || '当前支付方式';
+    }
+
+    function currentLocalDateTimeText(){
+      const date = new Date();
+      const pad = value => String(value).padStart(2, '0');
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+    }
+
+    function displayDateTimeToInputValue(value){
+      const text = String(value || '').trim();
+      if (!text || text === '—') return '';
+      const normalized = text.replace(' ', 'T');
+      return normalized.length >= 16 ? normalized.slice(0, 16) : normalized;
+    }
+
+    function inputDateTimeToDisplayValue(value){
+      const text = String(value || '').trim();
+      if (!text) return '';
+      return text.replace('T', ' ') + (text.length === 16 ? ':00' : '');
+    }
+
+    function paymentStatusByTimes(effectiveTime, expireTime, fallbackStatus = '生效中'){
+      if (fallbackStatus === '已停用') return '已停用';
+      const now = new Date();
+      const effective = effectiveTime ? new Date(effectiveTime) : null;
+      const expire = expireTime ? new Date(expireTime) : null;
+      if (expire && expire <= now) return '已失效';
+      if (effective && effective > now) return '待生效';
+      return '生效中';
+    }
+
+    function paymentRowStatus(row){
+      return row?.cells?.[6]?.textContent.trim() || '生效中';
+    }
+
+    function paymentConfigIsEffective(row){
+      return paymentRowStatus(row) === '生效中';
     }
 
     function renderPaymentChannelActions(row){
       const statusCell = row.cells[6];
-      const actionCell = row.cells[9];
+      const actionCell = row.cells[10];
       if (!statusCell || !actionCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      actionCell.innerHTML = `
-        <div class="row-actions">
-          <button class="link" type="button" data-payment-action="edit">编辑</button>
-          <button class="link" type="button" data-payment-action="status">${isDisabled ? '启用' : '停用'}</button>
-        </div>
-      `;
+      const status = paymentRowStatus(row);
+      const actions = [];
+      if (status === '待生效') {
+        actions.push('<button class="link" type="button" data-payment-action="edit">编辑</button>');
+        actions.push('<button class="link" type="button" data-payment-action="status">停用</button>');
+      } else if (status === '生效中') {
+        actions.push('<button class="link" type="button" data-payment-action="status">停用</button>');
+      } else if (status === '已停用') {
+        actions.push('<button class="link danger" type="button" data-payment-action="delete">删除</button>');
+      }
+      actionCell.innerHTML = actions.length ? `<div class="row-actions">${actions.join('')}</div>` : '<span class="muted">—</span>';
     }
 
     function bindPaymentChannelActions(){
@@ -10153,10 +10401,15 @@
     function togglePaymentChannelStatus(row){
       const statusCell = row.cells[6];
       if (!statusCell) return;
-      const isDisabled = statusCell.textContent.includes('停用');
-      statusCell.innerHTML = isDisabled
-        ? '<span class="tag green">启用</span>'
-        : '<span class="tag red">停用</span>';
+      const status = paymentRowStatus(row);
+      const now = currentLocalDateTimeText();
+      if (status === '待生效') {
+        statusCell.innerHTML = paymentStatusHtml('已停用');
+      } else if (status === '生效中') {
+        statusCell.innerHTML = paymentStatusHtml('已失效');
+        if (row.cells[8]) row.cells[8].textContent = now;
+      }
+      if (row.cells[9]) row.cells[9].textContent = now;
       renderPaymentChannelActions(row);
       populateTenantCashierRegions(tenantCashierRegion?.value || '');
       updateTenantCashierChannels();
@@ -10169,9 +10422,14 @@
     }
 
     function paymentStatusHtml(status){
-      return status === '停用'
-        ? '<span class="tag red">停用</span>'
-        : '<span class="tag green">启用</span>';
+      const map = {
+        '待生效': 'warn',
+        '生效中': 'green',
+        '已失效': 'red',
+        '已停用': 'red'
+      };
+      const normalized = map[status] ? status : '生效中';
+      return `<span class="tag ${map[normalized]}">${normalized}</span>`;
     }
 
     function paymentRegionText(row){
@@ -10180,6 +10438,28 @@
       const clone = cell.cloneNode(true);
       clone.querySelectorAll('.support-country-hint,.support-country-tooltip').forEach(node => node.remove());
       return clone.textContent.trim();
+    }
+
+    function paymentPlatformCellHtml(platform, supportCountries = ''){
+      const platformText = escapeHtml(platform);
+      const countriesText = escapeHtml(supportCountries || '暂无支持国家说明');
+      return `<span class="support-country-cell">${platformText}<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：${countriesText}</span></span></span>`;
+    }
+
+    function refreshPaymentChannelDisplayCells(){
+      document.querySelectorAll('#payment-channel-config tbody tr').forEach(row => {
+        const methods = expandableCellText(row.cells[3] || null);
+        const products = row.dataset.usageScenarios || expandableCellText(row.cells[4] || null);
+        let feeMap = {};
+        try {
+          feeMap = JSON.parse(row.dataset.methodFees || '{}');
+        } catch (error) {
+          feeMap = {};
+        }
+        if (row.cells[3]) row.cells[3].innerHTML = paymentInlineSummaryCellHtml(methods, '暂未配置支付方式');
+        if (row.cells[4]) row.cells[4].innerHTML = paymentProductCellHtml(products);
+        if (row.cells[5]) row.cells[5].innerHTML = paymentFeeCellHtml(feeMap);
+      });
     }
 
     function paymentChannelUsageText(channelName){
@@ -10195,7 +10475,7 @@
       const method = paymentMethodFilter?.value || '';
       const current = paymentRegionFilter.value;
       const regions = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => !method || row.cells[1]?.textContent.trim() === method)
+        .filter(row => !method || paymentChannelName(row) === method)
         .map(row => paymentRegionText(row))
         .filter(Boolean)
         .filter((region, index, list) => list.indexOf(region) === index);
@@ -10212,8 +10492,9 @@
       const region = paymentRegionFilter?.value || '';
       const status = paymentStatusFilter?.value || '';
       document.querySelectorAll('#payment-channel-config tbody tr').forEach(row => {
-        const matchedKeyword = !keyword || row.cells[0].textContent.trim().toLowerCase().includes(keyword) || row.cells[1].textContent.trim().toLowerCase().includes(keyword);
-        const matchedMethod = !method || row.cells[1].textContent.trim() === method;
+        const channelName = paymentChannelName(row);
+        const matchedKeyword = !keyword || row.cells[0].textContent.trim().toLowerCase().includes(keyword) || channelName.toLowerCase().includes(keyword);
+        const matchedMethod = !method || channelName === method;
         const matchedRegion = !region || paymentRegionText(row) === region;
         const matchedStatus = !status || row.cells[6].textContent.includes(status);
         row.classList.toggle('filtered-out', !(matchedKeyword && matchedMethod && matchedRegion && matchedStatus));
@@ -10308,6 +10589,54 @@
       return splitTenantStores(paymentFormUsageScenarios?.value || '');
     }
 
+    function paymentMultiHiddenForPicker(picker){
+      return picker ? document.getElementById(picker.dataset.paymentMulti || '') : null;
+    }
+
+    function paymentPickerOptionSet(hidden){
+      const platform = paymentFormName?.value || '';
+      const config = paymentPlatformOptions[platform] || {};
+      if (hidden === paymentFormMethods) return config.methods || [];
+      if (hidden === paymentFormUsageScenarios) return config.products || [];
+      return [];
+    }
+
+    function renderPaymentMultiPicker(picker){
+      const hidden = paymentMultiHiddenForPicker(picker);
+      const trigger = picker?.querySelector('[data-payment-multi-trigger]');
+      const panel = picker?.querySelector('[data-payment-multi-panel]');
+      if (!picker || !hidden || !trigger || !panel) return;
+      const options = paymentPickerOptionSet(hidden);
+      const selected = splitTenantStores(hidden.value).filter(item => options.includes(item));
+      if (selected.join('、') !== hidden.value) hidden.value = selected.join('、');
+      trigger.innerHTML = selected.length
+        ? selected.map(item => `<span class="payment-multi-tag">${escapeHtml(item)}</span>`).join('')
+        : `<span class="payment-multi-placeholder">${options.length ? '请选择' : '请先选择支付平台'}</span>`;
+      panel.innerHTML = options.length
+        ? options.map(item => `
+            <label class="payment-multi-option">
+              <input type="checkbox" value="${escapeHtml(item)}"${selected.includes(item) ? ' checked' : ''} />${escapeHtml(item)}
+            </label>
+          `).join('')
+        : '<div class="payment-multi-empty">请先选择支付平台</div>';
+    }
+
+    function renderPaymentMultiPickers(){
+      renderPaymentMultiPicker(paymentFormMethodPicker);
+      renderPaymentMultiPicker(paymentFormProductPicker);
+      renderPaymentMethodFeeRows();
+    }
+
+    function syncPaymentMultiPickerValue(picker){
+      const hidden = paymentMultiHiddenForPicker(picker);
+      if (!picker || !hidden) return;
+      hidden.value = Array.from(picker.querySelectorAll('[data-payment-multi-panel] input:checked'))
+        .map(input => input.value)
+        .join('、');
+      renderPaymentMultiPicker(picker);
+      renderPaymentMethodFeeRows();
+    }
+
     function paymentFeeKey(method, scenario){
       return `${method} / ${scenario}`;
     }
@@ -10349,15 +10678,38 @@
         .map(([method, fee]) => {
           const config = normalizePaymentFeeConfig(fee);
           const fixedText = config.type === '比例+固定金额' && config.fixed ? ` + ${config.fixed}${paymentRegionCurrency()}` : '';
-          return `${method}：${config.rate}%${fixedText}`;
+          const product = method.split('/').map(item => item.trim()).filter(Boolean).pop() || method;
+          return `${product}：${config.rate}%${fixedText}`;
         });
-      return tenantStoreCellHtml(items.join('、'));
+      return paymentInlineSummaryCellHtml(items.join('、'), '暂未配置费率');
     }
 
     function paymentRegionCellHtml(region, supportCountries = ''){
-      const support = String(supportCountries || '').trim();
-      if (!support) return escapeHtml(region);
-      return `<span class="support-country-cell">${escapeHtml(region)}<span class="support-country-hint">?<span class="support-country-tooltip">支持国家：${escapeHtml(support)}</span></span></span>`;
+      return escapeHtml(region);
+    }
+
+    function paymentMethodForProduct(product, methods){
+      const platform = paymentFormName?.value || '';
+      if (platform === 'yabandpay') {
+        if (product.startsWith('Visa') && methods.includes('Visa')) return 'Visa';
+        if (product.startsWith('Mastercard') && methods.includes('Mastercard')) return 'Mastercard';
+        return '';
+      }
+      if (methods.length === 1) return methods[0];
+      if (product.includes('微信') && methods.includes('微信支付')) return '微信支付';
+      if (product.includes('支付宝') && methods.includes('支付宝')) return '支付宝';
+      return methods.find(method => product.includes(method.replace('支付', ''))) || methods[0] || '';
+    }
+
+    function paymentMethodFeeRowsData(){
+      const methods = paymentMethods();
+      const scenarios = paymentUsageScenarios();
+      return scenarios
+        .map(scenario => {
+          const method = paymentMethodForProduct(scenario, methods);
+          return method ? { method, scenario, key: paymentFeeKey(method, scenario) } : null;
+        })
+        .filter(Boolean);
     }
 
     function renderPaymentMethodFeeRows(){
@@ -10365,7 +10717,7 @@
       collectPaymentMethodFees();
       const methods = paymentMethods();
       const scenarios = paymentUsageScenarios();
-      const rows = methods.flatMap(method => scenarios.map(scenario => ({ method, scenario, key: paymentFeeKey(method, scenario) })));
+      const rows = paymentMethodFeeRowsData();
       paymentMethodFeeValues = Object.fromEntries(
         rows.map(item => [item.key, normalizePaymentFeeConfig(paymentMethodFeeValues[item.key])])
       );
@@ -10410,40 +10762,42 @@
       modal.classList.remove('assign-role-mode');
       modal.classList.remove('tenant-cashier-mode');
       modal.classList.add('payment-mode');
-      modalTitle.textContent = context.mode === 'edit' ? '编辑支付方式' : '新增支付方式';
+      modalTitle.textContent = context.mode === 'edit' ? '编辑支付配置' : '新增支付配置';
       segs.forEach(seg => seg.classList.toggle('active', seg.dataset.seg === 'payment-channel'));
 
       if (context.mode === 'edit' && context.row) {
         const row = context.row;
         paymentFormConfigCode.value = row.cells[0].textContent.trim();
-        paymentFormName.value = row.cells[1].textContent.trim();
+        paymentFormName.value = paymentChannelName(row);
         paymentFormRegion.value = paymentRegionText(row);
         paymentFormMethods.value = listTextToJoinedValue(expandableCellText(row.cells[3]));
-        paymentFormUsageScenarios.value = listTextToJoinedValue(expandableCellText(row.cells[4]));
+        paymentFormUsageScenarios.value = listTextToJoinedValue((row.dataset.usageScenarios || '').replace(/,/g, '、') || expandableCellText(row.cells[4]));
         try {
           paymentMethodFeeValues = JSON.parse(row.dataset.methodFees || '{}');
         } catch (error) {
           paymentMethodFeeValues = {};
         }
-        paymentFormStatus.value = row.cells[6].textContent.includes('停用') ? '停用' : '启用';
+        if (paymentFormEffectiveTime) paymentFormEffectiveTime.value = displayDateTimeToInputValue(row.cells[7]?.textContent.trim());
+        if (paymentFormExpireTime) paymentFormExpireTime.value = displayDateTimeToInputValue(row.cells[8]?.textContent.trim());
+        paymentFormStatus.value = paymentRowStatus(row);
       } else {
         paymentFormConfigCode.value = nextNumericConfigId('#payment-channel-config', 3000);
         paymentFormName.value = '';
         paymentFormRegion.value = '';
         paymentFormMethods.value = '';
         paymentFormUsageScenarios.value = '';
+        if (paymentFormEffectiveTime) paymentFormEffectiveTime.value = '';
+        if (paymentFormExpireTime) paymentFormExpireTime.value = '';
         paymentMethodFeeValues = {};
         if (paymentFormBillingType) paymentFormBillingType.value = '';
         if (paymentFormFee) paymentFormFee.value = '';
         if (paymentFormFixedAmount) paymentFormFixedAmount.value = '';
         if (paymentFormFixedCurrency) paymentFormFixedCurrency.value = '';
-        paymentFormStatus.value = '启用';
+        paymentFormStatus.value = '生效中';
       }
-      renderPaymentTokenField(paymentFormMethods);
-      renderPaymentTokenField(paymentFormUsageScenarios);
-      renderPaymentMethodFeeRows();
+      renderPaymentMultiPickers();
       updatePaymentBillingFields();
-      [paymentFormRegion, paymentFormStatus].forEach(syncChoiceGroup);
+      [paymentFormRegion].forEach(syncChoiceGroup);
       refreshCustomSelects(modal);
       modal.classList.add('show');
     }
@@ -11772,18 +12126,16 @@
       if (!paymentFormConfigCode.value.trim()) {
         paymentFormConfigCode.value = nextNumericConfigId('#payment-channel-config', 3000);
       }
-      document.querySelectorAll('.payment-token-field [data-token-input]').forEach(commitPaymentTokenInput);
       if (!paymentFormName.value.trim()) { paymentFormName.focus(); return false; }
       if (!paymentFormRegion.value) { paymentFormRegion.focus(); return false; }
+      if (!paymentFormEffectiveTime?.value) { paymentFormEffectiveTime?.focus(); return false; }
       const paymentMethodsValue = listTextToJoinedValue(paymentFormMethods.value);
       const paymentScenariosValue = listTextToJoinedValue(paymentFormUsageScenarios.value);
       if (!paymentMethodsValue) { focusPaymentTokenField(paymentFormMethods); return false; }
       if (!paymentScenariosValue) { focusPaymentTokenField(paymentFormUsageScenarios); return false; }
       renderPaymentMethodFeeRows();
       collectPaymentMethodFees();
-      const methods = paymentMethods();
-      const scenarios = paymentUsageScenarios();
-      const feeRows = methods.flatMap(method => scenarios.map(scenario => paymentFeeKey(method, scenario)));
+      const feeRows = paymentMethodFeeRowsData().map(item => item.key);
       const missingFeeTypeKey = feeRows.find(key => !normalizePaymentFeeConfig(paymentMethodFeeValues[key]).type);
       if (missingFeeTypeKey) {
         Array.from(paymentMethodFeeRows?.querySelectorAll('[data-payment-fee-key]') || [])
@@ -11813,10 +12165,10 @@
       }
 
       const row = paymentContext.mode === 'edit' && paymentContext.row ? paymentContext.row : document.createElement('tr');
-      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
-      const createTime = paymentContext.mode === 'edit' && paymentContext.row
-        ? (paymentContext.row.cells[7]?.textContent.trim() || now)
-        : now;
+      const now = currentLocalDateTimeText();
+      const effectiveTime = inputDateTimeToDisplayValue(paymentFormEffectiveTime?.value);
+      const expireTime = inputDateTimeToDisplayValue(paymentFormExpireTime?.value) || '—';
+      const nextStatus = paymentStatusByTimes(paymentFormEffectiveTime?.value, paymentFormExpireTime?.value, paymentFormStatus.value);
       row.dataset.billingType = '按支付方式比例';
       row.dataset.percentageFee = '';
       row.dataset.fixedAmount = '';
@@ -11826,13 +12178,14 @@
       row.dataset.supportCountries = row.dataset.supportCountries || '';
       row.innerHTML = `
         <td>${escapeHtml(paymentFormConfigCode.value.trim())}</td>
-        <td>${escapeHtml(paymentFormName.value.trim())}</td>
+        <td>${paymentPlatformCellHtml(paymentFormName.value.trim(), row.dataset.supportCountries)}</td>
         <td>${paymentRegionCellHtml(paymentFormRegion.value, row.dataset.supportCountries)}</td>
-        <td>${tenantStoreCellHtml(paymentMethodsValue)}</td>
-        <td>${tenantStoreCellHtml(paymentScenariosValue)}</td>
+        <td>${paymentInlineSummaryCellHtml(paymentMethodsValue, '暂未配置支付方式')}</td>
+        <td>${paymentProductCellHtml(paymentScenariosValue)}</td>
         <td>${paymentFeeCellHtml(paymentMethodFeeValues)}</td>
-        <td>${paymentStatusHtml(paymentFormStatus.value)}</td>
-        <td>${escapeHtml(createTime)}</td>
+        <td>${paymentStatusHtml(nextStatus)}</td>
+        <td>${escapeHtml(effectiveTime)}</td>
+        <td>${escapeHtml(expireTime)}</td>
         <td>${now}</td>
         <td></td>
       `;
@@ -13264,16 +13617,10 @@
         '宝付': [{ no: 'BF-1002837499', subject: '深圳好饮科技有限公司' }]
       },
       T20001: {
-        'yabandpay': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }],
-        'Apple Pay': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }],
-        'Google Pay': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }],
-        '信用卡 Visa / Mastercard': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }]
+        'yabandpay': [{ no: 'YB-UK-102676687', subject: '英国渠道运营租户' }]
       },
       T20002: {
-        'yabandpay': [{ no: 'YB-UK-204860128', subject: '伦敦好饮运营租户' }],
-        'Apple Pay': [{ no: 'YB-UK-204860128', subject: '伦敦好饮运营租户' }],
-        'Google Pay': [{ no: 'YB-UK-204860128', subject: '伦敦好饮运营租户' }],
-        '信用卡 Visa / Mastercard': [{ no: 'YB-UK-204860128', subject: '伦敦好饮运营租户' }]
+        'yabandpay': [{ no: 'YB-UK-204860128', subject: '伦敦好饮运营租户' }]
       }
     };
 
@@ -13312,7 +13659,7 @@
             <div class="tenant-cashier-account-channel" title="${escapeHtml(channel)}">${escapeHtml(channel)}</div>
             <select class="tenant-cashier-account-select">
               <option value="">请选择${escapeHtml(channel)}收款商户号</option>
-              ${accounts.map(item => `<option value="${escapeHtml(item.no)}"${item.no === current ? ' selected' : ''}>${escapeHtml(item.no)} · ${escapeHtml(item.subject)}</option>`).join('')}
+              ${accounts.map(item => `<option value="${escapeHtml(item.no)}"${item.no === current ? ' selected' : ''}>${escapeHtml(item.subject)}（${escapeHtml(item.no)}）</option>`).join('')}
             </select>
           </div>
         `;
@@ -13323,9 +13670,9 @@
 
     function activePaymentChannelRecords(){
       return Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => row.cells[6]?.textContent.includes('启用'))
+        .filter(paymentConfigIsEffective)
         .map(row => ({
-          channel: row.cells[1]?.textContent.trim() || '',
+          channel: paymentChannelName(row),
           region: paymentRegionText(row)
         }))
         .filter(item => item.channel && item.region);
@@ -13364,7 +13711,7 @@
               <input type="checkbox"${selectedSet.has(channel) ? ' checked' : ''} />${escapeHtml(channel)}
             </label>
           `).join('')
-        : '<span class="tenant-cashier-account-empty">该地区暂无已启用的支付渠道</span>';
+        : '<span class="tenant-cashier-account-empty">该地区暂无生效中的支付配置</span>';
     }
 
     function renderTenantCashierMerchants(selected = []){
@@ -13374,12 +13721,14 @@
       const nameKeyword = (tenantCashierStoreNameSearch?.value || '').trim().toLowerCase();
       const idKeyword = (tenantCashierStoreIdSearch?.value || '').trim().toLowerCase();
       const cityKeyword = (tenantCashierStoreCitySearch?.value || '').trim().toLowerCase();
+      const typeFilter = tenantCashierStoreTypeSearch?.value || '';
       const merchantTenantId = tenantCashierTenant.value || Object.keys(tenantMerchantOptions)[0];
       const merchants = (tenantMerchantOptions[merchantTenantId] || []).filter(store => {
         const nameMatched = !nameKeyword || store.name.toLowerCase().includes(nameKeyword);
         const idMatched = !idKeyword || store.id.toLowerCase().includes(idKeyword);
         const cityMatched = !cityKeyword || store.city.toLowerCase().includes(cityKeyword);
-        return nameMatched && idMatched && cityMatched;
+        const typeMatched = !typeFilter || store.type === typeFilter;
+        return nameMatched && idMatched && cityMatched && typeMatched;
       });
       tenantCashierMerchantChoices.innerHTML = merchants.map(store => {
         const checked = selectedSet.has(store.name) ? ' checked' : '';
@@ -13437,11 +13786,11 @@
       if (explicitPlatform) return explicitPlatform;
       const productName = cashierPaymentMethodProduct(method);
       const matchedRows = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => row.cells[6]?.textContent.includes('启用'))
+        .filter(paymentConfigIsEffective)
         .filter(row => paymentRegionText(row) === region)
         .filter(row => paymentProductsForConfigRow(row).includes(productName));
-      const directRow = matchedRows.find(row => row.cells[1]?.textContent.trim() !== '宝付');
-      return (directRow || matchedRows[0])?.cells[1]?.textContent.trim() || productName;
+      const directRow = matchedRows.find(row => paymentChannelName(row) !== '宝付');
+      return (directRow || matchedRows[0]) ? paymentChannelName(directRow || matchedRows[0]) : productName;
     }
 
     function selectedTenantCashierFormPlatformGroups(){
@@ -13462,6 +13811,32 @@
       return Array.from(new Set(platforms)).join('、');
     }
 
+    function cashierPaymentProductRateText(method, region){
+      const platform = cashierPaymentPlatformForSelection(method, region);
+      const product = cashierPaymentMethodProduct(method);
+      const matchedRows = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
+        .filter(paymentConfigIsEffective)
+        .filter(row => paymentRegionText(row) === region)
+        .filter(row => paymentChannelName(row) === platform)
+        .filter(row => paymentProductsForConfigRow(row).includes(product));
+      for (const row of matchedRows) {
+        let feeMap = {};
+        try {
+          feeMap = JSON.parse(row.dataset.methodFees || '{}');
+        } catch (error) {
+          feeMap = {};
+        }
+        const exactKey = Object.keys(feeMap).find(key => key === `${platform} / ${product}` || key.endsWith(` / ${product}`));
+        const fallbackKey = Object.keys(feeMap).find(key => key.includes(product));
+        const config = normalizePaymentFeeConfig(feeMap[exactKey || fallbackKey]);
+        if (config.rate) {
+          const fixedText = config.type === '比例+固定金额' && config.fixed ? ` + ${config.fixed}` : '';
+          return `${config.rate}%${fixedText}`;
+        }
+      }
+      return '';
+    }
+
     function paymentConfigLookupKeysForMethod(method, region){
       const keys = new Set([method]);
       const productName = cashierPaymentMethodProduct(method);
@@ -13469,10 +13844,10 @@
       if (productName) keys.add(productName);
       if (platformName) keys.add(platformName);
       Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => row.cells[6]?.textContent.includes('启用'))
+        .filter(paymentConfigIsEffective)
         .filter(row => paymentRegionText(row) === region)
         .forEach(row => {
-          const platform = row.cells[1]?.textContent.trim() || '';
+          const platform = paymentChannelName(row);
           const methods = splitTenantStores(expandableCellText(row.cells[3]));
           const products = paymentProductsForConfigRow(row);
           const samePlatform = !platformName || platformName === platform;
@@ -13487,10 +13862,10 @@
     function activePaymentMethodsForRegion(region){
       const methods = [];
       Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => row.cells[6]?.textContent.includes('启用'))
+        .filter(paymentConfigIsEffective)
         .filter(row => paymentRegionText(row) === region)
         .forEach(row => {
-          const platform = row.cells[1]?.textContent.trim() || '';
+          const platform = paymentChannelName(row);
           paymentProductsForConfigRow(row).forEach(product => {
             const method = cashierPaymentMethodLabel(platform, product);
             if (method && !methods.includes(method)) methods.push(method);
@@ -13499,8 +13874,62 @@
       return methods;
     }
 
-    function tenantCashierFormOrderPaths(){
-      return ['微信小程序', '点单屏', 'H5'];
+    function tenantCashierAvailableMethodsForPath(region, path){
+      const methods = activePaymentMethodsForRegion(region);
+      if (region === '中国大陆' && path === '微信小程序') {
+        return methods.filter(method => cashierPaymentPlatformForSelection(method, region) === '微信支付'
+          && cashierPaymentMethodProduct(method) === '微信小程序支付');
+      }
+      if (region === '中国大陆' && path === '点单屏') {
+        return methods.filter(method => {
+          const platform = cashierPaymentPlatformForSelection(method, region);
+          const product = cashierPaymentMethodProduct(method);
+          return (platform === '微信支付' && product === '微信扫码支付')
+            || (platform === '支付宝' && product === '支付宝扫码支付')
+            || (platform === '宝付' && ['微信扫码支付', '支付宝扫码支付'].includes(product));
+        });
+      }
+      if (region === '英国' && path === '点单屏') {
+        return methods.filter(method => ['Visa线下', 'Mastercard线下'].includes(cashierPaymentMethodProduct(method)));
+      }
+      if (region === '英国' && path === 'H5') {
+        return methods.filter(method => ['Visa线上', 'Mastercard线上'].includes(cashierPaymentMethodProduct(method)));
+      }
+      return methods;
+    }
+
+    function defaultTenantCashierMethodsForPath(region, path){
+      const methods = tenantCashierAvailableMethodsForPath(region, path);
+      if (region === '中国大陆' && path === '点单屏') {
+        const direct = methods.filter(method => ['微信支付', '支付宝'].includes(cashierPaymentPlatformForSelection(method, region)));
+        return direct.length ? direct : methods.filter(method => cashierPaymentPlatformForSelection(method, region) === '宝付');
+      }
+      return methods;
+    }
+
+    function normalizeTenantCashierPathSelection(region, path, selected){
+      const allowed = tenantCashierAvailableMethodsForPath(region, path);
+      let next = Array.from(new Set((selected || []).filter(method => allowed.includes(method))));
+      if (region === '中国大陆' && path === '点单屏') {
+        const directMethods = allowed.filter(method => ['微信支付', '支付宝'].includes(cashierPaymentPlatformForSelection(method, region)));
+        const baofuMethods = allowed.filter(method => cashierPaymentPlatformForSelection(method, region) === '宝付');
+        const hasBaoFu = next.some(method => baofuMethods.includes(method));
+        const hasDirect = next.some(method => directMethods.includes(method));
+        if (hasBaoFu && !hasDirect) return baofuMethods;
+        if (!hasBaoFu && hasDirect) return directMethods;
+        if (hasBaoFu && hasDirect) {
+          const newest = next[next.length - 1];
+          const newestPlatform = cashierPaymentPlatformForSelection(newest, region);
+          return newestPlatform === '宝付' ? baofuMethods : directMethods;
+        }
+      }
+      return next;
+    }
+
+    function tenantCashierFormOrderPaths(region = tenantCashierFormMeta().region){
+      if (region === '中国大陆') return ['微信小程序', '点单屏'];
+      if (region === '英国') return ['点单屏', 'H5'];
+      return ['点单屏'];
     }
 
     function normalizeStoreScenario(scenario){
@@ -13514,11 +13943,13 @@
       const nameKeyword = (tenantCashierFormStoreName?.value || '').trim().toLowerCase();
       const idKeyword = (tenantCashierFormStoreId?.value || '').trim().toLowerCase();
       const cityKeyword = (tenantCashierFormStoreCity?.value || '').trim().toLowerCase();
+      const typeFilter = tenantCashierFormStoreType?.value || '';
       return (tenantMerchantOptions[meta.id] || []).filter(store => {
         const nameMatched = !nameKeyword || store.name.toLowerCase().includes(nameKeyword);
         const idMatched = !idKeyword || store.id.toLowerCase().includes(idKeyword);
         const cityMatched = !cityKeyword || store.city.toLowerCase().includes(cityKeyword);
-        return nameMatched && idMatched && cityMatched;
+        const typeMatched = !typeFilter || store.type === typeFilter;
+        return nameMatched && idMatched && cityMatched && typeMatched;
       });
     }
 
@@ -13528,6 +13959,12 @@
       if (tenantCashierFormTenantRole) tenantCashierFormTenantRole.textContent = meta.role || '选择租户后自动带出';
       if (tenantCashierFormTenantType) tenantCashierFormTenantType.textContent = meta.enterpriseType || '选择租户后自动带出';
       if (tenantCashierFormRegion) tenantCashierFormRegion.textContent = meta.region || '选择租户后自动带出';
+    }
+
+    function tenantCashierStoreStatusHtml(status){
+      const normalized = ['正常营业', '暂停营业', '已闭店'].includes(status) ? status : '正常营业';
+      const cls = normalized === '正常营业' ? 'green' : normalized === '暂停营业' ? 'warn' : 'red';
+      return `<span class="tag ${cls}">${normalized}</span>`;
     }
 
     function updateTenantCashierFormStoreSelections(){
@@ -13556,7 +13993,7 @@
           <tbody>
             ${stores.map(store => {
               const checked = selectedSet.has(store.name);
-              const status = store.status || '启用';
+              const status = store.status || '正常营业';
               return `
                 <tr class="cashier-store-row${checked ? ' active' : ''}" data-value="${escapeHtml(store.name)}">
                   <td><input type="checkbox"${checked ? ' checked' : ''} /></td>
@@ -13564,7 +14001,7 @@
                   <td><span class="cashier-store-name">${escapeHtml(store.name)}</span></td>
                   <td>${escapeHtml(store.type || '-')}</td>
                   <td>${escapeHtml(store.city || '-')}</td>
-                  <td>${tenantCashierStatusHtml(status)}</td>
+                  <td>${tenantCashierStoreStatusHtml(status)}</td>
                 </tr>
               `;
             }).join('')}
@@ -13583,6 +14020,142 @@
       }).join('、');
     }
 
+    function tenantCashierRowStores(row){
+      const tenantId = row?.dataset.tenantId || '';
+      const selectedNames = (row?.dataset.merchants || '').split(',').filter(Boolean);
+      const stores = tenantMerchantOptions[tenantId] || [];
+      return selectedNames.map(name => stores.find(store => store.name === name) || { id: '-', name, type: '-', city: '-', status: '-' });
+    }
+
+    function tenantCashierAccountLabel(tenantId, platform, accountNo){
+      const direct = tenantCashierTenantChannelAccounts[tenantId]?.[platform] || [];
+      const tableAccounts = Array.from(document.querySelectorAll('#merchant-management tbody tr'))
+        .filter(row => row.cells[3]?.textContent.trim() === platform)
+        .map(row => ({ no: row.cells[0]?.textContent.trim() || '', subject: row.cells[1]?.textContent.trim() || '' }));
+      const account = [...direct, ...tableAccounts].find(item => item.no === accountNo);
+      return account ? `${account.subject}（${account.no}）` : accountNo;
+    }
+
+    function renderTenantCashierDetailStores(row){
+      if (!tenantCashierDetailStores) return;
+      const stores = tenantCashierRowStores(row);
+      if (!stores.length) {
+        tenantCashierDetailStores.innerHTML = '<div class="cashier-empty">暂无配置门店</div>';
+        return;
+      }
+      tenantCashierDetailStores.innerHTML = `
+        <table class="cashier-store-table" data-pagination="none">
+          <thead>
+            <tr><th>选择</th><th>门店ID</th><th>门店名称</th><th>店铺类型</th><th>城市</th><th>状态</th></tr>
+          </thead>
+          <tbody>
+            ${stores.map(store => `
+              <tr class="cashier-store-row active">
+                <td><input type="checkbox" checked disabled /></td>
+                <td>${escapeHtml(store.id || '-')}</td>
+                <td><span class="cashier-store-name">${escapeHtml(store.name || '-')}</span></td>
+                <td>${escapeHtml(store.type || '-')}</td>
+                <td>${escapeHtml(store.city || '-')}</td>
+                <td>${store.status === '-' ? '-' : tenantCashierStoreStatusHtml(store.status)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderTenantCashierDetailPathMethods(row){
+      if (!tenantCashierDetailPathMethods) return;
+      const region = row?.cells?.[4]?.textContent.trim() || '';
+      let pathMethods = {};
+      try {
+        pathMethods = JSON.parse(row?.dataset.orderPathMethods || '{}');
+      } catch (error) {
+        pathMethods = {};
+      }
+      const entries = Object.entries(pathMethods).filter(([, methods]) => Array.isArray(methods) && methods.length);
+      if (!entries.length) {
+        tenantCashierDetailPathMethods.innerHTML = '<tr><td colspan="3"><div class="cashier-empty">暂无下单途径支付方式</div></td></tr>';
+        return;
+      }
+      tenantCashierDetailPathMethods.innerHTML = entries.map(([path, methods]) => {
+        const groups = methods.reduce((result, method) => {
+          const platform = cashierPaymentPlatformForSelection(method, region) || '-';
+          if (!result[platform]) result[platform] = [];
+          result[platform].push(method);
+          return result;
+        }, {});
+        const groupEntries = Object.entries(groups);
+        return `
+          <tr>
+            <td>${escapeHtml(path)}</td>
+            <td>
+              <div class="cashier-method-stack">
+                ${groupEntries.map(([platform]) => `<div class="cashier-method-line"><strong>${escapeHtml(platform)}</strong></div>`).join('')}
+              </div>
+            </td>
+            <td>
+              <div class="cashier-method-stack">
+                ${groupEntries.map(([, groupMethods]) => `
+                  <div class="cashier-method-line cashier-method-product-line">
+                    ${groupMethods.map(method => {
+                      const product = cashierPaymentMethodProduct(method) || method;
+                      const rateText = cashierPaymentProductRateText(method, region);
+                      return `<span class="cashier-method-product-readonly">${escapeHtml(product)}${rateText ? `<span class="cashier-product-rate">${escapeHtml(rateText)}</span>` : ''}</span>`;
+                    }).join('')}
+                  </div>
+                `).join('')}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderTenantCashierDetailAccounts(row){
+      if (!tenantCashierDetailAccounts) return;
+      const tenantId = row?.dataset.tenantId || '';
+      let bindings = {};
+      try {
+        bindings = JSON.parse(row?.dataset.merchantAccountBindings || '{}');
+      } catch (error) {
+        bindings = {};
+      }
+      const entries = Object.entries(bindings).filter(([, accountNo]) => accountNo);
+      if (!entries.length) {
+        tenantCashierDetailAccounts.innerHTML = '<div class="cashier-empty">暂无收款商户号配置</div>';
+        return;
+      }
+      tenantCashierDetailAccounts.innerHTML = `
+        <div class="cashier-account-table">
+          <div class="cashier-account-head"><div>支付平台</div><div>收款商户号</div></div>
+          ${entries.map(([platform, accountNo]) => `
+            <div class="cashier-account-row">
+              <div><strong>${escapeHtml(platform)}</strong></div>
+              <div class="cashier-readonly">${escapeHtml(tenantCashierAccountLabel(tenantId, platform, accountNo))}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function openTenantCashierDetail(row){
+      if (!row) return;
+      if (tenantCashierDetailCode) tenantCashierDetailCode.textContent = row.cells[0]?.textContent.trim() || '-';
+      if (tenantCashierDetailTenantId) tenantCashierDetailTenantId.textContent = row.cells[1]?.textContent.trim() || '-';
+      if (tenantCashierDetailTenantName) tenantCashierDetailTenantName.textContent = row.cells[2]?.textContent.trim() || '-';
+      if (tenantCashierDetailTenantRole) tenantCashierDetailTenantRole.textContent = row.cells[3]?.textContent.trim() || '-';
+      if (tenantCashierDetailTenantType) tenantCashierDetailTenantType.textContent = row.dataset.tenantType || '-';
+      if (tenantCashierDetailRegion) tenantCashierDetailRegion.textContent = row.cells[4]?.textContent.trim() || '-';
+      if (tenantCashierDetailStatus) tenantCashierDetailStatus.innerHTML = row.cells[7]?.innerHTML || '-';
+      if (tenantCashierDetailCreatedAt) tenantCashierDetailCreatedAt.textContent = row.cells[8]?.textContent.trim() || '-';
+      if (tenantCashierDetailUpdatedAt) tenantCashierDetailUpdatedAt.textContent = row.cells[9]?.textContent.trim() || '-';
+      renderTenantCashierDetailStores(row);
+      renderTenantCashierDetailPathMethods(row);
+      renderTenantCashierDetailAccounts(row);
+      activate('tenant-cashier-detail');
+    }
+
     function selectedTenantCashierFormMethods(){
       return Array.from(new Set(Object.values(tenantCashierFormMethodSelections).flat()));
     }
@@ -13590,23 +14163,27 @@
     function renderTenantCashierFormPathMethods(){
       if (!tenantCashierFormPathMethods) return;
       const meta = tenantCashierFormMeta();
-      const methods = activePaymentMethodsForRegion(meta.region);
+      const allMethods = activePaymentMethodsForRegion(meta.region);
       if (!meta.id) {
         tenantCashierFormPathMethods.innerHTML = '<tr><td colspan="3"><div class="cashier-empty">请先选择租户名称</div></td></tr>';
         return;
       }
-      if (!methods.length) {
+      if (!allMethods.length) {
         tenantCashierFormPathMethods.innerHTML = '<tr><td colspan="3"><div class="cashier-empty">该租户地区暂无可用支付方式</div></td></tr>';
         return;
       }
-      tenantCashierFormOrderPaths().forEach(path => {
+      const availablePaths = tenantCashierFormOrderPaths(meta.region);
+      tenantCashierFormMethodSelections = Object.fromEntries(Object.entries(tenantCashierFormMethodSelections)
+        .filter(([path]) => availablePaths.includes(path)));
+      availablePaths.forEach(path => {
         if (!Array.isArray(tenantCashierFormMethodSelections[path])) {
-          tenantCashierFormMethodSelections[path] = methods.slice();
+          tenantCashierFormMethodSelections[path] = defaultTenantCashierMethodsForPath(meta.region, path);
         } else {
-          tenantCashierFormMethodSelections[path] = tenantCashierFormMethodSelections[path].filter(method => methods.includes(method));
+          tenantCashierFormMethodSelections[path] = normalizeTenantCashierPathSelection(meta.region, path, tenantCashierFormMethodSelections[path]);
         }
       });
-      tenantCashierFormPathMethods.innerHTML = tenantCashierFormOrderPaths().map(path => {
+      tenantCashierFormPathMethods.innerHTML = availablePaths.map(path => {
+        const methods = tenantCashierAvailableMethodsForPath(meta.region, path);
         const selectedSet = new Set(tenantCashierFormMethodSelections[path] || []);
         const pathEnabled = selectedSet.size > 0;
         const paymentGroups = methods.reduce((groups, method) => {
@@ -13645,15 +14222,17 @@
                 ${groupEntries.map(([, products]) => {
                   const platformEnabled = products.some(item => selectedSet.has(item.method));
                   const enabled = pathEnabled && platformEnabled;
-                  return `
-                    <div class="cashier-method-line cashier-method-product-line">
-                      ${products.map(item => `
-                        <label class="cashier-method-product${enabled ? '' : ' disabled'}">
-                          <input type="checkbox" data-method="${escapeHtml(item.method)}"${selectedSet.has(item.method) ? ' checked' : ''}${enabled ? '' : ' disabled'} />${escapeHtml(item.product)}
-                        </label>
-                      `).join('')}
-                    </div>
-                  `;
+	                  return `
+	                    <div class="cashier-method-line cashier-method-product-line">
+	                      ${products.map(item => {
+	                        const rateText = cashierPaymentProductRateText(item.method, meta.region);
+	                        const selected = selectedSet.has(item.method);
+	                        return `
+	                          <span class="cashier-method-product-readonly${enabled && selected ? '' : ' disabled'}">${escapeHtml(item.product)}${rateText ? `<span class="cashier-product-rate">${escapeHtml(rateText)}</span>` : ''}</span>
+	                        `;
+	                      }).join('')}
+	                    </div>
+	                  `;
                 }).join('')}
               </div>
             </td>
@@ -13684,26 +14263,26 @@
         return;
       }
       const nextSelections = {};
-      tenantCashierFormAccounts.innerHTML = platforms.map(platform => {
+      tenantCashierFormAccounts.innerHTML = `
+        <div class="cashier-account-table">
+          <div class="cashier-account-head"><div>支付平台</div><div>收款商户号</div></div>
+          ${platforms.map(platform => {
         const accounts = tenantCashierFormMerchantAccounts(platform);
-        const relatedMethods = platformGroups[platform] || [];
-        const fallbackSelected = relatedMethods.map(method => tenantCashierFormAccountSelections[method]).find(Boolean);
-        const selectedValue = tenantCashierFormAccountSelections[platform] || fallbackSelected || '';
+        const selectedValue = tenantCashierFormAccountSelections[platform] || '';
         const current = accounts.some(account => account.no === selectedValue) ? selectedValue : '';
         if (current) nextSelections[platform] = current;
         return `
           <div class="cashier-account-row" data-platform="${escapeHtml(platform)}">
-            <div>
-              <strong>${escapeHtml(platform)}</strong>
-              <span class="cashier-account-products">${escapeHtml(relatedMethods.join('、'))}</span>
-            </div>
+            <div><strong>${escapeHtml(platform)}</strong></div>
             <select>
               <option value="">请选择${escapeHtml(platform)}收款商户号</option>
-              ${accounts.map(account => `<option value="${escapeHtml(account.no)}"${account.no === current ? ' selected' : ''}>${escapeHtml(account.no)} · ${escapeHtml(account.subject)}</option>`).join('')}
+              ${accounts.map(account => `<option value="${escapeHtml(account.no)}"${account.no === current ? ' selected' : ''}>${escapeHtml(account.subject)}（${escapeHtml(account.no)}）</option>`).join('')}
             </select>
           </div>
         `;
-      }).join('');
+      }).join('')}
+        </div>
+      `;
       tenantCashierFormAccountSelections = nextSelections;
       refreshCustomSelects(tenantCashierFormAccounts);
     }
@@ -13713,10 +14292,11 @@
       if (tenantCashierFormCodeField) tenantCashierFormCodeField.hidden = context.mode !== 'edit';
       if (tenantCashierFormCode) tenantCashierFormCode.value = context.row?.dataset.tenantCashierId || '';
       if (tenantCashierFormTenant) tenantCashierFormTenant.value = context.row?.dataset.tenantId || '';
-      if (tenantCashierFormStatus) tenantCashierFormStatus.value = context.row?.cells?.[8]?.textContent.includes('停用') ? '停用' : '启用';
+      if (tenantCashierFormStatus) tenantCashierFormStatus.value = context.row?.cells?.[7]?.textContent.includes('停用') ? '停用' : '启用';
       tenantCashierFormStoreName.value = '';
       tenantCashierFormStoreId.value = '';
       tenantCashierFormStoreCity.value = '';
+      if (tenantCashierFormStoreType) tenantCashierFormStoreType.value = '';
       tenantCashierFormMethodSelections = {};
       tenantCashierFormAccountSelections = {};
       try {
@@ -13778,15 +14358,18 @@
       }
       setInlineRequiredError(tenantCashierFormAccounts, false);
 
-      const row = tenantCashierFormContext.mode === 'edit' && tenantCashierFormContext.row
+      const isEdit = tenantCashierFormContext.mode === 'edit' && tenantCashierFormContext.row;
+      const row = isEdit
         ? tenantCashierFormContext.row
         : document.createElement('tr');
-      const code = tenantCashierFormContext.mode === 'edit' && row.dataset.tenantCashierId
+      const code = isEdit && row.dataset.tenantCashierId
         ? row.dataset.tenantCashierId
         : generateTenantCashierCode();
-      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const now = currentLocalDateTimeText();
+      const createdAt = isEdit ? (row.cells[8]?.textContent.trim() || now) : now;
       row.dataset.tenantCashierId = code;
       row.dataset.tenantId = meta.id;
+      row.dataset.tenantType = meta.enterpriseType;
       row.dataset.channels = methods.join(',');
       row.dataset.merchantAccountBindings = JSON.stringify(Object.fromEntries(platforms.map(platform => [platform, tenantCashierFormAccountSelections[platform]])));
       row.dataset.merchants = stores.join(',');
@@ -13796,15 +14379,15 @@
         <td>${escapeHtml(meta.id)}</td>
         <td>${escapeHtml(meta.name)}</td>
         <td>${escapeHtml(meta.role)}</td>
-        <td>${escapeHtml(meta.enterpriseType)}</td>
         <td>${escapeHtml(meta.region)}</td>
+        <td>${tenantStoreCellHtml(stores.join('、'))}</td>
         <td>${escapeHtml(tenantCashierPaymentMethodsSummary(methods, meta.region))}</td>
-        <td>${escapeHtml(tenantCashierStoresSummary(stores))}</td>
         <td>${tenantCashierStatusHtml(tenantCashierFormStatus.value)}</td>
+        <td>${escapeHtml(createdAt)}</td>
         <td>${now}</td>
         <td></td>
       `;
-      if (tenantCashierFormContext.mode !== 'edit') {
+      if (!isEdit) {
         document.querySelector('#tenant-cashier-config tbody')?.prepend(row);
         updatePaginationTotal(row.closest('table'));
       }
@@ -13828,12 +14411,13 @@
     }
 
     function renderTenantCashierActions(row){
-      const statusCell = row.cells[8];
+      const statusCell = row.cells[7];
       const actionCell = row.cells[10];
       if (!statusCell || !actionCell) return;
       const isDisabled = statusCell.textContent.includes('停用');
       actionCell.innerHTML = `
         <div class="row-actions">
+          <button class="link" type="button" data-tenant-cashier-action="detail">详情</button>
           <button class="link" type="button" data-tenant-cashier-action="edit">编辑</button>
           <button class="link" type="button" data-tenant-cashier-action="status">${isDisabled ? '启用' : '停用'}</button>
           ${isDisabled ? '<button class="link" type="button" data-tenant-cashier-action="delete">删除</button>' : ''}
@@ -13863,11 +14447,12 @@
         if (tenantCashierCodeField) tenantCashierCodeField.style.display = '';
         if (tenantCashierCode) tenantCashierCode.value = row.dataset.tenantCashierId || row.cells[0].textContent.trim();
         tenantCashierTenant.value = row.dataset.tenantId || '';
-        tenantCashierStatus.value = row.cells[8].textContent.includes('停用') ? '停用' : '启用';
+        tenantCashierStatus.value = row.cells[7].textContent.includes('停用') ? '停用' : '启用';
         tenantCashierStoreNameSearch.value = '';
         tenantCashierStoreIdSearch.value = '';
         tenantCashierStoreCitySearch.value = '';
-        populateTenantCashierRegions(row.cells[5].textContent.trim());
+        if (tenantCashierStoreTypeSearch) tenantCashierStoreTypeSearch.value = '';
+        populateTenantCashierRegions(row.cells[4].textContent.trim());
         updateTenantCashierChannels((row.dataset.channels || '').split(',').filter(Boolean));
         try {
           tenantCashierAccountSelections = JSON.parse(row.dataset.merchantAccountBindings || '{}');
@@ -13884,6 +14469,7 @@
         tenantCashierStoreNameSearch.value = '';
         tenantCashierStoreIdSearch.value = '';
         tenantCashierStoreCitySearch.value = '';
+        if (tenantCashierStoreTypeSearch) tenantCashierStoreTypeSearch.value = '';
         populateTenantCashierRegions('');
         updateTenantCashierChannels([]);
         tenantCashierAccountSelections = {};
@@ -13929,14 +14515,18 @@
       }
       setInlineRequiredError(tenantCashierMerchantChoices, false);
 
-      const row = tenantCashierContext.mode === 'edit' && tenantCashierContext.row
+      const isEdit = tenantCashierContext.mode === 'edit' && tenantCashierContext.row;
+      const row = isEdit
         ? tenantCashierContext.row
         : document.createElement('tr');
-      const configCode = tenantCashierContext.mode === 'edit' && row.dataset.tenantCashierId
+      const configCode = isEdit && row.dataset.tenantCashierId
         ? row.dataset.tenantCashierId
         : generateTenantCashierCode();
+      const now = currentLocalDateTimeText();
+      const createdAt = isEdit ? (row.cells[8]?.textContent.trim() || now) : now;
       row.dataset.tenantCashierId = configCode;
       row.dataset.tenantId = meta.id;
+      row.dataset.tenantType = meta.enterpriseType;
       row.dataset.channels = channels.join(',');
       row.dataset.merchantAccountBindings = JSON.stringify(merchantAccountBindings);
       row.dataset.merchants = merchants.join(',');
@@ -13945,15 +14535,15 @@
         <td>${escapeHtml(meta.id)}</td>
         <td>${escapeHtml(meta.name)}</td>
         <td>${escapeHtml(meta.type)}</td>
-        <td>${escapeHtml(meta.enterpriseType)}</td>
         <td>${escapeHtml(tenantCashierRegion.value)}</td>
+        <td>${tenantStoreCellHtml(merchants.join('、'))}</td>
         <td>${escapeHtml(channels.join('、'))}</td>
-        <td>${escapeHtml(merchants.join('、'))}</td>
         <td>${tenantCashierStatusHtml(tenantCashierStatus.value)}</td>
-        <td>${new Date().toISOString().slice(0, 19).replace('T', ' ')}</td>
+        <td>${escapeHtml(createdAt)}</td>
+        <td>${now}</td>
         <td></td>
       `;
-      if (tenantCashierContext.mode !== 'edit') {
+      if (!isEdit) {
         document.querySelector('#tenant-cashier-config tbody')?.prepend(row);
         updatePaginationTotal(row.closest('table'));
       }
@@ -13974,12 +14564,29 @@
       }
 
       if (action.dataset.paymentAction === 'status') {
-        const isDisabled = row.cells[6]?.textContent.includes('停用');
-        const usage = !isDisabled ? paymentChannelUsageText(name) : '';
+        const status = paymentRowStatus(row);
+        const usage = status === '生效中' ? paymentChannelUsageText(name) : '';
+        const statusMessage = status === '生效中'
+          ? '停用后该配置立即失效，失效时间将记录为当前操作时间。'
+          : '停用后该配置变为已停用，可继续删除。';
         openConfirm(
-          isDisabled ? '确认启用支付方式' : '确认停用支付方式',
-          `是否确认${isDisabled ? '启用' : '停用'}「${name}」？${usage ? `${usage}停用后租户收单配置将不可继续选择该支付方式。` : ''}`,
+          '确认停用支付配置',
+          `是否确认停用「${name}」？${usage ? `${usage}停用后租户收单配置将不可继续选择该支付配置。` : ''}${statusMessage}`,
           () => togglePaymentChannelStatus(row)
+        );
+        return;
+      }
+
+      if (action.dataset.paymentAction === 'delete') {
+        openConfirm(
+          '确认删除支付配置',
+          `是否确认删除「${name}」？删除后该配置不再展示。`,
+          () => {
+            row.remove();
+            updatePaginationTotal(row.closest('table'));
+            updatePaymentRegionFilterOptions();
+            applyPaymentFilters();
+          }
         );
         return;
       }
@@ -14475,7 +15082,7 @@
     document.addEventListener('click', event => {
       const storeToggle = event.target.closest('[data-store-toggle]');
       if (!storeToggle) return;
-      storeToggle.closest('.tenant-store-list')?.classList.toggle('expanded');
+      storeToggle.closest('.tenant-store-list,.payment-inline-list,.payment-product-list,.payment-fee-list')?.classList.toggle('expanded');
     });
     document.addEventListener('click', event => {
       const detailAction = event.target.closest('[data-store-detail]');
@@ -14639,6 +15246,11 @@
       materialFormName,
       materialFormType,
       materialFormUnit,
+      paymentFormName,
+      paymentFormRegion,
+      paymentFormEffectiveTime,
+      paymentFormExpireTime,
+      paymentFormStatus,
       taxFormRegion,
       taxFormRegionCode,
       taxFormType,
@@ -14691,6 +15303,7 @@
     updateTenantCreateAccountAuthorization();
     updateTenantCreateAccountField();
     bindTenantUploadControls();
+    refreshPaymentChannelDisplayCells();
     bindPaymentChannelActions();
     bindTenantCashierActions();
     bindSplitActions();
@@ -14721,7 +15334,29 @@
       renderPaymentTokenField(hidden);
       if (hidden === paymentFormMethods || hidden === paymentFormUsageScenarios) renderPaymentMethodFeeRows();
     });
+    document.addEventListener('click', event => {
+      const trigger = event.target.closest('[data-payment-multi-trigger]');
+      document.querySelectorAll('.payment-multi-picker.open').forEach(picker => {
+        if (!trigger || !picker.contains(trigger)) picker.classList.remove('open');
+      });
+      if (!trigger) return;
+      trigger.closest('.payment-multi-picker')?.classList.toggle('open');
+    });
+    [paymentFormMethodPicker, paymentFormProductPicker].forEach(picker => {
+      picker?.addEventListener('change', event => {
+        if (!event.target.matches('[data-payment-multi-panel] input')) return;
+        syncPaymentMultiPickerValue(picker);
+        const hidden = paymentMultiHiddenForPicker(picker);
+        if (hidden) setInlineRequiredError(hidden, false);
+      });
+    });
     paymentChannelAdd?.addEventListener('click', () => openPaymentChannelModal());
+    paymentFormName?.addEventListener('change', () => {
+      paymentFormMethods.value = '';
+      paymentFormUsageScenarios.value = '';
+      paymentMethodFeeValues = {};
+      renderPaymentMultiPickers();
+    });
     paymentFormSubject?.addEventListener('change', () => syncPaymentMerchantProfile());
     paymentFormSettleAccount?.addEventListener('change', syncPaymentSettlementCurrency);
     paymentFormBillingType?.addEventListener('change', updatePaymentBillingFields);
@@ -14915,13 +15550,15 @@
       tenantCashierFormMethodSelections = {};
       tenantCashierFormAccountSelections = {};
       tenantCashierFormStoreSelections = (tenantMerchantOptions[tenantCashierFormTenant.value] || []).map(store => store.name);
+      if (tenantCashierFormStoreType) tenantCashierFormStoreType.value = '';
       renderTenantCashierFormBase();
       renderTenantCashierFormStores(tenantCashierFormStoreSelections);
       renderTenantCashierFormPathMethods();
       renderTenantCashierFormAccounts();
     });
-    [tenantCashierFormStoreName, tenantCashierFormStoreId, tenantCashierFormStoreCity].forEach(input => {
-      input?.addEventListener('input', () => {
+    [tenantCashierFormStoreName, tenantCashierFormStoreId, tenantCashierFormStoreCity, tenantCashierFormStoreType].forEach(input => {
+      const eventName = input?.tagName === 'SELECT' ? 'change' : 'input';
+      input?.addEventListener(eventName, () => {
         updateTenantCashierFormStoreSelections();
         renderTenantCashierFormStores(tenantCashierFormStoreSelections);
       });
@@ -14945,8 +15582,8 @@
       const pathToggle = event.target.closest('[data-order-path-enabled]');
       if (pathToggle) {
         const path = pathToggle.dataset.orderPathEnabled || '';
-        const methods = activePaymentMethodsForRegion(tenantCashierFormMeta().region);
-        tenantCashierFormMethodSelections[path] = pathToggle.checked ? methods.slice() : [];
+        const meta = tenantCashierFormMeta();
+        tenantCashierFormMethodSelections[path] = pathToggle.checked ? defaultTenantCashierMethodsForPath(meta.region, path) : [];
         setPersonnelRequiredError(tenantCashierFormPathMethodsError, false);
         renderTenantCashierFormPathMethods();
         renderTenantCashierFormAccounts();
@@ -14957,30 +15594,34 @@
         const path = platformToggle.closest('tr')?.dataset.orderPath || '';
         const platform = platformToggle.dataset.platformToggle || '';
         const meta = tenantCashierFormMeta();
-        const platformMethods = activePaymentMethodsForRegion(meta.region)
-          .filter(method => cashierPaymentPlatformForSelection(method, meta.region) === platform);
+        const pathMethods = tenantCashierAvailableMethodsForPath(meta.region, path);
+        if (meta.region === '中国大陆' && path === '点单屏') {
+          const directMethods = pathMethods.filter(method => ['微信支付', '支付宝'].includes(cashierPaymentPlatformForSelection(method, meta.region)));
+          const baofuMethods = pathMethods.filter(method => cashierPaymentPlatformForSelection(method, meta.region) === '宝付');
+          if (platform === '宝付') {
+            tenantCashierFormMethodSelections[path] = platformToggle.checked ? baofuMethods : [];
+          } else if (['微信支付', '支付宝'].includes(platform)) {
+            tenantCashierFormMethodSelections[path] = platformToggle.checked ? directMethods : [];
+          }
+          setPersonnelRequiredError(tenantCashierFormPathMethodsError, false);
+          renderTenantCashierFormPathMethods();
+          renderTenantCashierFormAccounts();
+          return;
+        }
+        const platformMethods = pathMethods.filter(method => cashierPaymentPlatformForSelection(method, meta.region) === platform);
         const selected = new Set(tenantCashierFormMethodSelections[path] || []);
         platformMethods.forEach(method => {
           if (platformToggle.checked) selected.add(method);
           else selected.delete(method);
         });
-        tenantCashierFormMethodSelections[path] = Array.from(selected);
+        tenantCashierFormMethodSelections[path] = normalizeTenantCashierPathSelection(meta.region, path, Array.from(selected));
         setPersonnelRequiredError(tenantCashierFormPathMethodsError, false);
         renderTenantCashierFormPathMethods();
         renderTenantCashierFormAccounts();
         return;
       }
-      const input = event.target.closest('[data-method]');
-      if (!input) return;
-      const path = input.closest('tr')?.dataset.orderPath || '';
-      const method = input.dataset.method || '';
-      const selected = new Set(tenantCashierFormMethodSelections[path] || []);
-      if (input.checked) selected.add(method);
-      else selected.delete(method);
-      tenantCashierFormMethodSelections[path] = Array.from(selected);
-      setPersonnelRequiredError(tenantCashierFormPathMethodsError, false);
-      renderTenantCashierFormAccounts();
-    });
+	      return;
+	    });
     tenantCashierFormAccounts?.addEventListener('change', event => {
       const select = event.target.closest('select');
       if (!select) return;
@@ -15001,6 +15642,7 @@
       tenantCashierStoreNameSearch.value = '';
       tenantCashierStoreIdSearch.value = '';
       tenantCashierStoreCitySearch.value = '';
+      if (tenantCashierStoreTypeSearch) tenantCashierStoreTypeSearch.value = '';
       renderTenantCashierMerchants(defaultTenantCashierMerchantValues());
     });
     tenantCashierRegion?.addEventListener('change', () => {
@@ -15033,8 +15675,9 @@
       else delete tenantCashierAccountSelections[channel];
       setInlineRequiredError(tenantCashierAccountBindings, false);
     });
-    [tenantCashierStoreNameSearch, tenantCashierStoreIdSearch, tenantCashierStoreCitySearch].forEach(input => {
-      input?.addEventListener('input', () => {
+    [tenantCashierStoreNameSearch, tenantCashierStoreIdSearch, tenantCashierStoreCitySearch, tenantCashierStoreTypeSearch].forEach(input => {
+      const eventName = input?.tagName === 'SELECT' ? 'change' : 'input';
+      input?.addEventListener(eventName, () => {
         updateTenantCashierSelectedMerchantsFromList();
         renderTenantCashierMerchants(tenantCashierSelectedMerchants);
       });
@@ -15045,7 +15688,11 @@
       const row = action.closest('tr');
       if (!row) return;
       const name = `${row.cells[0]?.textContent.trim() || '当前配置'} ${row.cells[2]?.textContent.trim() || ''}`.trim();
-      const statusCell = row.cells[8];
+      const statusCell = row.cells[7];
+      if (action.dataset.tenantCashierAction === 'detail') {
+        openTenantCashierDetail(row);
+        return;
+      }
       if (action.dataset.tenantCashierAction === 'edit') {
         activate('tenant-cashier-form');
         resetTenantCashierForm({ mode: 'edit', row });
@@ -15569,7 +16216,7 @@
 
     function merchantCreateRegionsFromPaymentConfig(includeDisabled = false){
       return Array.from(document.querySelectorAll('#payment-channel-config tbody tr'))
-        .filter(row => includeDisabled || row.cells[6]?.textContent.includes('启用'))
+        .filter(row => includeDisabled || paymentConfigIsEffective(row))
         .map(row => paymentConfigRegionName(paymentRegionText(row)))
         .filter(Boolean)
         .filter((region, index, list) => list.indexOf(region) === index);
@@ -15593,11 +16240,11 @@
     function merchantChannelsForRegion(region, includeDisabled = false){
       const rows = Array.from(document.querySelectorAll('#payment-channel-config tbody tr'));
       const channels = rows.reduce((list, row) => {
-        const channelName = row.cells[1]?.textContent.trim() || '';
+        const channelName = paymentChannelName(row);
         const regionText = paymentRegionText(row);
         const status = row.cells[6]?.textContent.trim() || '';
         const regionName = paymentConfigRegionName(regionText);
-        if (channelName && regionName === region && (includeDisabled || status.includes('启用')) && !list.includes(channelName)) {
+        if (channelName && regionName === region && (includeDisabled || paymentConfigIsEffective(row)) && !list.includes(channelName)) {
           list.push(channelName);
         }
         return list;
